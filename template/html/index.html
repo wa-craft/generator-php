@@ -1,0 +1,76 @@
+{layout name="layout/layout"}
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+    <!-- BEGIN CONTENT BODY -->
+    <div class="page-content">
+        <!-- BEGIN PAGE HEADER-->
+        <!-- BEGIN PAGE BAR -->
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a href="index.html">首页</a>
+                    <i class="fa fa-arrow-right"></i>
+                </li>
+                <li>
+                    <a href="#">{{MODEL_COMMENT}}</a>
+                    <i class="fa fa-arrow-right"></i>
+                </li>
+                <li>
+                    <span>{{ACTION_COMMENT}}</span>
+                </li>
+            </ul>
+        </div>
+        <!-- END PAGE BAR -->
+        <!-- BEGIN PAGE TITLE-->
+        <h3 class="page-title">{{MODULE_COMMENT}}
+            <small>{{MODEL_COMMENT}}</small>
+        </h3>
+        <!-- END PAGE TITLE-->
+        <!-- END PAGE HEADER-->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption font-dark">
+                            <i class="icon-settings font-dark"></i>
+                            <span class="caption-subject bold uppercase">列表</span>
+                        </div>
+                        <div class="actions">
+                            <div class="btn-group" data-toggle="buttons">
+                                <button onclick="Form.add('{:url('index/{{MODEL_NAME}}/add')}')" class="btn btn-transparent dark btn-outline btn-sm">添加 </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped table-bordered table-hover table-header-fixed" id="sample_1">
+                            <thead>
+                            <tr class="">
+                                {{TR_LOOP}}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="voList" id="it"}
+                            <tr>
+                                {{TD_LOOP}}
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-transparent green btn-outline btn-sm active"
+                                                onclick="Form.mod('{:url('index/{{MODEL_NAME}}/mod?id='.$it.id)}')">修改
+                                        </button>
+                                        <button type="button" class="btn btn-transparent dark btn-outline btn-sm"
+                                                onclick="Form.del('{:url('index/{{MODEL_NAME}}/del?id='.$it.id)}')">删除
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                        {$voList->render()}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

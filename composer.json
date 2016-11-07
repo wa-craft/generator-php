@@ -1,0 +1,14 @@
+{
+    "name": "goldeagle/think-builder",
+    "description": "a cli tool to build applications for thinkphp v5",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bison",
+            "email": "1308362@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
