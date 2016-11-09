@@ -1,20 +1,31 @@
 <?php
 return [
+    //生成的动作配置
     'build_actions' => [
+        //是否生成入口文件
         'portal' => true,
+        //是否生成控制器程序
         'controller' => true,
+        //是否生成模型程序
         'model' => true,
+        //是否生成校验器程序
         'validate' => true,
+        //是否生成视图模板文件
         'view' => true,
+        //是否生成SQL数据库文件
         'sql' => true,
+        //是否复制其他静态资源
         'copy' => true
     ],
+    //默认值
     'defaults' => [
+        //默认的控制器动作/视图模板
         'actions' => [
             ['name' => 'index', 'comment' => '列表'],
             ['name' => 'add', 'comment' => '添加'],
             ['name' => 'mod', 'comment' => '修改']
         ],
+        //默认的校验规则列表
         'rules' => [
             'alpha' => '英文字符',
             'number' => '数字',
@@ -24,6 +35,7 @@ return [
             'boolean' => '是/否'
         ]
     ],
+    //模板路径
     'templates' => [
         'portal' => file_get_contents(TMPL_PATH . '/php/index.tmpl'),
         'controller' => file_get_contents(TMPL_PATH . '/php/controller.tmpl'),

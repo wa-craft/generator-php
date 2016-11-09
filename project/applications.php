@@ -2,7 +2,7 @@
 return [
     [
         'name' => 'forge',
-        'name_space' => 'tf',
+        'namespace' => 'tf',
         'portal' => 'forge',
         'comment' => 'ThinkForge',
         'modules' => [
