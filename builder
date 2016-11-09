@@ -4,25 +4,35 @@
  * thinkphp v5 脚手架创建工具
  */
 //定义基本数据
-define('TAR_ROOT_PATH', './deploy');
-define('DBFILE_PATH', TAR_ROOT_PATH . '../../database/');
+define('TAR_ROOT_PATH', './deploy/');
+define('APP_PATH', 'application');
+define('DBFILE_PATH', TAR_ROOT_PATH . 'database/');
 define('TMPL_PATH', './template');
 define('PUB_PATH', TAR_ROOT_PATH . '/public');
 define('SHARE_PATH', './share');
-define('VERSION', '0.5.0');
+define('VERSION', '0.5.1');
+define('ROOT_REPOS', 'https://github.com/goldeagle/bforge-think');
 
 $config = require './config.php';
 
 $build_actions = $config['build_actions'];
 
-if (!is_dir(TAR_ROOT_PATH)) mkdir(TAR_ROOT_PATH, 0600);
+//使用 git clone 创建初始目录结构
+$cmd = 'git clone ' . ROOT_REPOS . ' ' . TAR_ROOT_PATH . ' && ' . 'rm -rf ' . TAR_ROOT_PATH . '.git';
+shell_exec($cmd);
+
+//创建基本目录
+mk_dir(TAR_ROOT_PATH);
+mk_dir(TAR_ROOT_PATH . APP_PATH);
+mk_dir(DBFILE_PATH);
+
 $applications = require "./project/applications.php";
 
 foreach ($applications as $application) {
     //创建目录
-    $_app_path = TAR_ROOT_PATH . '/' . $application['name'];
+    $_app_path = TAR_ROOT_PATH . APP_PATH . '/' . $application['name'];
     echo "INFO: creating application directory: {$_app_path} ..." . PHP_EOL;
-    if (!is_dir($_app_path)) mkdir($_app_path, 0600);
+    mk_dir($_app_path);
 
     //装载模板文件
     echo "INFO: reading templates ..." . PHP_EOL;
@@ -46,18 +56,15 @@ foreach ($applications as $application) {
     foreach ($modules as $module) {
         //创建模块目录
         $_module_path = $_app_path . '/' . $module['name'];
-        if (!is_dir($_module_path)) {
-            mkdir($_module_path, 0600);
-            echo "INFO: creating module directory: {$_module_path} ..." . PHP_EOL;
-        }
+        mk_dir($_module_path);
 
         //生成代码
 
         //生成单独控制器代码
         $_controller_path = $_module_path . '/controller';
-        if (!is_dir($_controller_path)) mkdir($_controller_path, 0600);
+        mk_dir($_controller_path);
         $_view_path = $_module_path . '/view';
-        if (!is_dir($_view_path)) mkdir($_view_path, 0600);
+        mk_dir($_view_path);
 
         if (isset($module['controllers'])) $controllers = $module['controllers'];
         else $controllers = [];
@@ -123,13 +130,25 @@ echo "ThinkForge Builder, Version: " . VERSION . PHP_EOL;
 
 //定义基本函数
 /**
+ * 判断目录是否存在，如果不存在则创建
+ * @param $path
+ */
+function mk_dir($path)
+{
+    if (!is_dir($path)) {
+        mkdir($path, 0744);
+        echo "INFO: creating directory: {$path} ..." . PHP_EOL;
+    }
+}
+
+/**
  * 扫描某个路径下的所有文件，并拷贝到目标路径下
  * @param $src_path
  * @param $tar_path
  */
 function copy_files($src_path, $tar_path)
 {
-    if (!is_dir($tar_path)) mkdir($tar_path, 0600);
+    mk_dir($tar_path);
 
     $files = scandir($src_path);
     foreach ($files as $file) {
@@ -154,10 +173,7 @@ function copy_files($src_path, $tar_path)
  */
 function write_template_file($path, $module, $index, $model, $name_space, $templates, $suffix = '.php')
 {
-    if (!is_dir($path)) {
-        mkdir($path, 0600);
-        //echo "INFO: creating {$index['name']} directory: {$path} ..." . PHP_EOL;
-    }
+    mk_dir($path);
 
     switch ($suffix) {
         case '.php':
@@ -183,10 +199,7 @@ function write_template_file($path, $module, $index, $model, $name_space, $templ
 function write_html($path, $module, $index, $model, $templates)
 {
     global $defaults;
-    if (!is_dir($path)) {
-        mkdir($path, 0600);
-        //echo "INFO: creating {$index['name']} directory: {$path} ..." . PHP_EOL;
-    }
+    mk_dir($path);
 
     $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), $templates['view_' . $index['name']]);
     $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
@@ -240,10 +253,7 @@ function write_html($path, $module, $index, $model, $templates)
  */
 function write_sql($path, $index, $model, $name_space, $templates)
 {
-    if (!is_dir($path)) {
-        mkdir($path, 0600);
-        //echo "INFO: creating {$index['name']} directory: {$path} ..." . PHP_EOL;
-    }
+    mk_dir($path);
 
     $_class_name = $model['name'];
     $content = str_replace('{{APP_NAME}}', $name_space, $templates[$index['name']]);
@@ -283,10 +293,7 @@ function write_sql($path, $index, $model, $name_space, $templates)
 function write_php($path, $module, $index, $model, $name_space, $templates)
 {
     global $defaults;
-    if (!is_dir($path)) {
-        mkdir($path, 0600);
-        //echo "INFO: creating {$index['name']} directory: {$path} ..." . PHP_EOL;
-    }
+    mk_dir($path);
 
     $_name_space = $name_space . '\\' . $module['name'] . '\\' . $index['name'];
     $_class_name = $model['name'];
@@ -295,6 +302,7 @@ function write_php($path, $module, $index, $model, $name_space, $templates)
     $content = isset($model['name']) ? str_replace('{{APP_NAME}}', $model['name'], $content) : $content;
     $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', $model['name'], $content) : $content;
     $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
+    $content = str_replace('{{APP_PATH}}', APP_PATH, $content);
 
     //处理与控制器相关的模板
     if ($index['name'] == 'controller') {

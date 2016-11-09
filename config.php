@@ -6,7 +6,7 @@ return [
         'model' => true,
         'validate' => true,
         'view' => true,
-        'sql' => false,
+        'sql' => true,
         'copy' => true
     ],
     'defaults' => [
