@@ -1,9 +1,13 @@
 #CHANGELOG
+
+## 0.6.2
+* 增加 login/register/logout 的模板
+* 修复生成模型类namespace的错误
+
 ## 0.6.1
 * 增加一些新的默认校验规则
 * 增加对日期时间的规则的生成处理
 * 增加对邮箱规则的生成处理
-* 增加 login/register/logout 的模板
 
 ## 0.6.0
 * 数据结构增加 project 的设置

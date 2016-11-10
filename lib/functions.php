@@ -73,6 +73,7 @@ function write_html($path, $module, $index, $model, $templates)
     mk_dir($path);
 
     $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), $templates['view_' . $index['name']]);
+    $content = str_replace('{{MODULE_NAME}}', strtolower($module['name']), $content);
     $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
     $content = str_replace('{{MODEL_COMMENT}}', $model['comment'], $content);
     $content = str_replace('{{ACTION_COMMENT}}', $index['comment'], $content);
@@ -304,7 +305,7 @@ function getFieldSQL($field)
     }
 
     if (preg_match('/^is_/', $field['name'])) {
-        return '`{{FIELD_NAME}}` tinyint(1) NOT NULL COMMENT \'{{FIELD_TITLE}}\',,';
+        return '`{{FIELD_NAME}}` tinyint(1) NOT NULL COMMENT \'{{FIELD_TITLE}}\',';
     }
 
     if ($field['rule'] == 'datetime') {

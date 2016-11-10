@@ -11,7 +11,7 @@ define('PROFILE_PATH', TAR_ROOT_PATH . 'profile/');
 define('TMPL_PATH', './template');
 define('PUB_PATH', TAR_ROOT_PATH . '/public/');
 define('SHARE_PATH', './share');
-define('VERSION', '0.6.1');
+define('VERSION', '0.6.2');
 define('ROOT_REPOS', 'https://github.com/goldeagle/bforge-think');
 
 require_once "./lib/functions.php";
@@ -110,7 +110,7 @@ foreach ($applications as $application) {
             if ($build_actions['model']) {
                 //生成模型
                 $_model_path = $_module_path . '/model';
-                write_template_file($_model_path, ['name' => 'common'], ['name' => 'model'], $model, $application['namespace'], $templates);
+                write_template_file($_model_path, $module, ['name' => 'model'], $model, $application['namespace'], $templates);
             }
 
             if ($build_actions['validate']) {
