@@ -3,19 +3,23 @@ return [
     //生成的动作配置
     'build_actions' => [
         //是否生成入口文件
-        'portal' => true,
+        'portal' => false,
         //是否生成控制器程序
-        'controller' => true,
+        'controller' => false,
         //是否生成模型程序
-        'model' => true,
+        'model' => false,
         //是否生成校验器程序
-        'validate' => true,
+        'validate' => false,
         //是否生成视图模板文件
-        'view' => true,
+        'view' => false,
         //是否生成SQL数据库文件
-        'sql' => true,
+        'sql' => false,
         //是否复制其他静态资源
-        'copy' => true
+        'copy' => false,
+        //是否根据应用 portal 生成 nginx 配置文件，谨慎使用
+        'nginx' => false,
+        //是否根据应用 portal 生成 .htaccess，谨慎使用
+        'apache' => false
     ],
     //默认值
     'defaults' => [
@@ -48,7 +52,9 @@ return [
         'view_add_field' => file_get_contents(TMPL_PATH . '/html/add_field.html'),
         'view_index_field' => file_get_contents(TMPL_PATH . '/html/index_field.html'),
         'view_mod_field' => file_get_contents(TMPL_PATH . '/html/mod_field.html'),
-        'sql_table' => file_get_contents(TMPL_PATH . '/sql/table.sql')
+        'sql_table' => file_get_contents(TMPL_PATH . '/sql/table.sql'),
+        'nginx' => file_get_contents(TMPL_PATH . '/misc/nginx_vhost'),
+        'apache' => file_get_contents(TMPL_PATH . '/misc/apache_access')
     ]
 
 ];

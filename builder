@@ -7,10 +7,11 @@
 define('TAR_ROOT_PATH', './deploy/');
 define('APP_PATH', 'application');
 define('DBFILE_PATH', TAR_ROOT_PATH . 'database/');
+define('PROFILE_PATH', TAR_ROOT_PATH . 'profile/');
 define('TMPL_PATH', './template');
-define('PUB_PATH', TAR_ROOT_PATH . '/public');
+define('PUB_PATH', TAR_ROOT_PATH . '/public/');
 define('SHARE_PATH', './share');
-define('VERSION', '0.5.2');
+define('VERSION', '0.6.0');
 define('ROOT_REPOS', 'https://github.com/goldeagle/bforge-think');
 
 require_once "./lib/functions.php";
@@ -27,21 +28,35 @@ shell_exec($cmd);
 mk_dir(TAR_ROOT_PATH);
 mk_dir(TAR_ROOT_PATH . APP_PATH);
 mk_dir(DBFILE_PATH);
+mk_dir(PROFILE_PATH);
 
-$applications = require "./project/applications.php";
+
+//装载模板文件
+echo "INFO: reading templates ..." . PHP_EOL;
+$templates = $config['templates'];
+
+//装载默认设置
+$defaults = $config['defaults'];
+
+$project = require "./project/forge.php";
+
+$applications = $project['applications'];
+
+//生成 nginx 配置文件
+if ($build_actions['nginx']) {
+    write_nginx(PROFILE_PATH, $templates['nginx'], $project['domain'], $applications);
+}
+
+//生成 apache htaccess 配置文件
+if ($build_actions['apache']) {
+    write_apache(PUB_PATH, $templates['apache'],$applications);
+}
 
 foreach ($applications as $application) {
     //创建目录
     $_app_path = TAR_ROOT_PATH . APP_PATH . '/' . $application['name'];
     echo "INFO: creating application directory: {$_app_path} ..." . PHP_EOL;
     mk_dir($_app_path);
-
-    //装载模板文件
-    echo "INFO: reading templates ..." . PHP_EOL;
-    $templates = $config['templates'];
-
-    //装载默认设置
-    $defaults = $config['defaults'];
 
     //创建入口文件
     if ($build_actions['portal']) {

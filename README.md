@@ -12,6 +12,8 @@ a cli tool to build applications for thinkphp v5，
 * 自动生成权限树
 * 自动生成RBAC数据
 * 自动生成功能菜单
+* 自动生成 nginx vhost 配置文件
+* 自动生成 .htaccess 配置文件
 
 ## 使用方法
 1. 定义 project 目录下面的项目文件。
