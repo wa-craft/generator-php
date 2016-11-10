@@ -1,0 +1,44 @@
+{layout name="layout/anon"}
+<div class="content">
+    <!-- BEGIN REGISTRATION FORM -->
+    <form class="register-form" action="index.html" method="post">
+        <h3 class="font-green">注册</h3>
+        <p class="hint">填写帐号信息</p>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">帐号</label>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="帐号"
+                   name="username"/></div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">密码</label>
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password"
+                   placeholder="密码" name="password"/></div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">再次输入密码</label>
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off"
+                   placeholder="Re-type Your Password" name="rpassword"/></div>
+        <div class="form-group margin-top-20 margin-bottom-20">
+            <label class="mt-checkbox mt-checkbox-outline">
+                <input type="checkbox" name="remember" value="1"/>
+                <input type="checkbox" name="tnc"/> 我同意：
+                <a href="javascript:;">协议</a>
+                <span></span>
+            </label>
+            <div id="register_tnc_error"></div>
+        </div>
+        <p class="hint"> Enter your personal details below: </p>
+        <div class="form-group">
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label class="control-label visible-ie8 visible-ie9">邮箱</label>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="邮箱" name="email"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">地址</label>
+            <input class="form-control placeholder-no-fix" type="text" placeholder="地址" name="address"/>
+        </div>
+        <div class="form-actions">
+            <button type="button" id="register-back-btn" class="btn green btn-outline">Back</button>
+            <button type="submit" id="register-submit-btn" class="btn btn-success uppercase pull-right">Submit</button>
+        </div>
+    </form>
+    <!-- END REGISTRATION FORM -->
+</div>

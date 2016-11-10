@@ -252,7 +252,7 @@ function write_nginx($path, $template, $domain, $applications)
  * @param $template
  * @param $applications
  */
-function write_apache($path, $template,  $applications)
+function write_apache($path, $template, $applications)
 {
     $content = $template;
     foreach ($applications as $application) {
@@ -277,6 +277,12 @@ function getFieldHTML($field, $action = 'add')
         if ($action == 'add') return "<input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">";
         else  return "<input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">";
     }
+
+    if ($field['rule'] == 'email') {
+        if ($action == 'add') return "<span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span><input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\"><div class=\"form-control-focus\"></div>";
+        else  return "<span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span><input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\"><div class=\"form-control-focus\"></div>";
+    }
+
     if (preg_match('/_id$/', $field['name'])) {
         $_model = str_replace('_id', '', $field['name']);
         if ($action == 'add') return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">{volist name=\"" . $_model . "List\" id=\"it\"}<option value=\"{\$it.id}\">{\$it.name}</option>{/volist}</select> ";
@@ -296,8 +302,13 @@ function getFieldSQL($field)
     if (preg_match('/_id$/', $field['name'])) {
         return '`{{FIELD_NAME}}` bigint(20) NOT NULL COMMENT \'{{FIELD_TITLE}}\',';
     }
+
     if (preg_match('/^is_/', $field['name'])) {
         return '`{{FIELD_NAME}}` tinyint(1) NOT NULL COMMENT \'{{FIELD_TITLE}}\',,';
+    }
+
+    if ($field['rule'] == 'datetime') {
+        return '`{{FIELD_NAME}}` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT \'{{FIELD_TITLE}}\',';
     }
 
     return '`{{FIELD_NAME}}` varchar(100) NOT NULL COMMENT \'{{FIELD_TITLE}}\',';

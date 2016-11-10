@@ -11,7 +11,7 @@ define('PROFILE_PATH', TAR_ROOT_PATH . 'profile/');
 define('TMPL_PATH', './template');
 define('PUB_PATH', TAR_ROOT_PATH . '/public/');
 define('SHARE_PATH', './share');
-define('VERSION', '0.6.0');
+define('VERSION', '0.6.1');
 define('ROOT_REPOS', 'https://github.com/goldeagle/bforge-think');
 
 require_once "./lib/functions.php";
@@ -38,7 +38,7 @@ $templates = $config['templates'];
 //装载默认设置
 $defaults = $config['defaults'];
 
-$project = require "./project/forge.php";
+$project = require "./project/project.php";
 
 $applications = $project['applications'];
 

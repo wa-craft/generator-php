@@ -3,23 +3,23 @@ return [
     //生成的动作配置
     'build_actions' => [
         //是否生成入口文件
-        'portal' => false,
+        'portal' => true,
         //是否生成控制器程序
-        'controller' => false,
+        'controller' => true,
         //是否生成模型程序
-        'model' => false,
+        'model' => true,
         //是否生成校验器程序
-        'validate' => false,
+        'validate' => true,
         //是否生成视图模板文件
-        'view' => false,
+        'view' => true,
         //是否生成SQL数据库文件
-        'sql' => false,
+        'sql' => true,
         //是否复制其他静态资源
-        'copy' => false,
+        'copy' => true,
         //是否根据应用 portal 生成 nginx 配置文件，谨慎使用
-        'nginx' => false,
+        'nginx' => true,
         //是否根据应用 portal 生成 .htaccess，谨慎使用
-        'apache' => false
+        'apache' => true
     ],
     //默认值
     'defaults' => [
@@ -34,9 +34,12 @@ return [
             'alpha' => '英文字符',
             'number' => '数字',
             'chsAlpha' => '中文或英文字符',
+            'text' => '任何文字',
+            'datetime' => '日期时间',
             'alphaDash' => '英文字符与下划线',
             'email' => '电子邮箱',
-            'boolean' => '是/否'
+            'boolean' => '是/否',
+            'url' => '合法的 uri 网址'
         ]
     ],
     //模板路径
@@ -52,6 +55,9 @@ return [
         'view_add_field' => file_get_contents(TMPL_PATH . '/html/add_field.html'),
         'view_index_field' => file_get_contents(TMPL_PATH . '/html/index_field.html'),
         'view_mod_field' => file_get_contents(TMPL_PATH . '/html/mod_field.html'),
+        'view_login' => file_get_contents(TMPL_PATH . '/html/login.html'),
+        'view_register' => file_get_contents(TMPL_PATH . '/html/register.html'),
+        'view_logout' => file_get_contents(TMPL_PATH . '/html/logout.html'),
         'sql_table' => file_get_contents(TMPL_PATH . '/sql/table.sql'),
         'nginx' => file_get_contents(TMPL_PATH . '/misc/nginx_vhost'),
         'apache' => file_get_contents(TMPL_PATH . '/misc/apache_access')
