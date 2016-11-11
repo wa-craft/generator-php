@@ -1,5 +1,12 @@
 #CHANGELOG
 
+## 0.6.3
+* 增加生成 boolean 类型时的默认值
+* 增加 ckeditor 与绑定
+* 增加 text 规则的 html/sql 自动生成
+* 增加菜单定义 icon
+* 修改 view 模板的相关 icon
+
 ## 0.6.2
 * 增加 login/register/logout 的模板
 * 修复生成模型类namespace的错误

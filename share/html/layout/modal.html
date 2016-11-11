@@ -12,6 +12,12 @@
         $('#modal_content').html('<lable style=\"color: #9c3328;\">' + data.msg + '</lable>');
         $('#msgModal').modal('show');
     }
+
+    //绑定 textarea 到 CK Editor
+    $('textarea').each(function () {
+        var id = $(this).attr('id');
+        CKEDITOR.replace(id);
+    });
 </script>
 <div class="modal fade bs-modal-sm" id="msgModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">

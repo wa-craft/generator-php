@@ -11,7 +11,7 @@ define('PROFILE_PATH', TAR_ROOT_PATH . 'profile/');
 define('TMPL_PATH', './template');
 define('PUB_PATH', TAR_ROOT_PATH . '/public/');
 define('SHARE_PATH', './share');
-define('VERSION', '0.6.2');
+define('VERSION', '0.6.3');
 define('ROOT_REPOS', 'https://github.com/goldeagle/bforge-think');
 
 require_once "./lib/functions.php";

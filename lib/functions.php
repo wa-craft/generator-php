@@ -96,8 +96,17 @@ function write_html($path, $module, $index, $model, $templates)
                 $content_field = str_replace('{{FORM_FIELD}}', getFieldHTML($field, $index['name']), $content_field);
                 $content_field = str_replace('{{FIELD_NAME}}', $field['name'], $content_field);
                 $content_field = str_replace('{{FIELD_TITLE}}', $field['title'], $content_field);
-                if (isset($field['rule'])) $_comment = '请输入' . $field['title'] . '，必须是' . $defaults['rules'][$field['rule']];
-                else $_comment = '';
+                if (isset($field['rule'])) {
+                    //判断是否是需要生成选择列表的外键
+                    if (preg_match('/_id$/', $field['name'])) {
+                        $_comment = '请选择';
+                    } else {
+                        $_comment = '请输入';
+                    }
+                    $_comment .= $field['title'] . '，必须是' . $defaults['rules'][$field['rule']];
+                } else {
+                    $_comment = '';
+                }
                 $content_field = str_replace('{{FIELD_COMMENT}}', $_comment, $content_field);
 
                 if (isset($field['required'])) $_is_required = ($field['required']) ? '（* 必须）' : '';
@@ -284,6 +293,11 @@ function getFieldHTML($field, $action = 'add')
         else  return "<span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span><input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\"><div class=\"form-control-focus\"></div>";
     }
 
+    if ($field['rule'] == 'text') {
+        if ($action == 'add') return "<textarea rows=\"4\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\"></textarea><div class=\"form-control-focus\"></div>";
+        else  return "<textarea rows=\"4\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">{\$it.{{FIELD_NAME}}}</textarea><div class=\"form-control-focus\"></div>";
+    }
+
     if (preg_match('/_id$/', $field['name'])) {
         $_model = str_replace('_id', '', $field['name']);
         if ($action == 'add') return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">{volist name=\"" . $_model . "List\" id=\"it\"}<option value=\"{\$it.id}\">{\$it.name}</option>{/volist}</select> ";
@@ -305,11 +319,15 @@ function getFieldSQL($field)
     }
 
     if (preg_match('/^is_/', $field['name'])) {
-        return '`{{FIELD_NAME}}` tinyint(1) NOT NULL COMMENT \'{{FIELD_TITLE}}\',';
+        return '`{{FIELD_NAME}}` tinyint(1) NOT NULL DEFAULT \'0\' COMMENT \'{{FIELD_TITLE}}\',';
     }
 
     if ($field['rule'] == 'datetime') {
         return '`{{FIELD_NAME}}` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT \'{{FIELD_TITLE}}\',';
+    }
+
+    if ($field['rule'] == 'text') {
+        return '`{{FIELD_NAME}}` TEXT COMMENT \'{{FIELD_TITLE}}\',';
     }
 
     return '`{{FIELD_NAME}}` varchar(100) NOT NULL COMMENT \'{{FIELD_TITLE}}\',';
