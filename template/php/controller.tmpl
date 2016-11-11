@@ -16,7 +16,7 @@ class {{CLASS_NAME}} extends DefaultController
         $model = Loader::model($this->controller);
 		{{CONTROLLER_PARAMS}}
         $model->save();
-		$this->ajaxSuccess('ok', 'index/' . $this->controller . '/index');
+		$this->ajaxSuccess('ok', $this->module. '/' . $this->controller . '/index');
     }
 
     /**
@@ -28,6 +28,6 @@ class {{CLASS_NAME}} extends DefaultController
         $model = $_m::get(input('id'));
 		{{CONTROLLER_PARAMS}}
 		$model->save();
-		$this->ajaxSuccess('ok', 'index/' . $this->controller . '/index');
+		$this->ajaxSuccess('ok', $this->module. '/' . $this->controller . '/index');
     }
 }
