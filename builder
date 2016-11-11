@@ -49,7 +49,7 @@ if ($build_actions['nginx']) {
 
 //生成 apache htaccess 配置文件
 if ($build_actions['apache']) {
-    write_apache(PUB_PATH, $templates['apache'],$applications);
+    write_apache(PUB_PATH, $templates['apache'], $applications);
 }
 
 foreach ($applications as $application) {
@@ -71,7 +71,7 @@ foreach ($applications as $application) {
 
     //写入 config / database 配置文件
     write_config($_app_path, 'config', $templates, ['NAMESPACE' => $application['namespace']]);
-    write_config($_app_path, 'database', $templates, ['PROJECT_NAME' => $project['name']]);
+    write_config($_app_path, 'database', $templates, ['PROJECT_NAME' => $project['name'], 'APP_NAME' => $application['name']]);
 
     $modules = $application['modules'];
     foreach ($modules as $module) {
@@ -107,8 +107,8 @@ foreach ($applications as $application) {
         $models = $module['models'];
         foreach ($models as $model) {
             //判断是否存在 autoWriteTimeStamp 参数
-            if(isset($model['autoWriteTimeStamp'])) {
-                if($model['autoWriteTimeStamp']) {
+            if (isset($model['autoWriteTimeStamp'])) {
+                if ($model['autoWriteTimeStamp']) {
                     $model['fields'] = array_merge($model['fields'], $defaults['autoTimeStampFields']);
                 }
             }
