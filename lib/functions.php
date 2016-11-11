@@ -194,11 +194,13 @@ function write_php($path, $module, $index, $model, $namespace, $templates)
                 $content_action = $templates['controller_action'];
                 $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
                 $content_action = str_replace('{{ACTION_COMMENT}}', $action['comment'], $content_action);
+                if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
+                else  $content_action = str_replace('{{ACTION_PARAMS}}', '', $content_action);
 
                 $content = str_replace('{{CONTROLLER_ACTIONS}}', $content_action . "\n{{CONTROLLER_ACTIONS}}", $content);
             }
         }
-        $content = str_replace('{{CONTROLLER_ACTIONS}}', '', $content);
+        $content = str_replace("{{CONTROLLER_ACTIONS}}", '', $content);
 
         //处理控制器的参数
         $content_field = '';
