@@ -66,7 +66,7 @@ foreach ($applications as $application) {
 
     if ($build_actions['copy']) {
         //拷贝应用文件
-        copy_files(SHARE_PATH . '/php', $_app_path);
+        copy_files(SHARE_PATH . '/application', $_app_path);
     }
 
     //写入 config / database 配置文件
