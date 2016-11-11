@@ -56,10 +56,10 @@
                                 <td>
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-transparent green btn-outline btn-sm active"
-                                                onclick="Form.mod('{:url('index/{{MODEL_NAME}}/mod?id='.$it.id)}')">修改
+                                                onclick="Form.mod('{:url('{{MODULE_NAME}}/{{MODEL_NAME}}/mod?id='.$it.id)}')">修改
                                         </button>
                                         <button type="button" class="btn btn-transparent dark btn-outline btn-sm"
-                                                onclick="Form.del('{:url('index/{{MODEL_NAME}}/del?id='.$it.id)}')">删除
+                                                onclick="Form.del('{:url('{{MODULE_NAME}}/{{MODEL_NAME}}/del?id='.$it.id)}')">删除
                                         </button>
                                     </div>
                                 </td>
