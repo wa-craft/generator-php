@@ -102,6 +102,13 @@ foreach ($applications as $application) {
         //根据模块生成代码
         $models = $module['models'];
         foreach ($models as $model) {
+            //判断是否存在 autoWriteTimeStamp 参数
+            if(isset($model['autoWriteTimeStamp'])) {
+                if($model['autoWriteTimeStamp']) {
+                    $model['fields'] = array_merge($model['fields'], $defaults['autoTimeStampFields']);
+                }
+            }
+
             if ($build_actions['controller']) {
                 //生成CRUD控制器
                 write_template_file($_controller_path, $module, ['name' => 'controller'], $model, $application['namespace'], $templates);

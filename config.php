@@ -29,6 +29,11 @@ return [
             ['name' => 'add', 'comment' => '添加'],
             ['name' => 'mod', 'comment' => '修改']
         ],
+        //默认创建时间/更新时间的字段设置
+        'autoTimeStampFields' => [
+            ['name' => 'create_time', 'title' => '创建时间', 'rule' => 'datetime', 'required' => true, 'is_unique' => false],
+            ['name' => 'update_time', 'title' => '修改时间', 'rule' => 'datetime', 'required' => true, 'is_unique' => false]
+        ],
         //默认的校验规则列表
         'rules' => [
             'alpha' => '英文字符',
