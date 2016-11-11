@@ -73,8 +73,7 @@ function write_html($path, $module, $index, $model, $templates)
     mk_dir($path);
 
     //判断是否是独立控制器
-    if(array_key_exists('actions', $model)) $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), $templates['view_controller_index']);
-    else $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), $templates['view_' . $index['name']]);
+    $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), $templates['view_' . $index['name']]);
     $content = str_replace('{{MODULE_NAME}}', strtolower($module['name']), $content);
     $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
     $content = str_replace('{{MODEL_COMMENT}}', $model['comment'], $content);
