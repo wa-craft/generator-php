@@ -69,6 +69,10 @@ foreach ($applications as $application) {
         copy_files(SHARE_PATH . '/php', $_app_path);
     }
 
+    //写入 config / database 配置文件
+    write_config($_app_path, 'config', $templates, ['NAMESPACE' => $application['namespace']]);
+    write_config($_app_path, 'database', $templates, ['PROJECT_NAME' => $project['name']]);
+
     $modules = $application['modules'];
     foreach ($modules as $module) {
         //创建模块目录

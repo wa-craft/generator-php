@@ -65,7 +65,9 @@ return [
         'view_logout' => file_get_contents(TMPL_PATH . '/html/logout.html'),
         'sql_table' => file_get_contents(TMPL_PATH . '/sql/table.sql'),
         'nginx' => file_get_contents(TMPL_PATH . '/misc/nginx_vhost'),
-        'apache' => file_get_contents(TMPL_PATH . '/misc/apache_access')
+        'apache' => file_get_contents(TMPL_PATH . '/misc/apache_access'),
+        'config' => file_get_contents(TMPL_PATH . '/php/config.tmpl'),
+        'database' => file_get_contents(TMPL_PATH . '/php/database.tmpl')
     ]
 
 ];

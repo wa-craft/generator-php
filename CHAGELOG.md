@@ -1,5 +1,11 @@
 #CHANGELOG
 
+## 0.6.4
+* 修正 view 没有正确生成 form action 路径的错误
+* 修正控制器保存方法跳转的错误
+* 增加 model 的 autoWriteTimeStamp
+* 增加对配置文件的写入
+
 ## 0.6.3
 * 增加生成 boolean 类型时的默认值
 * 增加 ckeditor 与绑定

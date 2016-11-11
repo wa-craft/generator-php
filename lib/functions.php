@@ -163,6 +163,25 @@ function write_sql($path, $index, $model, $namespace, $templates)
 }
 
 /**
+ * 写入配置文件
+ * @param $path
+ * @param $file_name
+ * @param $templates
+ * @param $params
+ */
+function write_config($path, $file_name, $templates, $params)
+{
+    $file = $path . '/' . strtolower($file_name) . '.php';
+
+    $content = $templates[$file_name];
+    foreach ($params as $key => $param) {
+        $content = str_replace("{{{$key}}}", $param, $content);
+    }
+    file_put_contents($file, $content);
+    echo "INFO: writing {$file_name}: {$file} ..." . PHP_EOL;
+}
+
+/**
  * 生成 php 代码
  * @param $path
  * @param $module
