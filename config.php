@@ -56,6 +56,7 @@ return [
         'validate' => file_get_contents(TMPL_PATH . '/php/validate.tmpl'),
         'view_add' => file_get_contents(TMPL_PATH . '/html/add.html'),
         'view_index' => file_get_contents(TMPL_PATH . '/html/index.html'),
+        'view_controller_index' => file_get_contents(TMPL_PATH . '/html/controller_index.html'),
         'view_mod' => file_get_contents(TMPL_PATH . '/html/mod.html'),
         'view_add_field' => file_get_contents(TMPL_PATH . '/html/add_field.html'),
         'view_index_field' => file_get_contents(TMPL_PATH . '/html/index_field.html'),
