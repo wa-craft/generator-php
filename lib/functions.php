@@ -51,7 +51,7 @@ function write_template_file($path, $module, $index, $model, $namespace, $templa
             write_php($path, $module, $index, $model, $namespace, $templates);
             break;
         case '.sql':
-            write_sql($path, $index, $model, $namespace, $templates);
+            write_sql($path, $module, $index, $model, $namespace, $templates);
             break;
         case '.html':
             write_html($path, $module, $index, $model, $templates);
@@ -128,17 +128,19 @@ function write_html($path, $module, $index, $model, $templates)
 /**
  * 生成 sql 代码
  * @param $path
+ * @param $module
  * @param $index
  * @param $model
  * @param $namespace
  * @param $templates
  */
-function write_sql($path, $index, $model, $namespace, $templates)
+function write_sql($path, $module, $index, $model, $namespace, $templates)
 {
     mk_dir($path);
 
     $_class_name = $model['name'];
     $content = str_replace('{{APP_NAME}}', $namespace, $templates[$index['name']]);
+    $content = str_replace('{{MODULE_NAME}}', strtolower($module['name']), $content);
     $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', strtolower($model['name']), $content) : $content;
     $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
 
@@ -157,7 +159,7 @@ function write_sql($path, $index, $model, $namespace, $templates)
     $content = str_replace('{{CONTROLLER_PARAMS}}', $content_field, $content);
     $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
 
-    $_file = $path . '/' . strtolower($model['name']) . '.sql';
+    $_file = $path . '/' . strtolower($namespace) . '_' . strtolower($model['name']) . '.sql';
 
     file_put_contents($_file, $content);
     echo "INFO: writing {$index['name']}: {$_file} ..." . PHP_EOL;
@@ -360,11 +362,11 @@ function getFieldSQL($field)
     }
 
     if ($field['rule'] == 'text') {
-        return '`{{FIELD_NAME}}` TEXT COMMENT \'{{FIELD_TITLE}}\',';
+        return '`{{FIELD_NAME}}` text COMMENT \'{{FIELD_TITLE}}\',';
     }
 
     if ($field['rule'] == 'money') {
-        return '`{{FIELD_NAME}}` FLOAT(10,2) COMMENT \'{{FIELD_TITLE}}\',';
+        return '`{{FIELD_NAME}}` float(10,2) COMMENT \'{{FIELD_TITLE}}\',';
     }
 
     return '`{{FIELD_NAME}}` varchar(100) NOT NULL COMMENT \'{{FIELD_TITLE}}\',';
