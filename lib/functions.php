@@ -241,7 +241,13 @@ function write_php($path, $module, $index, $model, $namespace, $templates)
             foreach ($fields as $field) {
                 $content_field .= PHP_EOL . "\t\t['" . $field['name'] . "', '";
                 $content_field .= $field['required'] ? 'require|' : '';
-                $content_field .= $field['rule'] . '\',\'';
+                switch ($field['rule']) {
+                    case 'money':
+                        $content_field .= 'float' . '\',\'';
+                        break;
+                    default:
+                        $content_field .= $field['rule'] . '\',\'';
+                }
                 $content_field .= $field['required'] ? '必须输入：' . $field['title'] . '|' : '';
                 $content_field .= $defaults['rules'][$field['rule']];
                 $content_field .= '\'],';
@@ -355,6 +361,10 @@ function getFieldSQL($field)
 
     if ($field['rule'] == 'text') {
         return '`{{FIELD_NAME}}` TEXT COMMENT \'{{FIELD_TITLE}}\',';
+    }
+
+    if ($field['rule'] == 'money') {
+        return '`{{FIELD_NAME}}` FLOAT(10,2) COMMENT \'{{FIELD_TITLE}}\',';
     }
 
     return '`{{FIELD_NAME}}` varchar(100) NOT NULL COMMENT \'{{FIELD_TITLE}}\',';

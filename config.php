@@ -23,7 +23,9 @@ return [
             'alphaDash' => '英文字符与下划线',
             'email' => '电子邮箱',
             'boolean' => '是/否',
-            'url' => '合法的 uri 网址'
+            'url' => '合法的 uri 网址',
+            'ip' => '合法的 ip 地址',
+            'money' => '金额'
         ]
     ],
     //模板路径
