@@ -273,7 +273,7 @@ function write_nginx($path, $template, $domain, $applications)
         $content = str_replace('{{REWRITE_LOOP}}', $content_temp, $content);
     }
     $content = str_replace("\n{{REWRITE_LOOP}}", '', $content);
-    $_file = $path . 'nginx_vhost';
+    $_file = $path . '/nginx_vhost';
     file_put_contents($_file, $content);
     echo "INFO: writing nginx profile: {$_file} ..." . PHP_EOL;
 }
@@ -292,7 +292,7 @@ function write_apache($path, $template, $applications)
         $content = str_replace('{{REWRITE_LOOP}}', $content_temp, $content);
     }
     $content = str_replace("\n{{REWRITE_LOOP}}", '', $content);
-    $_file = $path . '.htaccess';
+    $_file = $path . '/.htaccess';
     file_put_contents($_file, $content);
     echo "INFO: writing apache htaccess profile: {$_file} ..." . PHP_EOL;
 }
