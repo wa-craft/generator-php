@@ -275,9 +275,17 @@ class Node
     //节点说明，中文
     protected $caption = '';
 
+    /**
+     * 根据参数动态匹配赋值类的属性
+     * @param array $params
+     */
     public function init($params = [])
     {
+        foreach ($params as $key => $param) {
+            if(property_exists($this, $key)) {
 
+            }
+        }
     }
 
     public function process()

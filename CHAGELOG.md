@@ -1,4 +1,10 @@
 #CHANGELOG
+## 1.0.0
+* 基于 nategood/commando 加入命令行支持
+* 使用 oo 的架构重写代码
+
+## 0.6.5
+* 去除 write_template_file 方法
 
 ## 0.6.4
 * 修正 view 没有正确生成 form action 路径的错误
