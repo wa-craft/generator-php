@@ -11,6 +11,10 @@ require "./vendor/autoload.php";
 
 //设置命令
 $cmd = new \Commando\Command();
+
+$cmd->option()
+    ->description('A command line toolit to build MVC scaffold for thinkphp v5.*');
+
 //配置文件
 $cmd->option('c')
     ->aka('config')
