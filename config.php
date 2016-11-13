@@ -1,26 +1,5 @@
 <?php
 return [
-    //生成的动作配置
-    'build_actions' => [
-        //是否生成入口文件
-        'portal' => true,
-        //是否生成控制器程序
-        'controller' => true,
-        //是否生成模型程序
-        'model' => true,
-        //是否生成校验器程序
-        'validate' => true,
-        //是否生成视图模板文件
-        'view' => true,
-        //是否生成SQL数据库文件
-        'sql' => true,
-        //是否复制其他静态资源
-        'copy' => true,
-        //是否根据应用 portal 生成 nginx 配置文件，谨慎使用
-        'nginx' => true,
-        //是否根据应用 portal 生成 .htaccess，谨慎使用
-        'apache' => true
-    ],
     //默认值
     'defaults' => [
         //默认的控制器动作/视图模板
