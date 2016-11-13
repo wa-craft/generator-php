@@ -9,6 +9,14 @@
             "email": "1308362@gmail.com"
         }
     ],
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    },
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "nategood/commando": "*"
+    }
 }
