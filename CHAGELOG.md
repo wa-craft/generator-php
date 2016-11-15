@@ -1,7 +1,7 @@
 #CHANGELOG
 ## 1.1.0
 * 增加 theme 设置
-* 增加控制器 extends 制定
+* 增加控制器 extends 指定
 * 增加 traits 生成
 * 增加目录递归拷贝
 * 增加内存缓存管理单例

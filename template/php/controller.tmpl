@@ -1,13 +1,11 @@
 <?php
 namespace {{NAME_SPACE}};
 
-use goldeagle\thinklib\controller\DefaultController;
 use think\Loader;
 
-class {{CLASS_NAME}} extends DefaultController
+class {{CLASS_NAME}} extends {{DEFAULT_CONTROLLER}}
 {
-    {{CONTROLLER_ACTIONS}}
-
+{{CONTROLLER_ACTIONS}}
     /**
      * 显示创建资源表单页，必须由子控制器实现。
      * @return \think\Response

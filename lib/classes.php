@@ -36,7 +36,7 @@ class Builder
         'menu' => true
     ];
     //版本
-    protected $version = '1.0.0';
+    protected $version = '1.1.0';
 
     /**
      * 通过数组设置项目配置信息
@@ -165,7 +165,7 @@ class Builder
             //创建入口文件
             if ($build_actions['portal']) {
                 $_portal = (isset($application['portal'])) ? $application['portal'] : $application['name'];
-                write_template_file($public_path, ['name' => ''], ['name' => 'portal'], ['name' => $_portal], $application['namespace'], $templates);
+                write_php($public_path, ['name' => ''], ['name' => 'portal'], ['name' => $_portal], $application['namespace'], $templates);
             }
 
             if ($build_actions['copy']) {
@@ -202,7 +202,7 @@ class Builder
                         //生成方法的前台页面
                         $_view_model_path = $_view_path . '/' . strtolower($controller['name']);
                         foreach ($controller['actions'] as $action) {
-                            write_template_file($_view_model_path, $module, $action, $controller, $application['namespace'], $templates, '.html');
+                            View::writeToFile($_view_model_path, $module, $action, $controller, $templates);
                         }
                     }
                 }
@@ -219,19 +219,19 @@ class Builder
 
                     if ($build_actions['controller']) {
                         //生成CRUD控制器
-                        write_template_file($_controller_path, $module, ['name' => 'controller'], $model, $application['namespace'], $templates);
+                        Controller::writeToFile($_controller_path, $module, ['name' => 'controller'], $model, $application['namespace'], $templates);
                     }
 
                     if ($build_actions['model']) {
                         //生成模型
                         $_model_path = $_module_path . '/model';
-                        write_template_file($_model_path, $module, ['name' => 'model'], $model, $application['namespace'], $templates);
+                        Model::writeToFile($_model_path, $module, ['name' => 'model'], $model, $application['namespace'], $templates);
                     }
 
                     if ($build_actions['validate']) {
                         //生成校验器
                         $_validate_path = $_module_path . '/validate';
-                        write_template_file($_validate_path, ['name' => 'common'], ['name' => 'validate'], $model, $application['namespace'], $templates);
+                        Validate::writeToFile($_validate_path, ['name' => 'common'], ['name' => 'validate'], $model, $application['namespace'], $templates);
                     }
 
                     //生成VIEW模板
@@ -241,12 +241,12 @@ class Builder
                         //生成方法的前台页面
                         $_view_model_path = $_view_path . '/' . strtolower($model['name']);
                         foreach ($model['actions'] as $action) {
-                            write_template_file($_view_model_path, $module, $action, $model, $application['namespace'], $templates, '.html');
+                            View::writeToFile($_view_model_path, $module, $action, $model, $templates);
                         }
                     }
                     //生成 sql
                     if ($build_actions['sql']) {
-                        write_template_file($database_path, $module, ['name' => 'sql_table'], $model, $application['namespace'], $templates, '.sql');
+                        write_sql($database_path, ['name' => 'sql_table'], $model, $application['namespace'], $templates);
                     }
                 }
                 if ($build_actions['copy']) {
@@ -316,14 +316,6 @@ class Node
      * @param array $files
      */
     protected function copyFiles($files = [])
-    {
-
-    }
-
-    /**
-     * 根据节点属性写入相关文件
-     */
-    protected function writeToFile()
     {
 
     }
@@ -407,6 +399,54 @@ class Controller extends Node
     protected $actions = [];
     //控制器默认的父控制器，如果设置此参数，则会忽略模块统一的默认父控制器设置
     protected $parent_controller = '';
+
+    public static function writeToFile($path, $module, $index, $model, $namespace, $templates)
+    {
+        mk_dir($path);
+
+        $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
+        $_class_name = $model['name'];
+        $content = str_replace('{{NAME_SPACE}}', $_namespace, $templates[$index['name']]);
+        $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
+        $content = isset($model['name']) ? str_replace('{{APP_NAME}}', $model['name'], $content) : $content;
+        $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', $model['name'], $content) : $content;
+        $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
+        $content = str_replace('{{APP_PATH}}', APP_PATH, $content);
+
+        //处理与控制器相关的模板
+        if ($index['name'] == 'controller') {
+            //处理控制器的方法
+            if (isset($model['actions'])) {
+                $actions = $model['actions'];
+                foreach ($actions as $action) {
+                    $content_action = $templates['controller_action'];
+                    $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
+                    $content_action = str_replace('{{ACTION_COMMENT}}', $action['comment'], $content_action);
+                    if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
+                    else  $content_action = str_replace('{{ACTION_PARAMS}}', '', $content_action);
+
+                    $content = str_replace('{{CONTROLLER_ACTIONS}}', $content_action . "\n{{CONTROLLER_ACTIONS}}", $content);
+                }
+            }
+            $content = str_replace("{{CONTROLLER_ACTIONS}}", '', $content);
+
+            //处理控制器的参数
+            $content_field = '';
+            if (isset($model['fields'])) {
+                $fields = $model['fields'];
+                foreach ($fields as $field) {
+                    $content_field .= '$model->' . $field['name'] . " = input('" . $field['name'] . "');\n";
+                }
+            }
+            $content = str_replace('{{CONTROLLER_PARAMS}}', $content_field, $content);
+        }
+
+        $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
+        $_file = $path . '/' . $model['name'] . '.php';
+
+        file_put_contents($_file, $content);
+        echo "INFO: writing {$index['name']}: {$_file} ..." . PHP_EOL;
+    }
 }
 
 class Traits extends Node
@@ -423,18 +463,134 @@ class Model extends Node
     protected $autoWriteTimeStamp = false;
     //模型与其他模型的关系
     protected $relations = [];
+
+    public static function writeToFile($path, $module, $index, $model, $namespace, $templates)
+    {
+        mk_dir($path);
+
+        $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
+        $_class_name = $model['name'];
+        $content = str_replace('{{NAME_SPACE}}', $_namespace, $templates[$index['name']]);
+        $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
+        $content = isset($model['name']) ? str_replace('{{APP_NAME}}', $model['name'], $content) : $content;
+        $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', $model['name'], $content) : $content;
+        $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
+        $content = str_replace('{{APP_PATH}}', APP_PATH, $content);
+        $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
+        $_file = $path . '/' . $model['name'] . '.php';
+
+        file_put_contents($_file, $content);
+        echo "INFO: writing {$index['name']}: {$_file} ..." . PHP_EOL;
+    }
 }
 
 class Validate extends Node
 {
     //校验器下的规则
     protected $rules = [];
+
+    public static function writeToFile($path, $module, $index, $model, $namespace, $templates)
+    {
+        global $defaults;
+        mk_dir($path);
+
+        $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
+        $_class_name = $model['name'];
+        $content = str_replace('{{NAME_SPACE}}', $_namespace, $templates[$index['name']]);
+        $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
+        $content = isset($model['name']) ? str_replace('{{APP_NAME}}', $model['name'], $content) : $content;
+        $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', $model['name'], $content) : $content;
+        $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
+        $content = str_replace('{{APP_PATH}}', APP_PATH, $content);
+
+        //处理校验器相关的模板
+        if ($index['name'] == 'validate') {
+            $content_field = '';
+            if (isset($model['fields'])) {
+                $fields = $model['fields'];
+                foreach ($fields as $field) {
+                    $content_field .= PHP_EOL . "\t\t['" . $field['name'] . "', '";
+                    $content_field .= $field['required'] ? 'require|' : '';
+                    $content_field .= $field['rule'] . '\',\'';
+                    $content_field .= $field['required'] ? '必须输入：' . $field['title'] . '|' : '';
+                    $content_field .= $defaults['rules'][$field['rule']];
+                    $content_field .= '\'],';
+                }
+                $content = str_replace('{{VALIDATE_FIELDS}}', $content_field . "\n{{VALIDATE_FIELDS}}", $content);
+            }
+            $content = str_replace(",\n{{VALIDATE_FIELDS}}", "\n\t", $content);
+        }
+
+        $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
+        $_file = $path . '/' . $model['name'] . '.php';
+
+        file_put_contents($_file, $content);
+        echo "INFO: writing {$index['name']}: {$_file} ..." . PHP_EOL;
+    }
 }
 
 class View extends Node
 {
     //视图使用的布局
     protected $layout = '';
+
+    public static function writeToFile($path, $module, $index, $model, $templates)
+    {
+        global $defaults;
+        mk_dir($path);
+
+        //判断是否是独立控制器
+        $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), $templates['view_' . $index['name']]);
+        $content = str_replace('{{MODULE_NAME}}', strtolower($module['name']), $content);
+        $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
+        $content = str_replace('{{MODEL_COMMENT}}', $model['comment'], $content);
+        $content = str_replace('{{ACTION_COMMENT}}', $index['comment'], $content);
+
+        //处理模型的字段
+        if (isset($model['fields'])) {
+            $fields = $model['fields'];
+            if ($index['name'] == 'index') {
+                $_tr = '<th>ID</th>' . "\n";
+                $_td = '<td>{$it.id}</td>' . "\n";
+                foreach ($fields as $field) {
+                    $_tr .= '<th>' . $field['title'] . '</th>' . "\n";
+                    $_td .= '<td>{$it.' . $field['name'] . '}</td>' . "\n";
+                }
+                $content = str_replace('{{TR_LOOP}}', $_tr, $content);
+                $content = str_replace('{{TD_LOOP}}', $_td, $content);
+            } else {
+                foreach ($fields as $field) {
+                    $content_field = $templates['view_' . $index['name'] . '_field'];
+                    $content_field = str_replace('{{FORM_FIELD}}', getFieldHTML($field, $index['name']), $content_field);
+                    $content_field = str_replace('{{FIELD_NAME}}', $field['name'], $content_field);
+                    $content_field = str_replace('{{FIELD_TITLE}}', $field['title'], $content_field);
+                    if (isset($field['rule'])) {
+                        //判断是否是需要生成选择列表的外键
+                        if (preg_match('/_id$/', $field['name'])) {
+                            $_comment = '请选择';
+                        } else {
+                            $_comment = '请输入';
+                        }
+                        $_comment .= $field['title'] . '，必须是' . $defaults['rules'][$field['rule']];
+                    } else {
+                        $_comment = '';
+                    }
+                    $content_field = str_replace('{{FIELD_COMMENT}}', $_comment, $content_field);
+
+                    if (isset($field['required'])) $_is_required = ($field['required']) ? '（* 必须）' : '';
+                    else $_is_required = '';
+                    $content_field = str_replace('{{IS_REQUIRED}}', $_is_required, $content_field);
+
+                    $content = str_replace('{{FIELD_LOOP}}', $content_field . "\n{{FIELD_LOOP}}", $content);
+                }
+                $content = str_replace('{{FIELD_LOOP}}', '', $content);
+            }
+        }
+        $_file = $path . '/' . strtolower($index['name']) . '.html';
+
+        file_put_contents($_file, $content);
+        echo "INFO: writing {$index['name']}: {$_file} ..." . PHP_EOL;
+    }
 }
 
 class Field extends Node
