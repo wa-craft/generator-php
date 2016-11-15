@@ -460,5 +460,7 @@ class Relations
         'belongsTo'
     ];
     protected $type = 0;
-    protected $model = null;
+    protected $model = '';
+    protected $this_key = '';
+    protected $that_key = '';
 }
