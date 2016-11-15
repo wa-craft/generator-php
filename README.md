@@ -26,8 +26,8 @@ a cli tool to build applications for thinkphp v5，
 ### `-p|--project`
 指定项目数据文件的路径，默认为 './project/project.php'
 
-### `-a| --actions`
+### `-a|--actions`
 声明生成的动作，包括 'all|mvc|copy'，默认为'all'
 
-### `-t--target`
+### `-t|--target`
 指定文件生成的目标路径，默认为 './deploy'
