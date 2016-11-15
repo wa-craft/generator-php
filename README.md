@@ -29,5 +29,5 @@ a cli tool to build applications for thinkphp v5，
 ### `-a| --actions`
 声明生成的动作，包括 'all|mvc|copy'，默认为'all'
 
-### `-t`--target
+### `-t--target`
 指定文件生成的目标路径，默认为 './deploy'
