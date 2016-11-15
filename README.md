@@ -1,4 +1,9 @@
 # think-builder
+[![Latest Stable Version](https://poser.pugx.org/goldeagle/think-builder/version)](https://packagist.org/packages/goldeagle/think-builder)
+[![Latest Unstable Version](https://poser.pugx.org/goldeagle/think-builder/v/unstable)](//packagist.org/packages/goldeagle/think-builder)
+[![License](https://poser.pugx.org/goldeagle/think-builder/license)](https://packagist.org/packages/goldeagle/think-builder)
+[![composer.lock available](https://poser.pugx.org/goldeagle/think-builder/composerlock)](https://packagist.org/packages/goldeagle/think-builder)
+
 a cli tool to build applications for thinkphp v5，
 通过定义数据对象的结构，自动生成相关的CRUD代码。
 
