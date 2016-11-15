@@ -5,6 +5,8 @@
  */
 class Builder
 {
+    //缓存
+    protected $cache = [];
     //配置参数
     protected $config = [];
     //数据
@@ -29,7 +31,9 @@ class Builder
         //是否根据应用 portal 生成 nginx 配置文件，谨慎使用
         'nginx' => true,
         //是否根据应用 portal 生成 .htaccess，谨慎使用
-        'apache' => true
+        'apache' => true,
+        //是否生成目录数组
+        'menu' => true
     ];
     //版本
     protected $version = '1.0.0';
@@ -49,7 +53,7 @@ class Builder
      */
     public function setConfigFromFile($file)
     {
-        $this->config = require_once($file);
+        $this->config = require($file);
     }
 
     /**
@@ -67,7 +71,7 @@ class Builder
      */
     public function setDataFromFile($file)
     {
-        $this->data = require_once($file);
+        $this->data = require($file);
     }
 
     /**
@@ -282,12 +286,15 @@ class Node
     public function init($params = [])
     {
         foreach ($params as $key => $param) {
-            if(property_exists($this, $key)) {
+            if (property_exists($this, $key)) {
 
             }
         }
     }
 
+    /**
+     * 进行处理的主函数
+     */
     public function process()
     {
         //创建目录
@@ -296,17 +303,59 @@ class Node
         //写入文件
     }
 
-    public function makeDir()
+    /**
+     * 根据节点属性创建相关目录
+     */
+    protected function makeDir()
     {
 
     }
 
-    public function copyFiles($files = [])
+    /**
+     * 根据节点属性拷贝相关文件
+     * @param array $files
+     */
+    protected function copyFiles($files = [])
     {
 
     }
 
-    public function writeToFile()
+    /**
+     * 根据节点属性写入相关文件
+     */
+    protected function writeToFile()
+    {
+
+    }
+
+    /**
+     * 根据节点属性生成HTML内容
+     */
+    protected function generateHTML()
+    {
+
+    }
+
+    /**
+     * 根据节点属性生成SQL内容
+     */
+    protected function generateSQL()
+    {
+
+    }
+
+    /**
+     * 根据节点属性生成PHP内容
+     */
+    protected function generatePHP()
+    {
+
+    }
+
+    /**
+     * 根据节点属性生成其他内容
+     */
+    protected function generateMISC()
     {
 
     }
@@ -348,11 +397,21 @@ class Module extends Node
     protected $validates = [];
     //模块下的视图
     protected $views = [];
+    //默认模块下所有控制器的父控制器名称，会根据此名称自动生成默认控制器，并且模块下所有控制器继承自此控制器
+    protected $default_controller = '';
 }
 
 class Controller extends Node
 {
     //控制器下的方法
+    protected $actions = [];
+    //控制器默认的父控制器，如果设置此参数，则会忽略模块统一的默认父控制器设置
+    protected $parent_controller = '';
+}
+
+class Traits extends Node
+{
+    //特征下的方法
     protected $actions = [];
 }
 

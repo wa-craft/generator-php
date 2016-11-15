@@ -33,33 +33,6 @@ function copy_files($src_path, $tar_path)
 }
 
 /**
- * 处理模板并写入模板文件的函数
- * @param string $path 模板目标目录
- * @param array $module 目标
- * @param array $index 模板索引
- * @param array $model 模型
- * @param string $namespace 命名空间
- * @param array $templates 模板数组
- * @param string $suffix 文件后缀名
- */
-function write_template_file($path, $module, $index, $model, $namespace, $templates, $suffix = '.php')
-{
-    mk_dir($path);
-
-    switch ($suffix) {
-        case '.php':
-            write_php($path, $module, $index, $model, $namespace, $templates);
-            break;
-        case '.sql':
-            write_sql($path, $index, $model, $namespace, $templates);
-            break;
-        case '.html':
-            write_html($path, $module, $index, $model, $templates);
-            break;
-    }
-}
-
-/**
  * 生成 html 代码
  * @param $path
  * @param $module

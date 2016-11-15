@@ -4,9 +4,9 @@
  * thinkphp v5 脚手架创建工具
  */
 //读取相关程序
-require_once "./lib/defines.php";
-require_once "./lib/functions.php";
-require_once "./lib/classes.php";
+require "./lib/defines.php";
+require "./lib/functions.php";
+require "./lib/classes.php";
 require "./vendor/autoload.php";
 
 //设置命令

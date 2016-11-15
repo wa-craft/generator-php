@@ -1,4 +1,15 @@
 #CHANGELOG
+## 1.1.0
+* 增加 theme 设置
+* 增加控制器 extends 制定
+* 增加 traits 生成
+* 增加目录递归拷贝
+* 增加内存缓存管理单例
+* 增加模型外键类指定
+* 增加模型 hasOne hasMany belongsTo 方法生成
+* 增加 menu 菜单数组生成
+* 性能优化
+
 ## 1.0.0
 * 基于 nategood/commando 加入命令行支持
 * 使用 oo 的架构重写代码
