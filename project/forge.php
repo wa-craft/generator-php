@@ -20,6 +20,15 @@ return [
                             'actions' => [['name' => 'index', 'comment' => '默认方法']]
                         ]
                     ],
+                    'traits' => [
+                        [
+                            'name' => 'Auth',
+                            'comment' => '认证方法',
+                            'actions' => [
+                                ['name' => 'check', 'comment' => '校验', 'params' => '$username, $password']
+                            ]
+                        ]
+                    ],
                     'models' => [
                         [
                             'name' => 'Application',

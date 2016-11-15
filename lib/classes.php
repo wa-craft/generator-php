@@ -211,6 +211,17 @@ class Builder
                     }
                 }
 
+                //生成 traits 的代码
+                if (isset($module['traits'])) {
+                    $_traits_path = $_module_path . '/traits';
+                    mk_dir($_traits_path);
+                    $traits = $module['traits'];
+                    foreach ($traits as $trait) {
+                        Traits::writeToFile($_traits_path, $module, ['name' => 'traits'], $trait, $application['namespace'], $templates);
+                    }
+                }
+
+
                 //根据模块生成代码
                 $models = $module['models'];
                 foreach ($models as $model) {
@@ -422,32 +433,30 @@ class Controller extends Node
         $content = str_replace('{{APP_PATH}}', APP_PATH, $content);
 
         //处理与控制器相关的模板
-        if ($index['name'] == 'controller') {
-            //处理控制器的方法
-            if (isset($model['actions'])) {
-                $actions = $model['actions'];
-                foreach ($actions as $action) {
-                    $content_action = $templates['controller_action'];
-                    $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
-                    $content_action = str_replace('{{ACTION_COMMENT}}', $action['comment'], $content_action);
-                    if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
-                    else  $content_action = str_replace('{{ACTION_PARAMS}}', '', $content_action);
+        //处理控制器的方法
+        if (isset($model['actions'])) {
+            $actions = $model['actions'];
+            foreach ($actions as $action) {
+                $content_action = $templates['controller_action'];
+                $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
+                $content_action = str_replace('{{ACTION_COMMENT}}', $action['comment'], $content_action);
+                if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
+                else  $content_action = str_replace('{{ACTION_PARAMS}}', '', $content_action);
 
-                    $content = str_replace('{{CONTROLLER_ACTIONS}}', $content_action . "\n{{CONTROLLER_ACTIONS}}", $content);
-                }
+                $content = str_replace('{{CONTROLLER_ACTIONS}}', $content_action . "\n{{CONTROLLER_ACTIONS}}", $content);
             }
-            $content = str_replace("{{CONTROLLER_ACTIONS}}", '', $content);
-
-            //处理控制器的参数
-            $content_field = '';
-            if (isset($model['fields'])) {
-                $fields = $model['fields'];
-                foreach ($fields as $field) {
-                    $content_field .= '$model->' . $field['name'] . " = input('" . $field['name'] . "');\n";
-                }
-            }
-            $content = str_replace('{{CONTROLLER_PARAMS}}', $content_field, $content);
         }
+        $content = str_replace("{{CONTROLLER_ACTIONS}}", '', $content);
+
+        //处理控制器的参数
+        $content_field = '';
+        if (isset($model['fields'])) {
+            $fields = $model['fields'];
+            foreach ($fields as $field) {
+                $content_field .= '$model->' . $field['name'] . " = input('" . $field['name'] . "');\n";
+            }
+        }
+        $content = str_replace('{{CONTROLLER_PARAMS}}', $content_field, $content);
 
         $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
         $_file = $path . '/' . $model['name'] . '.php';
@@ -461,6 +470,36 @@ class Traits extends Node
 {
     //特征下的方法
     protected $actions = [];
+
+    public static function writeToFile($path, $module, $index, $traits, $namespace, $templates)
+    {
+        mk_dir($path);
+
+        $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
+        $_class_name = $traits['name'];
+        $content = str_replace('{{NAME_SPACE}}', $_namespace, $templates[$index['name']]);
+
+        //处理特征的方法
+        if (isset($traits['actions'])) {
+            $actions = $traits['actions'];
+            foreach ($actions as $action) {
+                $content_action = $templates['traits_action'];
+                $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
+                $content_action = str_replace('{{ACTION_COMMENT}}', $action['comment'], $content_action);
+                if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
+                else  $content_action = str_replace('{{ACTION_PARAMS}}', '', $content_action);
+
+                $content = str_replace('{{TRAITS_ACTIONS}}', $content_action . "\n{{TRAITS_ACTIONS}}", $content);
+            }
+        }
+        $content = str_replace("{{TRAITS_ACTIONS}}", '', $content);
+
+        $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
+        $_file = $path . '/' . $traits['name'] . '.php';
+
+        file_put_contents($_file, $content);
+        echo "INFO: writing {$index['name']}: {$_file} ..." . PHP_EOL;
+    }
 }
 
 class Model extends Node
@@ -512,22 +551,20 @@ class Validate extends Node
         $content = str_replace('{{APP_PATH}}', APP_PATH, $content);
 
         //处理校验器相关的模板
-        if ($index['name'] == 'validate') {
-            $content_field = '';
-            if (isset($model['fields'])) {
-                $fields = $model['fields'];
-                foreach ($fields as $field) {
-                    $content_field .= PHP_EOL . "\t\t['" . $field['name'] . "', '";
-                    $content_field .= $field['required'] ? 'require|' : '';
-                    $content_field .= $field['rule'] . '\',\'';
-                    $content_field .= $field['required'] ? '必须输入：' . $field['title'] . '|' : '';
-                    $content_field .= $defaults['rules'][$field['rule']];
-                    $content_field .= '\'],';
-                }
-                $content = str_replace('{{VALIDATE_FIELDS}}', $content_field . "\n{{VALIDATE_FIELDS}}", $content);
+        $content_field = '';
+        if (isset($model['fields'])) {
+            $fields = $model['fields'];
+            foreach ($fields as $field) {
+                $content_field .= PHP_EOL . "\t\t['" . $field['name'] . "', '";
+                $content_field .= $field['required'] ? 'require|' : '';
+                $content_field .= $field['rule'] . '\',\'';
+                $content_field .= $field['required'] ? '必须输入：' . $field['title'] . '|' : '';
+                $content_field .= $defaults['rules'][$field['rule']];
+                $content_field .= '\'],';
             }
-            $content = str_replace(",\n{{VALIDATE_FIELDS}}", "\n\t", $content);
+            $content = str_replace('{{VALIDATE_FIELDS}}', $content_field . "\n{{VALIDATE_FIELDS}}", $content);
         }
+        $content = str_replace(",\n{{VALIDATE_FIELDS}}", "\n\t", $content);
 
         $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
         $_file = $path . '/' . $model['name'] . '.php';

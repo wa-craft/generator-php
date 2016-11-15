@@ -32,6 +32,8 @@ return [
         'portal' => file_get_contents(TMPL_PATH . '/php/index.tmpl'),
         'controller' => file_get_contents(TMPL_PATH . '/php/controller.tmpl'),
         'controller_action' => file_get_contents(TMPL_PATH . '/php/controller_action.tmpl'),
+        'traits' => file_get_contents(TMPL_PATH . '/php/traits.tmpl'),
+        'traits_action' => file_get_contents(TMPL_PATH . '/php/traits_action.tmpl'),
         'model' => file_get_contents(TMPL_PATH . '/php/model.tmpl'),
         'validate' => file_get_contents(TMPL_PATH . '/php/validate.tmpl'),
         'view_add' => file_get_contents(TMPL_PATH . '/html/add.html'),

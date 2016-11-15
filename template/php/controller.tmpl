@@ -12,7 +12,7 @@ class {{CLASS_NAME}} extends {{DEFAULT_CONTROLLER}}
      */
     public function create() {
         $model = Loader::model($this->controller);
-		{{CONTROLLER_PARAMS}}
+{{CONTROLLER_PARAMS}}
         $model->save();
 		$this->ajaxSuccess('ok', $this->module. '/' . $this->controller . '/index');
     }
