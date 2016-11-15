@@ -453,7 +453,7 @@ class Controller extends Node
         if (isset($model['fields'])) {
             $fields = $model['fields'];
             foreach ($fields as $field) {
-                $content_field .= '$model->' . $field['name'] . " = input('" . $field['name'] . "');\n";
+                $content_field .= "\t\t\$model->" . $field['name'] . " = input('" . $field['name'] . "');\n";
             }
         }
         $content = str_replace('{{CONTROLLER_PARAMS}}', $content_field, $content);
