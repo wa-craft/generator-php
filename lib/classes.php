@@ -11,7 +11,10 @@ class Builder
     protected $config = [];
     //数据
     protected $data = null;
+    //生成代码的目标路径
     protected $target_path = '';
+    //默认值
+    public static $defaults = [];
     //创建设置
     protected $actions = [
         //是否生成入口文件
@@ -140,7 +143,8 @@ class Builder
         $templates = $this->config['templates'];
 
         //装载默认设置
-        $defaults = $this->config['defaults'];
+        Builder::$defaults = $this->config['defaults'];
+        $defaults = Builder::$defaults;
 
         $project = $this->data;
 
@@ -194,7 +198,7 @@ class Builder
                 if (isset($module['controllers'])) $controllers = $module['controllers'];
                 else $controllers = [];
                 foreach ($controllers as $controller) {
-                    write_php($_controller_path, $module, ['name' => 'controller'], $controller, $application['namespace'], $templates);
+                    Controller::writeToFile($_controller_path, $module, ['name' => 'controller'], $controller, $application['namespace'], $templates);
                     //生成VIEW模板
                     if ($build_actions['view']) {
                         if (!isset($controller['actions'])) $controller['actions'] = $defaults['actions'];
@@ -402,6 +406,7 @@ class Controller extends Node
 
     public static function writeToFile($path, $module, $index, $model, $namespace, $templates)
     {
+        $defaults = Builder::$defaults;
         mk_dir($path);
 
         $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
@@ -411,6 +416,9 @@ class Controller extends Node
         $content = isset($model['name']) ? str_replace('{{APP_NAME}}', $model['name'], $content) : $content;
         $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', $model['name'], $content) : $content;
         $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
+
+        $extend_controller = (isset($model['parent_controller'])) ? $model['parent_controller'] : ((isset($module['default_controller']) ? $module['default_controller'] : $defaults['controller']));
+        $content = str_replace('{{DEFAULT_CONTROLLER}}', $extend_controller, $content);
         $content = str_replace('{{APP_PATH}}', APP_PATH, $content);
 
         //处理与控制器相关的模板
@@ -491,7 +499,7 @@ class Validate extends Node
 
     public static function writeToFile($path, $module, $index, $model, $namespace, $templates)
     {
-        global $defaults;
+        $defaults = Builder::$defaults;
         mk_dir($path);
 
         $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
@@ -536,7 +544,7 @@ class View extends Node
 
     public static function writeToFile($path, $module, $index, $model, $templates)
     {
-        global $defaults;
+        $defaults = Builder::$defaults;
         mk_dir($path);
 
         //判断是否是独立控制器

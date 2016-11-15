@@ -2,6 +2,7 @@
 return [
     //默认值
     'defaults' => [
+        'controller' => 'goldeagle\thinklib\controller\DefaultController',
         //默认的控制器动作/视图模板
         'actions' => [
             ['name' => 'index', 'comment' => '列表'],

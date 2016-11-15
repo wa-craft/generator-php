@@ -16,6 +16,7 @@ return [
                         [
                             'name' => 'Index',
                             'comment' => '默认控制器',
+                            'parent_controller' => 'TestController',
                             'actions' => [['name' => 'index', 'comment' => '默认方法']]
                         ]
                     ],
