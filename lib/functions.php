@@ -33,6 +33,21 @@ function copy_files($src_path, $tar_path)
 }
 
 /**
+ * 通过数组来修改模板
+ * @param array $map
+ * @param $template
+ * @return mixed
+ */
+function parseTemplateTags($map = [], $template)
+{
+    $_c = $template;
+    foreach ($map as $key => $item) {
+        $_c = str_replace($key, $item, $_c);
+    }
+    return $_c;
+}
+
+/**
  * 生成 html 代码
  * @param $path
  * @param $module

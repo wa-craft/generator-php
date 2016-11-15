@@ -1,4 +1,7 @@
 <?php
+/**
+ * 测试用实例
+ */
 return [
     'name' => 'forge',
     'domain' => 'tf.vm',
@@ -37,6 +40,16 @@ return [
                                 ['name' => 'name', 'title' => '名称', 'rule' => 'alpha', 'required' => true],
                                 ['name' => 'annotation', 'title' => '说明', 'rule' => 'alpha', 'required' => true],
                                 ['name' => 'portal_file', 'title' => '入口文件', 'rule' => 'alphaDash', 'required' => true]
+                            ],
+                            'relations' => [
+                                [
+                                    'name' => 'Modules',
+                                    'caption' => '模块',
+                                    'type' => 'hasMany',
+                                    'this_key' => 'id',
+                                    'that_key' => 'application_id',
+                                    'model' => 'Module'
+                                ]
                             ]
                         ],
                         [
@@ -46,6 +59,32 @@ return [
                                 ['name' => 'application_id', 'title' => '应用编号', 'required' => true, 'rule' => 'number'],
                                 ['name' => 'name', 'title' => '名称', 'required' => true, 'rule' => 'alpha'],
                                 ['name' => 'annotation', 'title' => '说明', 'required' => true, 'rule' => 'chsAlpha']
+                            ],
+                            'relations' => [
+                                [
+                                    'name' => 'Controller',
+                                    'caption' => '控制器',
+                                    'type' => 'hasMany',
+                                    'this_key' => 'id',
+                                    'that_key' => 'module_id',
+                                    'model' => 'Controller'
+                                ],
+                                [
+                                    'name' => 'Model',
+                                    'caption' => '模型',
+                                    'type' => 'hasMany',
+                                    'this_key' => 'id',
+                                    'that_key' => 'module_id',
+                                    'model' => 'Controller'
+                                ],
+                                [
+                                    'name' => 'Application',
+                                    'caption' => '应用',
+                                    'type' => 'belongsTo',
+                                    'this_key' => 'application_id',
+                                    'that_key' => 'id',
+                                    'model' => 'Application'
+                                ]
                             ]
                         ],
                         [
@@ -55,6 +94,24 @@ return [
                                 ['name' => 'module_id', 'title' => '模块编号', 'required' => true, 'rule' => 'number'],
                                 ['name' => 'name', 'title' => '名称', 'required' => true, 'rule' => 'alpha'],
                                 ['name' => 'annotation', 'title' => '说明', 'required' => true, 'rule' => 'chsAlpha']
+                            ],
+                            'relations' => [
+                                [
+                                    'name' => 'Actions',
+                                    'caption' => '方法',
+                                    'type' => 'hasMany',
+                                    'this_key' => 'id',
+                                    'that_key' => 'controller_id',
+                                    'model' => 'ControllerAction'
+                                ],
+                                [
+                                    'name' => 'Module',
+                                    'caption' => '模块',
+                                    'type' => 'belongsTo',
+                                    'this_key' => 'module_id',
+                                    'that_key' => 'id',
+                                    'model' => 'Module'
+                                ]
                             ]
                         ],
                         [
@@ -63,6 +120,24 @@ return [
                             'fields' => [
                                 ['name' => 'name', 'title' => '名称', 'required' => true, 'rule' => 'alpha'],
                                 ['name' => 'annotation', 'title' => '说明', 'required' => true, 'rule' => 'chsAlpha']
+                            ],
+                            'relations' => [
+                                [
+                                    'name' => 'Fields',
+                                    'caption' => '字段',
+                                    'type' => 'hasMany',
+                                    'this_key' => 'id',
+                                    'that_key' => 'module_id',
+                                    'model' => 'Field'
+                                ],
+                                [
+                                    'name' => 'Module',
+                                    'caption' => '模块',
+                                    'type' => 'belongsTo',
+                                    'this_key' => 'module_id',
+                                    'that_key' => 'id',
+                                    'model' => 'Module'
+                                ]
                             ]
                         ],
                         [
@@ -76,6 +151,16 @@ return [
                                 ['name' => 'is_unique', 'title' => '是否唯一值', 'required' => true, 'rule' => 'boolean'],
                                 ['name' => 'rule', 'title' => '校验规则', 'required' => true, 'rule' => 'alphaDash'],
                                 ['name' => 'comment', 'title' => '说明', 'required' => true, 'rule' => 'chsAlpha'],
+                            ],
+                            'relations' => [
+                                [
+                                    'name' => 'Model',
+                                    'caption' => '模型',
+                                    'type' => 'belongsTo',
+                                    'this_key' => 'model_id',
+                                    'that_key' => 'id',
+                                    'model' => 'Model'
+                                ]
                             ]
                         ],
                         [
@@ -85,6 +170,24 @@ return [
                                 ['name' => 'module_id', 'title' => '模块编号', 'required' => true, 'rule' => 'number'],
                                 ['name' => 'name', 'title' => '名称', 'required' => true, 'rule' => 'alpha'],
                                 ['name' => 'annotation', 'title' => '说明', 'required' => true, 'rule' => 'chsAlpha']
+                            ],
+                            'relations' => [
+                                [
+                                    'name' => 'Actions',
+                                    'caption' => '方法',
+                                    'type' => 'hasMany',
+                                    'this_key' => 'id',
+                                    'that_key' => 'controller_id',
+                                    'model' => 'TraitsAction'
+                                ],
+                                [
+                                    'name' => 'Module',
+                                    'caption' => '模块',
+                                    'type' => 'belongsTo',
+                                    'this_key' => 'module_id',
+                                    'that_key' => 'id',
+                                    'model' => 'Module'
+                                ]
                             ]
                         ],
                         [
@@ -93,6 +196,16 @@ return [
                             'fields' => [
                                 ['name' => 'setting', 'title' => '设置', 'required' => true, 'rule' => 'alphaDash'],
                                 ['name' => 'value', 'title' => '取值', 'required' => true, 'rule' => 'chsAlpha']
+                            ],
+                            'relations' => [
+                                [
+                                    'name' => 'Author',
+                                    'caption' => '作者',
+                                    'type' => 'hasOne',
+                                    'this_key' => 'author_id',
+                                    'that_key' => 'id',
+                                    'model' => 'common/User'
+                                ]
                             ]
                         ]
                     ]

@@ -35,6 +35,7 @@ return [
         'traits' => file_get_contents(TMPL_PATH . '/php/traits.tmpl'),
         'traits_action' => file_get_contents(TMPL_PATH . '/php/traits_action.tmpl'),
         'model' => file_get_contents(TMPL_PATH . '/php/model.tmpl'),
+        'model_relation' => file_get_contents(TMPL_PATH . '/php/model_relation.tmpl'),
         'validate' => file_get_contents(TMPL_PATH . '/php/validate.tmpl'),
         'view_add' => file_get_contents(TMPL_PATH . '/html/add.html'),
         'view_index' => file_get_contents(TMPL_PATH . '/html/index.html'),

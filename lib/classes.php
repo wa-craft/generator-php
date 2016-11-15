@@ -524,6 +524,26 @@ class Model extends Node
         $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
         $content = str_replace('{{APP_PATH}}', APP_PATH, $content);
         $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
+
+        //生成 relations
+        if (isset($model['relations'])) {
+            $relations = $model['relations'];
+            foreach ($relations as $relation) {
+                $content_relation = parseTemplateTags(
+                    [
+                        '{{RELATION_NAME}}' => $relation['name'],
+                        '{{RELATION_TYPE}}' => $relation['type'],
+                        '{{RELATION_MODEL}}' => $relation['model'],
+                        '{{RELATION_THIS_KEY}}' => $relation['this_key'],
+                        '{{RELATION_THAT_KEY}}' => $relation['that_key']
+                    ],
+                    $templates['model_relation']
+                );
+                $content = str_replace('{{RELATIONS}}', $content_relation . "\n{{RELATIONS}}", $content);
+            }
+            $content = str_replace("{{RELATIONS}}", '', $content);
+        }
+
         $_file = $path . '/' . $model['name'] . '.php';
 
         file_put_contents($_file, $content);
