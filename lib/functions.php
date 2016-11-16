@@ -1,6 +1,50 @@
 <?php
 //定义基本函数
 /**
+ * 将模型的驼峰式命名方式转换为数据表的下划线命名方式
+ * @param $name
+ * @param $table_prefix
+ * @return string
+ */
+function convertModelToTableName($name, $table_prefix)
+{
+    $s = $table_prefix;
+
+    $array = [];
+    for($i=0;$i<strlen($name);$i++){
+        if($name[$i] == strtolower($name[$i])){
+            $array[] = $name[$i];
+        }else{
+            if($i>0){
+                $array[] = '_';
+            }
+            $array[] = strtolower($name[$i]);
+        }
+    }
+
+    $s .= implode('',$array);
+
+    return $s;
+}
+
+/**
+ * 将数据表的下划线命名方式转换为模型的驼峰式命名方式
+ * @param string $name
+ * @param string $table_prefix
+ * @return string
+ */
+function convertTableToModelName($name, $table_prefix)
+{
+    $s = '';
+    $name = str_replace($table_prefix, '', $name);
+    $names = explode('_', $name);
+    foreach ($names as $n) {
+        $s .= ucfirst($n);
+    }
+    return $s;
+}
+
+/**
  * 判断目录是否存在，如果不存在则创建
  * @param $path
  */
