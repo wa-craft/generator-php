@@ -1,13 +1,13 @@
 #CHANGELOG
 ## 1.1.0
-* 增加 theme 设置
 * 增加控制器 extends 指定
 * 增加 traits 生成
-* 增加目录递归拷贝
 * 增加内存缓存管理单例
 * 增加模型外键类指定
 * 增加模型 hasOne hasMany belongsTo 方法生成
 * 增加 menu 菜单数组生成
+* 增加默认主题的资源文件
+* 增加 layout 文件的写入
 * 性能优化
 
 ## 1.0.0
