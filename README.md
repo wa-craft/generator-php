@@ -12,11 +12,11 @@ a cli tool to build applications for thinkphp v5，
 * 自动生成控制器程序以及CRUD方法
 * 自动生成模型程序以及关联模型
 * 自动生成后台校验器程序以及校验规则表
-* 自动生成CRUD的视图界面（可以选择不同主题）
+* 自动生成CRUD的视图界面（TODO: 可以选择不同主题）
 * 自动生成SQL数据库表结构
-* 自动生成权限树
+* 自动生成权限树 (TODO)
 * 自动生成RBAC数据
-* 自动生成功能菜单
+* 自动生成功能菜单 (TODO)
 * 自动生成 nginx vhost 配置文件
 * 自动生成 .htaccess 配置文件
 
