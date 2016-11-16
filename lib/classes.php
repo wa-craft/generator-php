@@ -678,7 +678,8 @@ class Relations
     static protected $relation_types = [
         'hasOne',
         'hasMany',
-        'belongsTo'
+        'belongsTo',
+        'belongsToMany'
     ];
     protected $type = 0;
     protected $model = '';
