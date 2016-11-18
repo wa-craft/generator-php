@@ -189,7 +189,7 @@ function write_sql($path, $index, $model, $namespace, $templates)
     $content = str_replace('{{CONTROLLER_PARAMS}}', $content_field, $content);
     $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
 
-    $_file = $path . '/' . strtolower($model['name']) . '.sql';
+    $_file = $path . '/' . $namespace . '_' . strtolower($model['name']) . '.sql';
 
     file_put_contents($_file, $content);
     echo "INFO: writing {$index['name']}: {$_file} ..." . PHP_EOL;
