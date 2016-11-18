@@ -8,7 +8,7 @@
  */
 function convertModelToTableName($name, $table_prefix)
 {
-    $s = $table_prefix;
+    $s = $table_prefix . '_';
 
     $array = [];
     for ($i = 0; $i < strlen($name); $i++) {
@@ -171,7 +171,7 @@ function write_sql($path, $index, $model, $namespace, $templates)
 
     $_class_name = $model['name'];
     $content = str_replace('{{APP_NAME}}', $namespace, $templates[$index['name']]);
-    $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', strtolower($model['name']), $content) : $content;
+    $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', convertModelToTableName($model['name'], $namespace), $content) : $content;
     $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
 
     //处理SQL的字段
@@ -189,7 +189,7 @@ function write_sql($path, $index, $model, $namespace, $templates)
     $content = str_replace('{{CONTROLLER_PARAMS}}', $content_field, $content);
     $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
 
-    $_file = $path . '/' . $namespace . '_' . strtolower($model['name']) . '.sql';
+    $_file = $path . '/' . convertModelToTableName($model['name'], $namespace) . '.sql';
 
     file_put_contents($_file, $content);
     echo "INFO: writing {$index['name']}: {$_file} ..." . PHP_EOL;

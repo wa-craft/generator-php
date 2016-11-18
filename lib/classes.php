@@ -171,7 +171,7 @@ class Builder
         if ($build_actions['decompress_assets']) {
             $_assets_file = SHARE_PATH . '/assets/' . $defaults['default_theme'] . '/assets.tar.bz2';
             $cmd = 'tar xvjf ' . $_assets_file . ' -C' . $public_path;
-            exec($cmd);
+            shell_exec($cmd);
         }
 
         foreach ($applications as $application) {
@@ -252,8 +252,22 @@ class Builder
                     if (isset($model['relations'])) {
                         $r_fields = [];
                         foreach ($model['relations'] as $relation) {
-                            if ($relation['this_key'] != 'id') {
-                                $r_fields[] = ['name' => lcfirst($relation['this_key']), 'title' => $relation['caption'], 'rule' => 'number', 'required' => true, 'is_unique' => false];
+                            if ($relation['type'] != 'belongsToMany') {
+                                if ($relation['this_key'] != 'id') {
+                                    $r_fields[] = ['name' => lcfirst($relation['this_key']), 'title' => $relation['caption'], 'rule' => 'number', 'required' => true, 'is_unique' => false];
+                                }
+                            } else {
+                                //自动生成多对多关系的中间表
+                                $_tmp_model = [
+                                    'name' => $relation['model'],
+                                    'comment' => $relation['caption'],
+                                    'autoWriteTimeStamp' => false,
+                                    'fields' => [
+                                        ['name' => $relation['this_key'], 'title' => '', 'rule' => 'number', 'required' => true, 'is_unique' => false],
+                                        ['name' => $relation['that_key'], 'title' => '', 'rule' => 'number', 'required' => true, 'is_unique' => false]
+                                    ]
+                                ];
+                                write_sql($database_path, ['name' => 'sql_table'], $_tmp_model, $application['namespace'], $templates);
                             }
                         }
                         $model['fields'] = array_merge($r_fields, $model['fields']);
@@ -301,16 +315,16 @@ class Builder
         //执行composer update命令
         if ($build_actions['run_composer']) {
             $cmd = 'cd ' . $this->target_path;
-            exec($cmd);
+            shell_exec($cmd);
             echo 'updating composer repositories ...' . PHP_EOL;
             $cmd = 'composer update';
-            exec($cmd);
+            shell_exec($cmd);
         }
 
         //执行bower install命令
         if ($build_actions['run_bower']) {
             $cmd = 'cd ' . $this->target_path;
-            exec($cmd);
+            shell_exec($cmd);
             echo 'installing bower repositories ...' . PHP_EOL;
             $deps = $defaults['bower_deps'];
             $cmd = 'bower install ';
@@ -319,7 +333,7 @@ class Builder
 
             }
             $cmd .= '--save';
-            if (count($deps) != 0) exec($cmd);
+            if (count($deps) != 0) shell_exec($cmd);
         }
 
         echo "ThinkForge Builder, Version: " . $this->version . PHP_EOL;
