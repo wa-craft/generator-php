@@ -21,6 +21,7 @@ class Builder
         'portal' => true,
         //是否生成控制器程序
         'controller' => true,
+        'traits' => true,
         //是否生成模型程序
         'model' => true,
         //是否生成校验器程序
@@ -35,8 +36,14 @@ class Builder
         'nginx' => true,
         //是否根据应用 portal 生成 .htaccess，谨慎使用
         'apache' => true,
-        //是否生成目录数组
-        'menu' => true
+        //是否生成目录数组，暂时保留未应用
+        'menu' => true,
+        //是否解压资源文件
+        'decompress_assets' => true,
+        //是否最后运行composer update命令
+        'run_composer' => false,
+        //是否最后运行 bower update 命令
+        'run_bower' => false
     ];
     //版本
     protected $version = '1.1.0';
@@ -160,6 +167,13 @@ class Builder
             write_apache($public_path, $templates['apache'], $applications);
         }
 
+        //解压资源文件
+        if ($build_actions['decompress_assets']) {
+            $_assets_file = SHARE_PATH . '/assets/' . $defaults['default_theme'] . '/assets.tar.bz2';
+            $cmd = 'tar xvjf ' . $_assets_file . ' -C' . $public_path;
+            exec($cmd);
+        }
+
         foreach ($applications as $application) {
             //创建目录
             $_app_path = $this->target_path . '/' . APP_PATH . '/' . $application['name'];
@@ -190,29 +204,31 @@ class Builder
                 //生成代码
 
                 //生成单独控制器代码
-                $_controller_path = $_module_path . '/controller';
-                mk_dir($_controller_path);
-                $_view_path = $_module_path . '/view';
-                mk_dir($_view_path);
+                if ($build_actions['controller']) {
+                    $_controller_path = $_module_path . '/controller';
+                    mk_dir($_controller_path);
+                    $_view_path = $_module_path . '/view';
+                    mk_dir($_view_path);
 
-                if (isset($module['controllers'])) $controllers = $module['controllers'];
-                else $controllers = [];
-                foreach ($controllers as $controller) {
-                    Controller::writeToFile($_controller_path, $module, ['name' => 'controller'], $controller, $application['namespace'], $templates);
-                    //生成VIEW模板
-                    if ($build_actions['view']) {
-                        if (!isset($controller['actions'])) $controller['actions'] = $defaults['actions'];
+                    if (isset($module['controllers'])) $controllers = $module['controllers'];
+                    else $controllers = [];
+                    foreach ($controllers as $controller) {
+                        Controller::writeToFile($_controller_path, $module, ['name' => 'controller'], $controller, $application['namespace'], $templates);
+                        //生成VIEW模板
+                        if ($build_actions['view']) {
+                            if (!isset($controller['actions'])) $controller['actions'] = $defaults['actions'];
 
-                        //生成方法的前台页面
-                        $_view_model_path = $_view_path . '/' . strtolower($controller['name']);
-                        foreach ($controller['actions'] as $action) {
-                            View::writeToFile($_view_model_path, $module, $action, $controller, $templates);
+                            //生成方法的前台页面
+                            $_view_model_path = $_view_path . '/' . strtolower($controller['name']);
+                            foreach ($controller['actions'] as $action) {
+                                View::writeToFile($_view_model_path, $module, $action, $controller, $templates);
+                            }
                         }
                     }
                 }
 
                 //生成 traits 的代码
-                if (isset($module['traits'])) {
+                if (isset($module['traits']) && $build_actions['traits']) {
                     $_traits_path = $_module_path . '/traits';
                     mk_dir($_traits_path);
                     $traits = $module['traits'];
@@ -269,6 +285,30 @@ class Builder
                     copy_files(SHARE_PATH . '/html/layout', $_view_path . '/layout');
                 }
             }
+        }
+
+        //执行composer update命令
+        if ($build_actions['run_composer']) {
+            $cmd = 'cd ' . $this->target_path;
+            exec($cmd);
+            echo 'updating composer repositories ...' . PHP_EOL;
+            $cmd = 'composer update';
+            exec($cmd);
+        }
+
+        //执行bower install命令
+        if ($build_actions['run_bower']) {
+            $cmd = 'cd ' . $this->target_path;
+            exec($cmd);
+            echo 'installing bower repositories ...' . PHP_EOL;
+            $deps = $defaults['bower_deps'];
+            $cmd = 'bower install ';
+            foreach ($deps as $dep) {
+                $cmd .= $dep . ' ';
+
+            }
+            $cmd .= '--save';
+            if (count($deps) != 0) exec($cmd);
         }
 
         echo "ThinkForge Builder, Version: " . $this->version . PHP_EOL;

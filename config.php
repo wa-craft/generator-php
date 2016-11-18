@@ -3,6 +3,7 @@ return [
     //默认值
     'defaults' => [
         'controller' => 'goldeagle\thinklib\controller\DefaultController',
+        'default_theme' => 'metronic_default',
         //默认的控制器动作/视图模板
         'actions' => [
             ['name' => 'index', 'comment' => '列表'],
@@ -27,6 +28,17 @@ return [
             'url' => '合法的 uri 网址',
             'ip' => '合法的 ip 地址',
             'money' => '金额'
+        ],
+        'bower_deps' => [
+            "bootstrap",
+            "font-awesome",
+            "ionicons",
+            "simple-line-icons",
+            "bootstrap-switch",
+            "bootstrap-daterangepicker",
+            "bootstrap-hover-dropdown",
+            "jquery-slimscroll",
+            "blockui"
         ]
     ],
     //模板路径
