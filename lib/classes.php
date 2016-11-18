@@ -516,14 +516,20 @@ class Model extends Node
         mk_dir($path);
 
         $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
-        $_class_name = $model['name'];
-        $content = str_replace('{{NAME_SPACE}}', $_namespace, $templates[$index['name']]);
-        $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
-        $content = isset($model['name']) ? str_replace('{{APP_NAME}}', $model['name'], $content) : $content;
-        $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', $model['name'], $content) : $content;
-        $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
-        $content = str_replace('{{APP_PATH}}', APP_PATH, $content);
-        $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
+        $tags = [
+            'NAME_SPACE' => $_namespace,
+            'APP_PATH' => APP_PATH,
+            'CLASS_NAME' => $model['name']
+        ];
+
+        if (isset($module['comment'])) $tags['MODULE_COMMENT'] = $module['comment'];
+        if (isset($module['comment'])) {
+            $tags['APP_NAME'] = $model['name'];
+            $tags['MODEL_NAME'] = $model['name'];
+        }
+        if (isset($model['comment'])) $tags['MODEL_COMMENT'] = $model['comment'];
+
+        $content = $content_relation = parseTemplateTags($tags, $templates[$index['name']]);
 
         //生成 relations
         if (isset($model['relations'])) {
@@ -531,17 +537,17 @@ class Model extends Node
             foreach ($relations as $relation) {
                 $content_relation = parseTemplateTags(
                     [
-                        '{{RELATION_NAME}}' => $relation['name'],
-                        '{{RELATION_TYPE}}' => $relation['type'],
-                        '{{RELATION_MODEL}}' => $relation['model'],
-                        '{{RELATION_THIS_KEY}}' => $relation['this_key'],
-                        '{{RELATION_THAT_KEY}}' => $relation['that_key']
+                        'RELATION_NAME' => $relation['name'],
+                        'RELATION_TYPE' => $relation['type'],
+                        'RELATION_MODEL' => $relation['model'],
+                        'RELATION_THIS_KEY' => $relation['this_key'],
+                        'RELATION_THAT_KEY' => $relation['that_key']
                     ],
                     $templates['model_relation']
                 );
                 $content = str_replace('{{RELATIONS}}', $content_relation . "\n{{RELATIONS}}", $content);
             }
-            $content = str_replace("{{RELATIONS}}", '', $content);
+            $content = str_replace("\n{{RELATIONS}}", '', $content);
         }
 
         $_file = $path . '/' . $model['name'] . '.php';
@@ -563,12 +569,17 @@ class Validate extends Node
 
         $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
         $_class_name = $model['name'];
-        $content = str_replace('{{NAME_SPACE}}', $_namespace, $templates[$index['name']]);
-        $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
-        $content = isset($model['name']) ? str_replace('{{APP_NAME}}', $model['name'], $content) : $content;
-        $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', $model['name'], $content) : $content;
-        $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
-        $content = str_replace('{{APP_PATH}}', APP_PATH, $content);
+        $tags = [
+            'NAME_SPACE' => $_namespace,
+            'APP_PATH' => APP_PATH
+        ];
+        if (isset($module['comment'])) $tags['MODULE_COMMENT'] = $module['comment'];
+        if (isset($module['comment'])) {
+            $tags['APP_NAME'] = $model['name'];
+            $tags['MODEL_NAME'] = $model['name'];
+        }
+        if (isset($model['comment'])) $tags['MODEL_COMMENT'] = $model['comment'];
+        $content = $content_relation = parseTemplateTags($tags, $templates[$index['name']]);
 
         //处理校验器相关的模板
         $content_field = '';
@@ -625,10 +636,6 @@ class View extends Node
                 $content = str_replace('{{TD_LOOP}}', $_td, $content);
             } else {
                 foreach ($fields as $field) {
-                    $content_field = $templates['view_' . $index['name'] . '_field'];
-                    $content_field = str_replace('{{FORM_FIELD}}', getFieldHTML($field, $index['name']), $content_field);
-                    $content_field = str_replace('{{FIELD_NAME}}', $field['name'], $content_field);
-                    $content_field = str_replace('{{FIELD_TITLE}}', $field['title'], $content_field);
                     if (isset($field['rule'])) {
                         //判断是否是需要生成选择列表的外键
                         if (preg_match('/_id$/', $field['name'])) {
@@ -640,15 +647,21 @@ class View extends Node
                     } else {
                         $_comment = '';
                     }
-                    $content_field = str_replace('{{FIELD_COMMENT}}', $_comment, $content_field);
 
                     if (isset($field['required'])) $_is_required = ($field['required']) ? '（* 必须）' : '';
                     else $_is_required = '';
-                    $content_field = str_replace('{{IS_REQUIRED}}', $_is_required, $content_field);
 
-                    $content = str_replace('{{FIELD_LOOP}}', $content_field . "\n{{FIELD_LOOP}}", $content);
+                    $tags_field = [
+                        'FORM_FIELD' => getFieldHTML($field, $index['name']),
+                        'FIELD_NAME' => $field['name'],
+                        'FIELD_TITLE' => $field['title'],
+                        'FIELD_COMMENT' => $_comment,
+                        'IS_REQUIRED' => $_is_required
+                    ];
+
+                    $content = str_replace('{{FIELD_LOOP}}', parseTemplateTags($tags_field, $templates['view_' . $index['name'] . '_field']) . "\n{{FIELD_LOOP}}", $content);
                 }
-                $content = str_replace('{{FIELD_LOOP}}', '', $content);
+                $content = str_replace("\n{{FIELD_LOOP}}", '', $content);
             }
         }
         $_file = $path . '/' . strtolower($index['name']) . '.html';
