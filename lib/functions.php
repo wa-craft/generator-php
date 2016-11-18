@@ -11,18 +11,18 @@ function convertModelToTableName($name, $table_prefix)
     $s = $table_prefix;
 
     $array = [];
-    for($i=0;$i<strlen($name);$i++){
-        if($name[$i] == strtolower($name[$i])){
+    for ($i = 0; $i < strlen($name); $i++) {
+        if ($name[$i] == strtolower($name[$i])) {
             $array[] = $name[$i];
-        }else{
-            if($i>0){
+        } else {
+            if ($i > 0) {
                 $array[] = '_';
             }
             $array[] = strtolower($name[$i]);
         }
     }
 
-    $s .= implode('',$array);
+    $s .= implode('', $array);
 
     return $s;
 }
@@ -86,7 +86,7 @@ function parseTemplateTags($map = [], $template)
 {
     $_c = $template;
     foreach ($map as $key => $item) {
-        $_c = str_replace($key, $item, $_c);
+        $_c = str_replace('{{' . $key . '}}', $item, $_c);
     }
     return $_c;
 }
