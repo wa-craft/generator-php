@@ -55,14 +55,6 @@ return [
                                     'this_key' => 'user_group_id',
                                     'that_key' => 'id',
                                     'model' => 'UserGroup'
-                                ],
-                                [
-                                    'name' => 'UserGroup',
-                                    'caption' => '所属分组',
-                                    'type' => 'belongsTo',
-                                    'this_key' => 'user_group_id',
-                                    'that_key' => 'id',
-                                    'model' => 'UserGroup'
                                 ]
                             ]
                         ],
@@ -114,7 +106,7 @@ return [
                             'relations' => [
                                 [
                                     'name' => 'Users',
-                                    'caption' => '用户',
+                                    'caption' => '用户关系',
                                     'type' => 'belongsToMany',
                                     'this_key' => 'role_id',
                                     'that_key' => 'user_id',
