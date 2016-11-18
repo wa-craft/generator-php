@@ -39,7 +39,7 @@ class Builder
         //是否生成目录数组，暂时保留未应用
         'menu' => true,
         //是否解压资源文件
-        'decompress_assets' => true,
+        'decompress_assets' => false,
         //是否最后运行composer update命令
         'run_composer' => false,
         //是否最后运行 bower update 命令
@@ -204,12 +204,12 @@ class Builder
                 //生成代码
 
                 //生成单独控制器代码
-                if ($build_actions['controller']) {
-                    $_controller_path = $_module_path . '/controller';
-                    mk_dir($_controller_path);
-                    $_view_path = $_module_path . '/view';
-                    mk_dir($_view_path);
+                $_controller_path = $_module_path . '/controller';
+                mk_dir($_controller_path);
+                $_view_path = $_module_path . '/view';
+                mk_dir($_view_path);
 
+                if ($build_actions['controller']) {
                     if (isset($module['controllers'])) $controllers = $module['controllers'];
                     else $controllers = [];
                     foreach ($controllers as $controller) {
@@ -246,6 +246,17 @@ class Builder
                         if ($model['autoWriteTimeStamp']) {
                             $model['fields'] = array_merge($model['fields'], $defaults['autoTimeStampFields']);
                         }
+                    }
+
+                    //根据 relations 来生成 xx_id 形式的 field
+                    if (isset($model['relations'])) {
+                        $r_fields = [];
+                        foreach ($model['relations'] as $relation) {
+                            if ($relation['this_key'] != 'id') {
+                                $r_fields[] = ['name' => lcfirst($relation['this_key']), 'title' => $relation['caption'], 'rule' => 'number', 'required' => true, 'is_unique' => false];
+                            }
+                        }
+                        $model['fields'] = array_merge($r_fields, $model['fields']);
                     }
 
                     if ($build_actions['controller']) {
@@ -460,17 +471,39 @@ class Controller extends Node
         $defaults = Builder::$defaults;
         mk_dir($path);
 
-        $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
-        $_class_name = $model['name'];
-        $content = str_replace('{{NAME_SPACE}}', $_namespace, $templates[$index['name']]);
-        $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
-        $content = isset($model['name']) ? str_replace('{{APP_NAME}}', $model['name'], $content) : $content;
-        $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', $model['name'], $content) : $content;
-        $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
+        $tags = [
+            'NAME_SPACE' => $namespace . '\\' . $module['name'] . '\\' . $index['name'],
+            'APP_PATH' => APP_PATH,
+            'CLASS_NAME' => $model['name']
+        ];
 
-        $extend_controller = (isset($model['parent_controller'])) ? $model['parent_controller'] : ((isset($module['default_controller']) ? $module['default_controller'] : $defaults['controller']));
-        $content = str_replace('{{DEFAULT_CONTROLLER}}', $extend_controller, $content);
-        $content = str_replace('{{APP_PATH}}', APP_PATH, $content);
+        if (isset($module['comment'])) $tags['MODULE_COMMENT'] = $module['comment'];
+        if (isset($model['name'])) {
+            $tags['APP_NAME'] = $model['name'];
+            $tags['MODEL_NAME'] = $model['name'];
+        }
+        if (isset($model['comment'])) {
+            $tags['MODEL_COMMENT'] = $model['comment'];
+        }
+
+        //为控制器写入父控制器
+        $extend_controller = (function ($module, $model, $defaults) {
+            $controller = '';
+            if (isset($model['parent_controller'])) {
+                if ($model['parent_controller'] != '') {
+                    $controller = $model['parent_controller'];
+                }
+            } else if (isset($module['default_controller'])) {
+                if ($module['default_controller'] != '') {
+                    $controller = $module['default_controller'];
+                }
+            }
+            if ($controller == '') $controller = $defaults['controller'];
+            return $controller;
+        })($module, $model, $defaults);
+
+        $tags['DEFAULT_CONTROLLER'] = $extend_controller;
+        $content = parseTemplateTags($tags, $templates[$index['name']]);
 
         //处理与控制器相关的模板
         //处理控制器的方法
@@ -486,7 +519,7 @@ class Controller extends Node
                 $content = str_replace('{{CONTROLLER_ACTIONS}}', $content_action . "\n{{CONTROLLER_ACTIONS}}", $content);
             }
         }
-        $content = str_replace("{{CONTROLLER_ACTIONS}}", '', $content);
+        $tags['CONTROLLER_ACTIONS'] = '';
 
         //处理控制器的参数
         $content_field = '';
@@ -496,9 +529,10 @@ class Controller extends Node
                 $content_field .= "\t\t\$model->" . $field['name'] . " = input('" . $field['name'] . "');\n";
             }
         }
-        $content = str_replace('{{CONTROLLER_PARAMS}}', $content_field, $content);
+        $tags['CONTROLLER_PARAMS'] = $content_field;
 
-        $content = str_replace('{{CLASS_NAME}}', $_class_name, $content);
+        $content = parseTemplateTags($tags, $templates[$index['name']]);
+
         $_file = $path . '/' . $model['name'] . '.php';
 
         file_put_contents($_file, $content);
@@ -619,7 +653,7 @@ class Validate extends Node
             $tags['MODEL_NAME'] = $model['name'];
         }
         if (isset($model['comment'])) $tags['MODEL_COMMENT'] = $model['comment'];
-        $content = $content_relation = parseTemplateTags($tags, $templates[$index['name']]);
+        $content = parseTemplateTags($tags, $templates[$index['name']]);
 
         //处理校验器相关的模板
         $content_field = '';
