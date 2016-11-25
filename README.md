@@ -15,8 +15,7 @@ a cli tool to build applications for thinkphp v5，
 * 自动生成CRUD的视图界面（TODO: 可以选择不同主题）
 * 自动生成SQL数据库表结构
 * 自动生成权限树 (TODO)
-* 自动生成RBAC数据
-* 自动生成功能菜单 (TODO)
+* 自动生成 RBAC 数据
 * 自动生成 nginx vhost 配置文件
 * 自动生成 .htaccess 配置文件
 
@@ -31,10 +30,10 @@ a cli tool to build applications for thinkphp v5，
 
 ## builder 命令行参数
 ### `-c|--config`
-指定配置文件的路径，默认为 './config.php'
+指定配置文件的路径，默认为 './src/config.php'
 
 ### `-p|--project`
-指定项目数据文件的路径，不需要包含 .php 后缀，文件必须位于 ./project 目录下，默认为 './project/project.php'
+指定项目数据文件的路径，不需要包含 .php 后缀，文件必须位于 ./project 目录下，默认为 './project/forge.php'
 
 ### `-a|--actions`
 声明生成的动作，包括 'all|mvc|copy'，默认为'all'
