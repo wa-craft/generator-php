@@ -4,9 +4,8 @@
  * thinkphp v5 脚手架创建工具
  */
 //读取相关程序
-require "./lib/defines.php";
-require "./lib/functions.php";
-require "./lib/classes.php";
+require "./src/defines.php";
+require "./src/autoload.php";
 require "./vendor/autoload.php";
 
 //设置命令
@@ -18,8 +17,8 @@ $cmd->option()
 //配置文件
 $cmd->option('c')
     ->aka('config')
-    ->describedAs('define a configuration file, default is : ./config.php')
-    ->default('./config.php')
+    ->describedAs('define a configuration file, default is : ./src/config.php')
+    ->default('./src/config.php')
     ->map(function ($config) {
         return $config;
     });
@@ -27,7 +26,7 @@ $cmd->option('c')
 $cmd->option('p')
     ->aka('project')
     ->describedAs('define a project data file, the file must exists in ./project.')
-    ->default('./project/project.php')
+    ->default('./project/forge.php')
     ->map(function ($project) {
         $file = './project/' . $project . '.php';
         return $file;

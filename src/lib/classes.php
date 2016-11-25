@@ -46,7 +46,7 @@ class Builder
         'run_bower' => false
     ];
     //版本
-    protected $version = '1.1.0';
+    protected $version = '1.2.0';
 
     /**
      * 通过数组设置项目配置信息
@@ -359,6 +359,29 @@ class Node
     //节点说明，中文
     protected $caption = '';
 
+    public static function getInstance($type = 0)
+    {
+        $instance = new Node();
+        switch ($type) {
+            case Node::$types['PROJECT']:
+                break;
+            case Node::$types['APPLICATION']:
+                break;
+            case Node::$types['MODULE']:
+                break;
+            case Node::$types['CONTROLLER']:
+                break;
+            case Node::$types['MODEL']:
+                break;
+            case Node::$types['VIEW']:
+                break;
+            case Node::$types['ACTION']:
+                break;
+            case Node::$types['FIELD']:
+                break;
+        }
+    }
+
     /**
      * 根据参数动态匹配赋值类的属性
      * @param array $params
@@ -367,7 +390,7 @@ class Node
     {
         foreach ($params as $key => $param) {
             if (property_exists($this, $key)) {
-
+                $this->$key = $param;
             }
         }
     }
@@ -428,14 +451,6 @@ class Node
      * 根据节点属性生成其他内容
      */
     protected function generateMISC()
-    {
-
-    }
-}
-
-class NodeFactory
-{
-    public static function createNode()
     {
 
     }
@@ -767,6 +782,32 @@ class Field extends Node
     protected $is_required = false;
     //字段值必须唯一
     protected $is_unique = false;
+
+    /**
+     *
+     * @param $field
+     * @return string
+     */
+    public static function makeSQL($field)
+    {
+        if (preg_match('/_id$/', $field['name'])) {
+            return '`{{FIELD_NAME}}` bigint(20) NOT NULL COMMENT \'{{FIELD_TITLE}}\',';
+        }
+
+        if (preg_match('/^is_/', $field['name'])) {
+            return '`{{FIELD_NAME}}` tinyint(1) NOT NULL DEFAULT \'0\' COMMENT \'{{FIELD_TITLE}}\',';
+        }
+
+        if ($field['rule'] == 'datetime') {
+            return '`{{FIELD_NAME}}` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT \'{{FIELD_TITLE}}\',';
+        }
+
+        if ($field['rule'] == 'text') {
+            return '`{{FIELD_NAME}}` TEXT COMMENT \'{{FIELD_TITLE}}\',';
+        }
+
+        return '`{{FIELD_NAME}}` varchar(100) NOT NULL COMMENT \'{{FIELD_TITLE}}\',';
+    }
 }
 
 class Action extends Node
@@ -776,7 +817,7 @@ class Action extends Node
 
 class Relations
 {
-    static protected $relation_types = [
+    static public $relation_types = [
         'hasOne',
         'hasMany',
         'belongsTo',
