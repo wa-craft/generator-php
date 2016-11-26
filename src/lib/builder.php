@@ -175,6 +175,16 @@ class Builder
         }
 
         foreach ($applications as $application) {
+            //如果应用并非是数组，则视为引用已经设定的数组
+            if (!is_array($application)) {
+                $application_file = SRC_PATH . '/dat/$application/' . $application.'.php';
+                if(is_file($application_file)) {
+                    $application = require $application_file;
+                } else {
+                    continue;
+                }
+            }
+
             //创建目录
             $_app_path = $this->target_path . '/' . APP_PATH . '/' . $application['name'];
             echo "INFO: creating application directory: {$_app_path} ..." . PHP_EOL;
@@ -197,7 +207,6 @@ class Builder
 
             $modules = $application['modules'];
             foreach ($modules as $module) {
-
                 //如果模块并非是数组，则视为引用已经设定的数组
                 if (!is_array($module)) {
                     $module_file = SRC_PATH . '/dat/modules/' . $module.'.php';
