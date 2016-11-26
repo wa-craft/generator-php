@@ -1,4 +1,7 @@
 <?php
+/**
+ * 预定义的 rbac 模块
+ */
 return [
     'name' => 'auth',
     'comment' => '默认模块',
