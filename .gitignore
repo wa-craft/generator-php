@@ -1,4 +1,4 @@
 /vendor/
 /.idea/
 /deploy/
-/composer.lock
+!/composer.lock
