@@ -197,6 +197,17 @@ class Builder
 
             $modules = $application['modules'];
             foreach ($modules as $module) {
+
+                //如果模块并非是数组，则视为引用已经设定的数组
+                if (!is_array($module)) {
+                    $module_file = SRC_PATH . '/dat/modules/' . $module.'.php';
+                    if(is_file($module_file)) {
+                        $module = require $module_file;
+                    } else {
+                        continue;
+                    }
+                }
+
                 //创建模块目录
                 $_module_path = $_app_path . '/' . $module['name'];
                 FileHelper::mkdir($_module_path);
