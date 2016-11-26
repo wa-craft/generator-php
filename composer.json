@@ -1,22 +1,23 @@
 {
-    "name": "goldeagle/think-builder",
-    "description": "a cli tool to build applications for thinkphp v5",
-    "type": "project",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "bison",
-            "email": "1308362@gmail.com"
-        }
-    ],
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
-        }
-    },
-    "minimum-stability": "dev",
-    "require": {
-        "nategood/commando": "*"
+  "name": "goldeagle/think-builder",
+  "description": "a cli tool to build applications for thinkphp v5",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "bison",
+      "email": "1308362@gmail.com"
     }
+  ],
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">= 5.4",
+    "nategood/commando": "*"
+  }
 }
