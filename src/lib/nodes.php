@@ -28,42 +28,13 @@ class Node
     public static function getInstance($type = 0, $params = [])
     {
         $instance = null;
-        switch ($type) {
-            case Node::$types['PROJECT']:
-                $instance = new Project();
-                if (count($params) != 0) $instance->init($params);
-                break;
-            case Node::$types['APPLICATION']:
-                $instance = new Application();
-                if (count($params) != 0) $instance->init($params);
-                break;
-            case Node::$types['MODULE']:
-                $instance = new Module();
-                if (count($params) != 0) $instance->init($params);
-                break;
-            case Node::$types['CONTROLLER']:
-                $instance = new Controller();
-                if (count($params) != 0) $instance->init($params);
-                break;
-            case Node::$types['MODEL']:
-                $instance = new Model();
-                if (count($params) != 0) $instance->init($params);
-                break;
-            case Node::$types['VIEW']:
-                $instance = new View();
-                if (count($params) != 0) $instance->init($params);
-                break;
-            case Node::$types['ACTION']:
-                $instance = new Action();
-                if (count($params) != 0) $instance->init($params);
-                break;
-            case Node::$types['FIELD']:
-                $instance = new Field();
-                if (count($params) != 0) $instance->init($params);
-                break;
-            default:
-                $instance = new Project();
-                if (count($params) != 0) $instance->init($params);
+        $type = (count(self::$types) < $type) ? $type : 0;
+        $class_name = ucfirst(strtolower(self::$types[$type]));
+        if (class_exists($class_name)) {
+            $instance = new $class_name();
+            if (count($params) !== 0) {
+                $instance->init($params);
+            }
         }
         return $instance;
     }
