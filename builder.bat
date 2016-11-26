@@ -1,1 +1,0 @@
-php ./builder %1
