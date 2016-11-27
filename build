@@ -28,8 +28,8 @@ $cmd->option('d')
     ->aka('data')
     ->describedAs('define a project data file')
     ->default('./sample/forge.php')
-    ->map(function ($project) {
-        return $project;
+    ->map(function ($data) {
+        return $data;
     });
 
 //创建动作
