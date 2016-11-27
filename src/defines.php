@@ -1,6 +1,7 @@
 <?php
 //定义基本数据
 define('SRC_PATH', './src');
+define('PACKAGE_PATH', './pkg');
 define('TAR_ROOT_PATH', './deploy');
 define('APP_PATH', 'application');
 define('DBFILE_PATH', './database');

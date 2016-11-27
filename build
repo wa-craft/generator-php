@@ -53,6 +53,6 @@ $cmd->option('t')
 //进行创建
 $builder = new Builder();
 $builder->setConfigFromFile($cmd['config']);
-$builder->setDataFromFile($cmd['project']);
+$builder->setDataFromFile($cmd['data']);
 $builder->setTargetPath($cmd['target']);
 $builder->build();
