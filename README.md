@@ -22,18 +22,18 @@ a cli tool to build applications for thinkphp v5，
 ## 使用方法
 1. 定义 project 目录下面的项目文件。
 2. 获取 commando：`composer require nategood/commando`
-3. linux 下面执行 `./builder` ；windows 下执行 `./build.bat`
+3. linux 下面执行 `./build` ；windows 下执行 `./build.bat`
 
 >命令样例（linux）：
 
-`#./builder -c config.php -p forge -t ./tmp -a all`
+`#./build -c config.php -b ./sample/forge.php -t ./tmp -a all`
 
 ## builder 命令行参数
 ### `-c|--config`
 指定配置文件的路径，默认为 './src/config.php'
 
-### `-p|--project`
-指定项目数据文件的路径，不需要包含 .php 后缀，文件必须位于 ./project 目录下，默认为 './project/forge.php'
+### `-d|--data`
+指定项目数据文件的路径
 
 ### `-a|--actions`
 声明生成的动作，包括 'all|mvc|copy'，默认为'all'
