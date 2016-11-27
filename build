@@ -22,15 +22,16 @@ $cmd->option('c')
     ->map(function ($config) {
         return $config;
     });
+
 //项目
-$cmd->option('p')
-    ->aka('project')
-    ->describedAs('define a project data file, the file must exists in ./project.')
-    ->default('./project/forge.php')
+$cmd->option('d')
+    ->aka('data')
+    ->describedAs('define a project data file')
+    ->default('./sample/forge.php')
     ->map(function ($project) {
-        $file = './project/' . $project . '.php';
-        return $file;
+        return $project;
     });
+
 //创建动作
 $cmd->option('a')
     ->aka('actions')
@@ -39,6 +40,7 @@ $cmd->option('a')
     ->map(function ($actions) {
         return $actions;
     });
+
 //目标路径
 $cmd->option('t')
     ->aka('target')
@@ -48,6 +50,7 @@ $cmd->option('t')
         return $target;
     });
 
+//进行创建
 $builder = new Builder();
 $builder->setConfigFromFile($cmd['config']);
 $builder->setDataFromFile($cmd['project']);
