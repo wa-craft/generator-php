@@ -1,98 +1,49 @@
 <?php
-/*
- * 助手类
- */
-
+namespace thinkbuilder\helper;
 /**
- * Class File 与文件相关的助手类
+ * Class Template 模板管理类
  */
-class FileHelper
+class Template
 {
-    /**
-     * 判断目录是否存在，如果不存在则创建
-     * @param $path
-     */
-    public static function mkdir($path)
-    {
-        if (!is_dir($path)) {
-            mkdir($path, 0744);
-            echo "INFO: creating directory: {$path} ..." . PHP_EOL;
-        }
-    }
+    public static $templates = [
+        'portal' => '/php/index.tmpl',
+        'controller' => '/php/controller.tmpl',
+        'controller_action' => '/php/controller_action.tmpl',
+        'traits' => '/php/traits.tmpl',
+        'traits_action' => '/php/traits_action.tmpl',
+        'model' => '/php/model.tmpl',
+        'model_relation' => '/php/model_relation.tmpl',
+        'validate' => '/php/validate.tmpl',
+        'view_add' => '/html/add.html',
+        'view_index' => '/html/index.html',
+        'view_controller_index' => '/html/controller_index.html',
+        'view_mod' => '/html/mod.html',
+        'view_add_field' => '/html/add_field.html',
+        'view_index_field' => '/html/index_field.html',
+        'view_mod_field' => '/html/mod_field.html',
+        'view_login' => '/html/login.html',
+        'view_register' => '/html/register.html',
+        'view_logout' => '/html/logout.html',
+        'sql_table' => '/sql/table.sql',
+        'nginx' => '/misc/nginx_vhost',
+        'apache' => '/misc/apache_access',
+        'config' => '/php/config.tmpl',
+        'database' => '/php/database.tmpl'
+    ];
 
     /**
-     * 扫描某个路径下的所有文件，并拷贝到目标路径下
-     * @param $src_path
-     * @param $tar_path
-     */
-    public static function copyFiles($src_path, $tar_path)
-    {
-        FileHelper::mkdir($tar_path);
-
-        $files = scandir($src_path);
-        foreach ($files as $file) {
-            $src_file_name = $src_path . '/' . $file;
-            $tar_file_name = $tar_path . '/' . $file;
-            if (is_file($src_file_name)) {
-                copy($src_file_name, $tar_file_name);
-                echo "INFO: copying " . $file . "\n";
-            }
-        }
-    }
-}
-
-/**
- * Class ClassName 类名助手类
- */
-class ClassHelper {
-    /**
-     * 将模型的驼峰式命名方式转换为数据表的下划线命名方式
-     * @param $name
-     * @param $table_prefix
+     * 获取模板文件中的内容
+     * @param string $template_name
      * @return string
      */
-    public static function convertToTableName($name, $table_prefix)
+    public static function fetchTemplate(string $template_name)
     {
-        $s = $table_prefix . '_';
-
-        $array = [];
-        for ($i = 0; $i < strlen($name); $i++) {
-            if ($name[$i] == strtolower($name[$i])) {
-                $array[] = $name[$i];
-            } else {
-                if ($i > 0) {
-                    $array[] = '_';
-                }
-                $array[] = strtolower($name[$i]);
-            }
-        }
-
-        $s .= implode('', $array);
-
-        return $s;
+        $content = '';
+        if (key_exists($template_name, self::$templates))
+            $content = file_get_contents(TMPL_PATH . self::$templates[$template_name]);
+        return $content;
     }
 
-    /**
-     * 将数据表的下划线命名方式转换为模型的驼峰式命名方式
-     * @param string $name
-     * @param string $table_prefix
-     * @return string
-     */
-    public static function convertFromTableName($name, $table_prefix)
-    {
-        $s = '';
-        $name = str_replace($table_prefix, '', $name);
-        $names = explode('_', $name);
-        foreach ($names as $n) {
-            $s .= ucfirst($n);
-        }
-        return $s;
-    }
-}
-
-class TemplateHelper
-{
-    const tags = [];
     /**
      * 通过数组来修改模板
      * @param array $map
