@@ -1,6 +1,10 @@
 <?php
 namespace thinkbuilder\node;
 
+use thinkbuilder\helper\{
+    TemplateHelper, FileHelper
+};
+
 /**
  * Class Traits
  * @package thinkbuilder\node
@@ -16,13 +20,13 @@ class Traits extends Node
 
         $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
         $_class_name = $traits['name'];
-        $content = str_replace('{{NAME_SPACE}}', $_namespace, Template::fetchTemplate($index['name']));
+        $content = str_replace('{{NAME_SPACE}}', $_namespace, TemplateHelper::fetchTemplate($index['name']));
 
         //处理特征的方法
         if (isset($traits['actions'])) {
             $actions = $traits['actions'];
             foreach ($actions as $action) {
-                $content_action = Template::fetchTemplate('traits_action');
+                $content_action = TemplateHelper::fetchTemplate('traits_action');
                 $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
                 $content_action = str_replace('{{ACTION_COMMENT}}', $action['comment'], $content_action);
                 if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);

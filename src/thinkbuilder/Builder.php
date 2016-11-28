@@ -5,7 +5,9 @@ use thinkbuilder\node\{
     Action, Application, Controller, Field, Model, Module, Project, Relation, Traits, View, Validate
 };
 
-use thinkbuilder\helper\Template;
+use thinkbuilder\helper\{
+    TemplateHelper, FileHelper, ClassHelper
+};
 
 /**
  * Class Builder 构建程序
@@ -154,7 +156,7 @@ class Builder
 
         //装载模板文件
         echo "INFO: reading templates ..." . PHP_EOL;
-        $templates = Template::$templates;
+        $templates = TemplateHelper::$templates;
 
         //装载默认设置
         Builder::$defaults = $this->config['defaults'];
@@ -166,12 +168,12 @@ class Builder
 
         //生成 nginx 配置文件
         if ($build_actions['nginx']) {
-            TemplateHelper::write_nginx($profile_path, Template::fetchTemplate('nginx'), $project['domain'], $applications);
+            TemplateHelper::write_nginx($profile_path, TemplateHelper::fetchTemplate('nginx'), $project['domain'], $applications);
         }
 
         //生成 apache htaccess 配置文件
         if ($build_actions['apache']) {
-            TemplateHelper::write_apache($public_path, Template::fetchTemplate('apache'), $applications);
+            TemplateHelper::write_apache($public_path, TemplateHelper::fetchTemplate('apache'), $applications);
         }
 
         //解压资源文件

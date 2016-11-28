@@ -1,6 +1,11 @@
 <?php
 namespace thinkbuilder\node;
 
+use thinkbuilder\Builder;
+use thinkbuilder\helper\{
+    TemplateHelper, FileHelper
+};
+
 /**
  * Class Controller
  * @package thinkbuilder\node
@@ -49,14 +54,14 @@ class Controller extends Node
         })($module, $model, $defaults);
 
         $tags['DEFAULT_CONTROLLER'] = $extend_controller;
-        $content = TemplateHelper::parseTemplateTags($tags, Template::fetchTemplate($index['name']));
+        $content = TemplateHelper::parseTemplateTags($tags, TemplateHelper::fetchTemplate($index['name']));
 
         //处理与控制器相关的模板
         //处理控制器的方法
         if (isset($model['actions'])) {
             $actions = $model['actions'];
             foreach ($actions as $action) {
-                $content_action = Template::fetchTemplate('controller_action');
+                $content_action = TemplateHelper::fetchTemplate('controller_action');
                 $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
                 $content_action = str_replace('{{ACTION_COMMENT}}', $action['comment'], $content_action);
                 if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
@@ -77,7 +82,7 @@ class Controller extends Node
         }
         $tags['CONTROLLER_PARAMS'] = $content_field;
 
-        $content = TemplateHelper::parseTemplateTags($tags, Template::fetchTemplate($index['name']));
+        $content = TemplateHelper::parseTemplateTags($tags, TemplateHelper::fetchTemplate($index['name']));
 
         $_file = $path . '/' . $model['name'] . '.php';
 

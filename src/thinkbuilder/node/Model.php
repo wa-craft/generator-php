@@ -1,6 +1,10 @@
 <?php
 namespace thinkbuilder\node;
 
+use thinkbuilder\helper\{
+    TemplateHelper, FileHelper
+};
+
 /**
  * Class Model
  * @package thinkbuilder\node
@@ -32,7 +36,7 @@ class Model extends Node
         }
         if (isset($model['comment'])) $tags['MODEL_COMMENT'] = $model['comment'];
 
-        $content = $content_relation = TemplateHelper::parseTemplateTags($tags, Template::fetchTemplate($index['name']));
+        $content = $content_relation = TemplateHelper::parseTemplateTags($tags, TemplateHelper::fetchTemplate($index['name']));
 
         //生成 relations
         if (isset($model['relations'])) {
@@ -46,7 +50,7 @@ class Model extends Node
                         'RELATION_THIS_KEY' => $relation['this_key'],
                         'RELATION_THAT_KEY' => $relation['that_key']
                     ],
-                    Template::fetchTemplate('model_relation')
+                    TemplateHelper::fetchTemplate('model_relation')
                 );
                 $content = str_replace('{{RELATIONS}}', $content_relation . "\n{{RELATIONS}}", $content);
             }

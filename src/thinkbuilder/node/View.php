@@ -1,6 +1,11 @@
 <?php
 namespace thinkbuilder\node;
 
+use thinkbuilder\Builder;
+use thinkbuilder\helper\{
+    TemplateHelper, FileHelper
+};
+
 /**
  * Class View
  * @package thinkbuilder\node
@@ -16,7 +21,7 @@ class View extends Node
         FileHelper::mkdir($path);
 
         //判断是否是独立控制器
-        $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), Template::fetchTemplate('view_' . $index['name']));
+        $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), TemplateHelper::fetchTemplate('view_' . $index['name']));
         $content = str_replace('{{MODULE_NAME}}', strtolower($module['name']), $content);
         $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
         $content = str_replace('{{MODEL_COMMENT}}', $model['comment'], $content);
@@ -59,7 +64,7 @@ class View extends Node
                         'IS_REQUIRED' => $_is_required
                     ];
 
-                    $content = str_replace('{{FIELD_LOOP}}', TemplateHelper::parseTemplateTags($tags_field, Template::fetchTemplate('view_' . $index['name'] . '_field')) . "\n{{FIELD_LOOP}}", $content);
+                    $content = str_replace('{{FIELD_LOOP}}', TemplateHelper::parseTemplateTags($tags_field, TemplateHelper::fetchTemplate('view_' . $index['name'] . '_field')) . "\n{{FIELD_LOOP}}", $content);
                 }
                 $content = str_replace("\n{{FIELD_LOOP}}", '', $content);
             }

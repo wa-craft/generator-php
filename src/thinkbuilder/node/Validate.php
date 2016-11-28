@@ -1,6 +1,11 @@
 <?php
 namespace thinkbuilder\node;
 
+use thinkbuilder\Builder;
+use thinkbuilder\helper\{
+    TemplateHelper, FileHelper
+};
+
 /**
  * Class Validate
  * @package thinkbuilder\node
@@ -27,7 +32,7 @@ class Validate extends Node
             $tags['MODEL_NAME'] = $model['name'];
         }
         if (isset($model['comment'])) $tags['MODEL_COMMENT'] = $model['comment'];
-        $content = TemplateHelper::parseTemplateTags($tags, Template::fetchTemplate($index['name']));
+        $content = TemplateHelper::parseTemplateTags($tags, TemplateHelper::fetchTemplate($index['name']));
 
         //处理校验器相关的模板
         $content_field = '';

@@ -3,7 +3,7 @@ namespace thinkbuilder\helper;
 /**
  * Class Template 模板管理类
  */
-class Template
+class TemplateHelper
 {
     public static $templates = [
         'portal' => '/php/index.tmpl',
@@ -73,7 +73,7 @@ class Template
         FileHelper::mkdir($path);
 
         //判断是否是独立控制器
-        $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), Template::fetchTemplate('view_' . $index['name']));
+        $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), TemplateHelper::fetchTemplate('view_' . $index['name']));
         $content = str_replace('{{MODULE_NAME}}', strtolower($module['name']), $content);
         $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
         $content = str_replace('{{MODEL_COMMENT}}', $model['comment'], $content);
@@ -93,7 +93,7 @@ class Template
                 $content = str_replace('{{TD_LOOP}}', $_td, $content);
             } else {
                 foreach ($fields as $field) {
-                    $content_field = Template::fetchTemplate('view_' . $index['name'] . '_field');
+                    $content_field = TemplateHelper::fetchTemplate('view_' . $index['name'] . '_field');
                     $content_field = str_replace('{{FORM_FIELD}}', TemplateHelper::getFieldHTML($field, $index['name']), $content_field);
                     $content_field = str_replace('{{FIELD_NAME}}', $field['name'], $content_field);
                     $content_field = str_replace('{{FIELD_TITLE}}', $field['title'], $content_field);
@@ -138,7 +138,7 @@ class Template
         FileHelper::mkdir($path);
 
         $_class_name = $model['name'];
-        $content = str_replace('{{APP_NAME}}', $namespace, Template::fetchTemplate($index['name']));
+        $content = str_replace('{{APP_NAME}}', $namespace, TemplateHelper::fetchTemplate($index['name']));
         $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', ClassHelper::convertToTableName($model['name'], $namespace), $content) : $content;
         $content = isset($model['comment']) ? str_replace('{{MODEL_COMMENT}}', $model['comment'], $content) : $content;
 
@@ -174,7 +174,7 @@ class Template
     {
         $file = $path . '/' . strtolower($file_name) . '.php';
 
-        $content = Template::fetchTemplate($file_name);
+        $content = TemplateHelper::fetchTemplate($file_name);
         foreach ($params as $key => $param) {
             $content = str_replace("{{{$key}}}", $param, $content);
         }
@@ -198,7 +198,7 @@ class Template
 
         $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
         $_class_name = $model['name'];
-        $content = str_replace('{{NAME_SPACE}}', $_namespace, Template::fetchTemplate($index['name']));
+        $content = str_replace('{{NAME_SPACE}}', $_namespace, TemplateHelper::fetchTemplate($index['name']));
         $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
         $content = isset($model['name']) ? str_replace('{{APP_NAME}}', $model['name'], $content) : $content;
         $content = isset($model['name']) ? str_replace('{{MODEL_NAME}}', $model['name'], $content) : $content;
@@ -211,7 +211,7 @@ class Template
             if (isset($model['actions'])) {
                 $actions = $model['actions'];
                 foreach ($actions as $action) {
-                    $content_action = Template::fetchTemplate('controller_action');
+                    $content_action = TemplateHelper::fetchTemplate('controller_action');
                     $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
                     $content_action = str_replace('{{ACTION_COMMENT}}', $action['comment'], $content_action);
                     if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
