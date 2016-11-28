@@ -1,4 +1,10 @@
 <?php
+namespace thinkbuilder\node;
+
+/**
+ * Class Traits
+ * @package thinkbuilder\node
+ */
 class Traits extends Node
 {
     //特征下的方法

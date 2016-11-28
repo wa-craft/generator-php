@@ -1,4 +1,10 @@
 <?php
+namespace thinkbuilder\node;
+
+/**
+ * Class Module
+ * @package thinkbuilder\node
+ */
 class Module extends Node
 {
     //模块下的控制器

@@ -2,7 +2,7 @@
 /**
  * 自动装载程序
  */
-
+//TODO 使用 generator 遍历目录下的所有 php 文件，并包含
 $src_path = SRC_PATH . '/lib';
 $files = scandir($src_path);
 foreach ($files as $file) {

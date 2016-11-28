@@ -1,4 +1,10 @@
 <?php
+namespace thinkbuilder\node;
+
+/**
+ * Class View
+ * @package thinkbuilder\node
+ */
 class View extends Node
 {
     //视图使用的布局

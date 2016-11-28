@@ -1,7 +1,9 @@
 <?php
+namespace thinkbuilder\node;
 
 /**
- * Class Node 节点类，所有节点对象的夫类
+ * Class Node 节点类，所有节点对象的父类
+ * @package thinkbuilder\node
  */
 class Node
 {

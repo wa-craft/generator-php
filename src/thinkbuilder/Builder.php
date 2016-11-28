@@ -1,4 +1,11 @@
 <?php
+namespace thinkbuilder;
+
+use thinkbuilder\node\{
+    Action, Application, Controller, Field, Model, Module, Project, Relation, Traits, View, Validate
+};
+
+use thinkbuilder\helper\Template;
 
 /**
  * Class Builder 构建程序
@@ -177,8 +184,8 @@ class Builder
         foreach ($applications as $application) {
             //如果应用并非是数组，则视为引用已经设定的数组
             if (!is_array($application)) {
-                $application_file = PACKAGE_PATH . '/$application/' . $application.'.php';
-                if(is_file($application_file)) {
+                $application_file = PACKAGE_PATH . '/$application/' . $application . '.php';
+                if (is_file($application_file)) {
                     $application = require $application_file;
                 } else {
                     continue;
@@ -209,8 +216,8 @@ class Builder
             foreach ($modules as $module) {
                 //如果模块并非是数组，则视为引用已经设定的数组
                 if (!is_array($module)) {
-                    $module_file = PACKAGE_PATH . '/modules/' . $module.'.php';
-                    if(is_file($module_file)) {
+                    $module_file = PACKAGE_PATH . '/modules/' . $module . '.php';
+                    if (is_file($module_file)) {
                         $module = require $module_file;
                     } else {
                         continue;

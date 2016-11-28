@@ -1,4 +1,10 @@
 <?php
+namespace thinkbuilder\node;
+
+/**
+ * Class Application
+ * @package thinkbuilder\node
+ */
 class Application extends Node
 {
     //应用的根命名空间

@@ -1,4 +1,10 @@
 <?php
+namespace thinkbuilder\node;
+
+/**
+ * Class Validate
+ * @package thinkbuilder\node
+ */
 class Validate extends Node
 {
     //校验器下的规则

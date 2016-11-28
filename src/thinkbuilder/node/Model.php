@@ -1,4 +1,10 @@
 <?php
+namespace thinkbuilder\node;
+
+/**
+ * Class Model
+ * @package thinkbuilder\node
+ */
 class Model extends Node
 {
     //模型下的字段

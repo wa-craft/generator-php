@@ -1,4 +1,10 @@
 <?php
+namespace thinkbuilder\node;
+
+/**
+ * Class Field
+ * @package thinkbuilder\node
+ */
 class Field extends Node
 {
     //预定义的校验规则

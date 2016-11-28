@@ -1,4 +1,10 @@
 <?php
+namespace thinkbuilder\node;
+
+/**
+ * Class Relation
+ * @package thinkbuilder\node
+ */
 class Relation
 {
     static public $relation_types = [
