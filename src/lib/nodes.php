@@ -189,14 +189,14 @@ class Controller extends Node
         })($module, $model, $defaults);
 
         $tags['DEFAULT_CONTROLLER'] = $extend_controller;
-        $content = TemplateHelper::parseTemplateTags($tags, $templates[$index['name']]);
+        $content = TemplateHelper::parseTemplateTags($tags, Template::fetchTemplate($index['name']));
 
         //处理与控制器相关的模板
         //处理控制器的方法
         if (isset($model['actions'])) {
             $actions = $model['actions'];
             foreach ($actions as $action) {
-                $content_action = $templates['controller_action'];
+                $content_action = Template::fetchTemplate('controller_action');
                 $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
                 $content_action = str_replace('{{ACTION_COMMENT}}', $action['comment'], $content_action);
                 if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
@@ -217,7 +217,7 @@ class Controller extends Node
         }
         $tags['CONTROLLER_PARAMS'] = $content_field;
 
-        $content = TemplateHelper::parseTemplateTags($tags, $templates[$index['name']]);
+        $content = TemplateHelper::parseTemplateTags($tags, Template::fetchTemplate($index['name']));
 
         $_file = $path . '/' . $model['name'] . '.php';
 
@@ -237,13 +237,13 @@ class Traits extends Node
 
         $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
         $_class_name = $traits['name'];
-        $content = str_replace('{{NAME_SPACE}}', $_namespace, $templates[$index['name']]);
+        $content = str_replace('{{NAME_SPACE}}', $_namespace, Template::fetchTemplate($index['name']));
 
         //处理特征的方法
         if (isset($traits['actions'])) {
             $actions = $traits['actions'];
             foreach ($actions as $action) {
-                $content_action = $templates['traits_action'];
+                $content_action = Template::fetchTemplate('traits_action');
                 $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
                 $content_action = str_replace('{{ACTION_COMMENT}}', $action['comment'], $content_action);
                 if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
@@ -289,7 +289,7 @@ class Model extends Node
         }
         if (isset($model['comment'])) $tags['MODEL_COMMENT'] = $model['comment'];
 
-        $content = $content_relation = TemplateHelper::parseTemplateTags($tags, $templates[$index['name']]);
+        $content = $content_relation = TemplateHelper::parseTemplateTags($tags, Template::fetchTemplate($index['name']));
 
         //生成 relations
         if (isset($model['relations'])) {
@@ -303,7 +303,7 @@ class Model extends Node
                         'RELATION_THIS_KEY' => $relation['this_key'],
                         'RELATION_THAT_KEY' => $relation['that_key']
                     ],
-                    $templates['model_relation']
+                    Template::fetchTemplate('model_relation')
                 );
                 $content = str_replace('{{RELATIONS}}', $content_relation . "\n{{RELATIONS}}", $content);
             }
@@ -339,7 +339,7 @@ class Validate extends Node
             $tags['MODEL_NAME'] = $model['name'];
         }
         if (isset($model['comment'])) $tags['MODEL_COMMENT'] = $model['comment'];
-        $content = TemplateHelper::parseTemplateTags($tags, $templates[$index['name']]);
+        $content = TemplateHelper::parseTemplateTags($tags, Template::fetchTemplate($index['name']));
 
         //处理校验器相关的模板
         $content_field = '';
@@ -350,7 +350,7 @@ class Validate extends Node
                 $content_field .= $field['required'] ? 'require|' : '';
                 $content_field .= $field['rule'] . '\',\'';
                 $content_field .= $field['required'] ? '必须输入：' . $field['title'] . '|' : '';
-                $content_field .= $defaults['rules'][$field['rule']];
+                $content_field .= Field::$rules[$field['rule']];
                 $content_field .= '\'],';
             }
             $content = str_replace('{{VALIDATE_FIELDS}}', $content_field . "\n{{VALIDATE_FIELDS}}", $content);
@@ -376,7 +376,7 @@ class View extends Node
         FileHelper::mkdir($path);
 
         //判断是否是独立控制器
-        $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), $templates['view_' . $index['name']]);
+        $content = str_replace('{{MODEL_NAME}}', strtolower($model['name']), Template::fetchTemplate('view_' . $index['name']));
         $content = str_replace('{{MODULE_NAME}}', strtolower($module['name']), $content);
         $content = isset($module['comment']) ? str_replace('{{MODULE_COMMENT}}', $module['comment'], $content) : $content;
         $content = str_replace('{{MODEL_COMMENT}}', $model['comment'], $content);
@@ -419,7 +419,7 @@ class View extends Node
                         'IS_REQUIRED' => $_is_required
                     ];
 
-                    $content = str_replace('{{FIELD_LOOP}}', TemplateHelper::parseTemplateTags($tags_field, $templates['view_' . $index['name'] . '_field']) . "\n{{FIELD_LOOP}}", $content);
+                    $content = str_replace('{{FIELD_LOOP}}', TemplateHelper::parseTemplateTags($tags_field, Template::fetchTemplate('view_' . $index['name'] . '_field')) . "\n{{FIELD_LOOP}}", $content);
                 }
                 $content = str_replace("\n{{FIELD_LOOP}}", '', $content);
             }
@@ -433,6 +433,21 @@ class View extends Node
 
 class Field extends Node
 {
+    //预定义的校验规则
+    public static $rules = [
+        'alpha' => '英文字符',
+        'number' => '数字',
+        'chsAlpha' => '中文或英文字符',
+        'text' => '任何文字',
+        'datetime' => '日期时间',
+        'alphaDash' => '英文字符与下划线',
+        'email' => '电子邮箱',
+        'boolean' => '是/否',
+        'url' => '合法的 uri 网址',
+        'ip' => '合法的 ip 地址',
+        'money' => '金额'
+    ];
+
     //字段的校验规则
     protected $rule = '';
     //字段是否必须
