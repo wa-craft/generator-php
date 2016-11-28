@@ -2,3 +2,4 @@
 /.idea/
 /deploy/
 !/composer.lock
+/test.php
