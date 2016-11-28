@@ -48,7 +48,7 @@ class View extends Node
                         } else {
                             $_comment = '请输入';
                         }
-                        $_comment .= $field['title'] . '，必须是' . $defaults['rules'][$field['rule']];
+                        $_comment .= $field['title'] . '，必须是' . Field::$rules[$field['rule']];
                     } else {
                         $_comment = '';
                     }

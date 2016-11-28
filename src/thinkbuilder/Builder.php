@@ -48,7 +48,7 @@ class Builder
         //是否生成目录数组，暂时保留未应用
         'menu' => true,
         //是否解压资源文件
-        'decompress_assets' => false,
+        'decompress_assets' => true,
         //是否最后运行composer update命令
         'run_composer' => false,
         //是否最后运行 bower update 命令
@@ -178,7 +178,7 @@ class Builder
 
         //解压资源文件
         if ($build_actions['decompress_assets']) {
-            $_assets_file = ASSETS_PATH . '/assets/' . $defaults['default_theme'] . '/assets.tar.bz2';
+            $_assets_file = ASSETS_PATH . '/themes/' .$this->config['theme']. '/assets.tar.bz2';
             $cmd = 'tar xvjf ' . $_assets_file . ' -C' . $public_path;
             shell_exec($cmd);
         }
@@ -207,7 +207,7 @@ class Builder
 
             if ($build_actions['copy']) {
                 //拷贝应用文件
-                FileHelper::copyFiles(ASSETS_PATH . '/application', $_app_path);
+                FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/application', $_app_path);
             }
 
             //写入 config / database 配置文件
@@ -336,7 +336,7 @@ class Builder
                 }
                 if ($build_actions['copy']) {
                     //拷贝基础文件
-                    FileHelper::copyFiles(ASSETS_PATH . '/html/layout', $_view_path . '/layout');
+                    FileHelper::copyFiles(ASSETS_PATH . '/themes/'.$this->config['theme'].'/layout', $_view_path . '/layout');
                 }
             }
         }
