@@ -147,7 +147,7 @@ class Builder
 
         //装载模板文件
         echo "INFO: reading templates ..." . PHP_EOL;
-        $templates = $this->config['templates'];
+        $templates = Template::$templates;
 
         //装载默认设置
         Builder::$defaults = $this->config['defaults'];
@@ -159,17 +159,17 @@ class Builder
 
         //生成 nginx 配置文件
         if ($build_actions['nginx']) {
-            TemplateHelper::write_nginx($profile_path, $templates['nginx'], $project['domain'], $applications);
+            TemplateHelper::write_nginx($profile_path, Template::fetchTemplate('nginx'), $project['domain'], $applications);
         }
 
         //生成 apache htaccess 配置文件
         if ($build_actions['apache']) {
-            TemplateHelper::write_apache($public_path, $templates['apache'], $applications);
+            TemplateHelper::write_apache($public_path, Template::fetchTemplate('apache'), $applications);
         }
 
         //解压资源文件
         if ($build_actions['decompress_assets']) {
-            $_assets_file = SHARE_PATH . '/assets/' . $defaults['default_theme'] . '/assets.tar.bz2';
+            $_assets_file = ASSETS_PATH . '/assets/' . $defaults['default_theme'] . '/assets.tar.bz2';
             $cmd = 'tar xvjf ' . $_assets_file . ' -C' . $public_path;
             shell_exec($cmd);
         }
@@ -198,7 +198,7 @@ class Builder
 
             if ($build_actions['copy']) {
                 //拷贝应用文件
-                FileHelper::copyFiles(SHARE_PATH . '/application', $_app_path);
+                FileHelper::copyFiles(ASSETS_PATH . '/application', $_app_path);
             }
 
             //写入 config / database 配置文件
@@ -327,7 +327,7 @@ class Builder
                 }
                 if ($build_actions['copy']) {
                     //拷贝基础文件
-                    FileHelper::copyFiles(SHARE_PATH . '/html/layout', $_view_path . '/layout');
+                    FileHelper::copyFiles(ASSETS_PATH . '/html/layout', $_view_path . '/layout');
                 }
             }
         }
