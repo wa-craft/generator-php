@@ -51,7 +51,7 @@ $cmd->option('t')
     });
 
 //进行创建
-$builder = new Builder();
+$builder = new \thinkbuilder\Builder();
 $builder->setConfigFromFile($cmd['config']);
 $builder->setDataFromFile($cmd['data']);
 $builder->setTargetPath($cmd['target']);
