@@ -6,6 +6,8 @@
 //读取相关程序
 require __DIR__."/src/defines.php";
 require __DIR__."/src/autoload.php";
+
+if(!file_exists(__DIR__."/vendor/autoload.php")) shell_exec('composer update');
 require __DIR__."/vendor/autoload.php";
 
 //设置命令
