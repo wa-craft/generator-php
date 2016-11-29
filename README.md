@@ -22,6 +22,7 @@ a cli tool to build applications for thinkphp v5，
 
 ## 环境需求
 * 操作系统为 Linux | Windows | macOS
+* Git 命令
 * PHP 7.0 以上版本
 * PHP 需要加入 mb_string 支持
 * PHP 需要加入 openssl 支持
