@@ -20,6 +20,12 @@ a cli tool to build applications for thinkphp v5，
 * 自动生成 .htaccess 配置文件
 * 完备的文档（TODO）
 
+## 环境需求
+* 操作系统为 Linux | Windows | macOS
+* PHP 7.0 以上版本
+* PHP 需要加入 mb_string 支持
+* PHP 需要加入 openssl 支持
+
 ## 使用方法
 1. 定义 project 目录下面的项目文件。
 2. 获取 commando：`composer update`
