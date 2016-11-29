@@ -9,4 +9,4 @@ define('PROFILE_PATH', './profile');
 define('TMPL_PATH', './template');
 define('PUB_PATH', './public');
 define('ASSETS_PATH', './assets');
-define('ROOT_REPOS', 'https://github.com/goldeagle/bforge-think');
+define('ROOT_REPOS', 'goldeagle/bforge-think');

@@ -24,6 +24,8 @@ class Builder
     protected $target_path = '';
     //默认值
     public static $defaults = [];
+    //默认的 git 仓库
+    public $repository = '';
     //创建设置
     protected $actions = [
         //是否生成入口文件
@@ -55,7 +57,7 @@ class Builder
         'run_bower' => false
     ];
     //版本
-    protected $version = '1.2.0';
+    protected $version = '1.3.0';
 
     /**
      * 通过数组设置项目配置信息
@@ -139,7 +141,7 @@ class Builder
         $build_actions = $this->actions;
 
         //使用 git clone 创建初始目录结构
-        $cmd = 'git clone ' . ROOT_REPOS . ' ' . $this->target_path . ' && ' . 'rm -rf ' . $this->target_path . '/.git';
+        $cmd = 'git clone ' . $this->repository . ' ' . $this->target_path . ' && ' . 'rm -rf ' . $this->target_path . '/.git';
         shell_exec($cmd);
 
         //创建基本目录

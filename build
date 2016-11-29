@@ -4,11 +4,11 @@
  * thinkphp v5 脚手架创建工具
  */
 //读取相关程序
-require __DIR__."/src/defines.php";
-require __DIR__."/src/autoload.php";
+require __DIR__ . "/src/defines.php";
+require __DIR__ . "/src/autoload.php";
 
-if(!file_exists(__DIR__."/vendor/autoload.php")) shell_exec('composer update');
-require __DIR__."/vendor/autoload.php";
+if (!file_exists(__DIR__ . "/vendor/autoload.php")) shell_exec('composer update');
+require __DIR__ . "/vendor/autoload.php";
 
 //设置命令
 $cmd = new \Commando\Command();
@@ -52,9 +52,20 @@ $cmd->option('t')
         return $target;
     });
 
+//指定应用目录的仓库
+$cmd->option('r')
+    ->aka('repository')
+    ->describedAs('define a thinkphp base application structure, default is : https://github.com/' . ROOT_REPOS)
+    ->default('https://github.com/' . ROOT_REPOS)
+    ->map(function ($repository) {
+        return 'https://github.com/' .$repository;
+    });
+
+
 //进行创建
 $builder = new \thinkbuilder\Builder();
 $builder->setConfigFromFile($cmd['config']);
 $builder->setDataFromFile($cmd['data']);
 $builder->setTargetPath($cmd['target']);
+$builder->repository = $cmd['repository'];
 $builder->build();
