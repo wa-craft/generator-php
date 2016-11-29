@@ -3,6 +3,13 @@
  * 自动装载程序
  */
 
+/**
+ * 类的自动注册方法
+ */
+spl_autoload_register(function ($class) {
+    include classNameToPath($class);
+});
+
 //自动装载文件中的类
 $src_path = SRC_PATH . '/thinkbuilder';
 
@@ -13,13 +20,6 @@ foreach (scan($src_path) as $class => $file) {
         }
     }
 }
-
-/**
- * 类的自动注册程序
- */
-spl_autoload_register(function ($class) {
-    include classNameToPath($class);
-});
 
 /**
  * 迭代遍历并返回指定目录下的所有文件（非目录）

@@ -4,9 +4,9 @@
  * thinkphp v5 脚手架创建工具
  */
 //读取相关程序
-require "./src/defines.php";
-require "./src/autoload.php";
-require "./vendor/autoload.php";
+require __DIR__."/src/defines.php";
+require __DIR__."/src/autoload.php";
+require __DIR__."/vendor/autoload.php";
 
 //设置命令
 $cmd = new \Commando\Command();
