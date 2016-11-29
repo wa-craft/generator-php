@@ -29,7 +29,7 @@ a cli tool to build applications for thinkphp v5，
 * 拷贝到 /usr/local/bin 目录下，
 * 并改名为：/usr/local/bin/composer
 * 记得赋予可执行权限：
-`#chmod a+x /usr/local/bin/composer`
+`#chmod a+x /usr/local/bin/composer` 
 #### 2.1.3. 安装 PHP
 `#apt instal php7.0-mbstring php7.0-ssl php7.0-fpm php7.0-curl`
 
@@ -54,7 +54,7 @@ a cli tool to build applications for thinkphp v5，
 #### 2.3.1 安装 homebrew
 `/#sudo usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 #### 2.3.2 安装 git
-macOS 一般默认都安装了 git，不过也可以 `#sudo brew install git`
+macOS 一般默认都安装了 git，不过也可以 `#sudo brew install git` 
 #### 2.3.3 安装 composer
 `#sudo brew install josegonzalez/php/composer`
 #### 2.3.4 安装 PHP
