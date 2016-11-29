@@ -24,12 +24,14 @@ a cli tool to build applications for thinkphp v5，
 ### 2.1. Linux （以 Debian 为例）
 #### 2.1.1. 安装 git
 `#apt install git`
+
 #### 2.1.2. 安装 composer
 * 去 getcomposer.org 下载 composer.phar 文件
 * 拷贝到 /usr/local/bin 目录下，
 * 并改名为：/usr/local/bin/composer
 * 记得赋予可执行权限：
 `#chmod a+x /usr/local/bin/composer` 
+
 #### 2.1.3. 安装 PHP
 `#apt instal php7.0-mbstring php7.0-ssl php7.0-fpm php7.0-curl`
 
@@ -38,12 +40,14 @@ a cli tool to build applications for thinkphp v5，
 * 去 [https://git-for-windows.github.io/](https://git-for-windows.github.io/) 下载
 * 安装 git for windows，例如安装到 d:\env\git 目录下
 * 记得把路径加入到 path 环境变量，例如 d:\env\git\bin
+
 #### 2.2.2. 安装 composer
 * 去 getcomposer.org 下载 composer.phar 文件
 * 下载到指定目录，例如 d:\env\composer
 * 创建一个批处理文件，例如 d:\env\composer\composer.bat
 写入：`@php "%~dp0composer.phar" %*` 到这个批处理文件
 * 把路径加入到 path 环境变量，例如 d:\env\composer
+
 #### 2.2.3. 安装 PHP
 * 去 [http://windows.php.net/download#php-7.0](http://windows.php.net/download#php-7.0) 下载最新版本的 PHP
 * 安装到本地，例如 d:\env\php
@@ -53,10 +57,13 @@ a cli tool to build applications for thinkphp v5，
 ### 2.3. macOS
 #### 2.3.1 安装 homebrew
 `/#sudo usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+
 #### 2.3.2 安装 git
 macOS 一般默认都安装了 git，不过也可以 `#sudo brew install git` 
+
 #### 2.3.3 安装 composer
 `#sudo brew install josegonzalez/php/composer`
+
 #### 2.3.4 安装 PHP
 `#sudo brew install php70
  --with-fpm
