@@ -36,22 +36,29 @@ class Field extends Node
      */
     public static function makeSQL($field)
     {
+        //字段是否必须
+        $null_string = (array_key_exists('required', $field)) ? ($field['required'] ? ' NOT NULL ' : '') : '';
+
         if (preg_match('/_id$/', $field['name'])) {
-            return '`{{FIELD_NAME}}` bigint(20) NOT NULL COMMENT \'{{FIELD_TITLE}}\',';
+            return "`{{FIELD_NAME}}` bigint(20) $null_string COMMENT '{{FIELD_TITLE}}',";
         }
 
         if (preg_match('/^is_/', $field['name'])) {
-            return '`{{FIELD_NAME}}` tinyint(1) NOT NULL DEFAULT \'0\' COMMENT \'{{FIELD_TITLE}}\',';
+            $default = (array_key_exists('default', $field)) ? ($field['default'] ? '\'1\'' : '\'0\'') : '\'0\'';
+            return "{{FIELD_NAME}}` tinyint(1) $null_string DEFAULT ' . $default . ' COMMENT '{{FIELD_TITLE}}',";
         }
 
         if ($field['rule'] == 'datetime') {
-            return '`{{FIELD_NAME}}` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT \'{{FIELD_TITLE}}\',';
+            return "{{FIELD_NAME}}` datetime $null_string DEFAULT CURRENT_TIMESTAMP COMMENT '{{FIELD_TITLE}}',";
         }
 
         if ($field['rule'] == 'text') {
-            return '`{{FIELD_NAME}}` TEXT COMMENT \'{{FIELD_TITLE}}\',';
+            return "{{FIELD_NAME}}` TEXT COMMENT '{{FIELD_TITLE}}',";
         }
 
-        return '`{{FIELD_NAME}}` varchar(100) NOT NULL COMMENT \'{{FIELD_TITLE}}\',';
+        $default = (array_key_exists('default', $field)) ? ' DEFAULT \'' . $field['default'] . '\' ' : '';
+        $null_string = $default !== '' ? $default : $null_string;
+
+        return "{{FIELD_NAME}}` varchar(100) $null_string COMMENT '{{FIELD_TITLE}}',";
     }
 }
