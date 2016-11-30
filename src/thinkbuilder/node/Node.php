@@ -7,6 +7,7 @@ namespace thinkbuilder\node;
  */
 class Node
 {
+    //节点类型与定义
     static public $types = [
         'PROJECT',
         'APPLICATION',
@@ -17,7 +18,7 @@ class Node
         'ACTION',
         'FIELD'
     ];
-    //节点类型，来自于 $types
+    //当前节点类型，来自于 $types
     protected $type = 0;
     //节点名称，英文小写
     protected $name = '';
@@ -87,33 +88,41 @@ class Node
 
     /**
      * 根据节点属性生成HTML内容
+     * @return string
      */
     protected function generateHTML()
     {
-
+        $html = '';
+        return $html;
     }
 
     /**
      * 根据节点属性生成SQL内容
+     * @return string
      */
     protected function generateSQL()
     {
-
+        $sql = '';
+        return $sql;
     }
 
     /**
      * 根据节点属性生成PHP内容
+     * @return string
      */
     protected function generatePHP()
     {
-
+        $code = '';
+        return $code;
     }
 
     /**
      * 根据节点属性生成其他内容
+     * @return string
      */
     protected function generateMISC()
     {
-
+        $content = '';
+        return $content;
     }
 }
