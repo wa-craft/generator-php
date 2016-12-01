@@ -27,15 +27,36 @@ return [
     ],
     'models' => [
         [
+            'name' => 'Account',
+            'comment' => '用户',
+            'autoWriteTimeStamp' => true,
+            'fields' => [
+                ['name' => 'username', 'title' => '帐号', 'rule' => 'alpha', 'required' => true, 'is_unique' => true],
+                ['name' => 'password', 'title' => '密码', 'rule' => 'alpha', 'required' => true, 'is_unique' => false],
+                ['name' => 'ip', 'title' => 'IP地址', 'rule' => 'ip', 'required' => false, 'is_unique' => false],
+                ['name' => 'is_blocked', 'title' => '禁用', 'rule' => 'boolean', 'required' => true, 'is_unique' => false]
+            ],
+            'relations' => [
+                [
+                    'name' => 'User',
+                    'caption' => '绑定的用户帐号',
+                    'type' => 'belongsTo',
+                    'this_key' => 'id',
+                    'that_key' => 'account_id',
+                    'model' => 'User'
+                ]
+            ]
+        ],
+        [
             'name' => 'User',
             'comment' => '用户',
             'autoWriteTimeStamp' => true,
             'fields' => [
-                ['name' => 'account', 'title' => '帐号', 'rule' => 'alpha', 'required' => true, 'is_unique' => true],
-                ['name' => 'password', 'title' => '密码', 'rule' => 'alpha', 'required' => true, 'is_unique' => false],
-                ['name' => 'logo', 'title' => '头像地址', 'rule' => 'url', 'required' => false, 'is_unique' => false],
-                ['name' => 'ip', 'title' => 'IP地址', 'rule' => 'ip', 'required' => false, 'is_unique' => false],
-                ['name' => 'is_blocked', 'title' => '禁用', 'rule' => 'boolean', 'required' => true, 'is_unique' => false]
+                ['name' => 'nickname', 'title' => '昵称', 'rule' => 'alpha', 'required' => true, 'is_unique' => true],
+                ['name' => 'avatar', 'title' => '头像地址', 'rule' => 'url', 'required' => false, 'is_unique' => false],
+                ['name' => 'name', 'title' => '姓名', 'rule' => 'alpha', 'required' => true, 'is_unique' => false],
+                ['name' => 'gender', 'title' => '性别', 'rule' => 'number', 'required' => true, 'is_unique' => false],
+                ['name' => 'mobile', 'title' => '手机号码', 'rule' => 'number', 'required' => true, 'is_unique' => true]
             ],
             'relations' => [
                 [
@@ -49,31 +70,12 @@ return [
             ]
         ],
         [
-            'name' => 'Profile',
-            'comment' => '用户',
-            'autoWriteTimeStamp' => true,
-            'fields' => [
-                ['name' => 'name', 'title' => '姓名', 'rule' => 'alpha', 'required' => true, 'is_unique' => false],
-                ['name' => 'gender', 'title' => '性别', 'rule' => 'number', 'required' => true, 'is_unique' => false],
-                ['name' => 'mobile', 'title' => '手机号码', 'rule' => 'number', 'required' => true, 'is_unique' => true]
-            ],
-            'relations' => [
-                [
-                    'name' => 'User',
-                    'caption' => '所属用户',
-                    'type' => 'belongsTo',
-                    'this_key' => 'user_id',
-                    'that_key' => 'id',
-                    'model' => 'User'
-                ]
-            ]
-        ],
-        [
             'name' => 'UserGroup',
             'comment' => '用户分组',
             'autoWriteTimeStamp' => true,
             'fields' => [
-                ['name' => 'name', 'title' => '名称', 'rule' => 'alpha', 'required' => true, 'is_unique' => false]
+                ['name' => 'name', 'title' => '名称', 'rule' => 'alpha', 'required' => true, 'is_unique' => false],
+                ['name' => 'caption', 'title' => '说明', 'rule' => 'chsAlpha', 'required' => false, 'is_unique' => false]
             ],
             'relations' => [
                 [
@@ -91,7 +93,8 @@ return [
             'comment' => '角色',
             'autoWriteTimeStamp' => false,
             'fields' => [
-                ['name' => 'name', 'title' => '名称', 'rule' => 'alpha', 'required' => true, 'is_unique' => false]
+                ['name' => 'name', 'title' => '名称', 'rule' => 'alpha', 'required' => true, 'is_unique' => false],
+                ['name' => 'caption', 'title' => '说明', 'rule' => 'chsAlpha', 'required' => false, 'is_unique' => false]
             ],
             'relations' => [
                 [
@@ -109,8 +112,11 @@ return [
             'comment' => '节点',
             'autoWriteTimeStamp' => false,
             'fields' => [
-                ['name' => 'caption', 'title' => '名称', 'rule' => 'chsAlpha', 'required' => false, 'is_unique' => false],
-                ['name' => 'type', 'title' => '类型', 'rule' => 'number', 'required' => false, 'is_unique' => false]
+                ['name' => 'name', 'title' => '名称', 'rule' => 'alpha', 'required' => true, 'is_unique' => false],
+                ['name' => 'caption', 'title' => '说明', 'rule' => 'chsAlpha', 'required' => false, 'is_unique' => false],
+                ['name' => 'is_enabled', 'title' => '是否启用', 'rule' => 'boolean', 'required' => true, 'is_unique' => false, 'default' => true],
+                ['name' => 'sort', 'title' => '排序', 'rule' => 'number', 'required' => false, 'is_unique' => false, 'default' => '0'],
+                ['name' => 'type', 'title' => '类型', 'rule' => 'number', 'required' => false, 'is_unique' => false, 'default' => '1'],
             ],
             'relations' => [
                 [
@@ -136,7 +142,7 @@ return [
             'comment' => '权限',
             'autoWriteTimeStamp' => false,
             'fields' => [
-                ['name' => 'is_allowed', 'title' => '权限', 'rule' => 'boolean', 'required' => true, 'is_unique' => false]
+                ['name' => 'is_granted', 'title' => '权限', 'rule' => 'boolean', 'required' => true, 'is_unique' => false]
             ],
             'relations' => [
                 [
