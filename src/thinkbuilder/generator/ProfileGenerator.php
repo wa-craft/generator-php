@@ -12,7 +12,6 @@ class ProfileGenerator extends Generator
         $content = str_replace('{{DOMAIN}}', $this->params['project']['domain'], $this->params['template']);
         switch ($this->params['type']) {
             case 'nginx':
-
                 foreach ($this->params['project']['applications'] as $application) {
                     $content_temp = "\t\t\trewrite ^(.*)$ /" . $application['portal'] . ".php/$1 last;" . PHP_EOL . "{{REWRITE_LOOP}}";
                     $content = str_replace('{{REWRITE_LOOP}}', $content_temp, $content);
