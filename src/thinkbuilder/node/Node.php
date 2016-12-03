@@ -129,7 +129,6 @@ abstract class Node
     final public function setPathByNamespace()
     {
         $this->path = Cache::getInstance()->get('paths')['application'] . '/' . str_replace('\\', '/', $this->namespace);
-        echo "222: " . $this->path . PHP_EOL;
     }
 
     /**
