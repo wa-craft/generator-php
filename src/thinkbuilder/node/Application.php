@@ -55,4 +55,9 @@ class Application extends Node
 
         $this->processChildren('module');
     }
+
+    public function setNameSpace()
+    {
+        $this->namespace = $this->parent_namespace . '\\' . $this->name;
+    }
 }

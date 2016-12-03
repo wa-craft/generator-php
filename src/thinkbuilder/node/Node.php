@@ -34,6 +34,7 @@ abstract class Node
     protected $config = [];
     protected $paths = [];
     protected $namespace = '';
+    protected $parent_namespace = '';
 
     protected $children = [];
 
@@ -97,7 +98,7 @@ abstract class Node
                         'data' => $child,
                         'config' => $this->config,
                         'paths' => $this->paths,
-                        'namespace' => $this->namespace . '\\' . $child['name']
+                        'parent_namespace' => $this->namespace
                     ]
                 );
             }
@@ -108,13 +109,30 @@ abstract class Node
                     yield $child;
                 }
             })($this->children) as $child) {
-                if ($child instanceof Node) $child->process();
+                if ($child instanceof Node) {
+                    $child->setNameSpace();
+                    $child->setPathByNamespace();
+                    $child->process();
+                }
             }
         }
+    }
+
+    /**
+     * 通过命名空间设置数据对应的操作目录
+     */
+    final public function setPathByNamespace()
+    {
+        $this->path = $this->paths['application'] . str_replace('\\', '/', $this->namespace);
     }
 
     /**
      * 进行处理的主函数，所有节点类都必须扩展
      */
     abstract public function process();
+
+    /**
+     * 设置命名空间
+     */
+    abstract public function setNameSpace();
 }

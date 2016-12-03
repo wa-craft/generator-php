@@ -12,15 +12,12 @@ class Project extends Node
 {
     //项目使用的域名
     protected $domain = '';
-    //项目下的应用
-    protected $applications = [];
 
     public function process()
     {
         //生成 nginx 配置文件
         if ($this->config['actions']['nginx']) {
-            Generator::create('Profile', [
-                    'type' => 'nginx',
+            Generator::create('profile\\Nginx', [
                     'path' => $this->paths['profile'],
                     'file_name' => 'nginx_vhost',
                     'template' => TemplateHelper::fetchTemplate('nginx'),
@@ -31,8 +28,7 @@ class Project extends Node
 
         //生成 apache htaccess 配置文件
         if ($this->config['actions']['apache']) {
-            Generator::create('Profile', [
-                'type' => 'apache',
+            Generator::create('profile\\Apache', [
                 'path' => $this->paths['public'],
                 'file_name' => '.htaccess',
                 'template' => TemplateHelper::fetchTemplate('apache'),
@@ -41,5 +37,10 @@ class Project extends Node
         }
 
         $this->processChildren('application');
+    }
+
+    public function setNameSpace()
+    {
+        $this->namespace = '';
     }
 }
