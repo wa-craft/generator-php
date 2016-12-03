@@ -61,6 +61,15 @@ abstract class Node
                 $this->$key = $param;
             }
         }
+
+        //如果存在 $this->data 则再遍历一次 $this->data 通过 $this->data 设置属性
+        if (property_exists($this, 'data')) {
+            foreach ($this->data as $key => $value) {
+                if (property_exists($this, $key)) {
+                    $this->$key = $value;
+                }
+            }
+        }
     }
 
     /**
