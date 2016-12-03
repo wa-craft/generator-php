@@ -9,33 +9,33 @@ return [
         [
             'name' => 'forge',
             'namespace' => 'tf',
-            'portal' => 'forge',
-            'comment' => 'ThinkForge',
+            'portal' => 'index',
+            'caption' => 'ThinkForge',
             'modules' => [
                 [
                     'name' => 'index',
-                    'comment' => '默认模块',
+                    'caption' => '默认模块',
                     'controllers' => [
                         [
                             'name' => 'Index',
-                            'comment' => '默认控制器',
+                            'caption' => '默认控制器',
                             'parent_controller' => 'TestController',
-                            'actions' => [['name' => 'index', 'comment' => '默认方法']]
+                            'actions' => [['name' => 'index', 'caption' => '默认方法']]
                         ]
                     ],
-                    'traits' => [
+                    'traitss' => [
                         [
                             'name' => 'Auth',
-                            'comment' => '认证方法',
+                            'caption' => '认证方法',
                             'actions' => [
-                                ['name' => 'check', 'comment' => '校验', 'params' => '$username, $password']
+                                ['name' => 'check', 'caption' => '校验', 'params' => '$username, $password']
                             ]
                         ]
                     ],
                     'models' => [
                         [
                             'name' => 'Application',
-                            'comment' => '应用',
+                            'caption' => '应用',
                             'fields' => [
                                 ['name' => 'name', 'title' => '名称', 'rule' => 'alpha', 'required' => true],
                                 ['name' => 'annotation', 'title' => '说明', 'rule' => 'alpha', 'required' => true],
@@ -54,7 +54,7 @@ return [
                         ],
                         [
                             'name' => 'Module',
-                            'comment' => '模块',
+                            'caption' => '模块',
                             'fields' => [
                                 ['name' => 'application_id', 'title' => '应用编号', 'required' => true, 'rule' => 'number'],
                                 ['name' => 'name', 'title' => '名称', 'required' => true, 'rule' => 'alpha'],
@@ -89,7 +89,7 @@ return [
                         ],
                         [
                             'name' => 'Controller',
-                            'comment' => '控制器',
+                            'caption' => '控制器',
                             'fields' => [
                                 ['name' => 'module_id', 'title' => '模块编号', 'required' => true, 'rule' => 'number'],
                                 ['name' => 'name', 'title' => '名称', 'required' => true, 'rule' => 'alpha'],
@@ -116,7 +116,7 @@ return [
                         ],
                         [
                             'name' => 'Model',
-                            'comment' => '模型',
+                            'caption' => '模型',
                             'fields' => [
                                 ['name' => 'name', 'title' => '名称', 'required' => true, 'rule' => 'alpha'],
                                 ['name' => 'annotation', 'title' => '说明', 'required' => true, 'rule' => 'chsAlpha']
@@ -142,7 +142,7 @@ return [
                         ],
                         [
                             'name' => 'Field',
-                            'comment' => '字段',
+                            'caption' => '字段',
                             'fields' => [
                                 ['name' => 'model_id', 'title' => '模型编号', 'required' => true, 'rule' => 'number'],
                                 ['name' => 'name', 'title' => '名称', 'required' => true, 'rule' => 'alpha'],
@@ -150,7 +150,7 @@ return [
                                 ['name' => 'is_required', 'title' => '是否必须', 'required' => true, 'rule' => 'boolean'],
                                 ['name' => 'is_unique', 'title' => '是否唯一值', 'required' => true, 'rule' => 'boolean'],
                                 ['name' => 'rule', 'title' => '校验规则', 'required' => true, 'rule' => 'alphaDash'],
-                                ['name' => 'comment', 'title' => '说明', 'required' => true, 'rule' => 'chsAlpha'],
+                                ['name' => 'caption', 'title' => '说明', 'required' => true, 'rule' => 'chsAlpha'],
                             ],
                             'relations' => [
                                 [
@@ -165,7 +165,7 @@ return [
                         ],
                         [
                             'name' => 'Traits',
-                            'comment' => '特征',
+                            'caption' => '特征',
                             'fields' => [
                                 ['name' => 'module_id', 'title' => '模块编号', 'required' => true, 'rule' => 'number'],
                                 ['name' => 'name', 'title' => '名称', 'required' => true, 'rule' => 'alpha'],
@@ -192,7 +192,7 @@ return [
                         ],
                         [
                             'name' => 'Setting',
-                            'comment' => '设置',
+                            'caption' => '设置',
                             'fields' => [
                                 ['name' => 'setting', 'title' => '设置', 'required' => true, 'rule' => 'alphaDash'],
                                 ['name' => 'value', 'title' => '取值', 'required' => true, 'rule' => 'chsAlpha']

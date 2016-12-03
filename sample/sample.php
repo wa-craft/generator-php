@@ -10,35 +10,35 @@ return [
             'name' => 'application',
             'namespace' => 'app',
             'portal' => 'index',
-            'comment' => '',
+            'caption' => '测试应用',
             'modules' => [
                 [
                     'name' => 'index',
-                    'comment' => '默认模块',
+                    'caption' => '默认模块',
                     'default_controller' => '',
                     'controllers' => [
                         [
                             'name' => 'Index',
-                            'comment' => '默认控制器',
+                            'caption' => '默认控制器',
                             'parent_controller' => '',
                             'actions' => [
-                                ['name' => 'index', 'comment' => '默认方法']
+                                ['name' => 'index', 'caption' => '默认方法']
                             ]
                         ]
                     ],
-                    'traits' => [
+                    'traitss' => [
                         [
                             'name' => 'Auth',
-                            'comment' => '认证方法',
+                            'caption' => '认证方法',
                             'actions' => [
-                                ['name' => 'check', 'comment' => '校验', 'params' => '$username, $password']
+                                ['name' => 'check', 'caption' => '校验', 'params' => '$username, $password']
                             ]
                         ]
                     ],
                     'models' => [
                         [
                             'name' => 'Article',
-                            'comment' => '文章',
+                            'caption' => '文章',
                             'autoWriteTimeStamp' => true,
                             'fields' => [
                                 ['name' => 'name', 'title' => '名称', 'rule' => 'alpha', 'required' => true, 'is_unique' => false],
