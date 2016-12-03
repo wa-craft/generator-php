@@ -31,21 +31,25 @@ class Module extends Node
         if (key_exists('models', $this->data)) {
             $models = $this->data['models'];
             foreach ($models as $model) {
-                $controllers[] = [
-                    'name' => $model['name'],
-                    'caption' => $model['caption'] . '控制器',
-                    'parent_controller' => 'TestController',
-                    'actions' => [
-                        ['name' => 'index', 'caption' => '索引方法'],
-                        ['name' => 'add', 'caption' => '添加方法'],
-                        ['name' => 'mod', 'caption' => '修改方法']
-                    ],
-                    'fields' => $model['fields']
-                ];
+                $controllers[] = Node::create('controller',
+                    [
+                        'data' => [
+                            'name' => $model['name'],
+                            'caption' => $model['caption'] . '控制器',
+                            'parent_controller' => 'TestController',
+                            'actions' => [
+                                ['name' => 'index', 'caption' => '索引方法'],
+                                ['name' => 'add', 'caption' => '添加方法'],
+                                ['name' => 'mod', 'caption' => '修改方法']
+                            ],
+                            'fields' => $model['fields']
+                        ],
+                        'parent_namespace' => $this->parent_namespace
+                    ]);
             }
         }
 
-        $this->data['controllers'] = array_merge($this->data['controllers'], $controllers);
+        $this->controllers = array_merge($this->controllers, $controllers);
     }
 
     public function process()
