@@ -52,7 +52,7 @@ abstract class Generator implements IGenerator
         $_file = $this->params['path'] . '/' . $this->params['file_name'];
         if ($this->content !== '') {
             FileHelper::mkdir($this->params['path']);
-            echo "INFO: writing profile: {$_file} ..." . PHP_EOL;
+            echo "INFO: writing file: {$_file} ..." . PHP_EOL;
             file_put_contents($_file, $this->content);
         }
     }
