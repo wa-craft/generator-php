@@ -3,7 +3,7 @@ return [
     //主题名
     'theme' => 'metronic_1',
     //创建的动作
-    'actions ' => [
+    'actions' => [
         //是否生成入口文件
         'portal' => true,
         //是否生成控制器程序
