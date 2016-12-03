@@ -13,8 +13,6 @@ abstract class Generator implements IGenerator
     protected $content = '';
     //用于设置的生成器参数
     protected $params = [
-        //生成器子方法类型
-        'type' => '',
         //生成目标文件的路径
         'path' => '',
         //生成目标文件的相对文件名
@@ -38,7 +36,6 @@ abstract class Generator implements IGenerator
         if ($obj instanceof Generator) $obj->setParams($params);
         return $obj;
     }
-
 
     /**
      * 生成的方法，需要在子类中实现
