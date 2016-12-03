@@ -58,14 +58,15 @@ $cmd->option('r')
     ->describedAs('define a thinkphp base application structure, default is : https://github.com/' . ROOT_REPOS)
     ->default('https://github.com/' . ROOT_REPOS)
     ->map(function ($repository) {
-        return 'https://github.com/' .$repository;
+        return 'https://github.com/' . $repository;
     });
 
 
 //进行创建
-$builder = new \thinkbuilder\Builder();
-$builder->setConfigFromFile($cmd['config']);
-$builder->setDataFromFile($cmd['data']);
-$builder->setTargetPath($cmd['target']);
-$builder->repository = $cmd['repository'];
+$builder = new \thinkbuilder\Builder([
+    'config' => $cmd['config'],
+    'data' => $cmd['data'],
+    'target' => $cmd['target'],
+    'repository' => $cmd['repository'],
+]);
 $builder->build();
