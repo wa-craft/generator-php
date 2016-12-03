@@ -19,9 +19,8 @@ class Application extends Node
     public function process()
     {
         //创建目录
-        $_app_path = $this->paths['target'] . '/' . APP_PATH . '/' . $this->name;
-        echo "INFO: creating application directory: {$_app_path} ..." . PHP_EOL;
-        FileHelper::mkdir($_app_path);
+        echo "INFO: creating application directory: {$this->path} ..." . PHP_EOL;
+        FileHelper::mkdir($this->path);
 
         //创建入口文件
         if ($this->config['actions']['portal']) {
@@ -35,19 +34,19 @@ class Application extends Node
 
         if ($this->config['actions']['copy']) {
             //拷贝应用文件
-            FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/application', $_app_path);
+            FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/application', $this->path);
         }
 
         //写入 config / database 配置文件
         Generator::create('php\\ConfigData', [
-            'path' => $_app_path,
+            'path' => $this->path,
             'file_name' => 'config.php',
             'template' => TemplateHelper::fetchTemplate('config'),
             'data' => $this->data
         ])->generate()->writeToFile();
 
         Generator::create('php\\DBConfig', [
-            'path' => $_app_path,
+            'path' => $this->path,
             'file_name' => 'database.php',
             'template' => TemplateHelper::fetchTemplate('database'),
             'data' => $this->data
