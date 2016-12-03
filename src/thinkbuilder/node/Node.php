@@ -1,22 +1,25 @@
 <?php
 namespace thinkbuilder\node;
 
+
 /**
  * Class Node 节点类，所有节点对象的父类
  * @package thinkbuilder\node
  */
-class Node
+abstract class Node
 {
-    //节点类型与定义
-    static public $types = [
-        'PROJECT',
-        'APPLICATION',
-        'MODULE',
-        'CONTROLLER',
-        'MODEL',
-        'VIEW',
-        'ACTION',
-        'FIELD'
+    //节点类型
+    public static $types = [
+        'project',
+        'application',
+        'module',
+        'model',
+        'controller',
+        'validate',
+        'view',
+        'trait',
+        'field',
+        'relation'
     ];
     //当前节点类型，来自于 $types
     protected $type = 0;
@@ -24,25 +27,27 @@ class Node
     protected $name = '';
     //节点说明，中文
     protected $caption = '';
+    //节点路径
+    protected $path = '';
+
+    protected $data = [];
+    protected $config = [];
+    protected $paths = [];
+
+    protected $children = [];
 
     /**
      * 根据类型与参数创建Node实例的工厂方法
-     * @param int $type
+     * @param string $type
      * @param array $params
      * @return Node
      */
-    public static function getInstance($type = 0, $params = [])
+    final public static function create($type = '', $params = [])
     {
-        $instance = null;
-        $type = (count(self::$types) < $type) ? $type : 0;
-        $class_name = ucfirst(strtolower(self::$types[$type]));
-        if (class_exists($class_name)) {
-            $instance = new $class_name();
-            if (count($params) !== 0) {
-                $instance->init($params);
-            }
-        }
-        return $instance;
+        $class = 'thinkbuilder\\node\\' . $type;
+        $obj = (class_exists($class)) ? new $class() : null;
+        if ($obj instanceof Node) $obj->init($params);
+        return $obj;
     }
 
     /**
@@ -59,70 +64,40 @@ class Node
     }
 
     /**
-     * 进行处理的主函数
+     * 根据类型处理子类数据
+     * @param string $type
      */
-    public function process()
+    public function processChildren($type = '')
     {
-        //创建目录
-        //拷贝文件
-        //处理模板文件
-        //写入文件
+        if (in_array($type, Node::$types)) {
+            //处理生成子节点
+            $children = $this->data[$type . 's'];
+            foreach ($children as $child) {
+                //如果字节点类型并非是数组，则视为引用已经设定的数据
+                if (!is_array($child)) {
+                    $_file = PACKAGE_PATH . "/$type/" . $child . '.php';
+                    if (is_file($_file)) {
+                        $child = require $_file;
+                    } else {
+                        continue;
+                    }
+                }
+                $this->children[] = Node::create(ucfirst($type), ['data' => $child, 'config' => $this->config, 'paths' => $this->paths]);
+            }
+
+            //遍历子节点，并触发可以递归的处理方法
+            foreach ((function ($children) {
+                foreach ($children as $child) {
+                    yield $child;
+                }
+            })($this->children) as $child) {
+                if ($child instanceof Node) $child->process();
+            }
+        }
     }
 
     /**
-     * 根据节点属性创建相关目录
+     * 进行处理的主函数，所有节点类都必须扩展
      */
-    protected function makeDir()
-    {
-
-    }
-
-    /**
-     * 根据节点属性拷贝相关文件
-     * @param array $files
-     */
-    protected function copyFiles($files = [])
-    {
-
-    }
-
-    /**
-     * 根据节点属性生成HTML内容
-     * @return string
-     */
-    protected function generateHTML()
-    {
-        $html = '';
-        return $html;
-    }
-
-    /**
-     * 根据节点属性生成SQL内容
-     * @return string
-     */
-    protected function generateSQL()
-    {
-        $sql = '';
-        return $sql;
-    }
-
-    /**
-     * 根据节点属性生成PHP内容
-     * @return string
-     */
-    protected function generatePHP()
-    {
-        $code = '';
-        return $code;
-    }
-
-    /**
-     * 根据节点属性生成其他内容
-     * @return string
-     */
-    protected function generateMISC()
-    {
-        $content = '';
-        return $content;
-    }
+    abstract public function process();
 }
