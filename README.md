@@ -88,9 +88,6 @@ macOS 一般默认都安装了 git，不过也可以 `#sudo brew install git`
 ### `-d|--data`
 指定项目数据文件的路径
 
-### `-a|--actions`
-声明生成的动作，包括 'all|mvc|copy'，默认为'all'
-
 ### `-t|--target`
 指定文件生成的目标路径，默认为 './deploy'
 

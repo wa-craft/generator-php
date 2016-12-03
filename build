@@ -34,15 +34,6 @@ $cmd->option('d')
         return $data;
     });
 
-//创建动作
-$cmd->option('a')
-    ->aka('actions')
-    ->describedAs('define build actions, all|mvc|copy')
-    ->default('all')
-    ->map(function ($actions) {
-        return $actions;
-    });
-
 //目标路径
 $cmd->option('t')
     ->aka('target')
