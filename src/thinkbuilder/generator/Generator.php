@@ -13,7 +13,7 @@ abstract class Generator implements IGenerator
     protected $content = '';
     //用于设置的生成器参数
     protected $params = [
-        //生成器中子方法类型
+        //生成器子方法类型
         'type' => '',
         //生成目标文件的路径
         'path' => '',
@@ -31,9 +31,9 @@ abstract class Generator implements IGenerator
      * @param array $params
      * @return null|Generator
      */
-    final public static function create($type = 'PHP', $params = [])
+    final public static function create($type = 'profile\\Nginx', $params = [])
     {
-        $class = 'thinkbuilder\\generator\\' . $type . 'Generator';
+        $class = 'thinkbuilder\\generator\\' . $type;
         $obj = (class_exists($class)) ? new $class() : null;
         if ($obj instanceof Generator) $obj->setParams($params);
         return $obj;
