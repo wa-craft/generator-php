@@ -52,7 +52,7 @@ abstract class Generator implements IGenerator
      */
     public function writeToFile()
     {
-        $_file = $this->params['path'] . $this->params['file_name'];
+        $_file = $this->params['path'] . '/' . $this->params['file_name'];
         if ($this->content !== '') {
             FileHelper::mkdir($this->params['path']);
             echo "INFO: writing profile: {$_file} ..." . PHP_EOL;

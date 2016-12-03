@@ -22,7 +22,7 @@ class Project extends Node
             Generator::create('Profile', [
                     'type' => 'nginx',
                     'path' => $this->paths['profile'],
-                    'file_name' => '/nginx_vhost',
+                    'file_name' => 'nginx_vhost',
                     'template' => TemplateHelper::fetchTemplate('nginx'),
                     'project' => $this->data
                 ]
@@ -34,7 +34,7 @@ class Project extends Node
             Generator::create('Profile', [
                 'type' => 'apache',
                 'path' => $this->paths['public'],
-                'file_name' => '/.htaccess',
+                'file_name' => '.htaccess',
                 'template' => TemplateHelper::fetchTemplate('apache'),
                 'project' => $this->data
             ])->generate()->writeToFile();
