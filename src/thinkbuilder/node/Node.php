@@ -1,6 +1,7 @@
 <?php
 namespace thinkbuilder\node;
 
+use thinkbuilder\Cache;
 
 /**
  * Class Node 节点类，所有节点对象的父类
@@ -17,12 +18,12 @@ abstract class Node
         'controller',
         'validate',
         'view',
-        'trait',
+        'traits',
         'field',
         'relation'
     ];
     //当前节点类型，来自于 $types
-    protected $type = 0;
+    protected $type = '';
     //节点名称，英文小写
     protected $name = '';
     //节点说明，中文
@@ -31,8 +32,6 @@ abstract class Node
     protected $path = '';
 
     protected $data = [];
-    protected $config = [];
-    protected $paths = [];
     protected $namespace = '';
     protected $parent_namespace = '';
 
@@ -48,7 +47,10 @@ abstract class Node
     {
         $class = 'thinkbuilder\\node\\' . $type;
         $obj = (class_exists($class)) ? new $class() : null;
-        if ($obj instanceof Node) $obj->init($params);
+        if ($obj instanceof Node) {
+            $obj->type = $type;
+            $obj->init($params);
+        }
         return $obj;
     }
 
@@ -64,11 +66,31 @@ abstract class Node
             }
         }
 
+        //TODO 此处可能存在性能问题
         //如果存在 $this->data 则再遍历一次 $this->data 通过 $this->data 设置属性
         if (property_exists($this, 'data')) {
             foreach ($this->data as $key => $value) {
                 if (property_exists($this, $key)) {
-                    $this->$key = $value;
+                    //如果属性声明是数组，而数据中是字符串，则寻找相关的预定义内容
+                    if (is_array($this->$key) && is_string($value)) {
+                        $_file = PACKAGE_PATH . "/{$this->type}/" . $value . '.php';
+                        if (is_file($_file)) {
+                            $value = require $_file;
+                        } else {
+                            continue;
+                        }
+                    }
+
+                    //如果值是数组，否则，则创建子节点对象
+                    if (is_array($value)) {
+                        $list = [];
+                        foreach ($value as $item) {
+                            $list[] = Node::create(ucfirst(substr($key, 0, strlen($key) - 1)), ['data' => $item, 'parent_namespace' => $this->namespace]);
+                        }
+                        $this->$key = $list;
+                    } else {
+                        $this->$key = $value;
+                    }
                 }
             }
         }
@@ -82,34 +104,17 @@ abstract class Node
     {
         if (in_array($type, Node::$types)) {
             //处理生成子节点
-            $children = $this->data[$type . 's'];
-            foreach ($children as $child) {
-                //如果字节点类型并非是数组，则视为引用已经设定的数据
-                if (!is_array($child)) {
-                    $_file = PACKAGE_PATH . "/$type/" . $child . '.php';
-                    if (is_file($_file)) {
-                        $child = require $_file;
-                    } else {
-                        continue;
-                    }
-                }
-                $this->children[] = Node::create(ucfirst($type),
-                    [
-                        'data' => $child,
-                        'config' => $this->config,
-                        'paths' => $this->paths,
-                        'parent_namespace' => $this->namespace
-                    ]
-                );
-            }
+            $property = $type . 's';
+            $children = $this->$property;
 
             //遍历子节点，并触发可以递归的处理方法
             foreach ((function ($children) {
                 foreach ($children as $child) {
                     yield $child;
                 }
-            })($this->children) as $child) {
+            })($children) as $child) {
                 if ($child instanceof Node) {
+                    $child->parent_namespace = $this->namespace;
                     $child->setNameSpace();
                     $child->setPathByNamespace();
                     $child->process();
@@ -123,7 +128,8 @@ abstract class Node
      */
     final public function setPathByNamespace()
     {
-        $this->path = $this->paths['application'] . str_replace('\\', '/', $this->namespace);
+        $this->path = Cache::getInstance()->get('paths')['application'] . '/' . str_replace('\\', '/', $this->namespace);
+        echo "222: " . $this->path . PHP_EOL;
     }
 
     /**
