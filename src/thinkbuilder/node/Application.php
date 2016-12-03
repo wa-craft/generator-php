@@ -1,6 +1,7 @@
 <?php
 namespace thinkbuilder\node;
 
+use thinkbuilder\Cache;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\FileHelper;
 use thinkbuilder\helper\TemplateHelper;
@@ -16,23 +17,25 @@ class Application extends Node
     //入口文件名称，不需要输入 .php 后缀
     protected $portal = 'index';
 
+    protected $modules = [];
+
     public function process()
     {
         //创建目录
-        echo "INFO: creating application directory: {$this->path} ..." . PHP_EOL;
         FileHelper::mkdir($this->path);
 
         //创建入口文件
-        if ($this->config['actions']['portal']) {
+        $config = Cache::getInstance()->get('config');
+        if ($config['actions']['portal']) {
             Generator::create('php\\Portal', [
-                'path' => $this->paths['public'],
+                'path' => Cache::getInstance()->get('paths')['public'],
                 'file_name' => $this->portal . '.php',
                 'template' => TemplateHelper::fetchTemplate('portal'),
                 'data' => $this->data
             ])->generate()->writeToFile();
         }
 
-        if ($this->config['actions']['copy']) {
+        if ($config['actions']['copy']) {
             //拷贝应用文件
             FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/application', $this->path);
         }
@@ -57,6 +60,6 @@ class Application extends Node
 
     public function setNameSpace()
     {
-        $this->namespace = $this->parent_namespace . '\\' . $this->name;
+        $this->data['namespace'] = $this->namespace;
     }
 }

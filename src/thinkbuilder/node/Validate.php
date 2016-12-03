@@ -15,6 +15,11 @@ class Validate extends Node
     //校验器下的规则
     protected $rules = [];
 
+    public function process()
+    {
+
+    }
+
     public static function writeToFile($path, $module, $index, $model, $namespace, $templates)
     {
         $defaults = Builder::$defaults;

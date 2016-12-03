@@ -8,7 +8,7 @@ use thinkbuilder\node\Field;
 class TemplateHelper
 {
     public static $templates = [
-        'portal' => '/php/index.tmpl',
+        'portal' => '/php/portal.tmpl',
         'controller' => '/php/controller.tmpl',
         'controller_action' => '/php/controller_action.tmpl',
         'traits' => '/php/traits.tmpl',
@@ -167,25 +167,6 @@ class TemplateHelper
     }
 
     /**
-     * 写入配置文件
-     * @param $path
-     * @param $file_name
-     * @param $templates
-     * @param $params
-     */
-    public static function write_config($path, $file_name, $templates, $params)
-    {
-        $file = $path . '/' . strtolower($file_name) . '.php';
-
-        $content = TemplateHelper::fetchTemplate($file_name);
-        foreach ($params as $key => $param) {
-            $content = str_replace("{{{$key}}}", $param, $content);
-        }
-        file_put_contents($file, $content);
-        echo "INFO: writing {$file_name}: {$file} ..." . PHP_EOL;
-    }
-
-    /**
      * 生成 php 代码
      * @param $path
      * @param $module
@@ -258,45 +239,6 @@ class TemplateHelper
 
         file_put_contents($_file, $content);
         echo "INFO: writing {$index['name']}: {$_file} ..." . PHP_EOL;
-    }
-
-    /**
-     * 写入 nginx 配置文件
-     * @param $path
-     * @param $template
-     * @param $domain
-     * @param $applications
-     */
-    public static function write_nginx($path, $template, $domain, $applications)
-    {
-        $content = str_replace('{{DOMAIN}}', $domain, $template);
-        foreach ($applications as $application) {
-            $content_temp = "\t\t\trewrite ^(.*)$ /" . $application['portal'] . ".php/$1 last;" . PHP_EOL . "{{REWRITE_LOOP}}";
-            $content = str_replace('{{REWRITE_LOOP}}', $content_temp, $content);
-        }
-        $content = str_replace("\n{{REWRITE_LOOP}}", '', $content);
-        $_file = $path . '/nginx_vhost';
-        file_put_contents($_file, $content);
-        echo "INFO: writing nginx profile: {$_file} ..." . PHP_EOL;
-    }
-
-    /**
-     * 写入 nginx 配置文件
-     * @param $path
-     * @param $template
-     * @param $applications
-     */
-    public static function write_apache($path, $template, $applications)
-    {
-        $content = $template;
-        foreach ($applications as $application) {
-            $content_temp = "  RewriteRule ^(.*)$ " . $application['portal'] . ".php/$1 [QSA,PT,L]" . PHP_EOL . "{{REWRITE_LOOP}}";
-            $content = str_replace('{{REWRITE_LOOP}}', $content_temp, $content);
-        }
-        $content = str_replace("\n{{REWRITE_LOOP}}", '', $content);
-        $_file = $path . '/.htaccess';
-        file_put_contents($_file, $content);
-        echo "INFO: writing apache htaccess profile: {$_file} ..." . PHP_EOL;
     }
 
     /**

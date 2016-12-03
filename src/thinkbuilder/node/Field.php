@@ -29,6 +29,16 @@ class Field extends Node
     //字段值必须唯一
     protected $is_unique = false;
 
+    public function process()
+    {
+
+    }
+
+    public function setNameSpace()
+    {
+        
+    }
+
     /**
      *
      * @param $field

@@ -15,6 +15,11 @@ class View extends Node
     //视图使用的布局
     protected $layout = '';
 
+    public function process()
+    {
+
+    }
+
     public static function writeToFile($path, $module, $index, $model, $templates)
     {
         $defaults = Builder::$defaults;

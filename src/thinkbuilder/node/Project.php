@@ -1,6 +1,7 @@
 <?php
 namespace thinkbuilder\node;
 
+use thinkbuilder\Cache;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\TemplateHelper;
 
@@ -11,14 +12,18 @@ use thinkbuilder\helper\TemplateHelper;
 class Project extends Node
 {
     //项目使用的域名
+    protected $name = '';
+    protected $caption = '';
     protected $domain = '';
+    protected $applications = [];
 
     public function process()
     {
+        $config = Cache::getInstance()->get('config');
         //生成 nginx 配置文件
-        if ($this->config['actions']['nginx']) {
+        if ($config['actions']['nginx']) {
             Generator::create('profile\\Nginx', [
-                    'path' => $this->paths['profile'],
+                    'path' => Cache::getInstance()->get('paths')['profile'],
                     'file_name' => 'nginx_vhost',
                     'template' => TemplateHelper::fetchTemplate('nginx'),
                     'project' => $this->data
@@ -27,9 +32,9 @@ class Project extends Node
         }
 
         //生成 apache htaccess 配置文件
-        if ($this->config['actions']['apache']) {
+        if ($config['actions']['apache']) {
             Generator::create('profile\\Apache', [
-                'path' => $this->paths['public'],
+                'path' => Cache::getInstance()->get('paths')['public'],
                 'file_name' => '.htaccess',
                 'template' => TemplateHelper::fetchTemplate('apache'),
                 'project' => $this->data
