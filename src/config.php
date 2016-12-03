@@ -2,6 +2,37 @@
 return [
     //主题名
     'theme' => 'metronic_1',
+    //创建的动作
+    'actions ' => [
+        //是否生成入口文件
+        'portal' => true,
+        //是否生成控制器程序
+        'controller' => true,
+        //是否生成特征程序
+        'traits' => true,
+        //是否生成模型程序
+        'model' => true,
+        //是否生成校验器程序
+        'validate' => true,
+        //是否生成视图模板文件
+        'view' => true,
+        //是否生成SQL数据库文件
+        'sql' => true,
+        //是否复制其他静态资源
+        'copy' => true,
+        //是否根据应用 portal 生成 nginx 配置文件，谨慎使用
+        'nginx' => true,
+        //是否根据应用 portal 生成 .htaccess，谨慎使用
+        'apache' => true,
+        //是否生成目录数组，暂时保留未应用
+        'menu' => true,
+        //是否解压资源文件
+        'decompress_assets' => true,
+        //是否最后运行composer update命令
+        'run_composer' => false,
+        //是否最后运行 bower update 命令
+        'run_bower' => false
+    ],
     //默认值
     'defaults' => [
         'controller' => 'goldeagle\thinklib\controller\DefaultController',
