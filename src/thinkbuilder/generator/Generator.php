@@ -26,6 +26,21 @@ abstract class Generator implements IGenerator
     ];
 
     /**
+     * 根据给出的类型，创建生成器的工厂方法
+     * @param string $type
+     * @param array $params
+     * @return null|Generator
+     */
+    final public static function create($type = 'PHP', $params = [])
+    {
+        $class = 'thinkbuilder\\generator\\' . $type . 'Generator';
+        $obj = (class_exists($class)) ? new $class() : null;
+        if ($obj instanceof Generator) $obj->setParams($params);
+        return $obj;
+    }
+
+
+    /**
      * 生成的方法，需要在子类中实现
      * 返回对象实例，便于进行链式操作
      * @return Generator
