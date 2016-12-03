@@ -33,6 +33,7 @@ abstract class Node
     protected $data = [];
     protected $config = [];
     protected $paths = [];
+    protected $namespace = '';
 
     protected $children = [];
 
@@ -91,7 +92,14 @@ abstract class Node
                         continue;
                     }
                 }
-                $this->children[] = Node::create(ucfirst($type), ['data' => $child, 'config' => $this->config, 'paths' => $this->paths]);
+                $this->children[] = Node::create(ucfirst($type),
+                    [
+                        'data' => $child,
+                        'config' => $this->config,
+                        'paths' => $this->paths,
+                        'namespace' => $this->namespace . '\\' . $child['name']
+                    ]
+                );
             }
 
             //遍历子节点，并触发可以递归的处理方法
