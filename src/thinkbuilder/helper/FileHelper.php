@@ -13,8 +13,19 @@ class FileHelper
     public static function mkdir($path)
     {
         if (!is_dir($path)) {
-            mkdir($path, 0744);
+            mkdir($path, 0755);
             echo "INFO: creating directory: {$path} ..." . PHP_EOL;
+        }
+    }
+
+    /**
+     * 创建一组路径
+     * @param array $paths
+     */
+    public static function mkdirs($paths = [])
+    {
+        foreach ($paths as $path) {
+            FileHelper::mkdir($path);
         }
     }
 
