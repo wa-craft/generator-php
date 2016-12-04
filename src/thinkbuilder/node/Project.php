@@ -12,10 +12,8 @@ use thinkbuilder\helper\TemplateHelper;
 class Project extends Node
 {
     //项目使用的域名
-    protected $name = '';
-    protected $caption = '';
-    protected $domain = '';
-    protected $applications = [];
+    public $domain = '';
+    public $applications = [];
 
     public function process()
     {

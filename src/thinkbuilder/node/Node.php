@@ -23,19 +23,24 @@ abstract class Node
         'relation'
     ];
     //当前节点类型，来自于 $types
-    protected $type = '';
+    public $type = '';
     //节点名称，英文小写
-    protected $name = '';
+    public $name = '';
     //节点说明，中文
-    protected $caption = '';
+    public $caption = '';
     //节点路径
-    protected $path = '';
+    public $path = '';
 
     protected $data = [];
     protected $namespace = '';
     protected $parent_namespace = '';
 
-    protected $children = [];
+    //缓存的代码文本
+    public $html = '';
+    public $code = '';
+    public $sql = '';
+    public $misc = '';
+    public $js = '';
 
     /**
      * 根据类型与参数创建Node实例的工厂方法
@@ -45,10 +50,10 @@ abstract class Node
      */
     final public static function create($type = '', $params = [])
     {
-        $class = 'thinkbuilder\\node\\' . $type;
+        $class = 'thinkbuilder\\node\\' . ucfirst($type);
         $obj = (class_exists($class)) ? new $class() : null;
         if ($obj instanceof Node) {
-            $obj->type = $type;
+            $obj->type = strtolower($type);
             $obj->init($params);
         }
         return $obj;
@@ -82,7 +87,7 @@ abstract class Node
                     }
 
                     //如果值是数组，否则，则创建子节点对象
-                    if (is_array($value)) {
+                    if (is_array($value) && $key != 'data') {
                         $list = [];
                         foreach ($value as $item) {
                             $list[] = Node::create(ucfirst(substr($key, 0, strlen($key) - 1)), ['data' => $item, 'parent_namespace' => $this->namespace]);

@@ -25,10 +25,10 @@ class Validate extends Node
         $defaults = Builder::$defaults;
         FileHelper::mkdir($path);
 
-        $_namespace = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
+        $this->params['data']['namespace'] = $namespace . '\\' . $module['name'] . '\\' . $index['name'];
         $_class_name = $model['name'];
         $tags = [
-            'NAME_SPACE' => $_namespace,
+            'NAME_SPACE' => $this->params['data']['namespace'],
             'APP_PATH' => APP_PATH
         ];
         if (isset($module['comment'])) $tags['MODULE_COMMENT'] = $module['comment'];

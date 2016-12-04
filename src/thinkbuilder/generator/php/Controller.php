@@ -8,19 +8,20 @@ class Controller extends Generator
 {
     public function generate(): Generator
     {
+        $data = $this->params['data'];
         $tags = [
-            'NAME_SPACE' => $this->params['data']['namespace'],
+            'NAME_SPACE' => $data['namespace'],
             'APP_PATH' => APP_PATH,
-            'CLASS_NAME' => $this->params['data']['name']
+            'CLASS_NAME' => $data['name']
         ];
 
-        if (isset($this->params['data']['name'])) {
-            $tags['APP_NAME'] = $this->params['data']['name'];
-            $tags['MODEL_NAME'] = $this->params['data']['name'];
+        if (isset($data['name'])) {
+            $tags['APP_NAME'] = $data['name'];
+            $tags['MODEL_NAME'] = $data['name'];
         }
 
-        if (isset($this->params['data']['caption'])) {
-            $tags['CAPTION'] = $this->params['data']['caption'];
+        if (isset($data['caption'])) {
+            $tags['CAPTION'] = $data['caption'];
         }
 
         //为控制器写入父控制器
@@ -28,15 +29,15 @@ class Controller extends Generator
             $controller = '';
             if (isset($data['parent_controller'])) {
                 if ($data['parent_controller'] != '') {
-                    $controller = $this->params['data']['parent_controller'];
+                    $controller = $data['parent_controller'];
                 }
-            } else if (isset($this->params['data']['default_controller'])) {
-                if ($this->params['data']['default_controller'] != '') {
-                    $controller = $this->params['data']['default_controller'];
+            } else if (isset($data['default_controller'])) {
+                if ($data['default_controller'] != '') {
+                    $controller = $data['default_controller'];
                 }
             }
             return $controller;
-        })($this->params['data']);
+        })($data);
 
         if ($extend_controller !== '') $extend_controller = 'extends ' . $extend_controller;
         $tags['EXTEND_CONTROLLER'] = $extend_controller;
@@ -45,8 +46,8 @@ class Controller extends Generator
 
         //处理与控制器相关的模板
         //处理控制器的方法
-        if (isset($this->params['data']['actions'])) {
-            $actions = $this->params['data']['actions'];
+        if (isset($data['actions'])) {
+            $actions = $data['actions'];
             foreach ($actions as $action) {
                 //当存在父控制器且为 index|add|mod 方法的时候，不生成方法代码
                 if ($extend_controller !== '' && in_array($action['name'], ['add', 'index', 'mod'])) {
@@ -65,8 +66,8 @@ class Controller extends Generator
 
         //处理控制器的参数
         $content_field = '';
-        if (isset($this->params['data']['fields'])) {
-            $fields = $this->params['data']['fields'];
+        if (isset($data['fields'])) {
+            $fields = $data['fields'];
             foreach ($fields as $field) {
                 $content_field .= "\t\t\$model->" . $field['name'] . " = input('" . $field['name'] . "');\n";
             }

@@ -22,10 +22,13 @@ class Field extends Node
         'money' => '金额'
     ];
 
+    public $title = '';
+
     //字段的校验规则
-    protected $rule = '';
+    public $rule = '';
     //字段是否必须
-    protected $is_required = false;
+    public $required = false;
+    public $default = '';
     //字段值必须唯一
     protected $is_unique = false;
 
