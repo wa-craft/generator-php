@@ -1,7 +1,6 @@
 <?php
 namespace thinkbuilder\node;
 
-use thinkbuilder\Builder;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\{
     TemplateHelper, FileHelper
@@ -23,7 +22,7 @@ class Controller extends Node
         //创建目录
         FileHelper::mkdir($this->path);
 
-        $g = Generator::create('php\\Controller', [
+        Generator::create('php\\Controller', [
             'path' => $this->path,
             'file_name' => $this->name . '.php',
             'template' => TemplateHelper::fetchTemplate('controller'),

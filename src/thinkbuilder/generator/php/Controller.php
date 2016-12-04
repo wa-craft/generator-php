@@ -42,7 +42,7 @@ class Controller extends Generator
         $tags['EXTEND_CONTROLLER'] = $extend_controller;
 
         $content = $this->params['template'];
-        echo $extend_controller;
+
         //处理与控制器相关的模板
         //处理控制器的方法
         if (isset($this->params['data']['actions'])) {
