@@ -28,11 +28,9 @@ class Controller extends Node
             'file_name' => $this->name . '.php',
             'template' => TemplateHelper::fetchTemplate('controller'),
             'data' => $this->data
-        ])->generate();
+        ])->generate()->writeToFile();
 
-        $actions_content = $this->processChildren('action');
-
-        $g->writeToFile();
+        $this->processChildren('action');
     }
 
     public function setNameSpace()

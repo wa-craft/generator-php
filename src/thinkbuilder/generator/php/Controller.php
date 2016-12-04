@@ -38,15 +38,20 @@ class Controller extends Generator
             return $controller;
         })($this->params['data']);
 
-        $tags['DEFAULT_CONTROLLER'] = $extend_controller;
+        if ($extend_controller !== '') $extend_controller = 'extends ' . $extend_controller;
+        $tags['EXTEND_CONTROLLER'] = $extend_controller;
 
         $content = $this->params['template'];
-
+        echo $extend_controller;
         //处理与控制器相关的模板
         //处理控制器的方法
         if (isset($this->params['data']['actions'])) {
             $actions = $this->params['data']['actions'];
             foreach ($actions as $action) {
+                //当存在父控制器且为 index|add|mod 方法的时候，不生成方法代码
+                if ($extend_controller !== '' && in_array($action['name'], ['add', 'index', 'mod'])) {
+                    continue;
+                }
                 $content_action = TemplateHelper::fetchTemplate('controller_action');
                 $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
                 $content_action = str_replace('{{ACTION_COMMENT}}', $action['caption'], $content_action);
