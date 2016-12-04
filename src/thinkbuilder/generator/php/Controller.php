@@ -68,7 +68,7 @@ class Controller extends Generator
         }
         $tags['CONTROLLER_PARAMS'] = $content_field;
 
-        $this->content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
+        $this->content = TemplateHelper::parseTemplateTags($tags, $content);
 
         return $this;
     }
