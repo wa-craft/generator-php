@@ -90,7 +90,7 @@ abstract class Node
                     if (is_array($value) && $key != 'data') {
                         $list = [];
                         foreach ($value as $item) {
-                            $list[] = Node::create(ucfirst(substr($key, 0, strlen($key) - 1)), ['data' => $item, 'parent_namespace' => $this->namespace]);
+                            if (is_array($item)) $list[] = Node::create(ucfirst(substr($key, 0, strlen($key) - 1)), ['data' => $item, 'parent_namespace' => $this->namespace]);
                         }
                         $this->$key = $list;
                     } else {
