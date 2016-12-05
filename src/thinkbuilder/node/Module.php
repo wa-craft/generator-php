@@ -1,6 +1,7 @@
 <?php
 namespace thinkbuilder\node;
 
+use thinkbuilder\Cache;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\FileHelper;
 
@@ -37,6 +38,8 @@ class Module extends Node
 
         $this->getAllViews();
         $this->processChildren('view');
+        echo "pp: ".
+        FileHelper::copyFiles(ASSETS_PATH . '/themes/' . Cache::getInstance()->get('config')['theme'] . '/layout', $this->path . '/view/layout');
     }
 
     public function setNameSpace()
