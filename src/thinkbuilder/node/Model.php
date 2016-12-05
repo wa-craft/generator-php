@@ -4,7 +4,7 @@ namespace thinkbuilder\node;
 use thinkbuilder\Cache;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\{
-    TemplateHelper, FileHelper
+    ClassHelper, TemplateHelper, FileHelper
 };
 
 /**
@@ -24,7 +24,8 @@ class Model extends Node
     {
         //创建目录
         FileHelper::mkdir($this->path);
-        FileHelper::mkdir(Cache::getInstance()->get('paths')['database']);
+        $db_path = Cache::getInstance()->get('paths')['database'];
+        FileHelper::mkdir($db_path);
 
         Generator::create('php\\Model', [
             'path' => $this->path,
@@ -33,10 +34,12 @@ class Model extends Node
             'data' => $this->data
         ])->generate()->writeToFile();
 
+        $model_name = ClassHelper::convertToTableName($this->name, ClassHelper::convertNamespaceToTablePrefix($this->parent_namespace));
         Generator::create('sql\\Model', [
-            'path' => $this->path,
-            'file_name' => $this->name . '.php',
-            'template' => TemplateHelper::fetchTemplate('model'),
+            'path' => $db_path,
+            'file_name' => $model_name . '.sql',
+            'model_name' => $model_name,
+            'template' => TemplateHelper::fetchTemplate('sql_table'),
             'data' => $this->data
         ])->generate()->writeToFile();
     }
