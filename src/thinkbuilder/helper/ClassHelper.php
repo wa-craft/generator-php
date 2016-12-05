@@ -58,7 +58,6 @@ class ClassHelper
      */
     public static function convertNamespaceToTablePrefix($namespace)
     {
-        echo "name: " . $namespace;
         if (!preg_match('/^\S/', $namespace)) $namespace = substr($namespace, 1);
         $list = explode('\\', $namespace);
 
