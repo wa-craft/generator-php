@@ -26,6 +26,7 @@ class View extends Generator
                     $_td .= '<td>{$it.' . $field['name'] . '}</td>' . PHP_EOL;
                 }
                 $content = str_replace('{{TR_LOOP}}', $_tr, $content);
+                $content = str_replace('{{MODULE_NAME}}', $this->params['data']['name'], $content);
                 $this->content = str_replace('{{TD_LOOP}}', $_td, $content);
             } else {
                 foreach ($fields as $field) {
