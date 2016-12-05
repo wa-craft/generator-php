@@ -86,7 +86,7 @@ abstract class Node
                         }
                     }
 
-                    //如果值是数组，否则，则创建子节点对象
+                    //如果值是数组，则创建子节点对象
                     if (is_array($value) && $key != 'data') {
                         $list = [];
                         foreach ($value as $item) {
