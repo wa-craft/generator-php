@@ -27,6 +27,7 @@ class Model extends Node
         $db_path = Cache::getInstance()->get('paths')['database'];
         FileHelper::mkdir($db_path);
 
+        //生成模型程序
         Generator::create('php\\Model', [
             'path' => $this->path,
             'file_name' => $this->name . '.php',
@@ -34,6 +35,7 @@ class Model extends Node
             'data' => $this->data
         ])->generate()->writeToFile();
 
+        //生成数据表
         $model_name = ClassHelper::convertToTableName($this->name, ClassHelper::convertNamespaceToTablePrefix($this->parent_namespace));
         Generator::create('sql\\Model', [
             'path' => $db_path,
