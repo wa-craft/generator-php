@@ -40,7 +40,8 @@ return [
                             'fields' => [
                                 ['name' => 'name', 'title' => '名称', 'rule' => 'alpha', 'required' => true],
                                 ['name' => 'annotation', 'title' => '说明', 'rule' => 'alpha', 'required' => true],
-                                ['name' => 'portal_file', 'title' => '入口文件', 'rule' => 'alphaDash', 'required' => true]
+                                ['name' => 'portal_file', 'title' => '入口文件', 'rule' => 'alphaDash', 'required' => true],
+                                ['name' => 'logo', 'title' => '应用的logo', 'rule' => 'image', 'required' => false]
                             ],
                             'relations' => [
                                 [
