@@ -4,7 +4,10 @@ namespace thinkbuilder\generator\php;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\TemplateHelper;
 
-
+/**
+ * Class Traits 特性代码生成器
+ * @package thinkbuilder\generator\php
+ */
 class Traits extends Generator
 {
     public function generate(): Generator

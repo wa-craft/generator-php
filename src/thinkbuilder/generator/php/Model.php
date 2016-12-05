@@ -4,6 +4,10 @@ namespace thinkbuilder\generator\php;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\TemplateHelper;
 
+/**
+ * Class Model 模型代码生成器
+ * @package thinkbuilder\generator\php
+ */
 class Model extends Generator
 {
     public function generate(): Generator
