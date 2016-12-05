@@ -12,7 +12,7 @@ class ClassHelper
      * @param $table_prefix
      * @return string
      */
-    public static function convertToTableName($name, $table_prefix)
+    public static function convertToTableName($name, $table_prefix = '')
     {
         $s = $table_prefix . '_';
 
@@ -48,5 +48,20 @@ class ClassHelper
             $s .= ucfirst($n);
         }
         return $s;
+    }
+
+    /**
+     * 将 namespace 转换成表名前缀
+     * 如果以 '\' 开头，则去除 '\'，并取第一部分（应用名称）作为前缀
+     * @param $namespace
+     * @return mixed
+     */
+    public static function convertNamespaceToTablePrefix($namespace)
+    {
+        echo "name: " . $namespace;
+        if (!preg_match('/^\S/', $namespace)) $namespace = substr($namespace, 1);
+        $list = explode('\\', $namespace);
+
+        return $list[0];
     }
 }
