@@ -3,6 +3,10 @@ namespace thinkbuilder\generator\profile;
 
 use thinkbuilder\generator\Generator;
 
+/**
+ * Class Nginx nginx 虚拟主机配置文件生成器
+ * @package thinkbuilder\generator\profile
+ */
 class Nginx extends Generator
 {
     public function generate(): Generator
