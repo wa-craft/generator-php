@@ -40,7 +40,7 @@ class Application extends Node
             FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/application', $this->path);
         }
 
-        //写入 config / database 配置文件
+        //写入应用 config 配置文件
         Generator::create('php\\ConfigData', [
             'path' => $this->path,
             'file_name' => 'config.php',
@@ -48,10 +48,19 @@ class Application extends Node
             'data' => $this->data
         ])->generate()->writeToFile();
 
+        //写入数据库配置文件
         Generator::create('php\\DBConfig', [
             'path' => $this->path,
             'file_name' => 'database.php',
             'template' => TemplateHelper::fetchTemplate('database'),
+            'data' => $this->data
+        ])->generate()->writeToFile();
+
+        //写入 menu 配置文件
+        Generator::create('php\\MenuData', [
+            'path' => $this->path.'/extra',
+            'file_name' => 'menu.php',
+            'template' => TemplateHelper::fetchTemplate('menu'),
             'data' => $this->data
         ])->generate()->writeToFile();
 
