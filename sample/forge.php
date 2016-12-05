@@ -15,12 +15,12 @@ return [
                 [
                     'name' => 'index',
                     'caption' => '默认模块',
-                    'default_parent_controller' => 'goldeagle\\thinklib\\controller\\DefaultController',
+                    'default_parent_controller' => '\\goldeagle\\thinklib\\controller\\DefaultController',
                     'controllers' => [
                         [
                             'name' => 'Index',
                             'caption' => '默认控制器',
-                            'parent_controller' => '',
+                            'parent_controller' => '\\goldeagle\\thinklib\\controller\\DefaultController',
                             'actions' => [['name' => 'index', 'caption' => '默认方法']]
                         ]
                     ],
