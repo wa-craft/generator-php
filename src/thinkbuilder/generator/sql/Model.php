@@ -52,6 +52,9 @@ class Model extends Generator
         //字段是否必须
         $null_string = (isset($field->required)) ? ($field->required ? ' NOT NULL ' : '') : '';
 
+        $default = (array_key_exists('default', $field)) ? ' DEFAULT \'' . $field->default . '\' ' : ' DEFAULT NULL';
+        $null_string = $default !== '' ? $default : $null_string;
+
         if (preg_match('/_id$/', $field['name'])) {
             return "`{{FIELD_NAME}}` bigint(20) $null_string COMMENT '{{FIELD_TITLE}}',";
         }
@@ -66,11 +69,12 @@ class Model extends Generator
         }
 
         if ($field['rule'] == 'text') {
-            return "`{{FIELD_NAME}}` TEXT COMMENT '{{FIELD_TITLE}}',";
+            return "`{{FIELD_NAME}}` TEXT $null_string  COMMENT '{{FIELD_TITLE}}',";
         }
 
-        $default = (array_key_exists('default', $field)) ? ' DEFAULT \'' . $field->default . '\' ' : ' DEFAULT NULL';
-        $null_string = $default !== '' ? $default : $null_string;
+        if ($field['rule'] == 'image') {
+            return "`{{FIELD_NAME}}` varchar(255) $null_string  COMMENT '{{FIELD_TITLE}}',";
+        }
 
         return "`{{FIELD_NAME}}` varchar(100) $null_string COMMENT '{{FIELD_TITLE}}',";
     }
