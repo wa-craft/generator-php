@@ -1,6 +1,7 @@
 <?php
 namespace thinkbuilder\node;
 
+use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\FileHelper;
 
 /**
@@ -21,6 +22,28 @@ class Module extends Node
     public $views = [];
     //默认模块下所有控制器的父控制器名称，会根据此名称自动生成默认控制器，并且模块下所有控制器继承自此控制器
     public $default_parent_controller = '';
+
+    public function process()
+    {
+        //创建目录
+        FileHelper::mkdir($this->path);
+
+        //调用的顺序必须 getAllControllers 在前
+        $this->getAllControllers();
+        $this->processChildren('controller');
+
+        $this->processChildren('traits');
+        $this->processChildren('model');
+
+        $this->getAllViews();
+        $this->processChildren('view');
+    }
+
+    public function setNameSpace()
+    {
+        $this->namespace = $this->parent_namespace . '\\' . $this->name;
+        $this->data['namespace'] = $this->namespace;
+    }
 
     /**
      * 根据 Model 创建默认操作 Model 的控制器
@@ -72,28 +95,5 @@ class Module extends Node
         }
 
         $this->views = array_merge($this->views, $views);
-    }
-
-    public function process()
-    {
-        //创建目录
-        FileHelper::mkdir($this->path);
-
-        //调用的顺序必须 getAllControllers 在前
-        $this->getAllControllers();
-        $this->processChildren('controller');
-
-        $this->processChildren('traits');
-        $this->processChildren('model');
-
-
-        $this->getAllViews();
-        $this->processChildren('view');
-    }
-
-    public function setNameSpace()
-    {
-        $this->namespace = $this->parent_namespace . '\\' . $this->name;
-        $this->data['namespace'] = $this->namespace;
     }
 }
