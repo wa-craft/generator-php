@@ -19,7 +19,8 @@ class Field extends Node
         'boolean' => '是/否',
         'url' => '合法的 uri 网址',
         'ip' => '合法的 ip 地址',
-        'money' => '金额'
+        'money' => '金额',
+        'image' => '图片'
     ];
 
     public $title = '';

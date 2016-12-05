@@ -21,7 +21,7 @@ class View extends Node
     {
         //创建目录
         FileHelper::mkdir($this->path);
-        foreach ($this->actions as $action) {
+        foreach ($this->data['actions'] as $action) {
             Generator::create('html\\View', [
                 'path' => $this->path . '/' . $this->name,
                 'file_name' => $action->name . '.html',

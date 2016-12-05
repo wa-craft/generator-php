@@ -43,7 +43,7 @@ class Controller extends Generator
             return $controller;
         })($data);
 
-        if ($extend_controller !== '') $extend_controller = 'extends ' . $extend_controller;
+        $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : 'extends \think\Controller';
         $tags['EXTEND_CONTROLLER'] = $extend_controller;
 
         $content = $this->params['template'];
@@ -54,7 +54,8 @@ class Controller extends Generator
             $actions = $data['actions'];
             foreach ($actions as $action) {
                 //当存在父控制器且为 index|add|mod 方法的时候，不生成方法代码
-                if ($extend_controller !== '' && in_array($action['name'], ['add', 'index', 'mod'])) {
+                $default_controller = ($data['default_controller']) ?? '';
+                if ($extend_controller === $default_controller && in_array($action['name'], ['add', 'index', 'mod'])) {
                     continue;
                 }
                 $content_action = TemplateHelper::fetchTemplate('controller_action');
