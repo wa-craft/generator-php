@@ -31,7 +31,8 @@ class TemplateHelper
         'nginx' => '/misc/nginx_vhost',
         'apache' => '/misc/apache_access',
         'config' => '/php/config.tmpl',
-        'database' => '/php/database.tmpl'
+        'database' => '/php/database.tmpl',
+        'menu' => '/php/menu.tmpl'
     ];
 
     /**
