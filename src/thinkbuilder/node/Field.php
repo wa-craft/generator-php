@@ -11,6 +11,7 @@ class Field extends Node
     public static $rules = [
         'alpha' => '英文字符',
         'number' => '数字',
+        'float' => '浮点数字',
         'chsAlpha' => '中文或英文字符',
         'text' => '任何文字',
         'datetime' => '日期时间',

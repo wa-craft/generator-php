@@ -77,6 +77,10 @@ class Model extends Generator
                 return "`{{FIELD_NAME}}` varchar(255) $null_string  COMMENT '{{FIELD_TITLE}}',";
             }
 
+            if ($field['rule'] == 'float') {
+                return "`{{FIELD_NAME}}` float(10,2) $null_string  COMMENT '{{FIELD_TITLE}}',";
+            }
+
             return "`{{FIELD_NAME}}` varchar(100) $null_string COMMENT '{{FIELD_TITLE}}',";
         }
         return '';
