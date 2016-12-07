@@ -26,7 +26,7 @@ a cli tool to build applications for thinkphp v5，
 
 >命令样例（linux）：
 
-`#./build -c config.php -d ./sample/forge.php -t ./tmp -r top-think/think`
+`#./build -c config.php -d ./sample/forge.php -t ./tmp`
 
 ## 3. 文档
 * [生成代码后的目录结构](./doc/deploy_dirs.md)
