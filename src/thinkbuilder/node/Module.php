@@ -2,7 +2,6 @@
 namespace thinkbuilder\node;
 
 use thinkbuilder\Cache;
-use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\FileHelper;
 
 /**
@@ -87,7 +86,7 @@ class Module extends Node
             $views[] = Node::create('view',
                 [
                     'data' => [
-                        'name' => strtolower($controller->name),
+                        'name' => $controller->name,
                         'caption' => $controller->caption . '视图',
                         'actions' => $controller->actions,
                         'fields' => $controller->fields

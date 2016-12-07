@@ -3,7 +3,7 @@ namespace thinkbuilder\node;
 
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\{
-    TemplateHelper, FileHelper
+    ClassHelper, TemplateHelper, FileHelper
 };
 
 /**
@@ -23,7 +23,7 @@ class View extends Node
         FileHelper::mkdir($this->path);
         foreach ($this->data['actions'] as $action) {
             Generator::create('html\\View', [
-                'path' => $this->path . '/' . $this->name,
+                'path' => $this->path . '/' . ClassHelper::convertToTableName($this->name),
                 'file_name' => $action->name . '.html',
                 'template' => TemplateHelper::fetchTemplate('view_' . $action->name),
                 'data' => $this->data
