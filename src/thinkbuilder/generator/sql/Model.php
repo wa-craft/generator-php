@@ -49,33 +49,36 @@ class Model extends Generator
      */
     public static function getFieldSQL($field)
     {
-        //字段是否必须
-        $null_string = (isset($field->required)) ? ($field->required ? ' NOT NULL ' : '') : '';
+        if (isset($field)) {
+            //字段是否必须
+            $null_string = (isset($field->required)) ? ($field->required ? ' NOT NULL ' : '') : '';
 
-        $default = (array_key_exists('default', $field)) ? ' DEFAULT \'' . $field->default . '\' ' : ' DEFAULT NULL';
-        $null_string = $default !== '' ? $default : $null_string;
+            $default = (array_key_exists('default', $field)) ? ' DEFAULT \'' . $field['default'] . '\' ' : ' DEFAULT NULL';
+            $null_string = $default !== '' ? $default : $null_string;
 
-        if (preg_match('/_id$/', $field['name'])) {
-            return "`{{FIELD_NAME}}` bigint(20) $null_string COMMENT '{{FIELD_TITLE}}',";
+            if (preg_match('/_id$/', $field['name'])) {
+                return "`{{FIELD_NAME}}` bigint(20) $null_string COMMENT '{{FIELD_TITLE}}',";
+            }
+
+            if (preg_match('/^is_/', $field['name'])) {
+                $default = (array_key_exists('default', $field)) ? ($field['default'] ? '\'1\'' : '\'0\'') : '\'0\'';
+                return "`{{FIELD_NAME}}` tinyint(1) DEFAULT $default COMMENT '{{FIELD_TITLE}}',";
+            }
+
+            if ($field['rule'] == 'datetime') {
+                return "`{{FIELD_NAME}}` datetime $null_string DEFAULT CURRENT_TIMESTAMP COMMENT '{{FIELD_TITLE}}',";
+            }
+
+            if ($field['rule'] == 'text') {
+                return "`{{FIELD_NAME}}` TEXT $null_string  COMMENT '{{FIELD_TITLE}}',";
+            }
+
+            if ($field['rule'] == 'image') {
+                return "`{{FIELD_NAME}}` varchar(255) $null_string  COMMENT '{{FIELD_TITLE}}',";
+            }
+
+            return "`{{FIELD_NAME}}` varchar(100) $null_string COMMENT '{{FIELD_TITLE}}',";
         }
-
-        if (preg_match('/^is_/', $field['name'])) {
-            $default = (array_key_exists('default', $field)) ? ($field->default ? '\'1\'' : '\'0\'') : '\'0\'';
-            return "`{{FIELD_NAME}}` tinyint(1) DEFAULT $default COMMENT '{{FIELD_TITLE}}',";
-        }
-
-        if ($field['rule'] == 'datetime') {
-            return "`{{FIELD_NAME}}` datetime $null_string DEFAULT CURRENT_TIMESTAMP COMMENT '{{FIELD_TITLE}}',";
-        }
-
-        if ($field['rule'] == 'text') {
-            return "`{{FIELD_NAME}}` TEXT $null_string  COMMENT '{{FIELD_TITLE}}',";
-        }
-
-        if ($field['rule'] == 'image') {
-            return "`{{FIELD_NAME}}` varchar(255) $null_string  COMMENT '{{FIELD_TITLE}}',";
-        }
-
-        return "`{{FIELD_NAME}}` varchar(100) $null_string COMMENT '{{FIELD_TITLE}}',";
+        return '';
     }
 }
