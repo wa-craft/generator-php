@@ -10,11 +10,14 @@ class View extends Generator
     public function generate(): Generator
     {
         $data = $this->params['data'];
-        
-        //判断是否是独立控制器
-        $content = str_replace('{{MODEL_NAME}}', strtolower($data['name']), $this->params['template']);
-        $content = str_replace('{{MODEL_COMMENT}}', $data['caption'], $content);
-        $content = str_replace('{{ACTION_COMMENT}}', $data['caption'], $content);
+
+        $tags = [
+            'MODEL_NAME' => strtolower($data['name']),
+            'MODEL_COMMENT' => $data['caption'],
+            'ACTION_COMMENT' => $data['caption'],
+            'MODULE_NAME' => explode('\\', $data['namespace'])[1]
+        ];
+        $content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
 
         //处理模型的字段
         if (isset($data['fields'])) {
@@ -52,7 +55,6 @@ class View extends Generator
                         'FIELD_NAME' => $field->name,
                         'FIELD_TITLE' => $field->title,
                         'FIELD_COMMENT' => $_comment,
-                        'MODULE_NAME' => $data['name'],
                         'IS_REQUIRED' => $_is_required
                     ];
 
