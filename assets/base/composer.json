@@ -1,6 +1,6 @@
 {
-  "name": "goldeagle/bforge-think",
-  "description": "a base thinkphp5 application structure for bforge",
+  "name": "goldeagle/think-builder",
+  "description": "A cli tool to build applications for thinkphp v5",
   "minimum-stability": "dev",
   "license": "MIT",
   "authors": [
