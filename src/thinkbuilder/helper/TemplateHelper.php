@@ -10,8 +10,9 @@ class TemplateHelper
 {
     public static $templates = [
         'portal' => '/php/portal.tmpl',
+        'class' => '/php/class.tmpl',
+        'class_action' => '/php/class_action.tmpl',
         'controller' => '/php/controller.tmpl',
-        'controller_action' => '/php/controller_action.tmpl',
         'traits' => '/php/traits.tmpl',
         'traits_action' => '/php/traits_action.tmpl',
         'model' => '/php/model.tmpl',

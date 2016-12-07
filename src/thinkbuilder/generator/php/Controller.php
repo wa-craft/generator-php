@@ -43,9 +43,8 @@ class Controller extends Generator
             return $controller;
         })($data);
 
-        $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : 'extends \think\Controller';
-        $tags['EXTEND_CONTROLLER'] = $extend_controller;
-
+        $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : '';
+        $tags['EXTEND_CLASS'] = $extend_controller;
         $content = $this->params['template'];
 
         //处理与控制器相关的模板
@@ -55,19 +54,19 @@ class Controller extends Generator
             foreach ($actions as $action) {
                 //当存在父控制器且为 index|add|mod 方法的时候，不生成方法代码
                 $default_controller = ($data['default_controller']) ?? '';
-                if ($extend_controller === $default_controller && in_array($action['name'], ['add', 'index', 'mod'])) {
+                if ($extend_controller === $default_controller && $extend_controller !== '\\think\\Controller' && in_array($action['name'], ['add', 'index', 'mod'])) {
                     continue;
                 }
-                $content_action = TemplateHelper::fetchTemplate('controller_action');
+                $content_action = TemplateHelper::fetchTemplate('class_action');
                 $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
                 $content_action = str_replace('{{ACTION_COMMENT}}', $action['caption'], $content_action);
                 if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
                 else  $content_action = str_replace('{{ACTION_PARAMS}}', '', $content_action);
 
-                $content = str_replace('{{CONTROLLER_ACTIONS}}', $content_action . "\n{{CONTROLLER_ACTIONS}}", $content);
+                $content = str_replace('{{CLASS_ACTIONS}}', $content_action . "\n{{CLASS_ACTIONS}}", $content);
             }
         }
-        $tags['CONTROLLER_ACTIONS'] = '';
+        $tags['CLASS_ACTIONS'] = '';
 
         //处理控制器的参数
         $content_field = '';
