@@ -43,16 +43,6 @@ $cmd->option('t')
         return $target;
     });
 
-//指定应用目录的仓库
-$cmd->option('r')
-    ->aka('repository')
-    ->describedAs('define a thinkphp base application structure, default is : https://github.com/' . ROOT_REPOS)
-    ->default('https://github.com/' . ROOT_REPOS)
-    ->map(function ($repository) {
-        return 'https://github.com/' . $repository;
-    });
-
-
 //进行创建
 $builder = new \thinkbuilder\Builder([
     'config' => $cmd['config'],
