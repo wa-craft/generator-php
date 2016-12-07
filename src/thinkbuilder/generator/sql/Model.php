@@ -34,7 +34,7 @@ class Model extends Generator
             'CONTROLLER_PARAMS' => $content_field,
             'CLASS_NAME' => $data['name'],
             'APP_PATH' => APP_PATH,
-            'MODULE_NAME' => $data['namespace'],
+            'MODULE_NAME' => str_replace('|model', '', str_replace('\\', '|', $data['namespace'])),
             'FIELD_LOOP' => '',
         ];
         $this->content = TemplateHelper::parseTemplateTags($tags, $content);
