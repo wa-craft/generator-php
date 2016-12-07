@@ -1,6 +1,6 @@
 /vendor/
 /.idea/
 /deploy/
-!/composer.lock
+/composer.lock
 /test.php
 /usr/
