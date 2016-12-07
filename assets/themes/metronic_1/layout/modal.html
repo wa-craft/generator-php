@@ -1,0 +1,37 @@
+<script>
+    //拦截所有 Form 的提交请求
+    $('form').each(function () {
+        $(this).submit(function () {
+            Form.submit(this);
+            return false;
+        });
+    });
+
+    //提示信息处理方法
+    Form.onError = function (data) {
+        $('#modal_content').html('<lable style=\"color: #9c3328;\">' + data.msg + '</lable>');
+        $('#msgModal').modal('show');
+    }
+
+    //绑定 textarea 到 CK Editor
+    $('textarea').each(function () {
+        var id = $(this).attr('id');
+        CKEDITOR.replace(id);
+    });
+</script>
+<div class="modal fade bs-modal-sm" id="msgModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"><i class="fa fa-warning"></i> 出错了</h4>
+            </div>
+            <div id="modal_content" class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn dark btn-outline" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
