@@ -38,7 +38,6 @@ class Module extends Node
 
         $this->getAllViews();
         $this->processChildren('view');
-        echo "pp: ".
         FileHelper::copyFiles(ASSETS_PATH . '/themes/' . Cache::getInstance()->get('config')['theme'] . '/layout', $this->path . '/view/layout');
     }
 
