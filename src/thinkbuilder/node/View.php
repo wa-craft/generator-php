@@ -25,6 +25,7 @@ class View extends Node
             Generator::create('html\\View', [
                 'path' => $this->path . '/' . ClassHelper::convertToTableName($this->name),
                 'file_name' => $action->name . '.html',
+                'action_name' => $action->name,
                 'template' => TemplateHelper::fetchTemplate('view_' . $action->name),
                 'data' => $this->data
             ])->generate()->writeToFile();
