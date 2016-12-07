@@ -20,7 +20,7 @@ class Builder
     //系统基本路径
     private $paths = [
         'target' => './deploy',
-        'application' => './deploy',
+        'application' => './deploy' . '/' . APP_PATH,
         'database' => './deploy/' . DBFILE_PATH,
         'profile' => './deploy/' . PROFILE_PATH,
         'public' => './deploy/' . PUB_PATH
@@ -87,7 +87,7 @@ class Builder
     protected function makeBaseDirectories()
     {
         $this->paths = array_merge($this->paths, [
-            'application' => $this->paths['target'],
+            'application' => $this->paths['target'] . '/' . APP_PATH,
             'database' => $this->paths['target'] . '/' . DBFILE_PATH,
             'profile' => $this->paths['target'] . '/' . PROFILE_PATH,
             'public' => $this->paths['target'] . '/' . PUB_PATH

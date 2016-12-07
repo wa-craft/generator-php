@@ -3,7 +3,7 @@
 define('SRC_PATH', './src');
 define('PACKAGE_PATH', './pkg');
 define('TAR_ROOT_PATH', './deploy');
-define('APP_PATH', 'application');
+define('APP_PATH', 'applications');
 define('DBFILE_PATH', 'database');
 define('PROFILE_PATH', 'profile');
 define('TMPL_PATH', 'template');
