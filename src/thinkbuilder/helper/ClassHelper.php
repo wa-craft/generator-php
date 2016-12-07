@@ -7,15 +7,13 @@ namespace thinkbuilder\helper;
 class ClassHelper
 {
     /**
-     * 将模型的驼峰式命名方式转换为数据表的下划线命名方式
+     * 将类的驼峰式命名方式转换为下划线命名方式
      * @param $name
-     * @param $table_prefix
      * @return string
      */
-    public static function convertToTableName($name, $table_prefix = '')
+    public static function camelToDash($name)
     {
-        $s = $table_prefix . '_';
-
+        $s = '';
         $array = [];
         for ($i = 0; $i < strlen($name); $i++) {
             if ($name[$i] == strtolower($name[$i])) {
@@ -34,6 +32,34 @@ class ClassHelper
     }
 
     /**
+     * 将类的下划线命名方式转换为驼峰式命名方式
+     * @param $name
+     * @return string
+     */
+    public static function dashToCamel($name)
+    {
+        $s = '';
+        $names = explode('_', $name);
+        foreach ($names as $n) {
+            $s .= ucfirst($n);
+        }
+        return $s;
+    }
+
+    /**
+     * 将模型的驼峰式命名方式转换为数据表的下划线命名方式
+     * @param $name
+     * @param $table_prefix
+     * @return string
+     */
+    public static function convertToTableName($name, $table_prefix = '')
+    {
+        $s = $table_prefix == '' ? ClassHelper::camelToDash($name) : $table_prefix . '_' . ClassHelper::camelToDash($name);
+
+        return $s;
+    }
+
+    /**
      * 将数据表的下划线命名方式转换为模型的驼峰式命名方式
      * @param string $name
      * @param string $table_prefix
@@ -41,13 +67,8 @@ class ClassHelper
      */
     public static function convertFromTableName($name, $table_prefix)
     {
-        $s = '';
         $name = str_replace($table_prefix, '', $name);
-        $names = explode('_', $name);
-        foreach ($names as $n) {
-            $s .= ucfirst($n);
-        }
-        return $s;
+        return ClassHelper::dashToCamel($name);
     }
 
     /**
