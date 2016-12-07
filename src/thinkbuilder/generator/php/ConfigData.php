@@ -12,8 +12,15 @@ class ConfigData extends Generator
 {
     public function generate(): Generator
     {
+        $data = $this->params['data'];
         $content = $this->params['template'];
-        $content = TemplateHelper::parseTemplateTags(['NAMESPACE' => $this->params['data']['namespace']], $content);
+        $tags = [
+            'NAMESPACE' => $data['namespace'],
+            //基于NAMESPACE用MD5生成 session_id 配置变量
+            'SESSION_ID' => md5($data['namespace'])
+        ];
+
+        $content = TemplateHelper::parseTemplateTags($tags, $content);
         $this->content = $content;
         return $this;
     }
