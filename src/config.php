@@ -27,11 +27,7 @@ return [
         //是否生成目录数组，暂时保留未应用
         'menu' => true,
         //是否解压资源文件
-        'decompress_assets' => true,
-        //是否最后运行composer update命令
-        'run_composer' => false,
-        //是否最后运行 bower update 命令
-        'run_bower' => false
+        'decompress_assets' => true
     ],
     //默认值
     'defaults' => [

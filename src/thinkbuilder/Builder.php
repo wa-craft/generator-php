@@ -28,8 +28,6 @@ class Builder
 
     //数据
     private $data = [];
-    //默认的 git 仓库
-    public $repository = '';
 
     //版本
     protected $version = '1.3.1';
@@ -122,29 +120,6 @@ class Builder
 
         $project = Node::create('Project', ['data' => $this->data]);
         $project->process();
-
-        //执行composer update命令
-        if ($build_actions['run_composer']) {
-            $cmd = 'cd ' . $this->paths['target'];
-            shell_exec($cmd);
-            echo 'updating composer repositories ...' . PHP_EOL;
-            $cmd = 'composer update';
-            shell_exec($cmd);
-        }
-
-        //执行bower install命令
-        if ($build_actions['run_bower']) {
-            $cmd = 'cd ' . $this->paths['target'];
-            shell_exec($cmd);
-            echo 'installing bower repositories ...' . PHP_EOL;
-            $deps = Cache::getInstance()->get('config')['bower_deps'];
-            $cmd = 'bower install ';
-            foreach ($deps as $dep) {
-                $cmd .= $dep . ' ';
-            }
-            $cmd .= '--save';
-            if (count($deps) != 0) shell_exec($cmd);
-        }
 
         echo "ThinkForge Builder, Version: " . $this->version . PHP_EOL;
     }
