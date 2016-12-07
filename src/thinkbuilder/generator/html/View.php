@@ -9,15 +9,17 @@ class View extends Generator
 {
     public function generate(): Generator
     {
+        $data = $this->params['data'];
+        
         //判断是否是独立控制器
-        $content = str_replace('{{MODEL_NAME}}', strtolower($this->params['data']['name']), $this->params['template']);
-        $content = str_replace('{{MODEL_COMMENT}}', $this->params['data']['caption'], $content);
-        $content = str_replace('{{ACTION_COMMENT}}', $this->params['data']['caption'], $content);
+        $content = str_replace('{{MODEL_NAME}}', strtolower($data['name']), $this->params['template']);
+        $content = str_replace('{{MODEL_COMMENT}}', $data['caption'], $content);
+        $content = str_replace('{{ACTION_COMMENT}}', $data['caption'], $content);
 
         //处理模型的字段
-        if (isset($this->params['data']['fields'])) {
-            $fields = $this->params['data']['fields'];
-            if ($this->params['data']['name'] == 'index') {
+        if (isset($data['fields'])) {
+            $fields = $data['fields'];
+            if ($data['name'] == 'index') {
                 //索引方法
                 $_tr = '<th>ID</th>' . PHP_EOL;
                 $_td = '<td>{$it.id}</td>' . PHP_EOL;
@@ -26,7 +28,7 @@ class View extends Generator
                     $_td .= '<td>{$it.' . $field['name'] . '}</td>' . PHP_EOL;
                 }
                 $content = str_replace('{{TR_LOOP}}', $_tr, $content);
-                $content = str_replace('{{MODULE_NAME}}', $this->params['data']['name'], $content);
+                $content = str_replace('{{MODULE_NAME}}', $data['name'], $content);
                 $this->content = str_replace('{{TD_LOOP}}', $_td, $content);
             } else {
                 foreach ($fields as $field) {
@@ -46,14 +48,15 @@ class View extends Generator
                     else $_is_required = '';
 
                     $tags_field = [
-                        'FORM_FIELD' => self::getFieldHTML($field, $this->params['data']['name']),
+                        'FORM_FIELD' => self::getFieldHTML($field, $data['name']),
                         'FIELD_NAME' => $field->name,
                         'FIELD_TITLE' => $field->title,
                         'FIELD_COMMENT' => $_comment,
+                        'MODULE_NAME' => $data['name'],
                         'IS_REQUIRED' => $_is_required
                     ];
 
-                    $content = str_replace('{{FIELD_LOOP}}', TemplateHelper::parseTemplateTags($tags_field, TemplateHelper::fetchTemplate('view_' . $this->params['data']['name'] . '_field')) . "\n{{FIELD_LOOP}}", $content);
+                    $content = str_replace('{{FIELD_LOOP}}', TemplateHelper::parseTemplateTags($tags_field, TemplateHelper::fetchTemplate('view_' . $data['name'] . '_field')) . "\n{{FIELD_LOOP}}", $content);
                 }
                 $this->content = str_replace("\n{{FIELD_LOOP}}", '', $content);
             }
