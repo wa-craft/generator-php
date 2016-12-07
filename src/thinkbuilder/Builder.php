@@ -32,7 +32,7 @@ class Builder
     public $repository = '';
 
     //版本
-    protected $version = '1.3.0';
+    protected $version = '1.3.1';
 
     public function __construct($params = [])
     {
@@ -78,12 +78,6 @@ class Builder
         $this->data = require $file;
     }
 
-    protected function gitClone()
-    {
-        $cmd = 'git clone ' . $this->repository . ' ' . $this->paths['target'] . ' && ' . 'rm -rf ' . $this->paths['target'] . '/.git';
-        shell_exec($cmd);
-    }
-
     protected function makeBaseDirectories()
     {
         $this->paths = array_merge($this->paths, [
@@ -110,12 +104,10 @@ class Builder
     {
         $build_actions = $this->config['actions'];
 
-        //使用 git clone 创建初始目录结构
-        $this->gitClone();
-
         //创建基本目录
         $this->makeBaseDirectories();
-
+        FileHelper::copyFiles(__DIR__.'/../../assets/base', $this->paths['target']);
+        FileHelper::copyFiles(__DIR__.'/../../assets/base/public', $this->paths['target'].'/public');
 
         //解压资源文件
         if ($build_actions['decompress_assets']) {

@@ -1,0 +1,16 @@
+{
+  "name": "goldeagle/bforge-think",
+  "description": "a base thinkphp5 application structure for bforge",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bison 'goldeagle' Fan",
+      "email": "1308362@gmail.com"
+    }
+  ],
+  "require": {
+    "topthink/framework": "^5.0.2",
+    "goldeagle/thinklib": "dev-master"
+  }
+}

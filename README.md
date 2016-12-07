@@ -7,7 +7,7 @@ a cli tool to build applications for thinkphp v5，
 通过定义数据对象的结构，自动生成相关的CRUD代码。
 
 ## 1. 功能
-* 从 github 获取并创建默认的目录结构
+* 自动创建默认的目录结构
 * 自动生成控制器程序以及CRUD方法
 * 自动生成模型程序以及关联模型
 * 自动生成后台校验器程序以及校验规则表
