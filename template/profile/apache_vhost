@@ -1,0 +1,8 @@
+<VirtualHost {{DOMAIN}}:80>
+    ServerAdmin webmaster@{{DOMAIN}}
+    DocumentRoot "/app/www/{{DOMAIN}}/public"
+    ServerName {{DOMAIN}}
+    ServerAlias www.{{DOMAIN}}
+    ErrorLog "/app/logs/nginx/{{DOMAIN}}_error.log"
+    CustomLog "/app/logs/nginx/{{DOMAIN}}_access.log" common
+</VirtualHost>

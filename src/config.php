@@ -20,10 +20,12 @@ return [
         'sql' => true,
         //是否复制其他静态资源
         'copy' => true,
-        //是否根据应用 portal 生成 nginx 配置文件，谨慎使用
+        //是否根据应用 portal 生成 nginx 虚拟主机配置文件，谨慎使用
         'nginx' => true,
-        //是否根据应用 portal 生成 .htaccess，谨慎使用
+        //是否根据应用 portal 生成 apache 虚拟主机配置文件，谨慎使用
         'apache' => true,
+        //是否根据应用 portal 生成 apache .htaccess 配置文件，谨慎使用
+        'apache_access' => true,
         //是否生成目录数组，暂时保留未应用
         'menu' => true,
         //是否解压资源文件

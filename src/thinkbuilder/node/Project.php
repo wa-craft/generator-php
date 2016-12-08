@@ -18,7 +18,7 @@ class Project extends Node
     public function process()
     {
         $config = Cache::getInstance()->get('config');
-        //生成 nginx 配置文件
+        //生成 nginx 虚拟主机配置文件
         if ($config['actions']['nginx']) {
             Generator::create('profile\\Nginx', [
                     'path' => Cache::getInstance()->get('paths')['profile'],
@@ -29,8 +29,19 @@ class Project extends Node
             )->generate()->writeToFile();
         }
 
-        //生成 apache htaccess 配置文件
+        //生成 apache 虚拟主机配置文件
         if ($config['actions']['apache']) {
+            Generator::create('profile\\Apache', [
+                    'path' => Cache::getInstance()->get('paths')['profile'],
+                    'file_name' => 'apache_vhost',
+                    'template' => TemplateHelper::fetchTemplate('apache'),
+                    'project' => $this->data
+                ]
+            )->generate()->writeToFile();
+        }
+
+        //生成 apache .htaccess 配置文件
+        if ($config['actions']['apache_access']) {
             Generator::create('misc\\Apache', [
                 'path' => Cache::getInstance()->get('paths')['public'],
                 'file_name' => '.htaccess',
