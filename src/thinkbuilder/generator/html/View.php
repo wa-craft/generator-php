@@ -49,9 +49,8 @@ class View extends Generator
 
                     if (isset($field->required)) $_is_required = ($field->required) ? '（* 必须）' : '';
                     else $_is_required = '';
-
                     $tags_field = [
-                        'FORM_FIELD' => self::getFieldHTML($field, $data['name']),
+                        'FORM_FIELD' => self::getFieldHTML($field, $this->params['action_name']),
                         'FIELD_NAME' => $field->name,
                         'FIELD_TITLE' => $field->title,
                         'FIELD_COMMENT' => $_comment,
@@ -107,6 +106,7 @@ class View extends Generator
             if ($action == 'add') return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">{volist name=\"" . $_model . "List\" id=\"it\"}<option value=\"{\$it.id}\">{\$it.caption}</option>{/volist}</select> ";
             else return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">{volist name=\"" . $_model . "List\" id=\"it\"}<option value=\"{\$it.id}\">{\$it.caption}</option>{/volist}</select> ";
         }
+
         if ($action == 'add') return "<input type=\"text\" class=\"form-control\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">";
         else  return "<input type=\"text\" class=\"form-control\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">";
     }
