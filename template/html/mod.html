@@ -39,7 +39,7 @@
                     <form role="form" method="post" action="{:url('{{MODULE_NAME}}/{{MODEL_NAME}}/save')}">
                         <input type="hidden" name="id" id="id" value="{$it.id}">
                         <div class="form-body">
-                            {{FIELD_LOOP}}
+{{FIELD_LOOP}}
                         </div>
                         <div class="form-actions noborder">
                             <button type="submit" class="btn blue">提交</button>

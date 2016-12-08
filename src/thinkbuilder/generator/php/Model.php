@@ -34,7 +34,7 @@ class Model extends Generator
             foreach ($relations as $relation) {
                 $content_relation = TemplateHelper::parseTemplateTags(
                     [
-                        'RELATION_NAME' => $relation['name'],
+                        'RELATION_NAME' => lcfirst($relation['name']),
                         'RELATION_TYPE' => $relation['type'],
                         'RELATION_MODEL' => $relation['model'],
                         'RELATION_THIS_KEY' => $relation['this_key'],

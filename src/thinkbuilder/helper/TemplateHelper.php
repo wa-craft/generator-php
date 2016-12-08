@@ -12,6 +12,7 @@ class TemplateHelper
         'portal' => '/php/portal.tmpl',
         'class' => '/php/class.tmpl',
         'class_action' => '/php/class_action.tmpl',
+        'class_construct_action' => '/php/class_construct_action.tmpl',
         'controller' => '/php/controller.tmpl',
         'traits' => '/php/traits.tmpl',
         'traits_action' => '/php/traits_action.tmpl',
@@ -25,9 +26,10 @@ class TemplateHelper
         'view_add_field' => '/html/add_field.html',
         'view_index_field' => '/html/index_field.html',
         'view_mod_field' => '/html/mod_field.html',
-        'view_login' => '/html/login.html',
-        'view_register' => '/html/register.html',
-        'view_logout' => '/html/logout.html',
+        'view_default_login' => '/html/login.html',
+        'view_default_register' => '/html/register.html',
+        'view_default_logout' => '/html/logout.html',
+        'view_default' => '/html/default.html',
         'sql_table' => '/sql/table.sql',
         'nginx' => '/profile/nginx_vhost',
         'apache' => '/profile/apache_vhost',
@@ -48,6 +50,11 @@ class TemplateHelper
         if (key_exists($template_name, self::$templates))
             $content = file_get_contents(TMPL_PATH . self::$templates[$template_name]);
         return $content;
+    }
+
+    public static function hasTemplate(string $template_name)
+    {
+        return key_exists($template_name, self::$templates);
     }
 
     /**
