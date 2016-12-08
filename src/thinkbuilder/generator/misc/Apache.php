@@ -1,5 +1,5 @@
 <?php
-namespace thinkbuilder\generator\profile;
+namespace thinkbuilder\generator\misc;
 
 use thinkbuilder\generator\Generator;
 

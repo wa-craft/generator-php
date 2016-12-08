@@ -31,7 +31,7 @@ class Project extends Node
 
         //生成 apache htaccess 配置文件
         if ($config['actions']['apache']) {
-            Generator::create('profile\\Apache', [
+            Generator::create('misc\\Apache', [
                 'path' => Cache::getInstance()->get('paths')['public'],
                 'file_name' => '.htaccess',
                 'template' => TemplateHelper::fetchTemplate('apache'),
