@@ -35,6 +35,10 @@ class Module extends Node
         $this->processChildren('traits');
         $this->processChildren('model');
 
+        //校验器
+        $this->getAllValidates();
+        $this->processChildren('validate');
+
         $this->getAllViews();
         $this->processChildren('view');
         FileHelper::copyFiles(ASSETS_PATH . '/themes/' . Cache::getInstance()->get('config')['theme'] . '/layout', $this->path . '/view/layout');
@@ -96,5 +100,26 @@ class Module extends Node
         }
 
         $this->views = array_merge($this->views, $views);
+    }
+
+    /**
+     * 通过模型来创建校验器
+     */
+    protected function getAllValidates()
+    {
+        $validates = [];
+        $models = $this->data['models'];
+        foreach ($models as $model) {
+            $validates[] = Node::create('validate',
+                [
+                    'data' => [
+                        'name' => $model['name'],
+                        'caption' => $model['caption'] . '校验器',
+                        'fields' => $model['fields']
+                    ],
+                    'parent_namespace' => $this->parent_namespace
+                ]);
+        }
+        $this->validates = array_merge($this->validates, $validates);
     }
 }
