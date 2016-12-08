@@ -5,7 +5,7 @@ use thinkbuilder\generator\Generator;
 
 /**
  * Class Apache $public/.htaccess apache 目录配置文件生成器
- * @package thinkbuilder\generator\profile
+ * @package thinkbuilder\generator\misc
  */
 class Apache extends Generator
 {

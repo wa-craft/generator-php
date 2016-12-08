@@ -29,8 +29,9 @@ class TemplateHelper
         'view_register' => '/html/register.html',
         'view_logout' => '/html/logout.html',
         'sql_table' => '/sql/table.sql',
-        'nginx' => '/misc/nginx_vhost',
-        'apache' => '/misc/apache_access',
+        'nginx' => '/profile/nginx_vhost',
+        'apache' => '/profile/apache_vhost',
+        'apache_access' => '/misc/apache_access',
         'config' => '/php/config.tmpl',
         'database' => '/php/database.tmpl',
         'menu' => '/php/menu.tmpl'

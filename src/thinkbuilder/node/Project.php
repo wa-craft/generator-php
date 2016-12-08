@@ -34,7 +34,7 @@ class Project extends Node
             Generator::create('misc\\Apache', [
                 'path' => Cache::getInstance()->get('paths')['public'],
                 'file_name' => '.htaccess',
-                'template' => TemplateHelper::fetchTemplate('apache'),
+                'template' => TemplateHelper::fetchTemplate('apache_access'),
                 'project' => $this->data
             ])->generate()->writeToFile();
         }
