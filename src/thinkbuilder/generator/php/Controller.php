@@ -1,6 +1,7 @@
 <?php
 namespace thinkbuilder\generator\php;
 
+use thinkbuilder\Cache;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\TemplateHelper;
 
@@ -42,8 +43,7 @@ class Controller extends Generator
             }
             return $controller;
         })($data);
-
-        $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : '';
+        $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : 'extends ' . $data['parent_controller'];
         $tags['EXTEND_CLASS'] = $extend_controller;
         $content = $this->params['template'];
 
@@ -53,8 +53,8 @@ class Controller extends Generator
             $actions = $data['actions'];
             foreach ($actions as $action) {
                 //当存在父控制器且为 index|add|mod 方法的时候，不生成方法代码
-                $default_controller = ($data['default_controller']) ?? '';
-                if ($extend_controller === $default_controller && $extend_controller !== '\\think\\Controller' && in_array($action['name'], ['add', 'index', 'mod'])) {
+                $default_controller = 'extends ' . (($data['parent_controller']) ?? '');
+                if ($extend_controller === $default_controller && $extend_controller !== 'extends \\think\\Controller' && in_array($action['name'], ['add', 'index', 'mod'])) {
                     continue;
                 }
                 $content_action = TemplateHelper::fetchTemplate('class_action');
@@ -66,7 +66,9 @@ class Controller extends Generator
                 $content = str_replace('{{CLASS_ACTIONS}}', $content_action . "\n{{CLASS_ACTIONS}}", $content);
             }
         }
-        $tags['CLASS_ACTIONS'] = '';
+        //如果设置了生成 menu 的参数，则系统创建构造器，并在构造器中注入 menu。
+        $tags['CLASS_ACTIONS'] = Cache::getInstance()->get('config')['actions']['menu'] != null ?
+            TemplateHelper::fetchTemplate('class_construct_action'): '';
 
         //处理控制器的参数
         $content_field = '';
