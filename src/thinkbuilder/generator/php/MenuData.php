@@ -23,7 +23,7 @@ class MenuData extends Generator
             foreach ($module['models'] as $model) {
                 $controllers[] = ['name' => $model['name'], 'caption' => $model['caption']];
             }
-            $controllers = array_merge($module['controllers'], $controllers);
+            $controllers = isset($module['controllers'])?array_merge($module['controllers'], $controllers) : $controllers;
 
             //根据 controller 来生成菜单索引
             foreach ($controllers as $controller) {
