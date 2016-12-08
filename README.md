@@ -21,7 +21,7 @@ a cli tool to build applications for thinkphp v5，
 
 ## 2. 使用方法
 1. 定义 project 目录下面的项目文件。
-2. 获取 commando：`composer update`，在 v1.2.0 以后的版本，这一步自动完成
+2. 注意，运行之前要手动获取 commando：`composer update`
 3. linux 下面执行 `./build` ；windows 下执行 `./build.bat`
 
 >命令样例（linux）：
