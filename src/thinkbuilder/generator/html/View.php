@@ -23,13 +23,13 @@ class View extends Generator
         //处理模型的字段
         if (isset($data['fields'])) {
             $fields = $data['fields'];
-            if ($data['name'] == 'index') {
+            if ($this->params['action_name'] == 'index') {
                 //索引方法
-                $_tr = '<th>ID</th>' . PHP_EOL;
-                $_td = '<td>{$it.id}</td>' . PHP_EOL;
+                $_tr = "\t\t\t\t\t\t\t\t\t" . '<th > ID</th >' . PHP_EOL;
+                $_td = "\t\t\t\t\t\t\t\t\t\t". '<td>{$it.id}</td>' . PHP_EOL;
                 foreach ($fields as $field) {
-                    $_tr .= '<th>' . $field['title'] . '</th>' . PHP_EOL;
-                    $_td .= '<td>{$it.' . $field['name'] . '}</td>' . PHP_EOL;
+                    $_tr .= "\t\t\t\t\t\t\t\t\t<th>" . $field->title . '</th>' . PHP_EOL;
+                    $_td .= "\t\t\t\t\t\t\t\t\t\t".'<td>{$it.' . $field->name . '}</td>' . PHP_EOL;
                 }
                 $tags = [
                     'TR_LOOP' => $_tr,
