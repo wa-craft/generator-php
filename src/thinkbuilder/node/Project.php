@@ -13,11 +13,17 @@ class Project extends Node
 {
     //项目使用的域名
     public $domain = '';
+    //公司信息
+    public $company = '';
+    //下属的应用
     public $applications = [];
 
     public function process()
     {
-        $config = Cache::getInstance()->get('config');
+        $cache = Cache::getInstance();
+        $config = $cache->get('config');
+        $cache->set('company', $this->company);
+
         //生成 nginx 虚拟主机配置文件
         if ($config['actions']['nginx']) {
             Generator::create('profile\\Nginx', [
