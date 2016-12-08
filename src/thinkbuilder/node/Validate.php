@@ -20,8 +20,6 @@ class Validate extends Node
     {
         //创建目录
         FileHelper::mkdir($this->path);
-        echo "vp: " . $this->path . PHP_EOL;
-
         Generator::create('php\\Validate', [
             'path' => $this->path,
             'file_name' => $this->name . '.php',
