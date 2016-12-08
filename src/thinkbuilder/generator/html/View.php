@@ -57,10 +57,13 @@ class View extends Generator
                         'FIELD_COMMENT' => $_comment,
                         'IS_REQUIRED' => $_is_required
                     ];
-                    $content = str_replace('{{FIELD_LOOP}}', TemplateHelper::parseTemplateTags($tags_field, TemplateHelper::fetchTemplate('view_' . $this->params['action_name'] . '_field')) . "\n{{FIELD_LOOP}}", $content);
+                    $content = str_replace('{{FIELD_LOOP}}',
+                        TemplateHelper::parseTemplateTags($tags_field, TemplateHelper::fetchTemplate('view_' . $this->params['action_name'] . '_field')) . "\n{{FIELD_LOOP}}", $content);
                 }
                 $this->content = str_replace("\n{{FIELD_LOOP}}", '', $content);
             }
+        } else {
+            $this->content = str_replace('{{MODULE_NAME}}', $data['name'], $content);
         }
         return $this;
     }

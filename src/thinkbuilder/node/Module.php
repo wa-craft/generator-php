@@ -93,7 +93,8 @@ class Module extends Node
                         'name' => $controller->name,
                         'caption' => $controller->caption . '视图',
                         'actions' => $controller->actions,
-                        'fields' => $controller->fields
+                        'fields' => $controller->fields,
+                        'parent_controller' => $controller->parent_controller
                     ],
                     'parent_namespace' => $this->parent_namespace
                 ]);
