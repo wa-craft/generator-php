@@ -38,6 +38,8 @@ class View extends Node
                 'path' => $this->path . '/' . ClassHelper::convertToTableName($this->name),
                 'file_name' => $action->name . '.html',
                 'action_name' => $action->name,
+                'action_caption' => $action->caption,
+                'module_caption' => $this->data['module_caption'],
                 'template' => TemplateHelper::fetchTemplate($template_name),
                 'data' => $this->data
             ])->generate()->writeToFile();

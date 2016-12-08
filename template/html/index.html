@@ -8,11 +8,15 @@
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
-                    <a href="index.html">首页</a>
+                    <a href="/">首页</a>
                     <i class="fa fa-arrow-right"></i>
                 </li>
                 <li>
-                    <a href="#">{{MODEL_COMMENT}}</a>
+                    <a href="{:url('{{MODULE_NAME}}/index/index')}">{{MODULE_COMMENT}}</a>
+                    <i class="fa fa-arrow-right"></i>
+                </li>
+                <li>
+                    <a href="{:url('{{MODULE_NAME}}/{{MODEL_NAME}}/index')}">{{MODEL_COMMENT}}</a>
                     <i class="fa fa-arrow-right"></i>
                 </li>
                 <li>

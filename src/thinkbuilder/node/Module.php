@@ -81,12 +81,12 @@ class Module extends Node
                     [
                         'data' => [
                             'name' => $model['name'],
-                            'caption' => $model['caption'] . '控制器',
+                            'caption' => $model['caption'],
                             'parent_controller' => $this->default_parent_controller,
                             'actions' => [
-                                ['name' => 'index', 'caption' => '索引方法'],
-                                ['name' => 'add', 'caption' => '添加方法'],
-                                ['name' => 'mod', 'caption' => '修改方法']
+                                ['name' => 'index', 'caption' => '列表'],
+                                ['name' => 'add', 'caption' => '添加'],
+                                ['name' => 'mod', 'caption' => '修改']
                             ],
                             'fields' => $model['fields']
                         ],
@@ -109,10 +109,12 @@ class Module extends Node
                 [
                     'data' => [
                         'name' => $controller->name,
-                        'caption' => $controller->caption . '视图',
+                        'caption' => $controller->caption,
                         'actions' => $controller->actions,
                         'fields' => $controller->fields,
-                        'parent_controller' => $controller->parent_controller
+                        'parent_controller' => $controller->parent_controller,
+                        'module_name' => $this->name,
+                        'module_caption' => $this->caption
                     ],
                     'parent_namespace' => $this->parent_namespace
                 ]);

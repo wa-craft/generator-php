@@ -15,8 +15,9 @@ class View extends Generator
         $tags = [
             'MODEL_NAME' => ClassHelper::camelToDash($data['name']),
             'MODEL_COMMENT' => $data['caption'],
-            'ACTION_COMMENT' => $data['caption'],
-            'MODULE_NAME' => explode('\\', $data['namespace'])[1]
+            'ACTION_COMMENT' => $this->params['action_caption'],
+            'MODULE_COMMENT' => $data['module_caption'],
+            'MODULE_NAME' => $data['module_name']
         ];
         $content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
 
