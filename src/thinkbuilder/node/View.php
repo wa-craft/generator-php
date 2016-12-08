@@ -26,14 +26,14 @@ class View extends Node
                 ($this->data['parent_controller'] == '\\think\\Controller') ?
                     (TemplateHelper::hasTemplate('view_default_' . $action->name) ?
                         'view_' . $action->name :
-                        'view_default'):
+                        'view_default') :
                     (TemplateHelper::hasTemplate('view_' . $action->name) ?
                         'view_' . $action->name :
                         'view_default')
                 : (TemplateHelper::hasTemplate('view_' . $action->name) ?
                     'view_' . $action->name :
                     'view_default');
-            echo "acp: " . $action->name . ", tp: " . $template_name . PHP_EOL;
+
             Generator::create('html\\View', [
                 'path' => $this->path . '/' . ClassHelper::convertToTableName($this->name),
                 'file_name' => $action->name . '.html',
