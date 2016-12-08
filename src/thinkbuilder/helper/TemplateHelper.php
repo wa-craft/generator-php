@@ -30,6 +30,7 @@ class TemplateHelper
         'view_default_register' => '/html/register.html',
         'view_default_logout' => '/html/logout.html',
         'view_default' => '/html/default.html',
+        'view_layout_footer' => '/html/layout/footer.html',
         'sql_table' => '/sql/table.sql',
         'nginx' => '/profile/nginx_vhost',
         'apache' => '/profile/apache_vhost',

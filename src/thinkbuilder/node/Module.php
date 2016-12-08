@@ -2,7 +2,9 @@
 namespace thinkbuilder\node;
 
 use thinkbuilder\Cache;
+use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\FileHelper;
+use thinkbuilder\helper\TemplateHelper;
 
 /**
  * Class Module
@@ -42,6 +44,14 @@ class Module extends Node
         $this->getAllViews();
         $this->processChildren('view');
         FileHelper::copyFiles(ASSETS_PATH . '/themes/' . Cache::getInstance()->get('config')['theme'] . '/layout', $this->path . '/view/layout');
+
+        //处理模板 layout 文件
+        //生成视图 footer
+        Generator::create('html\\LayoutFooter', [
+            'path' => $this->path . '/view/layout',
+            'file_name' => 'footer.html',
+            'template' => TemplateHelper::fetchTemplate('view_layout_footer')
+        ])->generate()->writeToFile();
     }
 
     public function setNameSpace()
