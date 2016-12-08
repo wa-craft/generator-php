@@ -2,6 +2,7 @@
 namespace thinkbuilder\generator\html;
 
 use thinkbuilder\generator\Generator;
+use thinkbuilder\helper\ClassHelper;
 use thinkbuilder\helper\TemplateHelper;
 use thinkbuilder\node\Field;
 
@@ -12,7 +13,7 @@ class View extends Generator
         $data = $this->params['data'];
 
         $tags = [
-            'MODEL_NAME' => strtolower($data['name']),
+            'MODEL_NAME' => ClassHelper::camelToDash($data['name']),
             'MODEL_COMMENT' => $data['caption'],
             'ACTION_COMMENT' => $data['caption'],
             'MODULE_NAME' => explode('\\', $data['namespace'])[1]
@@ -30,9 +31,11 @@ class View extends Generator
                     $_tr .= '<th>' . $field['title'] . '</th>' . PHP_EOL;
                     $_td .= '<td>{$it.' . $field['name'] . '}</td>' . PHP_EOL;
                 }
-                $content = str_replace('{{TR_LOOP}}', $_tr, $content);
-                $content = str_replace('{{MODULE_NAME}}', $data['name'], $content);
-                $this->content = str_replace('{{TD_LOOP}}', $_td, $content);
+                $tags = [
+                    'TR_LOOP' => $_tr,
+                    'TD_LOOP' => $_td
+                ];
+                $this->content = TemplateHelper::parseTemplateTags($tags, $content);
             } else {
                 foreach ($fields as $field) {
                     if (isset($field->rule)) {
