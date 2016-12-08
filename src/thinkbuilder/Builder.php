@@ -29,9 +29,6 @@ class Builder
     //数据
     private $data = [];
 
-    //版本
-    protected $version = '1.3.1';
-
     public function __construct($params = [])
     {
         if (key_exists('config', $params)) $this->setConfigFromFile($params['config']);
@@ -121,6 +118,6 @@ class Builder
         $project = Node::create('Project', ['data' => $this->data]);
         $project->process();
 
-        echo "ThinkForge Builder, Version: " . $this->version . PHP_EOL;
+        echo "ThinkForge Builder, Version: " . VERSION . PHP_EOL;
     }
 }
