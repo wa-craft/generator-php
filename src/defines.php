@@ -10,4 +10,4 @@ define('TMPL_PATH', 'template');
 define('PUB_PATH', 'public');
 define('ASSETS_PATH', 'assets');
 define('ROOT_REPOS', 'goldeagle/bforge-think');
-define('VERSION', '1.3.1');
+define('VERSION', '1.3.2');

@@ -11,8 +11,10 @@ a cli tool to build applications for thinkphp v5，
 * 自动生成控制器程序以及CRUD方法
 * 自动生成模型程序以及关联模型
 * 自动生成后台校验器程序以及校验规则表
+* 自动生成 helper behavior 类
 * 自动生成CRUD的视图界面
 * 自动生成SQL数据库表结构
+* 自动生成菜单变量
 * 自动生成权限树 (TODO)
 * 自动生成 RBAC 数据（TODO）
 * 自动生成 nginx vhost 配置文件
@@ -21,8 +23,8 @@ a cli tool to build applications for thinkphp v5，
 
 ## 2. 使用方法
 1. 定义 project 目录下面的项目文件。
-2. 注意，运行之前要手动获取 commando：`composer update`
-3. linux 下面执行 `./build` ；windows 下执行 `./build.bat`
+2. 注意，运行之前要手动获取 commando：`# composer update`
+3. linux 下面执行 `./build` ；windows 下执行 `PS %path%: ./build.bat`
 
 >命令样例（linux）：
 
