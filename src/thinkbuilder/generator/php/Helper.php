@@ -52,11 +52,6 @@ class Helper extends Generator
         if (isset($data['actions'])) {
             $actions = $data['actions'];
             foreach ($actions as $action) {
-                //当存在父控制器且为 index|add|mod 方法的时候，不生成方法代码
-                $default_controller = 'extends ' . (($data['parent_controller']) ?? '');
-                if ($extend_controller === $default_controller && $extend_controller !== 'extends \\think\\Controller' && in_array($action['name'], ['add', 'index', 'mod'])) {
-                    continue;
-                }
                 $action_tags = [
                     'ACTION_NAME' => $action['name'],
                     'ACTION_COMMENT' => $action['caption']

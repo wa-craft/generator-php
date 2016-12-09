@@ -22,7 +22,6 @@ class Helper extends Node
     {
         //创建目录
         FileHelper::mkdir($this->path);
-echo "HELPER";
         Generator::create('php\\Helper', [
             'path' => $this->path,
             'file_name' => $this->name . '.php',
