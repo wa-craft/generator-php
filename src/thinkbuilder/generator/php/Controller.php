@@ -67,7 +67,7 @@ class Controller extends Generator
             }
         }
         //如果设置了生成 menu 的参数，则系统创建构造器，并在构造器中注入 menu。
-        $tags['CLASS_ACTIONS'] = Cache::getInstance()->get('config')['actions']['menu'] != null ?
+        $tags['CLASS_ACTIONS'] = Cache::getInstance()->get('autoMenu') ?
             TemplateHelper::fetchTemplate('class_construct_action'): '';
 
         //处理控制器的参数

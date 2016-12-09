@@ -60,6 +60,7 @@ class Application extends Node
 
         //写入 menu 配置文件
         if ($this->autoMenu) {
+            Cache::getInstance()->set('autoMenu', true);
             Generator::create('php\\MenuData', [
                 'path' => $this->path . '/extra',
                 'file_name' => 'menu.php',
