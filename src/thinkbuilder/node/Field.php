@@ -18,6 +18,7 @@ class Field extends Node
         'alphaDash' => '英文字符与下划线',
         'email' => '电子邮箱',
         'boolean' => '是/否',
+        'accepted' => 'on|yes|1(是）或者 off|no|0（否）',
         'url' => '合法的 uri 网址',
         'ip' => '合法的 ip 地址',
         'money' => '金额',

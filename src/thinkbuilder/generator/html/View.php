@@ -84,7 +84,7 @@ class View extends Generator
      */
     public static function getFieldHTML($field, $action = 'add')
     {
-        if ($field->rule == 'boolean') {
+        if ($field->rule == 'boolean' || $field->rule == 'accepted') {
             if ($action == 'add') return "<input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">";
             else  return "<input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">";
         }
