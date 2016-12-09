@@ -19,6 +19,7 @@ abstract class Node
         'validate',
         'view',
         'traits',
+        'helper',
         'field',
         'relation'
     ];

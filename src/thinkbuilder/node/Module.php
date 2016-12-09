@@ -12,17 +12,21 @@ use thinkbuilder\helper\TemplateHelper;
  */
 class Module extends Node
 {
-    //模块下的控制器
+    //控制器列表
     public $controllers = [];
-    //模块下的模式
+    //模式列表
     public $schemas = [];
-    //模块下的模型
+    //模型列表
     public $models = [];
-    //模块下的特性
+    //特性列表
     public $traitss = [];
-    //模块下的校验器
+    //校验器列表
     public $validates = [];
-    //模块下的视图
+    //助手列表
+    public $helpers = [];
+    //行为列表
+    public $behaviors = [];
+    //视图列表
     public $views = [];
     //模块使用的主题
     public $theme = '';
@@ -38,7 +42,11 @@ class Module extends Node
         $this->getAllControllers();
         $this->processChildren('controller');
 
+        //特性列表
         $this->processChildren('traits');
+
+        //助手列表
+        $this->processChildren('helper');
 
         //模型
         $this->getAllModels();
@@ -103,7 +111,6 @@ class Module extends Node
         }
 
         $this->controllers = array_merge($this->controllers, $controllers);
-        echo $this->name. " ccc: ".count($this->schemas).PHP_EOL;
     }
 
     /**
