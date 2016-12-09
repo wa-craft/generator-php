@@ -12,7 +12,8 @@ use thinkbuilder\helper\{
  */
 class Action extends Node
 {
-    protected $params = [];
+    public $params = [];
+    public $is_static = false;
 
     public function process()
     {
