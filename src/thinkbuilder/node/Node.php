@@ -20,6 +20,7 @@ abstract class Node
         'view',
         'traits',
         'helper',
+        'behavior',
         'field',
         'relation'
     ];

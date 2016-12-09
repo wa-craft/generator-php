@@ -48,6 +48,9 @@ class Module extends Node
         //助手列表
         $this->processChildren('helper');
 
+        //行为
+        $this->processChildren('behavior');
+
         //模型
         $this->getAllModels();
         $this->processChildren('model');

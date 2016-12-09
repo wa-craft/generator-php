@@ -14,6 +14,7 @@ class TemplateHelper
         'class_action' => '/php/class_action.tmpl',
         'class_function' => '/php/class_function.tmpl',
         'class_construct_action' => '/php/class_construct_action.tmpl',
+        'behavior' => '/php/behavior.tmpl',
         'controller' => '/php/controller.tmpl',
         'traits' => '/php/traits.tmpl',
         'traits_action' => '/php/traits_action.tmpl',
