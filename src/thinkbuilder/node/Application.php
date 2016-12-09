@@ -16,8 +16,10 @@ class Application extends Node
     protected $namespace = '';
     //入口文件名称，不需要输入 .php 后缀
     protected $portal = 'index';
-
+    //模块列表
     protected $modules = [];
+    //是否自动生成 menu
+    protected $autoMenu = false;
 
     public function process()
     {
@@ -57,12 +59,14 @@ class Application extends Node
         ])->generate()->writeToFile();
 
         //写入 menu 配置文件
-        Generator::create('php\\MenuData', [
-            'path' => $this->path.'/extra',
-            'file_name' => 'menu.php',
-            'template' => TemplateHelper::fetchTemplate('menu'),
-            'data' => $this->data
-        ])->generate()->writeToFile();
+        if ($this->autoMenu) {
+            Generator::create('php\\MenuData', [
+                'path' => $this->path . '/extra',
+                'file_name' => 'menu.php',
+                'template' => TemplateHelper::fetchTemplate('menu'),
+                'data' => $this->data
+            ])->generate()->writeToFile();
+        }
 
         $this->processChildren('module');
     }

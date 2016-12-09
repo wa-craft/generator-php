@@ -26,8 +26,6 @@ return [
         'apache' => true,
         //是否根据应用 portal 生成 apache .htaccess 配置文件，谨慎使用
         'apache_access' => true,
-        //是否生成目录数组，暂时保留未应用
-        'menu' => true,
         //是否解压资源文件
         'decompress_assets' => true
     ],
