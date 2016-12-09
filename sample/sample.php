@@ -89,9 +89,33 @@ return [
                             'name' => 'Index',
                             //控制器说明
                             'caption' => '默认控制器',
-                            //控制器的父类，若不制定，则生成的代码自动继承 \think\Controller
+                            //控制器的父类，若不指定，则生成的代码自动继承 \think\Controller
                             'parent_controller' => '',
                             //动作类表，会根据动作列表自动生成对应的控制器方法与视图界面
+                            'actions' => [
+                                [
+                                    //动作名称
+                                    'name' => 'index',
+                                    //动作说明
+                                    'caption' => '列表',
+                                    //动作参数，会在生成方法代码的时候自动添加在方法的 () 中
+                                    'params' => '',
+                                    //是否是静态方法，可以不进行定义，默认为 false
+                                    'static' => false
+                                ]
+                            ]
+                        ]
+                    ],
+                    //助手列表，可以不进行定义
+                    'helpers' => [
+                        [
+                            //控制器名称
+                            'name' => 'FileHelper',
+                            //控制器说明
+                            'caption' => '文件助手',
+                            //控制器的父类，可以为空
+                            'parent_controller' => '',
+                            //动作类表，会根据动作列表自动生成对应的控制器方法与视图界面，助手程序的 action 全部为静态方法
                             'actions' => [
                                 [
                                     //动作名称
