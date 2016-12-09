@@ -7,13 +7,13 @@ namespace thinkbuilder\helper;
 class FileHelper
 {
     /**
-     * 判断目录是否存在，如果不存在则创建
+     * 判断目录是否存在，如果不存在则创建，可递归创建所有的父目录
      * @param $path
      */
     public static function mkdir($path)
     {
         if (!is_dir($path)) {
-            mkdir($path, 0755);
+            mkdir($path, 0755, true);
             echo "INFO: creating directory: {$path} ..." . PHP_EOL;
         }
     }
