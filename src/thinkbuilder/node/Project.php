@@ -15,7 +15,9 @@ class Project extends Node
     public $domain = '';
     //公司信息
     public $company = '';
-    //下属的应用
+    //版权信息
+    public $copyright = '';
+    //应用列表
     public $applications = [];
 
     public function process()
