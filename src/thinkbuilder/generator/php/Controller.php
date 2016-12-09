@@ -59,8 +59,7 @@ class Controller extends Generator
                 }
                 $action_tags = [
                     'ACTION_NAME' => $action['name'],
-                    'ACTION_COMMENT' => $action['caption'],
-                    'IS_STATIC' => ''
+                    'ACTION_COMMENT' => $action['caption']
                 ];
                 if (array_key_exists('params', $action)) $action_tags['ACTION_PARAMS'] = $action['params'];
                 else  $action_tags['ACTION_PARAMS'] = '';
