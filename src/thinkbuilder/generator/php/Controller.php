@@ -57,18 +57,21 @@ class Controller extends Generator
                 if ($extend_controller === $default_controller && $extend_controller !== 'extends \\think\\Controller' && in_array($action['name'], ['add', 'index', 'mod'])) {
                     continue;
                 }
-                $content_action = TemplateHelper::fetchTemplate('class_action');
-                $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
-                $content_action = str_replace('{{ACTION_COMMENT}}', $action['caption'], $content_action);
-                if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
-                else  $content_action = str_replace('{{ACTION_PARAMS}}', '', $content_action);
+                $action_tags = [
+                    'ACTION_NAME' => $action['name'],
+                    'ACTION_COMMENT' => $action['caption'],
+                    'IS_STATIC' => ''
+                ];
+                if (array_key_exists('params', $action)) $action_tags['ACTION_PARAMS'] = $action['params'];
+                else  $action_tags['ACTION_PARAMS'] = '';
+                $content_action = TemplateHelper::parseTemplateTags($action_tags, TemplateHelper::fetchTemplate('class_action'));
 
                 $content = str_replace('{{CLASS_ACTIONS}}', $content_action . "\n{{CLASS_ACTIONS}}", $content);
             }
         }
         //如果设置了生成 menu 的参数，则系统创建构造器，并在构造器中注入 menu。
         $tags['CLASS_ACTIONS'] = Cache::getInstance()->get('autoMenu') ?
-            TemplateHelper::fetchTemplate('class_construct_action'): '';
+            TemplateHelper::fetchTemplate('class_construct_action') : '';
 
         //处理控制器的参数
         $content_field = '';
