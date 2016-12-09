@@ -32,7 +32,9 @@ class Field extends Node
     public $required = false;
     public $default = '';
     //字段值必须唯一
-    protected $is_unique = false;
+    public $is_unique = false;
+    //字段是否系统填充
+    public $is_auto = false;
 
     public function process()
     {

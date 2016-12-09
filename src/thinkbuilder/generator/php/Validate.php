@@ -27,11 +27,11 @@ class Validate extends Generator
         if (isset($data['fields'])) {
             $fields = $data['fields'];
             foreach ($fields as $field) {
-                $content_field .= PHP_EOL . "\t\t['" . $field['name'] . "', '";
-                $content_field .= $field['required'] ? 'require|' : '';
-                $content_field .= $field['rule'] . '\',\'';
-                $content_field .= $field['required'] ? '必须输入：' . $field['title'] . '|' : '';
-                $content_field .= Field::$rules[$field['rule']];
+                $content_field .= PHP_EOL . "\t\t['" . $field->name . "', '";
+                $content_field .= $field->required ? 'require|' : '';
+                $content_field .= $field->rule . '\',\'';
+                $content_field .= $field->required ? '必须输入：' . $field->title . '|' : '';
+                $content_field .= Field::$rules[$field->rule];
                 $content_field .= '\'],';
             }
             $content = str_replace('{{VALIDATE_FIELDS}}', $content_field . "\n{{VALIDATE_FIELDS}}", $content);

@@ -14,6 +14,8 @@ class Module extends Node
 {
     //模块下的控制器
     public $controllers = [];
+    //模块下的模式
+    public $schemas = [];
     //模块下的模型
     public $models = [];
     //模块下的特性
@@ -22,6 +24,8 @@ class Module extends Node
     public $validates = [];
     //模块下的视图
     public $views = [];
+    //模块使用的主题
+    public $theme = '';
     //默认模块下所有控制器的父控制器名称，会根据此名称自动生成默认控制器，并且模块下所有控制器继承自此控制器
     public $default_parent_controller = '';
 
@@ -35,6 +39,9 @@ class Module extends Node
         $this->processChildren('controller');
 
         $this->processChildren('traits');
+
+        //模型
+        $this->getAllModels();
         $this->processChildren('model');
 
         //校验器
@@ -74,21 +81,21 @@ class Module extends Node
     protected function getAllControllers()
     {
         $controllers = [];
-        if (key_exists('models', $this->data)) {
-            $models = $this->data['models'];
-            foreach ($models as $model) {
+        if (key_exists('schemas', $this->data)) {
+            $schemas = $this->data['schemas'];
+            foreach ($schemas as $schema) {
                 $controllers[] = Node::create('controller',
                     [
                         'data' => [
-                            'name' => $model['name'],
-                            'caption' => $model['caption'],
+                            'name' => $schema['name'],
+                            'caption' => $schema['caption'],
                             'parent_controller' => $this->default_parent_controller,
                             'actions' => [
                                 ['name' => 'index', 'caption' => '列表'],
                                 ['name' => 'add', 'caption' => '添加'],
                                 ['name' => 'mod', 'caption' => '修改']
                             ],
-                            'fields' => $model['fields']
+                            'fields' => $schema['fields']
                         ],
                         'parent_namespace' => $this->parent_namespace
                     ]);
@@ -96,6 +103,30 @@ class Module extends Node
         }
 
         $this->controllers = array_merge($this->controllers, $controllers);
+        echo $this->name. " ccc: ".count($this->schemas).PHP_EOL;
+    }
+
+    /**
+     * 根据 schema 创建 models
+     */
+    protected function getAllModels()
+    {
+        $models = [];
+        if (key_exists('schemas', $this->data)) {
+            $schemas = $this->data['schemas'];
+            foreach ($schemas as $schema) {
+                $models[] = Node::create('Model',
+                    [
+                        'data' => [
+                            'name' => $schema['name'],
+                            'caption' => $schema['caption'],
+                            'fields' => $schema['fields']
+                        ],
+                        'parent_namespace' => $this->parent_namespace
+                    ]);
+            }
+        }
+        $this->models = array_merge($this->models, $models);
     }
 
     /**
@@ -129,14 +160,14 @@ class Module extends Node
     protected function getAllValidates()
     {
         $validates = [];
-        $models = $this->data['models'];
+        $models = $this->models;
         foreach ($models as $model) {
             $validates[] = Node::create('validate',
                 [
                     'data' => [
-                        'name' => $model['name'],
-                        'caption' => $model['caption'] . '校验器',
-                        'fields' => $model['fields']
+                        'name' => $model->name,
+                        'caption' => $model->caption . '校验器',
+                        'fields' => $model->fields
                     ],
                     'parent_namespace' => $this->parent_namespace
                 ]);

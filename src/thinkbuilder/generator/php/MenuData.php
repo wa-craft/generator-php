@@ -20,14 +20,15 @@ class MenuData extends Generator
             $items .= " \t\t\t\t[" . PHP_EOL;
             //处理 model，并创建自动控制器
             $controllers = [];
-            foreach ($module['models'] as $model) {
-                $controllers[] = ['name' => $model['name'], 'caption' => $model['caption']];
-            }
-            $controllers = isset($module['controllers'])?array_merge($module['controllers'], $controllers) : $controllers;
+            if(isset($module['schemas'])) {
+                foreach ($module['schemas'] as $model) {
+                    $controllers[] = ['name' => $model['name'], 'caption' => $model['caption']];
+                }
 
-            //根据 controller 来生成菜单索引
-            foreach ($controllers as $controller) {
-                $items .= "\t\t\t\t\t['title' => '{$controller['caption']}', 'url' => '{$module['name']}/{$controller['name']}/index', 'icon' => 'icon-folder']," . PHP_EOL;
+                //根据 controller 来生成菜单索引
+                foreach ($controllers as $controller) {
+                    $items .= "\t\t\t\t\t['title' => '{$controller['caption']}', 'url' => '{$module['name']}/{$controller['name']}/index', 'icon' => 'icon-folder']," . PHP_EOL;
+                }
             }
             $items .= "\t\t\t\t]" . PHP_EOL;
             $items .= "\t\t\t]," . PHP_EOL;
