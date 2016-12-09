@@ -111,6 +111,20 @@ class Module extends Node
                         'parent_namespace' => $this->parent_namespace
                     ]);
             }
+
+            //增加默认的空控制器
+            $controllers[] = Node::create('controller',
+                [
+                    'data' => [
+                        'name' => 'Error',
+                        'caption' => '空控制器',
+                        'parent_controller' => '',
+                        'actions' => [
+                            ['name' => 'index', 'caption' => '入口', 'params' => 'Request $request']
+                        ]
+                    ],
+                    'parent_namespace' => $this->parent_namespace
+                ]);
         }
 
         $this->controllers = array_merge($this->controllers, $controllers);

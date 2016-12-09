@@ -25,6 +25,7 @@ class Controller extends Node
 
         //如果父控制器为空或者是默认的 \think\Controller，则使用没有 CRUD 方法的 class 模板生成代码
         $template = $this->parent_controller == '' || $this->parent_controller == '\\think\\Controller' ? TemplateHelper::fetchTemplate('class') : TemplateHelper::fetchTemplate('controller');
+        if($this->name == 'Error') $template = TemplateHelper::fetchTemplate('error');
         Generator::create('php\\Controller', [
             'path' => $this->path,
             'file_name' => $this->name . '.php',

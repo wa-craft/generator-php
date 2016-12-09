@@ -43,7 +43,7 @@ class Controller extends Generator
             }
             return $controller;
         })($data);
-        $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : 'extends ' . $data['parent_controller'];
+        $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : ($data['name'] != 'Error') ? 'extends ' . $data['parent_controller'] : '';
         $tags['EXTEND_CLASS'] = $extend_controller;
         $content = $this->params['template'];
 
@@ -69,7 +69,7 @@ class Controller extends Generator
             }
         }
         //如果设置了生成 menu 的参数，则系统创建构造器，并在构造器中注入 menu。
-        $tags['CLASS_ACTIONS'] = Cache::getInstance()->get('autoMenu') ?
+        $tags['CLASS_ACTIONS'] = Cache::getInstance()->get('autoMenu') && $data['name'] != 'Error' ?
             TemplateHelper::fetchTemplate('class_construct_action') : '';
 
         //处理控制器的参数
