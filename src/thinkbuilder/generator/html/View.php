@@ -39,6 +39,10 @@ class View extends Generator
                 $this->content = TemplateHelper::parseTemplateTags($tags, $content);
             } else {
                 foreach ($fields as $field) {
+                    //如果是由系统填充的字段，则不生成添加或修改方法的代码
+                    if($field->is_auto ?? false ) continue;
+
+                    //判断校验规则
                     if (isset($field->rule)) {
                         //判断是否是需要生成选择列表的外键
                         if (preg_match('/_id$/', $field->name)) {
