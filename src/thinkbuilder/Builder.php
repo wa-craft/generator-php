@@ -103,7 +103,6 @@ class Builder
         //创建基本目录
         $this->makeBaseDirectories();
         FileHelper::copyFiles(__DIR__ . '/../../assets/base', $this->paths['target']);
-        FileHelper::copyFiles(__DIR__ . '/../../assets/base/public', $this->paths['target'] . '/public');
 
         //解压资源文件
         if ($build_actions['decompress_assets']) {

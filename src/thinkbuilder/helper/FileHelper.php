@@ -30,7 +30,7 @@ class FileHelper
     }
 
     /**
-     * 扫描某个路径下的所有文件，并拷贝到目标路径下
+     * 扫描某个路径下的所有文件，并拷贝到目标路径下，支持递归
      * @param $src_path
      * @param $tar_path
      */
@@ -45,6 +45,10 @@ class FileHelper
             if (is_file($src_file_name)) {
                 copy($src_file_name, $tar_file_name);
                 echo "INFO: copying " . $file . "\n";
+            }
+
+            if (is_dir($src_file_name) && !preg_match('/\.+$/', $src_file_name)) {
+                FileHelper::copyFiles($src_file_name, $tar_file_name);
             }
         }
     }
