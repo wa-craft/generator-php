@@ -65,11 +65,12 @@ class Builder
     }
 
     /**
-     * 通过文件读取并设置数据
+     * 通过文件读取并设置数据，如果给出的数据文件名称，并未以 .php 结尾，则自动添加文件后缀名 .php
      * @param $file
      */
     public function setDataFromFile($file)
     {
+        if (!preg_match('/\.php$/', $file)) $file .= '.php';
         $this->data = require $file;
     }
 
@@ -101,8 +102,8 @@ class Builder
 
         //创建基本目录
         $this->makeBaseDirectories();
-        FileHelper::copyFiles(__DIR__.'/../../assets/base', $this->paths['target']);
-        FileHelper::copyFiles(__DIR__.'/../../assets/base/public', $this->paths['target'].'/public');
+        FileHelper::copyFiles(__DIR__ . '/../../assets/base', $this->paths['target']);
+        FileHelper::copyFiles(__DIR__ . '/../../assets/base/public', $this->paths['target'] . '/public');
 
         //解压资源文件
         if ($build_actions['decompress_assets']) {
