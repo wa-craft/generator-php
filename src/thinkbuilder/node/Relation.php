@@ -5,16 +5,19 @@ namespace thinkbuilder\node;
  * Class Relation
  * @package thinkbuilder\node
  */
-class Relation
+class Relation extends Node
 {
-    static public $relation_types = [
+    static public $types = [
         'hasOne',
         'hasMany',
         'belongsTo',
         'belongsToMany'
     ];
-    protected $type = 0;
-    protected $model = '';
-    protected $this_key = '';
-    protected $that_key = '';
+    public $type = 0;
+    public $model = '';
+    public $this_key = '';
+    public $that_key = '';
+
+    public function process(){}
+    public function setNameSpace(){}
 }
