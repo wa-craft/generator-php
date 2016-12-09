@@ -1,13 +1,7 @@
 <?php
 namespace thinkbuilder;
 
-use thinkbuilder\generator\{
-    IGenerator, Generator, HtmlGenerator, JSGenerator, MenuGenerator, ProfileGenerator, PHPGenerator, SQLGenerator
-};
-
-use thinkbuilder\helper\{
-    TemplateHelper, FileHelper, ClassHelper
-};
+use thinkbuilder\helper\FileHelper;
 use thinkbuilder\node\Node;
 
 /**
