@@ -17,14 +17,27 @@ class Model extends Generator
         //处理SQL的字段
         $content = $this->params['template'];
         $content_field = '';
-        if (isset($data['fields'])) {
-            $fields = $data['fields'];
-            foreach ($fields as $field) {
-                $content_field = "\t" . self::getFieldSQL($field);
-                $content_field = str_replace('{{FIELD_NAME}}', $field['name'], $content_field);
-                $content_field = str_replace('{{FIELD_TITLE}}', $field['title'], $content_field);
-                $content = str_replace('{{FIELD_LOOP}}', $content_field . "\n{{FIELD_LOOP}}", $content);
+        $fields = [];
+        if (isset($data['relations'])) {
+            foreach ($data['relations'] as $relation) {
+                if ($relation['this_key'] !== 'id') {
+                    $fields[] = [
+                        'name' => $relation['this_key'],
+                        'title' => $relation['caption'],
+                        'rule' => 'number',
+                        'required' => true,
+                        'is_unique' => false
+                    ];
+                }
             }
+        }
+        if (isset($data['fields'])) $fields = array_merge($data['fields'], $fields);
+
+        foreach ($fields as $field) {
+            $content_field = "\t" . self::getFieldSQL($field);
+            $content_field = str_replace('{{FIELD_NAME}}', $field['name'], $content_field);
+            $content_field = str_replace('{{FIELD_TITLE}}', $field['title'], $content_field);
+            $content = str_replace('{{FIELD_LOOP}}', $content_field . "\n{{FIELD_LOOP}}", $content);
         }
 
         $tags = [

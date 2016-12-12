@@ -5,6 +5,7 @@ use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\ClassHelper;
 use thinkbuilder\helper\TemplateHelper;
 use thinkbuilder\node\Field;
+use thinkbuilder\node\Node;
 
 class View extends Generator
 {
@@ -21,57 +22,69 @@ class View extends Generator
         ];
         $content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
 
-        //处理模型的字段
-        if (isset($data['fields'])) {
-            $fields = $data['fields'];
-            if ($this->params['action_name'] == 'index') {
-                //索引方法
-                $_tr = "\t\t\t\t\t\t\t\t\t" . '<th > ID</th >' . PHP_EOL;
-                $_td = "\t\t\t\t\t\t\t\t\t\t". '<td>{$it.id}</td>' . PHP_EOL;
-                foreach ($fields as $field) {
-                    $_tr .= "\t\t\t\t\t\t\t\t\t<th>" . $field->title . '</th>' . PHP_EOL;
-                    $_td .= "\t\t\t\t\t\t\t\t\t\t".'<td>{$it.' . $field->name . '}</td>' . PHP_EOL;
-                }
-                $tags = [
-                    'TR_LOOP' => $_tr,
-                    'TD_LOOP' => $_td
-                ];
-                $this->content = TemplateHelper::parseTemplateTags($tags, $content);
-            } else {
-                foreach ($fields as $field) {
-                    //如果是由系统填充的字段，则不生成添加或修改方法的代码
-                    if($field->is_auto ?? false ) continue;
-
-                    //判断校验规则
-                    if (isset($field->rule)) {
-                        //判断是否是需要生成选择列表的外键
-                        if (preg_match('/_id$/', $field->name)) {
-                            $_comment = '请选择';
-                        } else {
-                            $_comment = '请输入';
-                        }
-                        $_comment .= $field->title . '，必须是' . Field::$rules[$field->rule];
-                    } else {
-                        $_comment = '';
-                    }
-
-                    if (isset($field->required)) $_is_required = ($field->required) ? '（* 必须）' : '';
-                    else $_is_required = '';
-                    $tags_field = [
-                        'FORM_FIELD' => self::getFieldHTML($field, $this->params['action_name']),
-                        'FIELD_NAME' => $field->name,
-                        'FIELD_TITLE' => $field->title,
-                        'FIELD_COMMENT' => $_comment,
-                        'IS_REQUIRED' => $_is_required
-                    ];
-                    $content = str_replace('{{FIELD_LOOP}}',
-                        TemplateHelper::parseTemplateTags($tags_field, TemplateHelper::fetchTemplate('view_' . $this->params['action_name'] . '_field')) . "\n{{FIELD_LOOP}}", $content);
-                }
-                $this->content = str_replace("\n{{FIELD_LOOP}}", '', $content);
+        //处理关系，将关系转化成字段
+        $fields = [];
+        foreach ($data['relations'] as $relation) {
+            if ($relation['this_key'] != 'id') {
+                $fields[] = Node::create('Field', [
+                    'name' => $relation['this_key'],
+                    'title' => $relation['caption'],
+                    'rule' => 'number',
+                    'required' => true,
+                    'is_unique' => false
+                ]);
             }
-        } else {
-            $this->content = str_replace('{{MODULE_NAME}}', $data['name'], $content);
         }
+
+        if (isset($data['fields'])) $fields = array_merge($data['fields'], $fields);
+
+        //处理模型的字段
+        if ($this->params['action_name'] == 'index') {
+            //索引方法
+            $_tr = "\t\t\t\t\t\t\t\t\t" . '<th > ID</th >' . PHP_EOL;
+            $_td = "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.id}</td>' . PHP_EOL;
+            foreach ($fields as $field) {
+                $_tr .= "\t\t\t\t\t\t\t\t\t<th>" . $field->title . '</th>' . PHP_EOL;
+                $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.' . $field->name . '}</td>' . PHP_EOL;
+            }
+            $tags = [
+                'TR_LOOP' => $_tr,
+                'TD_LOOP' => $_td
+            ];
+            $this->content = TemplateHelper::parseTemplateTags($tags, $content);
+        } else {
+            foreach ($fields as $field) {
+                //如果是由系统填充的字段，则不生成添加或修改方法的代码
+                if ($field->is_auto ?? false) continue;
+
+                //判断校验规则
+                if (isset($field->rule)) {
+                    //判断是否是需要生成选择列表的外键
+                    if (preg_match('/_id$/', $field->name)) {
+                        $_comment = '请选择';
+                    } else {
+                        $_comment = '请输入';
+                    }
+                    $_comment .= $field->title . '，必须是' . Field::$rules[$field->rule];
+                } else {
+                    $_comment = '';
+                }
+
+                if (isset($field->required)) $_is_required = ($field->required) ? '（* 必须）' : '';
+                else $_is_required = '';
+                $tags_field = [
+                    'FORM_FIELD' => self::getFieldHTML($field, $this->params['action_name']),
+                    'FIELD_NAME' => $field->name,
+                    'FIELD_TITLE' => $field->title,
+                    'FIELD_COMMENT' => $_comment,
+                    'IS_REQUIRED' => $_is_required
+                ];
+                $content = str_replace('{{FIELD_LOOP}}',
+                    TemplateHelper::parseTemplateTags($tags_field, TemplateHelper::fetchTemplate('view_' . $this->params['action_name'] . '_field')) . "\n{{FIELD_LOOP}}", $content);
+            }
+            $this->content = str_replace("\n{{FIELD_LOOP}}", '', $content);
+        }
+        $this->content = str_replace('{{MODULE_NAME}}', $data['name'], $this->content);
         return $this;
     }
 

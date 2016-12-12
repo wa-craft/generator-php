@@ -38,7 +38,11 @@ class Module extends Node
         //创建目录
         FileHelper::mkdir($this->path);
 
-        //调用的顺序必须 getAllControllers 在前
+        //调用的顺序必须 getAllModels在前
+        $this->getAllModels();
+        $this->processChildren('model');
+
+        //生成控制器列表
         $this->getAllControllers();
         $this->processChildren('controller');
 
@@ -51,9 +55,6 @@ class Module extends Node
         //行为
         $this->processChildren('behavior');
 
-        //模型
-        $this->getAllModels();
-        $this->processChildren('model');
 
         //校验器
         $this->getAllValidates();
@@ -106,7 +107,8 @@ class Module extends Node
                                 ['name' => 'add', 'caption' => '添加'],
                                 ['name' => 'mod', 'caption' => '修改']
                             ],
-                            'fields' => $schema['fields']
+                            'fields' => $schema['fields'],
+                            'relations' => $schema['relations']
                         ],
                         'parent_namespace' => $this->parent_namespace
                     ]);
@@ -121,7 +123,8 @@ class Module extends Node
                         'parent_controller' => '',
                         'actions' => [
                             ['name' => 'index', 'caption' => '入口', 'params' => 'Request $request']
-                        ]
+                        ],
+                        'relations' => []
                     ],
                     'parent_namespace' => $this->parent_namespace
                 ]);
@@ -144,7 +147,8 @@ class Module extends Node
                         'data' => [
                             'name' => $schema['name'],
                             'caption' => $schema['caption'],
-                            'fields' => $schema['fields']
+                            'fields' => $schema['fields'],
+                            'relations' => $schema['relations']?? []
                         ],
                         'parent_namespace' => $this->parent_namespace
                     ]);
@@ -167,6 +171,7 @@ class Module extends Node
                         'caption' => $controller->caption,
                         'actions' => $controller->actions,
                         'fields' => $controller->fields,
+                        'relations' => $controller->data['relations'] ?? [],
                         'parent_controller' => $controller->parent_controller,
                         'module_name' => $this->name,
                         'module_caption' => $this->caption

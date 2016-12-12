@@ -74,11 +74,25 @@ class Controller extends Generator
 
         //处理控制器的参数
         $content_field = '';
-        if (isset($data['fields'])) {
-            $fields = $data['fields'];
-            foreach ($fields as $field) {
-                $content_field .= "\t\t\$model->" . $field['name'] . " = input('" . $field['name'] . "');\n";
+        //处理关系，将关系转化成字段
+        $fields = [];
+        if (isset($data['relations'])) {
+            foreach ($data['relations'] as $relation) {
+                if ($relation['this_key'] != 'id') {
+                    $fields[] = [
+                        'name' => $relation['this_key'],
+                        'title' => $relation['caption'],
+                        'rule' => 'number',
+                        'required' => true,
+                        'is_unique' => false
+                    ];
+                }
             }
+        }
+
+        if (isset($data['fields'])) $fields = array_merge($data['fields'], $fields);
+        foreach ($fields as $field) {
+            $content_field .= "\t\t\$model->" . $field['name'] . " = input('" . $field['name'] . "');\n";
         }
         $tags['CONTROLLER_PARAMS'] = $content_field;
 
