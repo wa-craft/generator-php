@@ -25,6 +25,7 @@ class Model extends Generator
                         'name' => $relation['this_key'],
                         'caption' => $relation['caption'],
                         'rule' => 'number',
+                        'default' => $relation['default'] ?? '0',
                         'required' => true,
                         'is_unique' => false
                     ];
@@ -64,10 +65,9 @@ class Model extends Generator
     {
         if (isset($field)) {
             //字段是否必须
-            $null_string = (isset($field->required)) ? ($field->required ? ' NOT NULL ' : '') : '';
-
             $default = (array_key_exists('default', $field)) ? ' DEFAULT \'' . $field['default'] . '\' ' : ' DEFAULT NULL';
-            $null_string = $default !== '' ? $default : $null_string;
+            $null_string = (isset($field['required'])) ? ($field['required'] ? ' NOT NULL ' : '') : '';
+            $null_string = ($null_string == '' || $default != ' DEFAULT NULL') ? $default : $null_string;
 
             if (preg_match('/_id$/', $field['name'])) {
                 return "`{{FIELD_NAME}}` bigint(20) $null_string COMMENT '{{FIELD_TITLE}}',";
@@ -80,6 +80,10 @@ class Model extends Generator
 
             if ($field['rule'] == 'datetime') {
                 return "`{{FIELD_NAME}}` datetime $null_string DEFAULT CURRENT_TIMESTAMP COMMENT '{{FIELD_TITLE}}',";
+            }
+
+            if ($field['rule'] == 'number') {
+                return "`{{FIELD_NAME}}` bigint(20) $null_string COMMENT '{{FIELD_TITLE}}',";
             }
 
             if ($field['rule'] == 'text') {
