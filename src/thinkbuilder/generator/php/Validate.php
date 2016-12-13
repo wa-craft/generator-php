@@ -30,7 +30,7 @@ class Validate extends Generator
                 $content_field .= PHP_EOL . "\t\t['" . $field->name . "', '";
                 $content_field .= $field->required ? 'require|' : '';
                 $content_field .= $field->rule . '\',\'';
-                $content_field .= $field->required ? '必须输入：' . $field->title . '|' : '';
+                $content_field .= $field->required ? '必须输入：' . $field->caption . '|' : '';
                 $content_field .= Field::$rules[$field->rule];
                 $content_field .= '\'],';
             }

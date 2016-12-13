@@ -23,7 +23,7 @@ class Model extends Generator
                 if ($relation['this_key'] !== 'id') {
                     $fields[] = [
                         'name' => $relation['this_key'],
-                        'title' => $relation['caption'],
+                        'caption' => $relation['caption'],
                         'rule' => 'number',
                         'required' => true,
                         'is_unique' => false
@@ -36,7 +36,7 @@ class Model extends Generator
         foreach ($fields as $field) {
             $content_field = "\t" . self::getFieldSQL($field);
             $content_field = str_replace('{{FIELD_NAME}}', $field['name'], $content_field);
-            $content_field = str_replace('{{FIELD_TITLE}}', $field['title'], $content_field);
+            $content_field = str_replace('{{FIELD_TITLE}}', $field['caption'], $content_field);
             $content = str_replace('{{FIELD_LOOP}}', $content_field . "\n{{FIELD_LOOP}}", $content);
         }
 

@@ -28,7 +28,7 @@ class View extends Generator
             if ($relation['this_key'] != 'id') {
                 $fields[] = Node::create('Field', [
                     'name' => $relation['this_key'],
-                    'title' => $relation['caption'],
+                    'caption' => $relation['caption'],
                     'rule' => 'number',
                     'required' => true,
                     'is_unique' => false
@@ -44,7 +44,7 @@ class View extends Generator
             $_tr = "\t\t\t\t\t\t\t\t\t" . '<th > ID</th >' . PHP_EOL;
             $_td = "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.id}</td>' . PHP_EOL;
             foreach ($fields as $field) {
-                $_tr .= "\t\t\t\t\t\t\t\t\t<th>" . $field->title . '</th>' . PHP_EOL;
+                $_tr .= "\t\t\t\t\t\t\t\t\t<th>" . $field->caption . '</th>' . PHP_EOL;
                 $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.' . $field->name . '}</td>' . PHP_EOL;
             }
             $tags = [
@@ -65,7 +65,7 @@ class View extends Generator
                     } else {
                         $_comment = '请输入';
                     }
-                    $_comment .= $field->title . '，必须是' . Field::$rules[$field->rule];
+                    $_comment .= $field->caption . '，必须是' . Field::$rules[$field->rule];
                 } else {
                     $_comment = '';
                 }
@@ -75,7 +75,7 @@ class View extends Generator
                 $tags_field = [
                     'FORM_FIELD' => self::getFieldHTML($field, $this->params['action_name']),
                     'FIELD_NAME' => $field->name,
-                    'FIELD_TITLE' => $field->title,
+                    'FIELD_TITLE' => $field->caption,
                     'FIELD_COMMENT' => $_comment,
                     'IS_REQUIRED' => $_is_required
                 ];

@@ -25,7 +25,7 @@ class Field extends Node
         'image' => '图片'
     ];
 
-    public $title = '';
+    public $caption = '';
 
     //字段的校验规则
     public $rule = '';

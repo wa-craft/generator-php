@@ -108,7 +108,7 @@ class Module extends Node
                                 ['name' => 'mod', 'caption' => '修改']
                             ],
                             'fields' => $schema['fields'],
-                            'relations' => $schema['relations']
+                            'relations' => $schema['relations'] ?? []
                         ],
                         'parent_namespace' => $this->parent_namespace
                     ]);
