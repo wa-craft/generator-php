@@ -1,6 +1,7 @@
 <?php
 namespace thinkbuilder;
 
+use think\cache\driver\File;
 use thinkbuilder\helper\FileHelper;
 use thinkbuilder\node\Node;
 
@@ -80,11 +81,11 @@ class Builder
         FileHelper::mkdirs($this->paths);
     }
 
-    protected function decompressAssets()
+    protected function copyAssets()
     {
-        $_assets_file = ASSETS_PATH . '/themes/' . $this->config['theme'] . '/assets.tar.bz2';
-        $cmd = 'tar xvjf ' . $_assets_file . ' -C' . $this->paths['public'];
-        shell_exec($cmd);
+        $src = ASSETS_PATH . '/themes/' . $this->config['theme'] . '/assets';
+        $tar = $this->paths['public'] . '/assets';
+        FileHelper::copyFiles($src, $tar);
     }
 
     /**
@@ -99,9 +100,7 @@ class Builder
         FileHelper::copyFiles(__DIR__ . '/../../assets/base', $this->paths['target']);
 
         //解压资源文件
-        if ($build_actions['decompress_assets']) {
-            $this->decompressAssets();
-        }
+        $this->copyAssets();
 
         //装载默认设置并进行缓存
         $cache = Cache::getInstance();

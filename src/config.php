@@ -25,9 +25,7 @@ return [
         //是否根据应用 portal 生成 apache 虚拟主机配置文件，谨慎使用
         'apache' => true,
         //是否根据应用 portal 生成 apache .htaccess 配置文件，谨慎使用
-        'apache_access' => true,
-        //是否解压资源文件
-        'decompress_assets' => true
+        'apache_access' => true
     ],
     //默认值
     'defaults' => [
