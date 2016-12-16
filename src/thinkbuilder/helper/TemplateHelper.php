@@ -1,6 +1,7 @@
 <?php
 namespace thinkbuilder\helper;
 
+use thinkbuilder\Cache;
 use thinkbuilder\node\Field;
 
 /**
@@ -22,19 +23,19 @@ class TemplateHelper
         'model' => '/php/model.tmpl',
         'model_relation' => '/php/model_relation.tmpl',
         'validate' => '/php/validate.tmpl',
-        'view_add' => '/html/add.html',
-        'view_index' => '/html/index.html',
-        'view_controller_index' => '/html/controller_index.html',
-        'view_mod' => '/html/mod.html',
-        'view_add_field' => '/html/add_field.html',
-        'view_index_field' => '/html/index_field.html',
-        'view_mod_field' => '/html/mod_field.html',
-        'view_default_login' => '/html/login.html',
-        'view_default_register' => '/html/register.html',
-        'view_default_logout' => '/html/logout.html',
-        'view_default' => '/html/default.html',
-        'view_layout_footer' => '/html/layout/footer.html',
-        'view_layout_header' => '/html/layout/html_header.html',
+        'view_add' => '/html/{{THEME}}/add.html',
+        'view_index' => '/html/{{THEME}}/index.html',
+        'view_controller_index' => '/html/{{THEME}}/controller_index.html',
+        'view_mod' => '/html/{{THEME}}/mod.html',
+        'view_add_field' => '/html/{{THEME}}/add_field.html',
+        'view_index_field' => '/html/{{THEME}}/index_field.html',
+        'view_mod_field' => '/html/{{THEME}}/mod_field.html',
+        'view_default_login' => '/html/{{THEME}}/login.html',
+        'view_default_register' => '/html/{{THEME}}/register.html',
+        'view_default_logout' => '/html/{{THEME}}/logout.html',
+        'view_default' => '/html/{{THEME}}/default.html',
+        'view_layout_footer' => '/html/{{THEME}}/layout/footer.html',
+        'view_layout_header' => '/html/{{THEME}}/layout/html_header.html',
         'sql_table' => '/sql/table.sql',
         'nginx' => '/profile/nginx_vhost',
         'apache' => '/profile/apache_vhost',
@@ -45,19 +46,33 @@ class TemplateHelper
     ];
 
     /**
-     * 获取模板文件中的内容
+     * 获取模板文件中的内容，如果模板是html开头，则使用主题
      * @param string $template_name
      * @return string
      */
-    public static function fetchTemplate(string $template_name)
+    public static function fetchTemplate(string $template_name): string
     {
         $content = '';
-        if (key_exists($template_name, self::$templates))
-            $content = file_get_contents(TMPL_PATH . self::$templates[$template_name]);
+
+        if (key_exists($template_name, self::$templates)) {
+            $file = self::$templates[$template_name];
+            if (preg_match('/^view/', $template_name)) {
+                $theme = Cache::getInstance()->get('config')['theme'] ?? 'default';
+                $file = str_replace('{{THEME}}', $theme, self::$templates[$template_name]);
+            }
+
+            $content = file_get_contents(TMPL_PATH . $file);
+        }
+
         return $content;
     }
 
-    public static function hasTemplate(string $template_name)
+    /**
+     * 判断模板是否存在
+     * @param string $template_name
+     * @return bool
+     */
+    public static function hasTemplate(string $template_name): bool
     {
         return key_exists($template_name, self::$templates);
     }
