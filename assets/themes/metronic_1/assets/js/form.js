@@ -23,7 +23,7 @@ var Form = {
     del: function (url) {
         var res = confirm('是否删除这条数据？');
         if (res) {
-            Form.jump(url);
+            Form.ajaxJump(url);
         } else {
             return false;
         }
@@ -63,6 +63,42 @@ var Form = {
      */
     jump: function (url) {
         window.location.href = url;
+    },
+    /**
+     * Ajax 跳转
+     * @param url
+     */
+    ajaxJump: function (url) {
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: [],
+            dataType: "json",
+            success: function (data) {
+                if (data.code == 0) {
+                    if (typeof Form.onError != 'undefined' && Form.onError != null) {
+                        Form.onError(data);
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+                if (data.url != '' && typeof data.url != 'undefined') {
+                    Form.jump(data.url);
+                }
+                return false;
+            },
+            error: function () {
+                if (typeof Form.onError != 'undefined' && Form.onError != null) {
+                    var data = {
+                        msg: 'Shit always happens!'
+                    };
+                    Form.onError(data);
+                } else {
+                    alert('Shit always happens!');
+                }
+                return false;
+            }
+        });
     },
     /**
      * form submit & result handler with ajax
