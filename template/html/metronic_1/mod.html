@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="portlet-body form">
-                    <form role="form" method="post" action="{:url('{{MODULE_NAME}}/{{MODEL_NAME}}/save')}" onsubmit="return Form.submit(this);">
+                    <form role="form" method="post" action="{:url('{{MODULE_NAME}}/{{MODEL_NAME}}/save')}">
                         <input type="hidden" name="id" id="id" value="{$it.id}">
                         <div class="form-body">
 {{FIELD_LOOP}}
