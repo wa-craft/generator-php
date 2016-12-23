@@ -16,8 +16,11 @@ class {{CLASS_NAME}} {{EXTEND_CLASS}}
     public function create() {
         $model = Loader::model($this->controller);
 {{CONTROLLER_PARAMS}}
-        $model->save();
-		$this->ajaxSuccess('ok', $this->module. '/' . $this->controller . '/index');
+        if ($model->save() !== false) {
+            $this->ajaxSuccess('ok', $this->module. '/' . $this->controller . '/index');
+        } else {
+            $this->ajaxError('保存错误', $this->module. '/' . $this->controller . '/index');
+        }
     }
 
     /**
@@ -28,7 +31,10 @@ class {{CLASS_NAME}} {{EXTEND_CLASS}}
 		$_m = Loader::model($this->controller);
         $model = $_m::get(input('id'));
 		{{CONTROLLER_PARAMS}}
-		$model->save();
-		$this->ajaxSuccess('ok', $this->module. '/' . $this->controller . '/index');
+		if ($model->save() !== false) {
+		    $this->ajaxSuccess('ok', $this->module. '/' . $this->controller . '/index');
+		} else {
+		    $this->ajaxError('保存错误', $this->module. '/' . $this->controller . '/index');
+		}
     }
 }
