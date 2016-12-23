@@ -45,7 +45,17 @@ class View extends Generator
             $_td = "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.id}</td>' . PHP_EOL;
             foreach ($fields as $field) {
                 $_tr .= "\t\t\t\t\t\t\t\t\t<th>" . $field->caption . '</th>' . PHP_EOL;
-                $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.' . $field->name . '}</td>' . PHP_EOL;
+                if ($field->rule !== 'boolean') {
+                    if (preg_match('/_id$/', $field->name)) {
+                        $name = lcfirst(ClassHelper::convertFromTableName(str_replace('_id', '', $field->name)));
+                        $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it->' . $name . '->name ?? \'未定义\'}</td>' . PHP_EOL;
+                    } else {
+                        $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.' . $field->name . '}</td>' . PHP_EOL;
+                    }
+                } else {
+                    $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.' . $field->name . ' == \'1\' ? \'是\' : \'否\'}</td>' . PHP_EOL;
+
+                }
             }
             $tags = [
                 'TR_LOOP' => $_tr,
@@ -90,7 +100,7 @@ class View extends Generator
 
 
     /**
-     * 判断字段的类型和参数，来生成不同类型的参数字段html
+     * 判断字段的类型和参数，来生成不同类型的参数字段 html
      * @param $field
      * @param string $action
      * @return string
@@ -124,16 +134,16 @@ class View extends Generator
 
         if (preg_match('/_id$/', $field->name)) {
             $_model = str_replace('_id', '', $field->name);
-            if ($action == 'add') return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">".PHP_EOL
-                ."\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}".PHP_EOL
-                ."\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\">{\$it2.name}</option>".PHP_EOL
-                ."\t\t\t\t\t\t\t\t{/volist}".PHP_EOL
-                ."\t\t\t\t\t\t\t\t</select>";
-            else return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">".PHP_EOL
-                ."\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}".PHP_EOL
-                ."\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.name}</option>".PHP_EOL
-                ."\t\t\t\t\t\t\t\t{/volist}".PHP_EOL
-                ."\t\t\t\t\t\t\t\t</select>";
+            if ($action == 'add') return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
+                . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
+                . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\">{\$it2.name}</option>" . PHP_EOL
+                . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
+                . "\t\t\t\t\t\t\t\t</select>";
+            else return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
+                . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
+                . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.name}</option>" . PHP_EOL
+                . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
+                . "\t\t\t\t\t\t\t\t</select>";
         }
 
         if ($action == 'add') return "<input type=\"text\" class=\"form-control\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">";
