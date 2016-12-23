@@ -126,12 +126,12 @@ class View extends Generator
             $_model = str_replace('_id', '', $field->name);
             if ($action == 'add') return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">".PHP_EOL
                 ."\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}".PHP_EOL
-                ."\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.caption}</option>".PHP_EOL
+                ."\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\">{\$it2.name}</option>".PHP_EOL
                 ."\t\t\t\t\t\t\t\t{/volist}".PHP_EOL
                 ."\t\t\t\t\t\t\t\t</select>";
             else return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">".PHP_EOL
                 ."\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}".PHP_EOL
-                ."\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.caption}</option>".PHP_EOL
+                ."\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.name}</option>".PHP_EOL
                 ."\t\t\t\t\t\t\t\t{/volist}".PHP_EOL
                 ."\t\t\t\t\t\t\t\t</select>";
         }
