@@ -1,16 +1,18 @@
 # Change Log
 
-## [Unreleased](https://github.com/goldeagle/think-builder/tree/HEAD)
-
-[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.3...HEAD)
+## [v1.3.4](https://github.com/goldeagle/think-builder/tree/v1.3.4) (2016-12-30)
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.3...v1.3.4)
 
 **Closed issues:**
+
+- 列表视图的 index 方法界面中缺少“操作”的th [\#16](https://github.com/goldeagle/think-builder/issues/16)
+- 生成 select 列表时，没有自动生成 selected 属性 [\#11](https://github.com/goldeagle/think-builder/issues/11)
 
 ## [v1.3.3](https://github.com/goldeagle/think-builder/tree/v1.3.3) (2016-12-16)
 [Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.2...v1.3.3)
 
 **Closed issues:**
-- 生成 select 列表时，没有自动生成 selected 属性 [\#11](https://github.com/goldeagle/think-builder/issues/11)
+
 - html 模板没有按照主题进行区分 [\#13](https://github.com/goldeagle/think-builder/issues/13)
 - 关联关系生成 html 代码时，迭代循环使用的名称存在冲突的可能 [\#10](https://github.com/goldeagle/think-builder/issues/10)
 
