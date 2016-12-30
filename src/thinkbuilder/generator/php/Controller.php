@@ -30,7 +30,7 @@ class Controller extends Generator
         }
 
         //为控制器写入父控制器
-        $extend_controller = (function ($data) {
+        $extend_controller = (function () use ($data) {
             $controller = '';
             if (isset($data['parent_controller'])) {
                 if ($data['parent_controller'] != '') {
@@ -43,7 +43,8 @@ class Controller extends Generator
             }
             return $controller;
         })($data);
-        $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : ($data['name'] != 'Error') ? 'extends ' . $data['parent_controller'] : '';
+        $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : (($data['name'] != 'Error') ? 'extends ' . $data['parent_controller'] : '');
+        if ($extend_controller == 'extends ') $extend_controller = '';
         $tags['EXTEND_CLASS'] = $extend_controller;
         $content = $this->params['template'];
 
