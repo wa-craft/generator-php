@@ -65,7 +65,7 @@ class ClassHelper
      * @param string $table_prefix
      * @return string
      */
-    public static function convertFromTableName($name, $table_prefix)
+    public static function convertFromTableName($name, $table_prefix = '')
     {
         $name = str_replace($table_prefix, '', $name);
         return ClassHelper::dashToCamel($name);
