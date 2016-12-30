@@ -19,6 +19,7 @@
 index/user.action/index 为相应请求的控制器，后者不需要继承自 think\controller
 * 模型：支持单独生成 model 的相关代码
 * 模型：(*)支持对新旧版本数据库结构对比后生成 alter.sql
+* 模型：增加 autoTimeStamp 属性支持
 * 视图：使用标准 bootstrap 作为 default 界面模板
 * 视图：在模板节点类中增加 widget 属性
 * 视图：在模板节点类中增加对 scriptlets 与 style/js 文件引入的管理
