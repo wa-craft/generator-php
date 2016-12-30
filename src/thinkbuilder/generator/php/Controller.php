@@ -44,7 +44,7 @@ class Controller extends Generator
             return $controller;
         })($data);
         $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : (($data['name'] != 'Error') ? 'extends ' . $data['parent_controller'] : '');
-        if ($extend_controller == 'extends ') $extend_controller = '';
+        if ($extend_controller == 'extends ') $extend_controller = '\\think\\Controller';
         $tags['EXTEND_CLASS'] = $extend_controller;
         $content = $this->params['template'];
 
