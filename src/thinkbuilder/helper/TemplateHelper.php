@@ -2,7 +2,6 @@
 namespace thinkbuilder\helper;
 
 use thinkbuilder\Cache;
-use thinkbuilder\node\Field;
 
 /**
  * Class Template 模板管理类
@@ -24,10 +23,12 @@ class TemplateHelper
         'model_relation' => '/php/model_relation.tmpl',
         'validate' => '/php/validate.tmpl',
         'view_add' => '/html/{{THEME}}/add.html',
+        'view_view' => '/html/{{THEME}}/view.html',
         'view_index' => '/html/{{THEME}}/index.html',
         'view_controller_index' => '/html/{{THEME}}/controller_index.html',
         'view_mod' => '/html/{{THEME}}/mod.html',
         'view_add_field' => '/html/{{THEME}}/add_field.html',
+        'view_view_field' => '/html/{{THEME}}/view_field.html',
         'view_index_field' => '/html/{{THEME}}/index_field.html',
         'view_mod_field' => '/html/{{THEME}}/mod_field.html',
         'view_default_login' => '/html/{{THEME}}/login.html',

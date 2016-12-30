@@ -108,45 +108,123 @@ class View extends Generator
     public static function getFieldHTML($field, $action = 'add')
     {
         if ($field->rule == 'boolean' || $field->rule == 'accepted') {
-            if ($action == 'add') return "<input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">";
-            else  return "<input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">";
+            switch ($action) {
+                case 'add':
+                    return "<input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">";
+                    break;
+                case 'view':
+                    return "{\$it.{{FIELD_NAME}}>";
+                    break;
+                case 'mod':
+                default:
+                    return "<input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">";
+            }
         }
 
         if ($field->rule == 'email') {
-            if ($action == 'add') return "<span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span><input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\"><div class=\"form-control-focus\"></div>";
-            else  return "<span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span><input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\"><div class=\"form-control-focus\"></div>";
+            switch ($action) {
+                case 'add':
+                    return "<span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span>"
+                        . "<input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">"
+                        . "<div class=\"form-control-focus\"></div>";
+                    break;
+                case 'view':
+                    return "{\$it.{{FIELD_NAME}}>";
+                    break;
+                case 'mod':
+                default:
+                    return "<span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span>"
+                        . "<input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">"
+                        . "<div class=\"form-control-focus\"></div>";
+            }
         }
 
         if ($field->rule == 'text') {
-            if ($action == 'add') return "<textarea rows=\"4\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\"></textarea><div class=\"form-control-focus\"></div>";
-            else  return "<textarea rows=\"4\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">{\$it.{{FIELD_NAME}}}</textarea><div class=\"form-control-focus\"></div>";
+            switch ($action) {
+                case 'add':
+                    return "<textarea rows=\"4\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\"></textarea><div class=\"form-control-focus\"></div>";
+                    break;
+                case 'view':
+                    return "{\$it.{{FIELD_NAME}}>";
+                    break;
+                case 'mod':
+                default:
+                    return "<textarea rows=\"4\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">{\$it.{{FIELD_NAME}}}</textarea>"
+                        . "<div class=\"form-control-focus\"></div>";
+            }
         }
 
         if ($field->rule == 'datetime') {
-            if ($action == 'add') return "<input id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" type=\"text\" class=\"form-control\" readonly><span class=\"input-group-btn\"><button class=\"btn default\" type=\"button\"><i class=\"fa fa-calendar\"></i></button></span><div class=\"form-control-focus\"></div>";
-            else  return "<input id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" type=\"text\" class=\"form-control\" value=\"{\$it.{{FIELD_NAME}}}\" readonly><span class=\"input-group-btn\"><button class=\"btn default\" type=\"button\"><i class=\"fa fa-calendar\"></i></button></span><div class=\"form-control-focus\"></div>";
+            switch ($action) {
+                case 'add':
+                    return "<input id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" type=\"text\" class=\"form-control\" viewonly>"
+                        . "<span class=\"input-group-btn\"><button class=\"btn default\" type=\"button\">"
+                        . "<i class=\"fa fa-calendar\"></i></button></span>"
+                        . "<div class=\"form-control-focus\"></div>";
+                    break;
+                case 'view':
+                    return "{\$it.{{FIELD_NAME}}>";
+                    break;
+                case 'mod':
+                default:
+                    return "<input id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" type=\"text\" class=\"form-control\" value=\"{\$it.{{FIELD_NAME}}}\" viewonly>"
+                        . "<span class=\"input-group-btn\"><button class=\"btn default\" type=\"button\">"
+                        . "<i class=\"fa fa-calendar\"></i></button></span>"
+                        . "<div class=\"form-control-focus\"></div>";
+            }
         }
 
         if ($field->rule == 'image') {
-            if ($action == 'add') return "<span class=\"input-group-addon\"><i class=\"fa fa-image\"></i></span><input type=\"file\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\"><div class=\"form-control-focus\"></div>";
-            else  return "<span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span><input type=\"file\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\"><div class=\"form-control-focus\"></div>";
+            switch ($action) {
+                case 'add':
+                    return "<span class=\"input-group-addon\"><i class=\"fa fa-image\"></i></span>"
+                        . "<input type=\"file\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">"
+                        . "<div class=\"form-control-focus\"></div>";
+                    break;
+                case 'view':
+                    return "{\$it.{{FIELD_NAME}}>";
+                    break;
+                case 'mod':
+                default:
+                    return "<span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span>"
+                        . "<input type=\"file\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">"
+                        . "<div class=\"form-control-focus\"></div>";
+            }
         }
 
         if (preg_match('/_id$/', $field->name)) {
             $_model = str_replace('_id', '', $field->name);
-            if ($action == 'add') return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
-                . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
-                . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\">{\$it2.name}</option>" . PHP_EOL
-                . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
-                . "\t\t\t\t\t\t\t\t</select>";
-            else return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
-                . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
-                . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.name}</option>" . PHP_EOL
-                . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
-                . "\t\t\t\t\t\t\t\t</select>";
+            switch ($action) {
+                case 'add':
+                    return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
+                        . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
+                        . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\">{\$it2.name}</option>" . PHP_EOL
+                        . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
+                        . "\t\t\t\t\t\t\t\t</select>";
+                    break;
+                case 'view':
+                    return "{\$it.{{FIELD_NAME}}>";
+                    break;
+                case 'mod':
+                    "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
+                    . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
+                    . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.name}</option>" . PHP_EOL
+                    . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
+                    . "\t\t\t\t\t\t\t\t</select>";
+                default:
+            }
         }
 
-        if ($action == 'add') return "<input type=\"text\" class=\"form-control\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">";
-        else  return "<input type=\"text\" class=\"form-control\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">";
+        switch ($action) {
+            case 'add':
+                return "<input type=\"text\" class=\"form-control\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">";
+                break;
+            case 'view':
+                return "{\$it.{{FIELD_NAME}}>";
+                break;
+            case 'mod':
+            default:
+            return "<input type=\"text\" class=\"form-control\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">";
+        }
     }
 }

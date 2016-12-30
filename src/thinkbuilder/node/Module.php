@@ -105,7 +105,8 @@ class Module extends Node
                             'actions' => [
                                 ['name' => 'index', 'caption' => '列表'],
                                 ['name' => 'add', 'caption' => '添加'],
-                                ['name' => 'mod', 'caption' => '修改']
+                                ['name' => 'mod', 'caption' => '修改'],
+                                ['name' => 'view', 'caption' => '查看']
                             ],
                             'fields' => $schema['fields'],
                             'relations' => $schema['relations'] ?? []
