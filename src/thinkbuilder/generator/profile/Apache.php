@@ -11,7 +11,8 @@ class Apache extends Generator
 {
     public function generate(): Generator
     {
-        $this->content = str_replace('{{DOMAIN}}', $this->params['project']['domain'], $this->params['template']);
+        $domain = $this->params['domain'] ?? $this->params['project']['domain'];
+        $this->content = str_replace('{{DOMAIN}}', $domain, $this->params['template']);
         return $this;
     }
 }

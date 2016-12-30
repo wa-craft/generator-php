@@ -11,7 +11,8 @@ class Nginx extends Generator
 {
     public function generate(): Generator
     {
-        $content = str_replace('{{DOMAIN}}', $this->params['project']['domain'], $this->params['template']);
+        $domain = $this->params['domain'] ?? $this->params['project']['domain'];
+        $content = str_replace('{{DOMAIN}}', $domain, $this->params['template']);
 
         foreach ($this->params['project']['applications'] as $application) {
             $content_temp = "\t\t\trewrite ^(.*)$ /" . $application['portal'] . ".php/$1 last;" . PHP_EOL . "{{REWRITE_LOOP}}";

@@ -13,6 +13,8 @@ class Project extends Node
 {
     //项目使用的域名
     public $domain = '';
+    //项目使用的测试域名
+    public $domain_test = '';
     //公司信息
     public $company = '';
     //版权信息
@@ -30,22 +32,45 @@ class Project extends Node
         if ($config['actions']['nginx']) {
             Generator::create('profile\\Nginx', [
                     'path' => Cache::getInstance()->get('paths')['profile'],
-                    'file_name' => 'nginx_vhost',
+                    'file_name' => 'nginx_vhost_orig',
                     'template' => TemplateHelper::fetchTemplate('nginx'),
-                    'project' => $this->data
+                    'project' => $this->data,
+                    'domain' => $this->data['domain']
                 ]
             )->generate()->writeToFile();
+
+            if(isset($this->data['domain_test'])) {
+                Generator::create('profile\\Nginx', [
+                        'path' => Cache::getInstance()->get('paths')['profile'],
+                        'file_name' => 'nginx_vhost_test',
+                        'template' => TemplateHelper::fetchTemplate('nginx'),
+                        'project' => $this->data,
+                        'domain' => $this->data['domain_test']
+                    ]
+                )->generate()->writeToFile();
+            }
         }
 
         //生成 apache 虚拟主机配置文件
         if ($config['actions']['apache']) {
             Generator::create('profile\\Apache', [
                     'path' => Cache::getInstance()->get('paths')['profile'],
-                    'file_name' => 'apache_vhost',
+                    'file_name' => 'apache_vhost_orig',
                     'template' => TemplateHelper::fetchTemplate('apache'),
-                    'project' => $this->data
+                    'project' => $this->data,
+                    'domain' => $this->data['domain']
                 ]
             )->generate()->writeToFile();
+            if(isset($this->data['domain_test'])) {
+                Generator::create('profile\\Apache', [
+                        'path' => Cache::getInstance()->get('paths')['profile'],
+                        'file_name' => 'apache_vhost_orig',
+                        'template' => TemplateHelper::fetchTemplate('apache'),
+                        'project' => $this->data,
+                        'domain' => $this->data['domain_test']
+                    ]
+                )->generate()->writeToFile();
+            }
         }
 
         //生成 apache .htaccess 配置文件
