@@ -1,13 +1,5 @@
 #TODO List
 
-## v1.3.4
-* 增加：提供 read 方法与视图
-* 增加：针对 datetime 提供 html 代码生成
-* 增加：区分测试用/生产用 vhost profile
-* 修正：关联关系 this_key that_key 的问题
-* 修正：管理关系中 model 属性没有起到作用
-* 修改：template 目录移动到 assets 目录下
-
 ## v2.0.0+
 * 命令：(*)增加 --create node:project|node:module|node:model|... 等创建节点的命令
 * 命令：在创建节点命令中支持 namespace 写法
