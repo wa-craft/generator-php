@@ -24,11 +24,15 @@ a cli tool to build applications for thinkphp v5，
 ## 2. 使用方法
 1. 定义 project 目录下面的项目文件。
 2. 注意，运行之前要手动获取 commando：`# composer update`
-3. linux 下面执行 `./build` ；windows 下执行 `PS %path%: ./build.bat`
+3. linux 下面执行 `./build` ；windows 下执行 `PS %path%\> ./build.bat`
 
 >命令样例（linux）：
 
-`#./build -c config.php -d ./sample/forge.php -t ./tmp`
+`{$think-builder}#./build -d sample/forge -t ./tmp`
+
+>命令样例（windows）：
+
+`PS %think-builder%\>build -d sample/forge -t ./tmp`
 
 ## 3. 文档
 * [生成代码后的目录结构](./doc/deploy_dirs.md)
