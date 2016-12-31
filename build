@@ -29,7 +29,7 @@ $cmd->option('c')
 $cmd->option('d')
     ->aka('data')
     ->describedAs('define a project data file')
-    ->default('./sample/forge.php')
+    ->default('./sample/sample.php')
     ->map(function ($data) {
         return $data;
     });
