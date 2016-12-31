@@ -4,11 +4,14 @@
  */
 return [
     //项目名称，全部小写即可
-    'name' => 'alvida',
-    //项目使用的域名
-    'domain' => 'alvida.vm',
+    'name' => 'sample',
+    //项目的正式域名
+    'domain' => 'sample.com',
+    //项目的测试域名
+    'domain_test' => 'sample.com',
     //公司名称
-    'company' => '亚尔丽塔（中国）',
+    'company' => '东莞培基',
+    //版权信息
     'copyright' => '&copy;2016-2017',
     //应用列表
     'applications' => [
