@@ -18,6 +18,7 @@ class Model extends Generator
         $content = $this->params['template'];
         $content_field = '';
         $fields = [];
+        //根据关联关系创建对应的数据字段
         if (isset($data['relations'])) {
             foreach ($data['relations'] as $relation) {
                 if ($relation['this_key'] !== 'id') {
@@ -34,6 +35,14 @@ class Model extends Generator
         }
         if (isset($data['fields'])) $fields = array_merge($data['fields'], $fields);
 
+        //根据autoTimeStamp创建对应的数据字段
+        $autoWriteTimeStamp = $data['autoWriteTimeStamp'] ?? false;
+        if ($autoWriteTimeStamp) {
+            $fields[] = ['name' => 'create_time', 'caption' => '创建日期', 'rule' => 'datetime', 'required' => false, 'is_unique' => false];
+            $fields[] = ['name' => 'update_time', 'caption' => '更新日期', 'rule' => 'datetime', 'required' => false, 'is_unique' => false];
+        }
+
+        //生成SQL字段
         foreach ($fields as $field) {
             $content_field = "\t" . self::getFieldSQL($field);
             $content_field = str_replace('{{FIELD_NAME}}', $field['name'], $content_field);
@@ -79,6 +88,7 @@ class Model extends Generator
             }
 
             if ($field['rule'] == 'datetime') {
+                $null_string = $null_string == ' DEFAULT NULL' ? '' : $null_string;
                 return "`{{FIELD_NAME}}` datetime $null_string DEFAULT CURRENT_TIMESTAMP COMMENT '{{FIELD_TITLE}}',";
             }
 

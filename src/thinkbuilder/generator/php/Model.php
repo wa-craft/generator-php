@@ -2,6 +2,7 @@
 namespace thinkbuilder\generator\php;
 
 use thinkbuilder\generator\Generator;
+use thinkbuilder\helper\ClassHelper;
 use thinkbuilder\helper\TemplateHelper;
 
 /**
@@ -16,7 +17,8 @@ class Model extends Generator
         $tags = [
             'NAME_SPACE' => $data['namespace'],
             'APP_PATH' => APP_PATH,
-            'CLASS_NAME' => $data['name']
+            'CLASS_NAME' => $data['name'],
+            'AUTO_TIMESTAMP' => $data['autoWriteTimeStamp'] ? '"datetime"' : 'false'
         ];
 
         if (isset($module['caption'])) $tags['MODULE_COMMENT'] = $module['caption'];
@@ -26,7 +28,7 @@ class Model extends Generator
         }
         if (isset($data['caption'])) $tags['MODEL_COMMENT'] = $data['caption'];
 
-        $content= TemplateHelper::parseTemplateTags($tags, $this->params['template']);
+        $content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
 
         //生成 relations
         if (isset($data['relations'])) {
@@ -35,10 +37,11 @@ class Model extends Generator
                 $content_relation = TemplateHelper::parseTemplateTags(
                     [
                         'RELATION_NAME' => lcfirst($relation['name']),
-                        'RELATION_TYPE' => $relation['type'],
-                        'RELATION_MODEL' => $relation['model'],
-                        'RELATION_THIS_KEY' => $relation['this_key'],
-                        'RELATION_THAT_KEY' => $relation['that_key']
+                        'RELATION_TYPE' => $relation['type'] ?? 'hasOne',
+                        'RELATION_MODEL' => $relation['model'] ?? $relation['name'],
+                        'RELATION_THIS_KEY' => $relation['this_key'] ?? ClassHelper::convertToTableName($relation['model']).'_id',
+                        'RELATION_THAT_KEY' => $relation['that_key'] ?? 'id',
+                        'RELATION_CAPTION' => $relation['caption'] ?? ''
                     ],
                     TemplateHelper::fetchTemplate('model_relation')
                 );
