@@ -44,7 +44,6 @@ class FileHelper
             $tar_file_name = $tar_path . '/' . $file;
             if (is_file($src_file_name)) {
                 copy($src_file_name, $tar_file_name);
-                echo "INFO: copying " . $file . "\n";
             }
 
             if (is_dir($src_file_name) && !preg_match('/\.+$/', $src_file_name)) {
