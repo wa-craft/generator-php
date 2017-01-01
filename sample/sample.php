@@ -181,10 +181,10 @@ return [
                             'autoWriteTimeStamp' => true,
                             'fields' => [
                                 [
-                                    'name' => 'name', 
-                                    'caption' => '名称', '
-                                    rule' => 'alpha', 
-                                    'required' => true, 
+                                    'name' => 'name',
+                                    'caption' => '名称',
+                                    'rule' => 'alpha',
+                                    'required' => true,
                                     'is_unique' => false
                                 ],
                             ],
