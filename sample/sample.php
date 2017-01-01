@@ -17,7 +17,7 @@ return [
     'applications' => [
         [
             //应用名称，全部小写即可
-            'name' => 'application',
+            'name' => 'sample',
             //应用的说明
             'caption' => '测试应用',
             //应用的命名空间，小写
