@@ -17,7 +17,8 @@ class ConfigData extends Generator
         $tags = [
             'NAMESPACE' => $data['namespace'],
             //基于NAMESPACE用MD5生成 session_id 配置变量
-            'SESSION_ID' => md5($data['namespace'])
+            //'SESSION_ID' => md5($data['namespace'])
+            'SESSION_ID' => ''
         ];
 
         $content = TemplateHelper::parseTemplateTags($tags, $content);
