@@ -11,8 +11,21 @@ return [
     'domain_test' => 'sample.com',
     //公司名称
     'company' => '东莞培基',
+    //供应商信息
+    'vendor' => '东莞培基',
     //版权信息
     'copyright' => '&copy;2016-2017',
+    //生成代码时执行的命令
+    'commands' => [
+        [
+            //执行的命令
+            'command' => 'ls',
+            //说明
+            'comment' => '列表',
+            //是否是生成代码之前运行，false 的话就是在生成代码之后运行
+            'is_before' => true
+        ]
+    ],
     //应用列表
     'applications' => [
         [
@@ -62,18 +75,20 @@ return [
                                     //表格中是否只允许唯一值
                                     'is_unique' => false,
                                     //是否为系统自动填充的字段，可以不进行定义，默认为 false
-                                    'is_auto' => false
+                                    'is_auto' => false,
+                                    //默认值
+                                    'default' => ''
                                 ],
                                 ['name' => 'content', 'caption' => '正文', 'rule' => 'text', 'required' => false, 'is_unique' => false]
                             ],
                             //模式关联列表，用于生成数据库中的外键、数据模型中的关联引用
                             'relations' => [
                                 [
-                                    //关联名称，使用驼峰式定义
-                                    'name' => 'Author',
+                                    //关联名称，使用驼峰式定义，首字母小写
+                                    'name' => 'author',
                                     //关联说明
                                     'caption' => '作者',
-                                    //关联类型，支持 hasOne|hasMany|belongsTo|belongsToMany
+                                    //关联类型，支持 hasOne|hasMany|belongsTo|belongsToMany|ManyToMany
                                     'type' => 'hasOne',
                                     //在当前模式或模型中的字段名称
                                     'this_key' => 'author_id',
