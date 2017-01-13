@@ -9,8 +9,14 @@
       "email": "1308362@gmail.com"
     }
   ],
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  },
   "require": {
-    "topthink/framework": "^5.0.2",
+    "topthink/framework": "5.0.4",
     "goldeagle/thinklib": "dev-master"
   }
 }
