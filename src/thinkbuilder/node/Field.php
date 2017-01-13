@@ -13,6 +13,7 @@ class Field extends Node
         'number' => '数字',
         'float' => '浮点数字',
         'chsAlpha' => '中文或英文字符',
+        'chsDash' => '中文或英文字符包括横线',
         'text' => '任何文字',
         'datetime' => '日期时间',
         'alphaDash' => '英文字符与下划线',
@@ -20,6 +21,7 @@ class Field extends Node
         'boolean' => '是/否',
         'accepted' => 'on|yes|1(是）或者 off|no|0（否）',
         'url' => '合法的 uri 网址',
+        'domain' => '合法的域名',
         'ip' => '合法的 ip 地址',
         'money' => '金额',
         'image' => '图片'
