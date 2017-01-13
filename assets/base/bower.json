@@ -26,6 +26,6 @@
     "bootstrap-hover-dropdown": "^2.2.1",
     "jquery-slimscroll": "^1.3.8",
     "blockUI": "blockui#*",
-    "ckeditor": "^4.5.11"
+    "ckeditor": "^4.6.2"
   }
 }
