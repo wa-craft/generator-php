@@ -113,7 +113,7 @@ class View extends Generator
                     return "<input type=\"checkbox\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">";
                     break;
                 case 'view':
-                    return "{\$it.{{FIELD_NAME}}>";
+                    return "{\$it.{{FIELD_NAME}}}";
                     break;
                 case 'mod':
                 default:
@@ -129,7 +129,7 @@ class View extends Generator
                         . "<div class=\"form-control-focus\"></div>";
                     break;
                 case 'view':
-                    return "{\$it.{{FIELD_NAME}}>";
+                    return "{\$it.{{FIELD_NAME}}}";
                     break;
                 case 'mod':
                 default:
@@ -145,7 +145,7 @@ class View extends Generator
                     return "<textarea rows=\"4\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\"></textarea><div class=\"form-control-focus\"></div>";
                     break;
                 case 'view':
-                    return "{\$it.{{FIELD_NAME}}>";
+                    return "{\$it.{{FIELD_NAME}}}";
                     break;
                 case 'mod':
                 default:
@@ -163,7 +163,7 @@ class View extends Generator
                         . "<div class=\"form-control-focus\"></div>";
                     break;
                 case 'view':
-                    return "{\$it.{{FIELD_NAME}}>";
+                    return "{\$it.{{FIELD_NAME}}}";
                     break;
                 case 'mod':
                 default:
@@ -182,7 +182,7 @@ class View extends Generator
                         . "<div class=\"form-control-focus\"></div>";
                     break;
                 case 'view':
-                    return "{\$it.{{FIELD_NAME}}>";
+                    return "{\$it.{{FIELD_NAME}}}";
                     break;
                 case 'mod':
                 default:
@@ -203,7 +203,7 @@ class View extends Generator
                         . "\t\t\t\t\t\t\t\t</select>";
                     break;
                 case 'view':
-                    return "{\$it.{{FIELD_NAME}}>";
+                    return "{\$it.{{FIELD_NAME}}}";
                     break;
                 case 'mod':
                     "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
