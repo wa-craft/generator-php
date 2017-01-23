@@ -220,7 +220,7 @@ class View extends Generator
                 return "<input type=\"text\" class=\"form-control\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">";
                 break;
             case 'view':
-                return "{\$it.{{FIELD_NAME}}>";
+                return "{\$it.{{FIELD_NAME}}}";
                 break;
             case 'mod':
             default:
