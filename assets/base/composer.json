@@ -16,7 +16,7 @@
     }
   },
   "require": {
-    "topthink/framework": "5.0.4",
+    "topthink/framework": "5.0.5",
     "goldeagle/thinklib": "dev-master"
   }
 }
