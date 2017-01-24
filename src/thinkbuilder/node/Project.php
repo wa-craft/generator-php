@@ -64,7 +64,7 @@ class Project extends Node
             if(isset($this->data['domain_test'])) {
                 Generator::create('profile\\Apache', [
                         'path' => Cache::getInstance()->get('paths')['profile'],
-                        'file_name' => 'apache_vhost_orig',
+                        'file_name' => 'apache_vhost_test',
                         'template' => TemplateHelper::fetchTemplate('apache'),
                         'project' => $this->data,
                         'domain' => $this->data['domain_test']
