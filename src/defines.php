@@ -9,4 +9,4 @@ define('PROFILE_PATH', 'profile');
 define('TMPL_PATH', 'assets/template');
 define('PUB_PATH', 'public');
 define('ASSETS_PATH', 'assets');
-define('VERSION', '1.3.4');
+define('VERSION', '2.0.0 alpha');
