@@ -64,7 +64,7 @@ class Module extends Node
 
         $this->getAllViews();
         $this->processChildren('view');
-        FileHelper::copyFiles(ASSETS_PATH . '/themes/' . Cache::getInstance()->get('config')['theme'] . '/layout', $this->path . '/view/layout');
+        FileHelper::copyFiles(ASSETS_PATH . '/themes/' . (Cache::getInstance()->get('theme') ?? Cache::getInstance()->get('config')['defaults']['theme']) . '/layout', $this->path . '/view/layout');
 
         //处理模板 layout 文件
         //生成视图 footer
