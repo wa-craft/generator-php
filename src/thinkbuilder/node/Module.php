@@ -31,7 +31,7 @@ class Module extends Node
     //模块使用的主题
     public $theme = '';
     //默认模块下所有控制器的父控制器名称，会根据此名称自动生成默认控制器，并且模块下所有控制器继承自此控制器
-    public $default_parent_controller = '';
+    public $default_controller = '';
 
     public function process()
     {
@@ -103,7 +103,7 @@ class Module extends Node
                         'data' => [
                             'name' => $schema['name'],
                             'caption' => $schema['caption'],
-                            'parent_controller' => $this->default_parent_controller,
+                            'parent_controller' => $this->default_controller,
                             'actions' => [
                                 ['name' => 'index', 'caption' => '列表'],
                                 ['name' => 'add', 'caption' => '添加'],
