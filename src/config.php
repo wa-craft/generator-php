@@ -1,7 +1,5 @@
 <?php
 return [
-    //主题名
-    'theme' => 'metronic_1',
     //创建的动作
     'actions' => [
         //是否生成入口文件
@@ -30,7 +28,7 @@ return [
     //默认值
     'defaults' => [
         'controller' => 'goldeagle\thinklib\controller\DefaultController',
-        'default_theme' => 'metronic_default',
+        'theme' => 'metronic_1',
         //默认的控制器动作/视图模板
         'actions' => [
             ['name' => 'index', 'comment' => '列表'],
