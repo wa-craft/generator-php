@@ -198,7 +198,7 @@ class View extends Generator
                 case 'add':
                     return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
-                        . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\">{\$it2.nickname}</option>" . PHP_EOL
+                        . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\">{\$it2.name}</option>" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t</select>";
                     break;
