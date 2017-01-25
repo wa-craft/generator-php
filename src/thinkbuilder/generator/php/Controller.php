@@ -95,7 +95,11 @@ class Controller extends Generator
 
         if (isset($data['fields'])) $fields = array_merge($data['fields'], $fields);
         foreach ($fields as $field) {
-            $content_field .= "\t\t\$model->" . $field['name'] . " = input('" . $field['name'] . "');\n";
+            if($field['rule'] == 'image') {
+                $content_field .= "\t\t\$model->" . $field['name'] . " = File::uploadImage(input('" . $field['name'] . "'));\n";
+            } else {
+                $content_field .= "\t\t\$model->" . $field['name'] . " = input('" . $field['name'] . "');\n";
+            }
         }
         $tags['CONTROLLER_PARAMS'] = $content_field;
 
