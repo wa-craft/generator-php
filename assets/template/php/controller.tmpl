@@ -31,7 +31,7 @@ class {{CLASS_NAME}} {{EXTEND_CLASS}}
     public function save() {
 		$_m = Loader::model($this->controller);
         $model = $_m::get(input('id'));
-		{{CONTROLLER_PARAMS}}
+{{CONTROLLER_PARAMS}}
 		if ($model->save() !== false) {
 		    $this->ajaxSuccess('ok', $this->module. '/' . $this->controller . '/index');
 		} else {
