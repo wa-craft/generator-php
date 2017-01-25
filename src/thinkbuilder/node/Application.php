@@ -69,6 +69,8 @@ class Application extends Node
             ])->generate()->writeToFile();
         }
 
+        //设置应用根命名空间
+        Cache::getInstance()->set('root_name_space', $this->namespace);
         $this->processChildren('module');
     }
 
