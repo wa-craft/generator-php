@@ -75,7 +75,7 @@ class View extends Generator
                     } else {
                         $_comment = '请输入';
                     }
-                    $_comment .= $field->caption . '，必须是' . Field::$rules[$field->rule];
+                    $_comment .= $field->caption;
                 } else {
                     $_comment = '';
                 }
@@ -198,7 +198,7 @@ class View extends Generator
                 case 'add':
                     return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
-                        . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\">{\$it2.name}</option>" . PHP_EOL
+                        . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\">{\$it2.nickname}</option>" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t</select>";
                     break;
@@ -206,7 +206,7 @@ class View extends Generator
                     return "{\$it.{{FIELD_NAME}}}";
                     break;
                 case 'mod':
-                    "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
+                    return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
                     . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
                     . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.name}</option>" . PHP_EOL
                     . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
