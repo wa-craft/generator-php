@@ -94,14 +94,21 @@ class Controller extends Generator
         }
 
         if (isset($data['fields'])) $fields = array_merge($data['fields'], $fields);
+        $field_names = [];
         foreach ($fields as $field) {
-            if($field['rule'] == 'image') {
-                $content_field .= "\t\t\$model->" . $field['name'] . " = File::uploadImage(input('" . $field['name'] . "'));\n";
-            } else {
-                $content_field .= "\t\t\$model->" . $field['name'] . " = input('" . $field['name'] . "');\n";
+            $field_names[] = "'" . $field['name'] . "'";
+            if ($field['rule'] == 'image') {
+                $content_field .= "\t\t\t\$file_id = (input('\$" . $field['name'] . "') != null && input('\$" . $field['name'] . "') != '') ? '" . $field['name'] . "_new' : "
+                    . "\$file_id = '" . $field['name'] . "';" . PHP_EOL
+                    . "\t\t\t\$" . $field['name'] . " = File::uploadImage(\$file_id);" . PHP_EOL
+                    . "\t\t\tif(isset(\$" . $field['name'] . "_new) && \$" . $field['name'] . "_new !== '')"
+                    . " \$" . $field['name'] . " = File::uploadImage(input('" . $field['name'] . "_new'));" . PHP_EOL
+                    . "\t\t\t\$preset_data['" . $field['name'] . "'] = \$" . $field['name'] . ";";
             }
         }
+        $content_fields = "[" . implode(', ', $field_names) . "]";
         $tags['CONTROLLER_PARAMS'] = $content_field;
+        $tags['FIELDS_ARRAY'] = $content_fields;
 
         $this->content = TemplateHelper::parseTemplateTags($tags, $content);
 
