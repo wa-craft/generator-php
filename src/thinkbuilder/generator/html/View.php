@@ -186,9 +186,11 @@ class View extends Generator
                     break;
                 case 'mod':
                 default:
-                    return "<span class=\"input-group-addon\"><i class=\"fa fa-envelope\"></i></span>"
-                        . "<input type=\"file\" class=\"md-check\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">"
-                        . "<div class=\"form-control-focus\"></div>";
+                    return "<span class=\"input-group-addon\"><i class=\"fa fa-image\"></i></span>" . PHP_EOL
+                        . "\t\t\t\t\t{notempty name=\"it.{{FIELD_NAME}}\" value=\"\"}<img src=\"{\$it.{{FIELD_NAME}}}\" width='200px'>{/notempty}" . PHP_EOL
+                        . "\t\t\t\t\t<input type=\"hidden\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">" . PHP_EOL
+                        . "\t\t\t\t\t<input type=\"file\" class=\"md-check\" id=\"{{FIELD_NAME}}_new\" name=\"{{FIELD_NAME}}_new\"{notempty name=\"it.{{FIELD_NAME}}\" value=\"\"} value=\"{\$it.{{FIELD_NAME}}}\"{/notempty}>" . PHP_EOL
+                        . "\t\t\t\t\t<div class=\"form-control-focus\"></div>";
             }
         }
 
@@ -207,10 +209,10 @@ class View extends Generator
                     break;
                 case 'mod':
                     return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
-                    . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
-                    . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.name}</option>" . PHP_EOL
-                    . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
-                    . "\t\t\t\t\t\t\t\t</select>";
+                        . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
+                        . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.name}</option>" . PHP_EOL
+                        . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
+                        . "\t\t\t\t\t\t\t\t</select>";
                 default:
             }
         }
@@ -224,7 +226,7 @@ class View extends Generator
                 break;
             case 'mod':
             default:
-            return "<input type=\"text\" class=\"form-control\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">";
+                return "<input type=\"text\" class=\"form-control\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\" value=\"{\$it.{{FIELD_NAME}}}\">";
         }
     }
 }
