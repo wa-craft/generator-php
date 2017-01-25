@@ -30,7 +30,7 @@ class {{CLASS_NAME}} {{EXTEND_CLASS}}
             if ($result === true) {
                 $this->ajaxSuccess('ok', $this->module. '/' . $this->controller . '/index');
             } else {
-                $this->ajaxError('保存错误', $this->module. '/' . $this->controller . '/index');
+                $this->ajaxError($result, $this->module. '/' . $this->controller . '/index');
             }
         } else {
             $this->ajaxError('系统错误，找不到对应的数据模型', $this->module. '/' . $this->controller . '/index');
@@ -58,7 +58,7 @@ class {{CLASS_NAME}} {{EXTEND_CLASS}}
             if ($result === true) {
                 $this->ajaxSuccess('ok', $this->module. '/' . $this->controller . '/index');
             } else {
-                $this->ajaxError('保存错误', $this->module. '/' . $this->controller . '/index');
+                $this->ajaxError($result, $this->module. '/' . $this->controller . '/index');
             }
         } else {
             $this->ajaxError('数据保存错误！');
