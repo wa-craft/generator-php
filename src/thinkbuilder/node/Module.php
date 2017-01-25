@@ -38,6 +38,9 @@ class Module extends Node
         //创建目录
         FileHelper::mkdir($this->path);
 
+        //设置主题
+        if ($this->theme !== '') Cache::getInstance()->set('theme', $this->theme);
+
         //调用的顺序必须 getAllModels在前
         $this->getAllModels();
         $this->processChildren('model');
@@ -45,7 +48,6 @@ class Module extends Node
         //生成控制器列表
         $this->getAllControllers();
         $this->processChildren('controller');
-
         //特性列表
         $this->processChildren('traits');
 
