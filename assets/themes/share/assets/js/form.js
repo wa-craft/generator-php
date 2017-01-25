@@ -65,6 +65,42 @@ var Form = {
         window.location.href = url;
     },
     /**
+     * ajax 成功后的处理方式，调用方式为 function(data) { Form.ajaxSuccess(data) }
+     * @param data
+     * @returns {boolean}
+     */
+    ajaxSuccess: function (data) {
+        if (data.code == 0) {
+            if (typeof Form.onError != 'undefined' && Form.onError != null) {
+                Form.onError(data);
+            } else {
+                alert(data.msg);
+            }
+        } else {
+            if (data.url != '' && typeof data.url != 'undefined') {
+                Form.jump(data.url);
+            }
+        }
+        return false;
+    },
+    /**
+     * ajax 错误处理的方式
+     * @returns {boolean}
+     */
+    ajaxError: function (data) {
+        if (typeof Form.onError != 'undefined' && Form.onError != null) {
+            if (typeof data == 'undefined') {
+                data = {
+                    msg: 'Shit always happens!'
+                };
+            }
+            Form.onError(data);
+        } else {
+            alert('Shit always happens!');
+        }
+        return false;
+    },
+    /**
      * Ajax 跳转
      * @param url
      */
@@ -74,30 +110,11 @@ var Form = {
             url: url,
             data: [],
             dataType: "json",
+            async: false,
             success: function (data) {
-                if (data.code == 0) {
-                    if (typeof Form.onError != 'undefined' && Form.onError != null) {
-                        Form.onError(data);
-                    } else {
-                        alert(data.msg);
-                    }
-                }
-                if (data.url != '' && typeof data.url != 'undefined') {
-                    Form.jump(data.url);
-                }
-                return false;
+                Form.ajaxSuccess(data)
             },
-            error: function () {
-                if (typeof Form.onError != 'undefined' && Form.onError != null) {
-                    var data = {
-                        msg: 'Shit always happens!'
-                    };
-                    Form.onError(data);
-                } else {
-                    alert('Shit always happens!');
-                }
-                return false;
-            }
+            error: Form.ajaxError()
         });
     },
     /**
@@ -106,37 +123,20 @@ var Form = {
      * @returns {boolean}
      */
     submit: function (form) {
-        var enc_type = $(form).attr('enctype');
-        if (enc_type == 'multipart/form-data') $(form).submit();
+        var data = new FormData($(form)[0]);
 
         $.ajax({
             type: "POST",
             url: form.action,
-            data: $(form).serialize(),
+            data: data,
             dataType: "json",
+            async: false,
             success: function (data) {
-                if (data.code == 0) {
-                    if (typeof Form.onError != 'undefined' && Form.onError != null) {
-                        Form.onError(data);
-                    } else {
-                        alert(data.msg);
-                    }
-                }
-                if (data.url != '' && typeof data.url != 'undefined') {
-                    Form.jump(data.url);
-                }
-                return false;
+                Form.ajaxSuccess(data)
             },
-            error: function () {
-                if (typeof Form.onError != 'undefined' && Form.onError != null) {
-                    var data = {
-                        msg: 'Shit always happens!'
-                    };
-                    Form.onError(data);
-                } else {
-                    alert('Shit always happens!');
-                }
-                return false;
+            error: function (data) {
+                alert(data);
+                Form.ajaxError(data)
             }
         });
         return false;
