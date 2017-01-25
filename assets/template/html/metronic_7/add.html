@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="portlet-body form">
-            <form role="form" method="post" action="{:url('{{MODULE_NAME}}/{{MODEL_NAME}}/create')}">
+            <form role="form" method="post" action="{:url('{{MODULE_NAME}}/{{MODEL_NAME}}/create')}" enctype="multipart/form-data">
                 <div class="form-body">
                     {{FIELD_LOOP}}
                 </div>
