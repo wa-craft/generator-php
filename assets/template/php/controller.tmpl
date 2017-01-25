@@ -2,7 +2,7 @@
 namespace {{NAME_SPACE}};
 
 use think\Loader;
-use {{NAME_SPACE}}\common\helper\{File,Form};
+use {{ROOT_NAME_SPACE}}\common\helper\{File,Form};
 
 /**
  * {{CAPTION}}
@@ -21,7 +21,13 @@ class {{CLASS_NAME}} {{EXTEND_CLASS}}
 
 {{CONTROLLER_PARAMS}}
 
-            if ($model->save() !== false) {
+            $result = Form::validateAndSaveData(
+                validate($this->controller),
+                {{FIELDS_ARRAY}},
+                $model,
+                $preset_data
+            );
+            if ($result === true) {
                 $this->ajaxSuccess('ok', $this->module. '/' . $this->controller . '/index');
             } else {
                 $this->ajaxError('保存错误', $this->module. '/' . $this->controller . '/index');

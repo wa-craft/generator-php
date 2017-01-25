@@ -101,14 +101,13 @@ class Controller extends Generator
                 $content_field .= "\t\t\t\$file_id = (input('\$" . $field['name'] . "') != null && input('\$" . $field['name'] . "') != '') ? '" . $field['name'] . "_new' : "
                     . "\$file_id = '" . $field['name'] . "';" . PHP_EOL
                     . "\t\t\t\$" . $field['name'] . " = File::uploadImage(\$file_id);" . PHP_EOL
-                    . "\t\t\tif(isset(\$" . $field['name'] . "_new) && \$" . $field['name'] . "_new !== '')"
-                    . " \$" . $field['name'] . " = File::uploadImage(input('" . $field['name'] . "_new'));" . PHP_EOL
                     . "\t\t\t\$preset_data['" . $field['name'] . "'] = \$" . $field['name'] . ";";
             }
         }
         $content_fields = "[" . implode(', ', $field_names) . "]";
         $tags['CONTROLLER_PARAMS'] = $content_field;
         $tags['FIELDS_ARRAY'] = $content_fields;
+        $tags['ROOT_NAME_SPACE'] = Cache::getInstance()->get('root_name_space') ?? 'app';
 
         $this->content = TemplateHelper::parseTemplateTags($tags, $content);
 
