@@ -43,6 +43,8 @@ class Controller extends Generator
             }
             return $controller;
         })($data);
+
+        //设置父控制器
         $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : (($data['name'] != 'Error') ? 'extends ' . $data['parent_controller'] : '');
         if ($extend_controller == 'extends ') $extend_controller = 'extends \\think\\Controller';
         $tags['EXTEND_CLASS'] = $extend_controller;
