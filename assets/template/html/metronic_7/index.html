@@ -1,0 +1,51 @@
+{layout name="layout/layout"}
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-list font-dark"></i>
+                    <span class="caption-subject bold uppercase">列表</span>
+                </div>
+                <div class="actions">
+                    <div class="btn-group" data-toggle="buttons">
+                        <button onclick="Form.add('{:url('{{MODULE_NAME}}/{{MODEL_NAME}}/add')}')"
+                                class="btn btn-transparent dark btn-outline btn-sm">添加
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-striped table-bordered table-hover table-header-fixed" id="sample_1">
+                    <thead>
+                    <tr class="">
+                        {{TR_LOOP}}
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="voList" id="it"}
+                    <tr>
+                        {{TD_LOOP}}
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-transparent green btn-outline btn-sm active"
+                                        onclick="Form.mod('{:url('{{MODULE_NAME}}/{{MODEL_NAME}}/mod?id='.$it.id)}')">
+                                    修改
+                                </button>
+                                <button type="button" class="btn btn-transparent dark btn-outline btn-sm"
+                                        onclick="Form.del('{:url('{{MODULE_NAME}}/{{MODEL_NAME}}/del?id='.$it.id)}')">
+                                    删除
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                {$voList->render()}
+            </div>
+        </div>
+    </div>
+</div>
