@@ -58,7 +58,7 @@ class TemplateHelper
         if (key_exists($template_name, self::$templates)) {
             $file = self::$templates[$template_name];
             if (preg_match('/^view/', $template_name)) {
-                $theme = Cache::getInstance()->get('config')['theme'] ?? 'default';
+                $theme = Cache::getInstance()->get('theme') ?? Cache::getInstance()->get('config')['defaults']['theme'];
                 $file = str_replace('{{THEME}}', $theme, self::$templates[$template_name]);
             }
 
