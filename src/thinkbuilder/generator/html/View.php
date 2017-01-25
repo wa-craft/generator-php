@@ -48,7 +48,7 @@ class View extends Generator
                 if ($field->rule !== 'boolean') {
                     if (preg_match('/_id$/', $field->name)) {
                         $name = lcfirst(ClassHelper::convertFromTableName(str_replace('_id', '', $field->name)));
-                        $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it->' . $name . '->name ?? \'未定义\'}</td>' . PHP_EOL;
+                        $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it->' . $name . '->name ?? $it->' . $name . '->title ??  $it->' . $name . '->caption ?? \'未定义\'}</td>' . PHP_EOL;
                     } else {
                         $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.' . $field->name . '}</td>' . PHP_EOL;
                     }
@@ -200,7 +200,7 @@ class View extends Generator
                 case 'add':
                     return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
-                        . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\">{\$it2.name}</option>" . PHP_EOL
+                        . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\">{\$it2.title ?? \$it2.caption ?? \$it2.name}</option>" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t</select>";
                     break;
@@ -210,7 +210,7 @@ class View extends Generator
                 case 'mod':
                     return "<select class=\"form-control edited\" id=\"{{FIELD_NAME}}\" name=\"{{FIELD_NAME}}\">" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t{volist name=\"" . $_model . "List\" id=\"it2\"}" . PHP_EOL
-                        . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.name}</option>" . PHP_EOL
+                        . "\t\t\t\t\t\t\t\t\t<option value=\"{\$it2.id}\"{eq name=\"it2.id\" value=\"\$it.{{FIELD_NAME}}\"} selected{/eq}>{\$it2.title ?? \$it2.caption ?? \$it2.name}</option>" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t{/volist}" . PHP_EOL
                         . "\t\t\t\t\t\t\t\t</select>";
                 default:
