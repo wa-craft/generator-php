@@ -81,9 +81,13 @@ class Builder
         FileHelper::mkdirs($this->paths);
     }
 
+    /**
+     * 从主题共用目录拷贝资源文件
+     * TODO 将拷贝资源文件的工作移动到 module 中执行，并拷贝到 public/assets/themes/{{theme}}目录下
+     */
     protected function copyAssets()
     {
-        $src = ASSETS_PATH . '/themes/' . $this->config['theme'] . '/assets';
+        $src = ASSETS_PATH . '/themes/share/assets';
         $tar = $this->paths['public'] . '/assets';
         FileHelper::copyFiles($src, $tar);
     }
@@ -99,7 +103,7 @@ class Builder
         $this->makeBaseDirectories();
         FileHelper::copyFiles(__DIR__ . '/../../assets/base', $this->paths['target']);
 
-        //解压资源文件
+        //拷贝资源文件
         $this->copyAssets();
 
         //装载默认设置并进行缓存
