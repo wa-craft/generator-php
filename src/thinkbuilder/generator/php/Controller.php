@@ -98,7 +98,7 @@ class Controller extends Generator
         foreach ($fields as $field) {
             $field_names[] = "'" . $field['name'] . "'";
             if ($field['rule'] == 'image') {
-                $content_field .= "\t\t\t\$file_id = (input('\$" . $field['name'] . "') != null && input('\$" . $field['name'] . "') != '') ? '" . $field['name'] . "_new' : "
+                $content_field .= "\t\t\t\$file_id = (input('file." . $field['name'] . "_new') instanceof \\think\\File) ? '" . $field['name'] . "_new' : "
                     . "\$file_id = '" . $field['name'] . "';" . PHP_EOL
                     . "\t\t\t\$" . $field['name'] . " = File::uploadImage(\$file_id);" . PHP_EOL
                     . "\t\t\t\$preset_data['" . $field['name'] . "'] = \$" . $field['name'] . ";";
