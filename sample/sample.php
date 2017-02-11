@@ -1,6 +1,6 @@
 <?php
 /**
- * 样例
+ * 样例 v2.1
  */
 return [
     //项目名称，全部小写即可
@@ -61,6 +61,8 @@ return [
                             'caption' => '文章',
                             //是否自动创建 create_time、update_time 模型属性
                             'autoWriteTimeStamp' => true,
+                            //生成控制器的目标模块，如果为空则不生成控制器
+                            'target_modules' => [],
                             //字段列表
                             'fields' => [
                                 [
@@ -183,34 +185,6 @@ return [
                                     'name' => 'check',
                                     'caption' => '校验',
                                     'params' => '$username, $password'
-                                ]
-                            ]
-                        ]
-                    ],
-                    //独立模型列表，独立模型只会创建模型、校验器、SQL代码，不会创建CRUD控制器与视图，可以不进行定义
-                    'models' => [
-                        [
-                            //模型定义的说明参见模式说明
-                            'name' => 'User',
-                            'caption' => '用户',
-                            'autoWriteTimeStamp' => true,
-                            'fields' => [
-                                [
-                                    'name' => 'name',
-                                    'caption' => '名称',
-                                    'rule' => 'alpha',
-                                    'required' => true,
-                                    'is_unique' => false
-                                ],
-                            ],
-                            'relations' => [
-                                [
-                                    'name' => 'Author',
-                                    'caption' => '作者',
-                                    'type' => 'hasOne',
-                                    'this_key' => 'author_id',
-                                    'that_key' => 'id',
-                                    'model' => 'common/User'
                                 ]
                             ]
                         ]
