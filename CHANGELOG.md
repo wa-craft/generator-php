@@ -1,5 +1,24 @@
 # Change Log
 
+## [v1.3.5](https://github.com/goldeagle/think-builder/tree/v1.3.5) (2017-02-09)
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.4.2...v1.3.5)
+
+## [v1.3.4.2](https://github.com/goldeagle/think-builder/tree/v1.3.4.2) (2017-01-01)
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.4.1...v1.3.4.2)
+
+**Closed issues:**
+
+- Model/Schema 数据定义中 autoTimeStamp 属性未生成对应的属性 [\#17](https://github.com/goldeagle/think-builder/issues/17)
+
+## [v1.3.4.1](https://github.com/goldeagle/think-builder/tree/v1.3.4.1) (2017-01-01)
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.4...v1.3.4.1)
+
+**Closed issues:**
+
+- 生成 controller 的时候，extends 部分生成错误 [\#19](https://github.com/goldeagle/think-builder/issues/19)
+- build.bat 的参数识别不全 [\#18](https://github.com/goldeagle/think-builder/issues/18)
+- 提供 read 方法与视图 [\#15](https://github.com/goldeagle/think-builder/issues/15)
+
 ## [v1.3.4](https://github.com/goldeagle/think-builder/tree/v1.3.4) (2016-12-30)
 [Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.3...v1.3.4)
 
@@ -23,7 +42,10 @@
 [Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.0...v1.3.1)
 
 ## [v1.3.0](https://github.com/goldeagle/think-builder/tree/v1.3.0) (2016-12-05)
-[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.0.0...v1.3.0)
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.2.0...v1.3.0)
+
+## [v1.2.0](https://github.com/goldeagle/think-builder/tree/v1.2.0) (2016-11-28)
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.1.0...v1.2.0)
 
 **Closed issues:**
 
@@ -35,6 +57,12 @@
 - 支持引用预定义的数据 [\#3](https://github.com/goldeagle/think-builder/issues/3)
 - 采用 yield 方式来处理模型下面的成员内容生成 [\#2](https://github.com/goldeagle/think-builder/issues/2)
 - 简化文件写入的方法 [\#1](https://github.com/goldeagle/think-builder/issues/1)
+
+## [v1.1.0](https://github.com/goldeagle/think-builder/tree/v1.1.0) (2016-11-18)
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/1.0.0...v1.1.0)
+
+## [1.0.0](https://github.com/goldeagle/think-builder/tree/1.0.0) (2016-11-13)
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.0.0...1.0.0)
 
 ## [v1.0.0](https://github.com/goldeagle/think-builder/tree/v1.0.0) (2016-11-13)
 
