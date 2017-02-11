@@ -17,7 +17,8 @@ class Controller extends Generator
         $tags = [
             'NAME_SPACE' => $data['namespace'],
             'APP_PATH' => APP_PATH,
-            'CLASS_NAME' => $data['name']
+            'CLASS_NAME' => $data['name'],
+            'ABSTRACT' => ''
         ];
 
         if (isset($data['name'])) {
