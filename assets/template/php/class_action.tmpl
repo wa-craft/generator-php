@@ -3,5 +3,6 @@
      */
     public function {{ACTION_NAME}}({{ACTION_PARAMS}})
     {
-        return $this->fetch();
+        $view = new \think\View();
+        return $view->fetch();
     }
