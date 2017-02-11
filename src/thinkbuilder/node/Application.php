@@ -37,6 +37,14 @@ class Application extends Node
             ])->generate()->writeToFile();
         }
 
+        //创建 console 命令行文件
+        Generator::create('php\\Console', [
+            'path' => Cache::getInstance()->get('paths')['console'],
+            'file_name' => $this->namespace . '_console.php',
+            'template' => TemplateHelper::fetchTemplate('console'),
+            'data' => $this->data
+        ])->generate()->writeToFile();
+
         if ($config['actions']['copy']) {
             //拷贝应用文件
             FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/application', $this->path);

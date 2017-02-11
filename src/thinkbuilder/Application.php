@@ -18,7 +18,8 @@ class Application
         'application' => './deploy' . '/' . APP_PATH,
         'database' => './deploy/' . DBFILE_PATH,
         'profile' => './deploy/' . PROFILE_PATH,
-        'public' => './deploy/' . PUB_PATH
+        'public' => './deploy/' . PUB_PATH,
+        'console' => './deploy/' . CONSOLE_PATH,
     ];
 
     //数据
@@ -75,7 +76,8 @@ class Application
             'application' => $this->paths['target'] . '/' . APP_PATH,
             'database' => $this->paths['target'] . '/' . DBFILE_PATH,
             'profile' => $this->paths['target'] . '/' . PROFILE_PATH,
-            'public' => $this->paths['target'] . '/' . PUB_PATH
+            'public' => $this->paths['target'] . '/' . PUB_PATH,
+            'console' => $this->paths['target'] . '/' . CONSOLE_PATH
         ]);
 
         FileHelper::mkdirs($this->paths);
