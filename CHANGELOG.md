@@ -1,7 +1,10 @@
 # Change Log
 
 ## [v1.3.5](https://github.com/goldeagle/think-builder/tree/v1.3.5) (2017-02-09)
-[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.4.2...v1.3.5)
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.5.1...v1.3.5)
+
+## [v1.3.5.1](https://github.com/goldeagle/think-builder/tree/v1.3.5.1) (2017-02-09)
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.4.2...v1.3.5.1)
 
 ## [v1.3.4.2](https://github.com/goldeagle/think-builder/tree/v1.3.4.2) (2017-01-01)
 [Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.4.1...v1.3.4.2)
