@@ -30,6 +30,17 @@ class Model extends Generator
 
         $content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
 
+        /* 生成 fields 字段 */
+        if (isset($data['fields'])) {
+            $fields = $data['fields'];
+            $field_names = [];
+            foreach ($fields as $field) {
+                $field_names[] = '\'' . $field['name'] . '\'';
+            }
+            $content = str_replace('{{FIELDS}}', implode(',', $field_names), $content);
+            echo $content;
+        }
+
         //生成 relations
         if (isset($data['relations'])) {
             $relations = $data['relations'];
@@ -39,7 +50,7 @@ class Model extends Generator
                         'RELATION_NAME' => lcfirst($relation['name']),
                         'RELATION_TYPE' => $relation['type'] ?? 'hasOne',
                         'RELATION_MODEL' => $relation['model'] ?? $relation['name'],
-                        'RELATION_THIS_KEY' => $relation['this_key'] ?? ClassHelper::convertToTableName($relation['model']).'_id',
+                        'RELATION_THIS_KEY' => $relation['this_key'] ?? ClassHelper::convertToTableName($relation['model']) . '_id',
                         'RELATION_THAT_KEY' => $relation['that_key'] ?? 'id',
                         'RELATION_CAPTION' => $relation['caption'] ?? ''
                     ],

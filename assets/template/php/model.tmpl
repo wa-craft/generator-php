@@ -1,9 +1,12 @@
 <?php
 namespace {{NAME_SPACE}};
 
-class {{CLASS_NAME}} extends \think\Model
+use think\Model;
+
+class {{CLASS_NAME}} extends Model
 {
     protected $autoWriteTimestamp = {{AUTO_TIMESTAMP}};
+    protected $fields = [{{FIELDS}}];
 
 {{RELATIONS}}
 }
