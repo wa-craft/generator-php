@@ -35,7 +35,7 @@ require __DIR__ . "/vendor/autoload.php";
 $cmd = new \Commando\Command();
 
 $cmd->option()
-    ->description('A command line toolit to build MVC scaffold for thinkphp v5.*');
+    ->description('A command line toolkit to build MVC scaffold for thinkphp v5.*');
 
 //配置文件
 $cmd->option('c')
@@ -68,7 +68,6 @@ $cmd->option('t')
 $app = new \thinkbuilder\Application([
     'config' => $cmd['config'],
     'data' => $cmd['data'],
-    'target' => $cmd['target'],
-    'repository' => $cmd['repository'],
+    'target' => $cmd['target']
 ]);
 $app->run();
