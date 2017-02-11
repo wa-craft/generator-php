@@ -3,8 +3,20 @@
 /**
  * thinkphp v5 脚手架创建工具
  */
+
+/* 全局常量设置 */
+define('SRC_PATH', './src');
+define('PACKAGE_PATH', './pkg');
+define('TAR_ROOT_PATH', './deploy');
+define('APP_PATH', 'applications');
+define('DBFILE_PATH', 'database');
+define('PROFILE_PATH', 'profile');
+define('TMPL_PATH', 'assets/template');
+define('PUB_PATH', 'public');
+define('ASSETS_PATH', 'assets');
+define('VERSION', '2.0.0 alpha');
+
 //读取相关程序
-require __DIR__ . "/src/defines.php";
 require __DIR__ . "/src/autoload.php";
 
 if (!file_exists(__DIR__ . "/vendor/autoload.php")) shell_exec('composer update');
