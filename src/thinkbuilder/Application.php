@@ -8,7 +8,7 @@ use thinkbuilder\node\Node;
 /**
  * Class Builder 构建程序
  */
-class Builder
+class Application
 {
     //配置参数
     private $config = [];
@@ -95,10 +95,8 @@ class Builder
     /**
      * 创建项目文件的主方法
      */
-    public function build()
+    public function run()
     {
-        $build_actions = $this->config['actions'];
-
         //创建基本目录
         $this->makeBaseDirectories();
         FileHelper::copyFiles(__DIR__ . '/../../assets/base', $this->paths['target']);
@@ -112,6 +110,7 @@ class Builder
         $cache->set('config', $this->config);
         $cache->set('paths', $this->paths);
 
+        //TODO 使用不同的方式获取数据
         $project = Node::create('Project', ['data' => $this->data]);
         $project->process();
 

@@ -4,7 +4,14 @@
  * thinkphp v5 脚手架创建工具
  */
 
-/* 全局常量设置 */
+/**
+ * TODO v2.0.0 处理流程
+ * 定义全局常量
+ * 装载程序代码
+ * 处理命令行参数
+ * 初始化并运行程序
+ */
+/* 定义全局常量 */
 define('SRC_PATH', './src');
 define('PACKAGE_PATH', './pkg');
 define('TAR_ROOT_PATH', './deploy');
@@ -16,9 +23,10 @@ define('PUB_PATH', 'public');
 define('ASSETS_PATH', 'assets');
 define('VERSION', '2.0.0 alpha');
 
-//读取相关程序
+/* 装载程序代码 */
 require __DIR__ . "/src/autoload.php";
 
+/* 自动运行 composer 下载安装第三方程序 */
 if (!file_exists(__DIR__ . "/vendor/autoload.php")) shell_exec('composer update');
 require __DIR__ . "/vendor/autoload.php";
 
@@ -56,10 +64,10 @@ $cmd->option('t')
     });
 
 //进行创建
-$builder = new \thinkbuilder\Builder([
+$app = new \thinkbuilder\Application([
     'config' => $cmd['config'],
     'data' => $cmd['data'],
     'target' => $cmd['target'],
     'repository' => $cmd['repository'],
 ]);
-$builder->build();
+$app->run();
