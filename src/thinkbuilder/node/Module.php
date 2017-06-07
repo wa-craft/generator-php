@@ -63,24 +63,25 @@ class Module extends Node
         $this->processChildren('validate');
 
         $this->getAllViews();
-        $this->processChildren('view');
-        FileHelper::copyFiles(ASSETS_PATH . '/themes/' . (Cache::getInstance()->get('theme') ?? Cache::getInstance()->get('config')['defaults']['theme']) . '/layout', $this->path . '/view/layout');
+        if($this->theme !== '') {
+            $this->processChildren('view');
+            FileHelper::copyFiles(ASSETS_PATH . '/themes/' . (Cache::getInstance()->get('theme') ?? Cache::getInstance()->get('config')['defaults']['theme']) . '/layout', $this->path . '/view/layout');
+            //处理模板 layout 文件
+            //生成视图 footer
+            Generator::create('html\\LayoutFooter', [
+                'path' => $this->path . '/view/layout',
+                'file_name' => 'footer.html',
+                'template' => TemplateHelper::fetchTemplate('view_layout_footer')
+            ])->generate()->writeToFile();
 
-        //处理模板 layout 文件
-        //生成视图 footer
-        Generator::create('html\\LayoutFooter', [
-            'path' => $this->path . '/view/layout',
-            'file_name' => 'footer.html',
-            'template' => TemplateHelper::fetchTemplate('view_layout_footer')
-        ])->generate()->writeToFile();
-
-        //生成视图 header
-        Generator::create('html\\LayoutHeader', [
-            'path' => $this->path . '/view/layout',
-            'file_name' => 'html_head.html',
-            'caption' => $this->caption,
-            'template' => TemplateHelper::fetchTemplate('view_layout_header')
-        ])->generate()->writeToFile();
+            //生成视图 header
+            Generator::create('html\\LayoutHeader', [
+                'path' => $this->path . '/view/layout',
+                'file_name' => 'html_head.html',
+                'caption' => $this->caption,
+                'template' => TemplateHelper::fetchTemplate('view_layout_header')
+            ])->generate()->writeToFile();
+        }
     }
 
     public function setNameSpace()

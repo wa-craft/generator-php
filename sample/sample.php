@@ -50,7 +50,7 @@ return [
                     'caption' => '默认模块',
                     //所有CRUD控制器共用的默认父类，注意定义时最好为双斜线，例如：'\\think\\Controller'
                     'default_controller' => '',
-                    //视图模板使用的主题名称，在 template/html 与 assets/themes 中应有对应的目录
+                    //视图模板使用的主题名称，在 template/html 与 assets/themes 中应有对应的目录，如果为空则不生成 view
                     'theme' => 'metronic_1',
                     //CRUD模式列表，CRUD模式会自动创建对应的控制器、模型、校验器、视图、SQL数据表代码。
                     'schemas' => [
