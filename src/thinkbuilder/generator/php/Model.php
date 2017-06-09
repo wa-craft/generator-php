@@ -38,7 +38,6 @@ class Model extends Generator
                 $field_names[] = '\'' . $field['name'] . '\'';
             }
             $content = str_replace('{{FIELDS}}', implode(',', $field_names), $content);
-            echo $content;
         }
 
         //生成 relations
