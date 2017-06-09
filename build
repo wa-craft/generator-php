@@ -12,16 +12,16 @@
  * 初始化并运行程序
  */
 /* 定义全局常量 */
-define('SRC_PATH', './src');
-define('PACKAGE_PATH', './pkg');
-define('TAR_ROOT_PATH', './deploy');
+define('SRC_PATH', __DIR__ . '/src');
+define('PACKAGE_PATH', __DIR__ . '/pkg');
+define('TAR_ROOT_PATH', __DIR__ . '/deploy');
 define('APP_PATH', 'applications');
 define('DBFILE_PATH', 'database');
 define('PROFILE_PATH', 'profile');
-define('TMPL_PATH', 'assets/template');
+define('TMPL_PATH', __DIR__ . '/assets/template');
 define('PUB_PATH', 'public');
 define('CONSOLE_PATH', 'console');
-define('ASSETS_PATH', 'assets');
+define('ASSETS_PATH', __DIR__ . '/assets');
 define('VERSION', '2.0.0 alpha');
 
 /* 装载程序代码 */
@@ -41,7 +41,7 @@ $cmd->option()
 $cmd->option('c')
     ->aka('config')
     ->describedAs('define a configuration file, default is : ./src/config.php')
-    ->default('./src/config.php')
+    ->default(__DIR__ . '/src/config.php')
     ->map(function ($config) {
         return $config;
     });
@@ -50,7 +50,7 @@ $cmd->option('c')
 $cmd->option('d')
     ->aka('data')
     ->describedAs('define a project data file')
-    ->default('./sample/sample.php')
+    ->default(__DIR__ . '/sample/sample.php')
     ->map(function ($data) {
         return $data;
     });

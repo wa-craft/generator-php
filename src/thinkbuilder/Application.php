@@ -14,12 +14,12 @@ class Application
     private $config = [];
     //系统基本路径
     private $paths = [
-        'target' => './deploy',
-        'application' => './deploy' . '/' . APP_PATH,
-        'database' => './deploy/' . DBFILE_PATH,
-        'profile' => './deploy/' . PROFILE_PATH,
-        'public' => './deploy/' . PUB_PATH,
-        'console' => './deploy/' . CONSOLE_PATH,
+        'target' => __DIR__.'./deploy',
+        'application' => __DIR__.'/deploy' . '/' . APP_PATH,
+        'database' => __DIR__.'/deploy/' . DBFILE_PATH,
+        'profile' => __DIR__.'/deploy/' . PROFILE_PATH,
+        'public' => __DIR__.'/deploy/' . PUB_PATH,
+        'console' => __DIR__.'/deploy/' . CONSOLE_PATH,
     ];
 
     //数据
