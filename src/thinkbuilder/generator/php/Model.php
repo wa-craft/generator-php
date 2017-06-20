@@ -44,13 +44,19 @@ class Model extends Generator
         if (isset($data['relations'])) {
             $relations = $data['relations'];
             foreach ($relations as $relation) {
+                if($relation['type']=='belongsTo') {
+                    $tmp_relation = $relation['this_key'];
+                    $relation['this_key'] = $relation['that_key'];
+                    $relation['that_key'] = $tmp_relation;
+                }
+
                 $content_relation = TemplateHelper::parseTemplateTags(
                     [
                         'RELATION_NAME' => lcfirst($relation['name']),
                         'RELATION_TYPE' => $relation['type'] ?? 'hasOne',
                         'RELATION_MODEL' => $relation['model'] ?? $relation['name'],
-                        'RELATION_THIS_KEY' => $relation['this_key'] ?? ClassHelper::convertToTableName($relation['model']) . '_id',
-                        'RELATION_THAT_KEY' => $relation['that_key'] ?? 'id',
+                        'RELATION_LOCAL_KEY' => $relation['this_key'] ?? ClassHelper::convertToTableName($relation['model']) . '_id',
+                        'RELATION_FOREIGN_KEY' => $relation['that_key'] ?? 'id',
                         'RELATION_CAPTION' => $relation['caption'] ?? ''
                     ],
                     TemplateHelper::fetchTemplate('model_relation')
