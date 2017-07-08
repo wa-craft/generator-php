@@ -21,6 +21,7 @@ class View extends Generator
             'MODULE_NAME' => $data['module_name']
         ];
         $content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
+        $form_type = '';
 
         //处理关系，将关系转化成字段
         $fields = [];
@@ -76,12 +77,18 @@ class View extends Generator
                         $_comment = '请输入';
                     }
                     $_comment .= $field->caption;
+
+                    //判断是否需要上传文件
+                    if($field->rule == 'image' || $fields->rule == 'file') {
+                        $form_type = ' enctype="multipart/form-data"';
+                    }
                 } else {
                     $_comment = '';
                 }
 
                 if (isset($field->required)) $_is_required = ($field->required) ? '（* 必须）' : '';
                 else $_is_required = '';
+
                 $tags_field = [
                     'FORM_FIELD' => self::getFieldHTML($field, $this->params['action_name']),
                     'FIELD_NAME' => $field->name,
@@ -94,6 +101,7 @@ class View extends Generator
             }
             $this->content = str_replace("\n{{FIELD_LOOP}}", '', $content);
         }
+        $this->content = str_replace("{{FORM_TYPE}}", $form_type, $content);
         $this->content = str_replace('{{MODULE_NAME}}', $data['name'], $this->content);
         return $this;
     }
