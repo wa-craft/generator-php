@@ -1,4 +1,5 @@
 <?php
+
 namespace thinkbuilder\generator\html;
 
 use thinkbuilder\generator\Generator;
@@ -45,8 +46,10 @@ class View extends Generator
             $_tr = "\t\t\t\t\t\t\t\t\t" . '<th > ID</th >' . PHP_EOL;
             $_td = "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.id}</td>' . PHP_EOL;
             foreach ($fields as $field) {
-                $_tr .= "\t\t\t\t\t\t\t\t\t<th>" . $field->caption . '</th>' . PHP_EOL;
+                //不在索引中显示大量的正文内容
+                if ($field->rule == 'text') continue;
                 if ($field->rule !== 'boolean') {
+
                     if (preg_match('/_id$/', $field->name)) {
                         $name = lcfirst(ClassHelper::convertFromTableName(str_replace('_id', '', $field->name)));
                         $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it->' . $name . '->name ?? $it->' . $name . '->title ??  $it->' . $name . '->caption ?? \'未定义\'}</td>' . PHP_EOL;
@@ -55,7 +58,6 @@ class View extends Generator
                     }
                 } else {
                     $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.' . $field->name . ' == \'1\' ? \'是\' : \'否\'}</td>' . PHP_EOL;
-
                 }
             }
             $tags = [
@@ -79,7 +81,7 @@ class View extends Generator
                     $_comment .= $field->caption;
 
                     //判断是否需要上传文件
-                    if($field->rule == 'image' || $fields->rule == 'file') {
+                    if ($field->rule == 'image' || $fields->rule == 'file') {
                         $form_type = ' enctype="multipart/form-data"';
                     }
                 } else {
