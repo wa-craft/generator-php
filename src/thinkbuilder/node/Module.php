@@ -1,4 +1,5 @@
 <?php
+
 namespace thinkbuilder\node;
 
 use thinkbuilder\Cache;
@@ -58,12 +59,20 @@ class Module extends Node
         $this->processChildren('behavior');
 
 
+        //如果存在 DefaultController 则复制到对应的目录
+        if ($this->default_controller == 'DefaultController') {
+            foreach (['controller', 'helper', 'traits'] as $d) {
+                FileHelper::mkdir($this->path . '/' . $d);
+                FileHelper::copyFiles(ASSETS_PATH . '/lib/' . $d, $this->path . '/' . $d);
+            }
+        }
+
         //校验器
         $this->getAllValidates();
         $this->processChildren('validate');
 
         $this->getAllViews();
-        if($this->theme !== '') {
+        if ($this->theme !== '') {
             $this->processChildren('view');
             FileHelper::copyFiles(ASSETS_PATH . '/themes/' . (Cache::getInstance()->get('theme') ?? Cache::getInstance()->get('config')['defaults']['theme']) . '/layout', $this->path . '/view/layout');
             //处理模板 layout 文件
@@ -99,23 +108,38 @@ class Module extends Node
         if (key_exists('schemas', $this->data)) {
             $schemas = $this->data['schemas'];
             foreach ($schemas as $schema) {
-                $controllers[] = Node::create('controller',
-                    [
-                        'data' => [
-                            'name' => $schema['name'],
-                            'caption' => $schema['caption'],
-                            'parent_controller' => $this->default_controller,
-                            'actions' => [
-                                ['name' => 'index', 'caption' => '列表'],
-                                ['name' => 'add', 'caption' => '添加'],
-                                ['name' => 'mod', 'caption' => '修改'],
-                                ['name' => 'view', 'caption' => '查看']
+                if ($this->default_controller == 'DefaultController') {
+                    $controllers[] = Node::create('controller',
+                        [
+                            'data' => [
+                                'name' => $schema['name'],
+                                'caption' => $schema['caption'],
+                                'parent_controller' => $this->default_controller,
+                                'actions' => [],
+                                'fields' => $schema['fields'],
+                                'relations' => $schema['relations'] ?? []
                             ],
-                            'fields' => $schema['fields'],
-                            'relations' => $schema['relations'] ?? []
-                        ],
-                        'parent_namespace' => $this->parent_namespace
-                    ]);
+                            'parent_namespace' => $this->parent_namespace
+                        ]);
+                } else {
+                    $controllers[] = Node::create('controller',
+                        [
+                            'data' => [
+                                'name' => $schema['name'],
+                                'caption' => $schema['caption'],
+                                'parent_controller' => $this->default_controller,
+                                'actions' => [
+                                    ['name' => 'index', 'caption' => '列表'],
+                                    ['name' => 'add', 'caption' => '添加'],
+                                    ['name' => 'mod', 'caption' => '修改'],
+                                    ['name' => 'view', 'caption' => '查看']
+                                ],
+                                'fields' => $schema['fields'],
+                                'relations' => $schema['relations'] ?? []
+                            ],
+                            'parent_namespace' => $this->parent_namespace
+                        ]);
+                }
             }
 
             //增加默认的空控制器
