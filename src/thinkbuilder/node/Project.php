@@ -19,6 +19,8 @@ class Project extends Node
     public $company = '';
     //版权信息
     public $copyright = '';
+    //数据版本
+    public $revision = '1';
     //应用列表
     public $applications = [];
 
