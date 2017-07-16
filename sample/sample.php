@@ -15,6 +15,8 @@ return [
     'vendor' => '东莞培基',
     //版权信息
     'copyright' => '&copy;2016-2017',
+    //数据定义版本
+    'revision' => '1',
     //生成代码时执行的命令
     'commands' => [
         [
@@ -37,6 +39,8 @@ return [
             'namespace' => 'app',
             //应用的入口文件，小写
             'portal' => 'index',
+            //数据库使用的引擎，为mysql支持的引擎，默认为 MyISAM
+            'dbEngine' => 'MyISAM',
             //是否自动生成 menu 配置文件，可以不进行定义，默认为 true
             'autoMenu' => true,
             //模块列表

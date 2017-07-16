@@ -1,6 +1,7 @@
 <?php
 namespace thinkbuilder\generator\sql;
 
+use thinkbuilder\Cache;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\TemplateHelper;
 
@@ -59,6 +60,7 @@ class Model extends Generator
             'APP_PATH' => APP_PATH,
             'MODULE_NAME' => str_replace('|model', '', str_replace('\\', '|', $data['namespace'])),
             'FIELD_LOOP' => '',
+            'DB_ENGINE' => Cache::getInstance()->get(Cache::getInstance()->get('root_name_space').'_dbEngine')
         ];
         $this->content = TemplateHelper::parseTemplateTags($tags, $content);
 
