@@ -13,6 +13,7 @@ class TemplateHelper
         'console' => '/php/console.tmpl',
         'class' => '/php/class.tmpl',
         'class_action' => '/php/class_action.tmpl',
+        'class_tp_action' => '/php/class_tp_action.tmpl',
         'class_function' => '/php/class_function.tmpl',
         'class_construct_action' => '/php/class_construct_action.tmpl',
         'error' => '/php/error.tmpl',
