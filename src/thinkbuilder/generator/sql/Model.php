@@ -86,7 +86,7 @@ class Model extends Generator
 
             if (preg_match('/^is_/', $field['name'])) {
                 $default = (array_key_exists('default', $field)) ? ($field['default'] ? '\'1\'' : '\'0\'') : '\'0\'';
-                return "`{{FIELD_NAME}}` tinyint(1) DEFAULT $default COMMENT '{{FIELD_TITLE}}',";
+                return "`{{FIELD_NAME}}` tinyint(1) $default COMMENT '{{FIELD_TITLE}}',";
             }
 
             if ($field['rule'] == 'datetime') {
@@ -109,6 +109,11 @@ class Model extends Generator
             if ($field['rule'] == 'float') {
                 return "`{{FIELD_NAME}}` float(10,2) $null_string  COMMENT '{{FIELD_TITLE}}',";
             }
+
+            if ($field['rule'] == 'boolean' || $field['rule'] == 'accepted') {
+                return "`{{FIELD_NAME}}` tinyint(1) $default COMMENT '{{FIELD_TITLE}}',";
+            }
+
 
             return "`{{FIELD_NAME}}` varchar(100) $null_string COMMENT '{{FIELD_TITLE}}',";
         }
