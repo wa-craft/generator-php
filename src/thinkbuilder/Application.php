@@ -1,4 +1,5 @@
 <?php
+
 namespace thinkbuilder;
 
 use think\cache\driver\File;
@@ -14,12 +15,13 @@ class Application
     private $config = [];
     //系统基本路径
     private $paths = [
-        'target' => __DIR__.'./deploy',
-        'application' => __DIR__.'/deploy' . '/' . APP_PATH,
-        'database' => __DIR__.'/deploy/' . DBFILE_PATH,
-        'profile' => __DIR__.'/deploy/' . PROFILE_PATH,
-        'public' => __DIR__.'/deploy/' . PUB_PATH,
-        'console' => __DIR__.'/deploy/' . CONSOLE_PATH,
+        'target' => __DIR__ . './deploy',
+        'application' => __DIR__ . '/deploy' . '/' . APP_PATH,
+        'database' => __DIR__ . '/deploy/' . DBFILE_PATH,
+        'profile' => __DIR__ . '/deploy/' . PROFILE_PATH,
+        'public' => __DIR__ . '/deploy/' . PUB_PATH,
+        'console' => __DIR__ . '/deploy/' . CONSOLE_PATH,
+        'assets' => __DIR__ . '/assets'
     ];
 
     //数据
@@ -30,6 +32,7 @@ class Application
         if (key_exists('config', $params)) $this->setConfigFromFile($params['config']);
         if (key_exists('data', $params)) $this->setDataFromFile($params['data']);
         if (key_exists('target', $params)) $this->paths['target'] = $params['target'];
+        if (key_exists('assets', $params)) $this->paths['assets'] = $params['assets'];
     }
 
     /**
@@ -112,7 +115,7 @@ class Application
     {
         /* 创建基本目录 */
         $this->makeBaseDirectories();
-        FileHelper::copyFiles(__DIR__ . '/../../assets/base', $this->paths['target']);
+        FileHelper::copyFiles(ASSETS_PATH . '/base', $this->paths['target']);
 
         /* 拷贝资源文件 */
         $this->copyAssets();

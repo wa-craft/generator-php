@@ -18,10 +18,8 @@ define('TAR_ROOT_PATH', __DIR__ . '/deploy');
 define('APP_PATH', 'applications');
 define('DBFILE_PATH', 'database');
 define('PROFILE_PATH', 'profile');
-define('TMPL_PATH', __DIR__ . '/assets/template');
 define('PUB_PATH', 'public');
 define('CONSOLE_PATH', 'console');
-define('ASSETS_PATH', __DIR__ . '/assets');
 define('VERSION', '2.0.0 alpha');
 
 /* 装载程序代码 */
@@ -63,6 +61,18 @@ $cmd->option('t')
     ->map(function ($target) {
         return $target;
     });
+
+//资源路径
+$cmd->option('a')
+    ->aka('assets')
+    ->describedAs('define a assets directory, default is : ' . TAR_ROOT_PATH)
+    ->default(__DIR__ . '/assets')
+    ->map(function ($assets) {
+        define('ASSETS_PATH', $assets);
+        define('TMPL_PATH', $assets . '/template');
+        return $assets;
+    });
+
 
 //进行创建
 $app = new \thinkbuilder\Application([
