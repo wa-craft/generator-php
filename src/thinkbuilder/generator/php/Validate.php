@@ -46,8 +46,15 @@ class Validate extends Generator
                 $content_fields .= Field::$rules[$field->rule];
                 $content_fields .= '\',';
             }
-            $content = str_replace('{{VALIDATE_RULES}}', $content_rules . "\n{{VALIDATE_RULES}}", $content);
-            $content = str_replace('{{VALIDATE_FIELDS}}', $content_fields . "\n{{VALIDATE_FIELDS}}", $content);
+
+            //当 $fields 为空的时候，直接将校验器的 fields 和 rules 设置为空数组
+            if(count($fields) === 0) {
+                $content = str_replace('{{VALIDATE_RULES}}', $content_rules . "", $content);
+                $content = str_replace('{{VALIDATE_FIELDS}}', $content_fields . "", $content);
+            } else {
+                $content = str_replace('{{VALIDATE_RULES}}', $content_rules . "\n{{VALIDATE_RULES}}", $content);
+                $content = str_replace('{{VALIDATE_FIELDS}}', $content_fields . "\n{{VALIDATE_FIELDS}}", $content);
+            }
         }
         $content = str_replace(",\n{{VALIDATE_RULES}}", "\n\t", $content);
         $content = str_replace(",\n{{VALIDATE_FIELDS}}", "\n\t", $content);
