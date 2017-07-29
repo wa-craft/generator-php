@@ -35,6 +35,10 @@ class Validate extends Generator
                     case 'image':
                         $rule = "regex' => '/^[\/a-zA-Z]{1}[0-9a-zA-Z\/\-\_]+[\.]{1}(jpg|jpeg|gif|png|bmp|JPG|JPEG|GIF|PNG|BMP)$/i";
                         break;
+                    case 'accepted':
+                    case 'boolean':
+                        $rule = "regex' => '/(yes|on|1|0)/i";
+                        break;
                     case 'text':
                         $rule = 'min:3';
                         break;
