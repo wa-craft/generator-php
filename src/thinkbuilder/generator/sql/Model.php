@@ -80,15 +80,6 @@ class Model extends Generator
             $null_string = (isset($field['required'])) ? ($field['required'] ? ' NOT NULL ' : '') : '';
             $null_string = ($null_string == '' || $default != ' DEFAULT NULL') ? $default : $null_string;
 
-            if (preg_match('/_id$/', $field['name'])) {
-                return "`{{FIELD_NAME}}` bigint(20) $null_string COMMENT '{{FIELD_TITLE}}',";
-            }
-
-            if (preg_match('/^is_/', $field['name'])) {
-                $default = (array_key_exists('default', $field)) ? ($field['default'] ? '\'1\'' : '\'0\'') : '\'0\'';
-                return "`{{FIELD_NAME}}` tinyint(1) $default COMMENT '{{FIELD_TITLE}}',";
-            }
-
             if ($field['rule'] == 'datetime') {
                 $null_string = $null_string == ' DEFAULT NULL' ? '' : $null_string;
                 return "`{{FIELD_NAME}}` datetime $null_string DEFAULT CURRENT_TIMESTAMP COMMENT '{{FIELD_TITLE}}',";
@@ -111,7 +102,7 @@ class Model extends Generator
             }
 
             if ($field['rule'] == 'boolean' || $field['rule'] == 'accepted') {
-                return "`{{FIELD_NAME}}` tinyint(1) $default COMMENT '{{FIELD_TITLE}}',";
+                return "`{{FIELD_NAME}}` tinyint(1) DEFAULT $default COMMENT '{{FIELD_TITLE}}',";
             }
 
 
