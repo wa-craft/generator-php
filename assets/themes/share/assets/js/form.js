@@ -5,7 +5,7 @@ if (typeof jQuery === "undefined") {
  * Form helper
  *
  * @author bison 'goldeagle' fan
- * @type {{add: Form.add, del: Form.del, mod: Form.mod, enable: Form.enable, disable: Form.disable, read: Form.read, jump: Form.jump, submit: Form.submit}}
+ * @type {{add: Form.add, del: Form.del, mod: Form.mod, enable: Form.enable, disable: Form.disable, read: Form.read, jump: Form.jump, submit: Form.ajaxSubmit}}
  */
 var Form = {
     /**
@@ -70,14 +70,15 @@ var Form = {
      * @returns {boolean}
      */
     ajaxSuccess: function (data) {
-        if (data.code == 0) {
-            if (typeof Form.onError != 'undefined' && Form.onError != null) {
+        if (data.code === 0) {
+            if (typeof Form.onError !== 'undefined' && Form.onError !== null) {
                 Form.onError(data);
             } else {
-                alert(data.msg);
+                Form.onSuccess(data);
             }
         } else {
-            if (data.url != '' && typeof data.url != 'undefined') {
+            if (data.url !== '' && typeof data.url !== 'undefined') {
+                //Form.onSuccess(data);
                 Form.jump(data.url);
             }
         }
@@ -88,8 +89,8 @@ var Form = {
      * @returns {boolean}
      */
     ajaxError: function (data) {
-        if (typeof Form.onError != 'undefined' && Form.onError != null) {
-            if (typeof data == 'undefined') {
+        if (typeof Form.onError !== 'undefined' && Form.onError !== null) {
+            if (typeof data === 'undefined') {
                 data = {
                     msg: 'Shit always happens!'
                 };
@@ -114,7 +115,9 @@ var Form = {
             success: function (data) {
                 Form.ajaxSuccess(data)
             },
-            error: Form.ajaxError()
+            error: function (data) {
+                Form.ajaxError(data)
+            }
         });
     },
     /**
@@ -122,24 +125,27 @@ var Form = {
      * @param form
      * @returns {boolean}
      */
-    submit: function (form) {
+    ajaxSubmit: function (form) {
         var data = new FormData($(form)[0]);
-
+        //var data = $(form).serialize();
         $.ajax({
             type: "POST",
             url: form.action,
             data: data,
             dataType: "json",
             async: false,
+            processData: false,
+            contentType: false,
             success: function (data) {
                 Form.ajaxSuccess(data)
             },
             error: function (data) {
-                alert(data);
                 Form.ajaxError(data)
             }
         });
+
         return false;
     },
-    onError: null
+    onError: null,
+    onSuccess: null
 };
