@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.3.6](https://github.com/goldeagle/think-builder/tree/v1.3.6)
+
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.5...v1.3.6)
+
+**Closed issues:**
+
+- 关联关系生成代码的问题 [\#9](https://github.com/goldeagle/think-builder/issues/9)
+
 ## [v1.3.5](https://github.com/goldeagle/think-builder/tree/v1.3.5) (2017-02-09)
 [Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.5.1...v1.3.5)
 
