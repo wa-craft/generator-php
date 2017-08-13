@@ -2,7 +2,6 @@
 
 namespace thinkbuilder;
 
-use think\cache\driver\File;
 use thinkbuilder\helper\FileHelper;
 use thinkbuilder\node\Node;
 
