@@ -1,6 +1,6 @@
 <?php
 /**
- * 样例
+ * 样例 v2.1
  */
 return [
     //项目名称，全部小写即可
@@ -15,6 +15,8 @@ return [
     'vendor' => '东莞培基',
     //版权信息
     'copyright' => '&copy;2016-2017',
+    //数据定义版本
+    'revision' => '1',
     //生成代码时执行的命令
     'commands' => [
         [
@@ -37,6 +39,8 @@ return [
             'namespace' => 'app',
             //应用的入口文件，小写
             'portal' => 'index',
+            //数据库使用的引擎，为mysql支持的引擎，默认为 MyISAM
+            'dbEngine' => 'MyISAM',
             //是否自动生成 menu 配置文件，可以不进行定义，默认为 true
             'autoMenu' => true,
             //模块列表
@@ -50,7 +54,7 @@ return [
                     'caption' => '默认模块',
                     //所有CRUD控制器共用的默认父类，注意定义时最好为双斜线，例如：'\\think\\Controller'
                     'default_controller' => '',
-                    //视图模板使用的主题名称，在 template/html 与 assets/themes 中应有对应的目录
+                    //视图模板使用的主题名称，在 template/html 与 assets/themes 中应有对应的目录，如果为空则不生成 view
                     'theme' => 'metronic_1',
                     //CRUD模式列表，CRUD模式会自动创建对应的控制器、模型、校验器、视图、SQL数据表代码。
                     'schemas' => [
@@ -61,6 +65,8 @@ return [
                             'caption' => '文章',
                             //是否自动创建 create_time、update_time 模型属性
                             'autoWriteTimeStamp' => true,
+                            //生成控制器的目标模块，如果为空则不生成控制器
+                            'target_modules' => [],
                             //字段列表
                             'fields' => [
                                 [
@@ -183,34 +189,6 @@ return [
                                     'name' => 'check',
                                     'caption' => '校验',
                                     'params' => '$username, $password'
-                                ]
-                            ]
-                        ]
-                    ],
-                    //独立模型列表，独立模型只会创建模型、校验器、SQL代码，不会创建CRUD控制器与视图，可以不进行定义
-                    'models' => [
-                        [
-                            //模型定义的说明参见模式说明
-                            'name' => 'User',
-                            'caption' => '用户',
-                            'autoWriteTimeStamp' => true,
-                            'fields' => [
-                                [
-                                    'name' => 'name',
-                                    'caption' => '名称',
-                                    'rule' => 'alpha',
-                                    'required' => true,
-                                    'is_unique' => false
-                                ],
-                            ],
-                            'relations' => [
-                                [
-                                    'name' => 'Author',
-                                    'caption' => '作者',
-                                    'type' => 'hasOne',
-                                    'this_key' => 'author_id',
-                                    'that_key' => 'id',
-                                    'model' => 'common/User'
                                 ]
                             ]
                         ]

@@ -1,14 +1,19 @@
 <script>
     //拦截所有 Form 的提交请求
     $('form').each(function () {
-        $(this).submit(function () {
-            Form.submit(this);
+        $(this).submit(function (e) {
+            Form.ajaxSubmit(this);
             return false;
         });
     });
 
     //提示信息处理方法
     Form.onError = function (data) {
+        $('#modal_content').html('<lable style=\"color: #9c3328;\">' + data.msg + '</lable>');
+        $('#msgModal').modal('show');
+    }
+
+    Form.onSuccess = function (data) {
         $('#modal_content').html('<lable style=\"color: #9c3328;\">' + data.msg + '</lable>');
         $('#msgModal').modal('show');
     }

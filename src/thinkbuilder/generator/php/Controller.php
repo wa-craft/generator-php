@@ -17,7 +17,8 @@ class Controller extends Generator
         $tags = [
             'NAME_SPACE' => $data['namespace'],
             'APP_PATH' => APP_PATH,
-            'CLASS_NAME' => $data['name']
+            'CLASS_NAME' => $data['name'],
+            'ABSTRACT' => ''
         ];
 
         if (isset($data['name'])) {
@@ -45,8 +46,8 @@ class Controller extends Generator
         })($data);
 
         //设置父控制器
-        $extend_controller = ($extend_controller !== '') ? 'extends ' . $extend_controller : (($data['name'] != 'Error') ? 'extends ' . $data['parent_controller'] : '');
-        if ($extend_controller == 'extends ') $extend_controller = 'extends \\think\\Controller';
+        $extend_controller = ($extend_controller !== '') ? ' extends ' . $extend_controller : (($data['name'] != 'Error') ? ' extends ' . $data['parent_controller'] : '');
+        if ($extend_controller == ' extends ') $extend_controller = '';
         $tags['EXTEND_CLASS'] = $extend_controller;
         $content = $this->params['template'];
 
@@ -66,7 +67,12 @@ class Controller extends Generator
                 ];
                 if (array_key_exists('params', $action)) $action_tags['ACTION_PARAMS'] = $action['params'];
                 else  $action_tags['ACTION_PARAMS'] = '';
-                $content_action = TemplateHelper::parseTemplateTags($action_tags, TemplateHelper::fetchTemplate('class_action'));
+                //如果父控制器为 \think\Controller 或者 DefaultController 则选择不单独生成 view 的 action
+                if($extend_controller === 'extends \\think\\Controller' || $extend_controller === 'extends DefaultController') {
+                    $content_action = TemplateHelper::parseTemplateTags($action_tags, TemplateHelper::fetchTemplate('class_tp_action'));
+                } else {
+                    $content_action = TemplateHelper::parseTemplateTags($action_tags, TemplateHelper::fetchTemplate('class_action'));
+                }
 
                 $content = str_replace('{{CLASS_ACTIONS}}', $content_action . "\n{{CLASS_ACTIONS}}", $content);
             }

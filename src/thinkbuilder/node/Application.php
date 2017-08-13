@@ -18,6 +18,7 @@ class Application extends Node
     protected $portal = 'index';
     //模块列表
     protected $modules = [];
+    protected $dbEngine = 'MyISAM';
     //是否自动生成 menu
     protected $autoMenu = false;
 
@@ -36,6 +37,14 @@ class Application extends Node
                 'data' => $this->data
             ])->generate()->writeToFile();
         }
+
+        //创建 console 命令行文件
+        Generator::create('php\\Console', [
+            'path' => Cache::getInstance()->get('paths')['console'],
+            'file_name' => $this->namespace . '_console.php',
+            'template' => TemplateHelper::fetchTemplate('console'),
+            'data' => $this->data
+        ])->generate()->writeToFile();
 
         if ($config['actions']['copy']) {
             //拷贝应用文件
@@ -71,6 +80,8 @@ class Application extends Node
 
         //设置应用根命名空间
         Cache::getInstance()->set('root_name_space', $this->namespace);
+        //设置数据库引擎
+        Cache::getInstance()->set($this->namespace.'_dbEngine', $this->dbEngine);
         $this->processChildren('module');
     }
 

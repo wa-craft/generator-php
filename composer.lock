@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "26cb927dd96e85c99c910107ad152410",
     "content-hash": "fe5358f23b5a08af0cc58f751a3edb9f",
     "packages": [
         {
@@ -56,7 +55,7 @@
                 "console",
                 "shell"
             ],
-            "time": "2014-12-23 01:23:37"
+            "time": "2014-12-23T01:23:37+00:00"
         },
         {
             "name": "nategood/commando",
@@ -102,7 +101,7 @@
                 "command line interface",
                 "scripting"
             ],
-            "time": "2016-11-09 16:22:34"
+            "time": "2016-11-09T16:22:34+00:00"
         }
     ],
     "packages-dev": [],

@@ -1,7 +1,6 @@
 <?php
 namespace thinkbuilder\node;
 
-use thinkbuilder\Builder;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\{
     TemplateHelper, FileHelper

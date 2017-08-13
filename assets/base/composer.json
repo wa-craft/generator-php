@@ -16,6 +16,6 @@
     }
   },
   "require": {
-    "topthink/framework": "5.0.6"
+    "topthink/framework": "5.0.10"
   }
 }

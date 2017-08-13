@@ -6,7 +6,7 @@ server {
 	error_log	/app/logs/nginx/{{DOMAIN}}_error.log;
 	set		$root	/app/www/{{DOMAIN}}/public;
 
-	location ~ .*\.(gif|jpg|jpeg|bmp|png|ico|txt|js|css)$
+	location ~ .*\.(gif|jpg|jpeg|bmp|png|ico|txt|js|css|woff|woff2|eot|svg|ttf|otf)$
     {
         root $root;
     }

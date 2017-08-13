@@ -23,15 +23,21 @@ class Validate extends Generator
         $content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
 
         //处理校验器相关的模板
-        $content_field = '';
+        $content_rules = '';
+        $content_fields = '';
         if (isset($data['fields'])) {
             $fields = $data['fields'];
             foreach ($fields as $field) {
-                $content_field .= PHP_EOL . "\t\t['" . $field->name . "', '";
-                $content_field .= $field->required ? 'require|' : '';
+                $content_rules .= PHP_EOL . "\t\t'" . $field->name . "' => ['";
+                $content_fields .= PHP_EOL . "\t\t'" . $field->name . "' => '";
+                $content_rules .= $field->required ? "require','" : '';
                 switch ($field->rule) {
                     case 'image':
-                        $rule = 'regex:\/[\.\w\\/]+\.jpg';
+                        $rule = "regex' => '/^[\/a-zA-Z]{1}[0-9a-zA-Z\/\-\_]+[\.]{1}(jpg|jpeg|gif|png|bmp|JPG|JPEG|GIF|PNG|BMP)$/i";
+                        break;
+                    case 'accepted':
+                    case 'boolean':
+                        $rule = "regex' => '/(yes|on|1|0)/i";
                         break;
                     case 'text':
                         $rule = 'min:3';
@@ -39,13 +45,22 @@ class Validate extends Generator
                     default:
                         $rule = $field->rule;
                 }
-                $content_field .= $rule . '\',\'';
-                $content_field .= $field->required ? '必须输入：' . $field->caption . '|' : '';
-                $content_field .= Field::$rules[$field->rule];
-                $content_field .= '\'],';
+                $content_rules .= $rule . '\'],';
+                $content_fields .= $field->required ? '必须输入：' . $field->caption . '|' : '';
+                $content_fields .= Field::$rules[$field->rule];
+                $content_fields .= '\',';
             }
-            $content = str_replace('{{VALIDATE_FIELDS}}', $content_field . "\n{{VALIDATE_FIELDS}}", $content);
+
+            //当 $fields 为空的时候，直接将校验器的 fields 和 rules 设置为空数组
+            if(count($fields) === 0) {
+                $content = str_replace('{{VALIDATE_RULES}}', $content_rules . "", $content);
+                $content = str_replace('{{VALIDATE_FIELDS}}', $content_fields . "", $content);
+            } else {
+                $content = str_replace('{{VALIDATE_RULES}}', $content_rules . "\n{{VALIDATE_RULES}}", $content);
+                $content = str_replace('{{VALIDATE_FIELDS}}', $content_fields . "\n{{VALIDATE_FIELDS}}", $content);
+            }
         }
+        $content = str_replace(",\n{{VALIDATE_RULES}}", "\n\t", $content);
         $content = str_replace(",\n{{VALIDATE_FIELDS}}", "\n\t", $content);
 
         $this->content = str_replace('{{CLASS_NAME}}', $data['name'], $content);

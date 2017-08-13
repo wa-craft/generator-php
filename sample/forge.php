@@ -2,8 +2,8 @@
 /**
  * 测试用实例
  * @author Bison 'goldeagle' Fan
- * @version 2.0
- * @update 20170113
+ * @version 2.1
+ * @update 20170210
  */
 return [
     'name' => 'forge',
@@ -153,7 +153,7 @@ return [
                                     'type' => 'hasMany',
                                     'this_key' => 'id',
                                     'that_key' => 'module_id',
-                                    'model' => 'Class'
+                                    'model' => 'PhpClass'
                                 ],
                                 [
                                     'name' => 'helpers',
@@ -161,7 +161,7 @@ return [
                                     'type' => 'hasMany',
                                     'this_key' => 'id',
                                     'that_key' => 'module_id',
-                                    'model' => 'Class'
+                                    'model' => 'PhpClass'
                                 ],
                                 [
                                     'name' => 'traits',
@@ -169,7 +169,7 @@ return [
                                     'type' => 'hasMany',
                                     'this_key' => 'id',
                                     'that_key' => 'module_id',
-                                    'model' => 'Class'
+                                    'model' => 'PhpClass'
                                 ],
                                 [
                                     'name' => 'models',
@@ -217,7 +217,7 @@ return [
                             ]
                         ],
                         [
-                            'name' => 'Class',
+                            'name' => 'PhpClass',
                             'caption' => '类定义',
                             'fields' => [
                                 ['name' => 'name', 'caption' => '名称', 'rule' => 'alpha', 'required' => true, 'default' => '', 'is_unique' => false, 'is_auto' => false],
@@ -246,7 +246,7 @@ return [
                                     'type' => 'belongsToMany',
                                     'this_key' => 'id',
                                     'that_key' => 'class_id',
-                                    'model' => 'ClassTrait'
+                                    'model' => 'PhpClassTrait'
                                 ],
                                 [
                                     'name' => 'actions',
@@ -293,12 +293,12 @@ return [
                                     'model' => 'Parameter'
                                 ],
                                 [
-                                    'name' => 'Class',
+                                    'name' => 'PhpClass',
                                     'caption' => '所属对象',
                                     'type' => 'belongsTo',
                                     'this_key' => 'class_id',
                                     'that_key' => 'id',
-                                    'model' => 'Class'
+                                    'model' => 'PhpClass'
                                 ]
                             ]
                         ],
@@ -390,7 +390,7 @@ return [
                                     'type' => 'belongsToMany',
                                     'this_key' => 'id',
                                     'that_key' => 'trait_id',
-                                    'model' => 'ClassTrait'
+                                    'model' => 'PhpClassTrait'
                                 ],
                                 [
                                     'name' => 'Module',
@@ -403,7 +403,7 @@ return [
                             ]
                         ],
                         [
-                            'name' => 'ClassTrait',
+                            'name' => 'PhpClassTrait',
                             'caption' => '类与泛型映射关系',
                             'fields' => [
                                 ['name' => 'name', 'caption' => '名称', 'rule' => 'alpha', 'required' => true, 'default' => '', 'is_unique' => false, 'is_auto' => false],
@@ -416,7 +416,7 @@ return [
                                     'type' => 'belongsTo',
                                     'this_key' => 'class_id',
                                     'that_key' => 'id',
-                                    'model' => 'Class'
+                                    'model' => 'PhpClass'
                                 ],
                                 [
                                     'name' => 'trait',

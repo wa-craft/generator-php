@@ -16,6 +16,11 @@
     }
   },
   "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "thinkbuilder\\": "src\\thinkbuilder"
+    }
+  },
   "require": {
     "php": ">= 7.0.0",
     "nategood/commando": "*"

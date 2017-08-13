@@ -1,4 +1,5 @@
 <?php
+
 namespace thinkbuilder\generator\html;
 
 use thinkbuilder\generator\Generator;
@@ -21,6 +22,7 @@ class View extends Generator
             'MODULE_NAME' => $data['module_name']
         ];
         $content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
+        $form_type = '';
 
         //处理关系，将关系转化成字段
         $fields = [];
@@ -41,27 +43,29 @@ class View extends Generator
         //处理模型的字段
         if ($this->params['action_name'] == 'index') {
             //索引方法
-            $_tr = "\t\t\t\t\t\t\t\t\t" . '<th > ID</th >' . PHP_EOL;
-            $_td = "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.id}</td>' . PHP_EOL;
+            $_tr = "\t\t\t\t\t\t\t\t" . '<th> ID</th>' . PHP_EOL;
+            $_td = "\t\t\t\t\t\t\t\t" . '<td>{$it.id}</td>' . PHP_EOL;
             foreach ($fields as $field) {
-                $_tr .= "\t\t\t\t\t\t\t\t\t<th>" . $field->caption . '</th>' . PHP_EOL;
-                if ($field->rule !== 'boolean') {
-                    if (preg_match('/_id$/', $field->name)) {
-                        $name = lcfirst(ClassHelper::convertFromTableName(str_replace('_id', '', $field->name)));
-                        $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it->' . $name . '->name ?? $it->' . $name . '->title ??  $it->' . $name . '->caption ?? \'未定义\'}</td>' . PHP_EOL;
+                //不在索引中显示大量的正文内容
+                if ($field->rule !== 'text') {
+                    $_tr .= "\t\t\t\t\t\t\t\t<th>" . $field->caption . '</th>' . PHP_EOL;
+                    if ($field->rule !== 'boolean') {
+                        if (preg_match('/_id$/', $field->name)) {
+                            $name = lcfirst(ClassHelper::convertFromTableName(str_replace('_id', '', $field->name)));
+                            $_td .= "\t\t\t\t\t\t\t\t" . '<td>{$it->' . $name . '->name ?? $it->' . $name . '->title ??  $it->' . $name . '->caption ?? \'未定义\'}</td>' . PHP_EOL;
+                        } else {
+                            $_td .= "\t\t\t\t\t\t\t\t" . '<td>{$it.' . $field->name . '}</td>' . PHP_EOL;
+                        }
                     } else {
-                        $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.' . $field->name . '}</td>' . PHP_EOL;
+                        $_td .= "\t\t\t\t\t\t\t\t" . '<td>{$it.' . $field->name . ' == \'1\' ? \'是\' : \'否\'}</td>' . PHP_EOL;
                     }
-                } else {
-                    $_td .= "\t\t\t\t\t\t\t\t\t\t" . '<td>{$it.' . $field->name . ' == \'1\' ? \'是\' : \'否\'}</td>' . PHP_EOL;
-
                 }
+                $tags = [
+                    'TR_LOOP' => $_tr,
+                    'TD_LOOP' => $_td
+                ];
+                $this->content = TemplateHelper::parseTemplateTags($tags, $content);
             }
-            $tags = [
-                'TR_LOOP' => $_tr,
-                'TD_LOOP' => $_td
-            ];
-            $this->content = TemplateHelper::parseTemplateTags($tags, $content);
         } else {
             foreach ($fields as $field) {
                 //如果是由系统填充的字段，则不生成添加或修改方法的代码
@@ -76,12 +80,18 @@ class View extends Generator
                         $_comment = '请输入';
                     }
                     $_comment .= $field->caption;
+
+                    //判断是否需要上传文件
+                    if ($field->rule == 'image' || $field->rule == 'file') {
+                        $form_type = ' enctype="multipart/form-data"';
+                    }
                 } else {
                     $_comment = '';
                 }
 
                 if (isset($field->required)) $_is_required = ($field->required) ? '（* 必须）' : '';
                 else $_is_required = '';
+
                 $tags_field = [
                     'FORM_FIELD' => self::getFieldHTML($field, $this->params['action_name']),
                     'FIELD_NAME' => $field->name,
@@ -94,6 +104,7 @@ class View extends Generator
             }
             $this->content = str_replace("\n{{FIELD_LOOP}}", '', $content);
         }
+        $this->content = str_replace("{{FORM_TYPE}}", $form_type, $this->content);
         $this->content = str_replace('{{MODULE_NAME}}', $data['name'], $this->content);
         return $this;
     }
@@ -105,7 +116,8 @@ class View extends Generator
      * @param string $action
      * @return string
      */
-    public static function getFieldHTML($field, $action = 'add')
+    public
+    static function getFieldHTML($field, $action = 'add')
     {
         if ($field->rule == 'boolean' || $field->rule == 'accepted') {
             switch ($action) {

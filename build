@@ -3,10 +3,29 @@
 /**
  * thinkphp v5 脚手架创建工具
  */
-//读取相关程序
-require __DIR__ . "/src/defines.php";
+
+/**
+ * TODO v2.0.0 处理流程
+ * 定义全局常量
+ * 装载程序代码
+ * 处理命令行参数
+ * 初始化并运行程序
+ */
+/* 定义全局常量 */
+define('SRC_PATH', __DIR__ . '/src');
+define('PACKAGE_PATH', __DIR__ . '/pkg');
+define('TAR_ROOT_PATH', __DIR__ . '/deploy');
+define('APP_PATH', 'applications');
+define('DBFILE_PATH', 'database');
+define('PROFILE_PATH', 'profile');
+define('PUB_PATH', 'public');
+define('CONSOLE_PATH', 'console');
+define('VERSION', '2.0.0 alpha');
+
+/* 装载程序代码 */
 require __DIR__ . "/src/autoload.php";
 
+/* 自动运行 composer 下载安装第三方程序 */
 if (!file_exists(__DIR__ . "/vendor/autoload.php")) shell_exec('composer update');
 require __DIR__ . "/vendor/autoload.php";
 
@@ -14,13 +33,13 @@ require __DIR__ . "/vendor/autoload.php";
 $cmd = new \Commando\Command();
 
 $cmd->option()
-    ->description('A command line toolit to build MVC scaffold for thinkphp v5.*');
+    ->description('A command line toolkit to build MVC scaffold for thinkphp v5.*');
 
 //配置文件
 $cmd->option('c')
     ->aka('config')
     ->describedAs('define a configuration file, default is : ./src/config.php')
-    ->default('./src/config.php')
+    ->default(__DIR__ . '/src/config.php')
     ->map(function ($config) {
         return $config;
     });
@@ -29,7 +48,7 @@ $cmd->option('c')
 $cmd->option('d')
     ->aka('data')
     ->describedAs('define a project data file')
-    ->default('./sample/sample.php')
+    ->default(__DIR__ . '/sample/sample.php')
     ->map(function ($data) {
         return $data;
     });
@@ -43,11 +62,22 @@ $cmd->option('t')
         return $target;
     });
 
+//资源路径
+$cmd->option('a')
+    ->aka('assets')
+    ->describedAs('define a assets directory, default is : ' . TAR_ROOT_PATH)
+    ->default(__DIR__ . '/assets')
+    ->map(function ($assets) {
+        define('ASSETS_PATH', $assets);
+        define('TMPL_PATH', $assets . '/template');
+        return $assets;
+    });
+
+
 //进行创建
-$builder = new \thinkbuilder\Builder([
+$app = new \thinkbuilder\Application([
     'config' => $cmd['config'],
     'data' => $cmd['data'],
-    'target' => $cmd['target'],
-    'repository' => $cmd['repository'],
+    'target' => $cmd['target']
 ]);
-$builder->build();
+$app->run();

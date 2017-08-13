@@ -1,6 +1,7 @@
 <?php
 namespace thinkbuilder\generator\sql;
 
+use thinkbuilder\Cache;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\TemplateHelper;
 
@@ -59,6 +60,7 @@ class Model extends Generator
             'APP_PATH' => APP_PATH,
             'MODULE_NAME' => str_replace('|model', '', str_replace('\\', '|', $data['namespace'])),
             'FIELD_LOOP' => '',
+            'DB_ENGINE' => Cache::getInstance()->get(Cache::getInstance()->get('root_name_space').'_dbEngine')
         ];
         $this->content = TemplateHelper::parseTemplateTags($tags, $content);
 
@@ -77,15 +79,6 @@ class Model extends Generator
             $default = (array_key_exists('default', $field)) ? ' DEFAULT \'' . $field['default'] . '\' ' : ' DEFAULT NULL';
             $null_string = (isset($field['required'])) ? ($field['required'] ? ' NOT NULL ' : '') : '';
             $null_string = ($null_string == '' || $default != ' DEFAULT NULL') ? $default : $null_string;
-
-            if (preg_match('/_id$/', $field['name'])) {
-                return "`{{FIELD_NAME}}` bigint(20) $null_string COMMENT '{{FIELD_TITLE}}',";
-            }
-
-            if (preg_match('/^is_/', $field['name'])) {
-                $default = (array_key_exists('default', $field)) ? ($field['default'] ? '\'1\'' : '\'0\'') : '\'0\'';
-                return "`{{FIELD_NAME}}` tinyint(1) DEFAULT $default COMMENT '{{FIELD_TITLE}}',";
-            }
 
             if ($field['rule'] == 'datetime') {
                 $null_string = $null_string == ' DEFAULT NULL' ? '' : $null_string;
@@ -107,6 +100,11 @@ class Model extends Generator
             if ($field['rule'] == 'float') {
                 return "`{{FIELD_NAME}}` float(10,2) $null_string  COMMENT '{{FIELD_TITLE}}',";
             }
+
+            if ($field['rule'] == 'boolean' || $field['rule'] == 'accepted') {
+                return "`{{FIELD_NAME}}` tinyint(1) DEFAULT $default COMMENT '{{FIELD_TITLE}}',";
+            }
+
 
             return "`{{FIELD_NAME}}` varchar(100) $null_string COMMENT '{{FIELD_TITLE}}',";
         }
