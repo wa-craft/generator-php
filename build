@@ -20,7 +20,7 @@ define('DBFILE_PATH', 'database');
 define('PROFILE_PATH', 'profile');
 define('PUB_PATH', 'public');
 define('CONSOLE_PATH', 'console');
-define('VERSION', '2.0.0 alpha');
+define('VERSION', '1.4.0');
 
 /* 装载程序代码 */
 require __DIR__ . "/src/autoload.php";

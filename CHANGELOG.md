@@ -1,8 +1,8 @@
 # Change Log
 
-## [1.3.6](https://github.com/goldeagle/think-builder/tree/v1.3.6)
+## [1.4.0](https://github.com/goldeagle/think-builder/tree/v1.4.0)
 
-[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.5...v1.3.6)
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.5...v1.4.0)
 
 **Closed issues:**
 
