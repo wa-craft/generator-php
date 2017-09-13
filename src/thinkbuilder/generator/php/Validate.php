@@ -46,6 +46,9 @@ class Validate extends Generator
                         $rule = 'min:3';
                         break;
                     case 'chs':
+                        $rule = "regex' => '/^[\x{4e00}-\x{9fa5}]+$/u";
+                        break;
+                    case 'chsDash':
                         $rule = "regex' => '/^[\x{4e00}-\x{9fa5}\x{fe30}-\x{ffa0}a-zA-Z0-9\_\-]+$/u";
                         break;
                     case 'phone':
