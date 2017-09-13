@@ -20,6 +20,7 @@ class Field extends Node
         'datetime' => '日期时间',
         'alphaNum' => '英文字符与数字',
         'alphaDash' => '英文字符与下划线',
+        'password' => '合法的密码，可以使用英文与数字的组合，还有-_@!#$符号等，4～15位长度',
         'phone' => '合法的电话号码，例如 +86-0769-88888888-8888',
         'mobile' => '合法的手机号码，例如 13000001234',
         'email' => '合法的电子邮箱，例如 xxx_123@xxx.com',
@@ -27,8 +28,8 @@ class Field extends Node
         'accepted' => 'on|yes|1(是）或者 off|no|0（否）',
         'url' => '合法的 uri 网址',
         'domain' => '合法的域名',
-        'ip' => '合法的 ip 地址',
-        'money' => '金额',
+        'ip' => '合法的 ip 地址，如 202.101.155.254',
+        'money' => '金额，如1234.56',
         'image' => '图片'
     ];
 

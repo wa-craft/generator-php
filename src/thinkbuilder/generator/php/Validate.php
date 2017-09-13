@@ -54,6 +54,9 @@ class Validate extends Generator
                     case 'mobile':
                         $rule = "regex' => '/^1[3|4|5|8][0-9]\d{4,8}$/";
                         break;
+                    case 'password':
+                        $rule = "regex' => '/^[A-Za-z0-9]{1}[\w\-#@!?$]{3,14}/";
+                        break;
                     default:
                         $rule = $field->rule;
                 }
