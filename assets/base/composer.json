@@ -1,6 +1,6 @@
 {
   "name": "goldeagle/think-builder",
-  "description": "a cli tool to build applications for thinkphp v5",
+  "description": "a cli tool to build applications for thinkphp v5.1",
   "minimum-stability": "dev",
   "license": "MIT",
   "authors": [
@@ -16,6 +16,6 @@
     }
   },
   "require": {
-    "topthink/framework": "5.0.11"
+    "topthink/framework": "5.1.*"
   }
 }

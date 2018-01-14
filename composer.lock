@@ -16,7 +16,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/kevinlebrun/colors.php/d132f36d06e48ea080855af19b4bcb1fb615224a.zip",
+                "url": "https://files.phpcomposer.com/files/kevinlebrun/colors.php/d132f36d06e48ea080855af19b4bcb1fb615224a.zip",
                 "reference": "d132f36d06e48ea080855af19b4bcb1fb615224a",
                 "shasum": ""
             },
@@ -67,7 +67,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/nategood/commando/ba476a3928dcecfb257f9daf7d965a3abe53b6bd.zip",
+                "url": "https://files.phpcomposer.com/files/nategood/commando/ba476a3928dcecfb257f9daf7d965a3abe53b6bd.zip",
                 "reference": "ba476a3928dcecfb257f9daf7d965a3abe53b6bd",
                 "shasum": ""
             },
