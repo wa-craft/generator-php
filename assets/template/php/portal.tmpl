@@ -5,4 +5,5 @@
 define('APP_PATH', __DIR__ . '/../applications/{{APP_NAMESPACE}}/');
 define('VENDOR_PATH', __DIR__ . '/../vendor/');
 // 加载框架引导文件
-require __DIR__ . '/../vendor/topthink/framework/start.php';
+require __DIR__ . '/../vendor/topthink/framework/base.php';
+Container::get('{{APP_NAMESPACE}}')->path(APP_PATH)->run()->send();
