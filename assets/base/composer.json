@@ -17,5 +17,11 @@
   },
   "require": {
     "topthink/framework": "5.1.*"
+<<<<<<< .merge_file_BtmDTj
+=======
+  },
+  "require-dev": {
+    "filp/whoops": "*"
+>>>>>>> .merge_file_S78dSc
   }
 }

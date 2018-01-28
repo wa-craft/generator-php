@@ -43,8 +43,9 @@ class TemplateHelper
         'nginx' => '/profile/nginx_vhost',
         'apache' => '/profile/apache_vhost',
         'apache_access' => '/misc/apache_access',
-        'config' => '/php/config.tmpl',
-        'database' => '/php/database.tmpl',
+        'config' => '/php/config_app.tmpl',
+        'cookie' => '/php/config_cookie.tmpl',
+        'database' => '/php/config_database.tmpl',
         'menu' => '/php/menu.tmpl'
     ];
 

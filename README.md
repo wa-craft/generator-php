@@ -28,11 +28,11 @@ a cli tool to build applications for thinkphp v5，
 
 >命令样例（linux）：
 
-`{$think-builder}#./build -d sample/forge -t ./tmp`
+`{$think-builder}#./build -d sample/forge -a ./assets -t ./tmp`
 
 >命令样例（windows）：
 
-`PS %think-builder%\>build -d sample/forge -t ./tmp`
+`PS %think-builder%\>build -d sample/forge -a ./assets -t ./tmp`
 
 ## 3. 文档
 * [生成代码后的目录结构](./doc/deploy_dirs.md)

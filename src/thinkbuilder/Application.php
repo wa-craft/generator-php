@@ -2,12 +2,19 @@
 
 namespace thinkbuilder;
 
-use think\cache\driver\File;
 use thinkbuilder\helper\FileHelper;
 use thinkbuilder\node\Node;
 
 /**
  * Class Builder 构建程序
+ * TODO 生成内存中的树状数据结构，再调用每种生成器进行处理
+ * TODO 在view中根据每个页面的需求，生成独立调用的js文件
+ * TODO 根据 tp 5.1 进行针对性的变动
+ * TODO 使用 sqlite 作为存储引擎
+ * TODO 拆分纯粹的命令行与B/S架构的运行命令（提供SERVE命令）
+ * TODO 提供默认的控制器/模型/校验器，用以扩展
+ * TODO 完善自定义的校验规则
+ * TODO 提供 vue 脚手架
  */
 class Application
 {

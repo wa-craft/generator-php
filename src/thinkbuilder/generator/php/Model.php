@@ -30,16 +30,6 @@ class Model extends Generator
 
         $content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
 
-        /* 生成 fields 字段 */
-        if (isset($data['fields'])) {
-            $fields = $data['fields'];
-            $field_names = [];
-            foreach ($fields as $field) {
-                $field_names[] = '\'' . $field['name'] . '\'';
-            }
-            $content = str_replace('{{FIELDS}}', implode(',', $field_names), $content);
-        }
-
         //生成 relations
         if (isset($data['relations'])) {
             $relations = $data['relations'];

@@ -3,6 +3,7 @@ namespace thinkbuilder\node;
 
 use thinkbuilder\Cache;
 use thinkbuilder\generator\Generator;
+use thinkbuilder\helper\FileHelper;
 use thinkbuilder\helper\TemplateHelper;
 
 /**
@@ -84,6 +85,39 @@ class Project extends Node
                 'project' => $this->data
             ])->generate()->writeToFile();
         }
+
+        //生成 5.1 的新目录结构
+        $cache = Cache::getInstance();
+        if ($config['actions']['copy']) {
+            //拷贝应用文件
+            FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/configuration', $cache->get('paths')['application']);
+        }
+
+        //处理app与database配置文件
+        //写入应用 config 配置文件
+        Generator::create('php\\AppConfig', [
+            'path' => $cache->get('paths')['application'] . '/config',
+            'file_name' => 'app.php',
+            'template' => TemplateHelper::fetchTemplate('config'),
+            'data' => $this->data
+        ])->generate()->writeToFile();
+
+        //写入数据库配置文件
+        Generator::create('php\\DBConfig', [
+            'path' => $cache->get('paths')['application'] . '/config',
+            'file_name' => 'database.php',
+            'template' => TemplateHelper::fetchTemplate('database'),
+            'data' => $this->data
+        ])->generate()->writeToFile();
+
+
+        //写入cookie配置文件
+        Generator::create('php\\CookieConfig', [
+            'path' => $cache->get('paths')['application'] . '/config',
+            'file_name' => 'cookie.php',
+            'template' => TemplateHelper::fetchTemplate('cookie'),
+            'data' => $this->data
+        ])->generate()->writeToFile();
 
         $this->processChildren('application');
     }

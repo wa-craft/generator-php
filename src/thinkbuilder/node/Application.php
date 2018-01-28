@@ -41,7 +41,7 @@ class Application extends Node
         //创建 console 命令行文件
         Generator::create('php\\Console', [
             'path' => Cache::getInstance()->get('paths')['console'],
-            'file_name' => $this->namespace . '_console.php',
+            'file_name' => $this->namespace . '.php',
             'template' => TemplateHelper::fetchTemplate('console'),
             'data' => $this->data
         ])->generate()->writeToFile();
@@ -51,27 +51,11 @@ class Application extends Node
             FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/application', $this->path);
         }
 
-        //写入应用 config 配置文件
-        Generator::create('php\\ConfigData', [
-            'path' => $this->path,
-            'file_name' => 'config.php',
-            'template' => TemplateHelper::fetchTemplate('config'),
-            'data' => $this->data
-        ])->generate()->writeToFile();
-
-        //写入数据库配置文件
-        Generator::create('php\\DBConfig', [
-            'path' => $this->path,
-            'file_name' => 'database.php',
-            'template' => TemplateHelper::fetchTemplate('database'),
-            'data' => $this->data
-        ])->generate()->writeToFile();
-
         //写入 menu 配置文件
         if ($this->autoMenu) {
             Cache::getInstance()->set('autoMenu', true);
             Generator::create('php\\MenuData', [
-                'path' => $this->path . '/extra',
+                'path' => $this->path . '/../config',
                 'file_name' => 'menu.php',
                 'template' => TemplateHelper::fetchTemplate('menu'),
                 'data' => $this->data

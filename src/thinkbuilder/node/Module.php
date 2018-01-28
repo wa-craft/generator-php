@@ -60,8 +60,8 @@ class Module extends Node
 
 
         //如果存在 DefaultController 则复制到对应的目录
-        if ($this->default_controller == 'DefaultController') {
-            foreach (['controller', 'helper', 'traits'] as $d) {
+        if ($this->name === 'common') {
+            foreach (['controller', 'helper', 'traits', 'model', 'validate'] as $d) {
                 FileHelper::mkdir($this->path . '/' . $d);
                 FileHelper::copyFiles(ASSETS_PATH . '/lib/' . $d, $this->path . '/' . $d);
             }

@@ -13,7 +13,7 @@ class DBConfig extends Generator
     public function generate(): Generator
     {
         $content = $this->params['template'];
-        $content = TemplateHelper::parseTemplateTags(['NAMESPACE' => $this->params['data']['namespace'], 'APP_NAME' => $this->params['data']['name']], $content);
+        $content = TemplateHelper::parseTemplateTags(['APP_NAME' => $this->params['data']['name']], $content);
         $this->content = $content;
         return $this;
     }
