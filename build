@@ -26,8 +26,10 @@ define('VERSION', '2.0.0 alpha');
 require __DIR__ . "/src/autoload.php";
 
 /* 自动运行 composer 下载安装第三方程序 */
-if (!file_exists(__DIR__ . "/vendor/autoload.php")) shell_exec('composer update');
-require __DIR__ . "/vendor/autoload.php";
+if (!file_exists(__DIR__ . "/vendor/autoload.php")) {
+    shell_exec('composer update');
+    require __DIR__ . "/vendor/autoload.php";
+}
 
 //设置命令
 $cmd = new \Commando\Command();
