@@ -1,0 +1,27 @@
+{
+  "name": "goldeagle/think-builder",
+  "description": "a cli tool to build applications for thinkphp v5.1",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bison 'goldeagle' Fan",
+      "email": "1308362@gmail.com"
+    }
+  ],
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  },
+  "require": {
+    "topthink/framework": "5.1.*"
+<<<<<<< .merge_file_BtmDTj
+=======
+  },
+  "require-dev": {
+    "filp/whoops": "*"
+>>>>>>> .merge_file_S78dSc
+  }
+}

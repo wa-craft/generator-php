@@ -112,12 +112,12 @@ class Project extends Node
 
 
         //写入cookie配置文件
-        Generator::create('php\\CookieConfig', [
+        /*Generator::create('php\\CookieConfig', [
             'path' => $cache->get('paths')['application'] . '/config',
             'file_name' => 'cookie.php',
             'template' => TemplateHelper::fetchTemplate('cookie'),
             'data' => $this->data
-        ])->generate()->writeToFile();
+        ])->generate()->writeToFile();*/
 
         $this->processChildren('application');
     }
