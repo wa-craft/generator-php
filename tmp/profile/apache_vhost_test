@@ -1,8 +1,0 @@
-<VirtualHost tf.vm:80>
-    ServerAdmin webmaster@tf.vm
-    DocumentRoot "/app/www/tf.vm/public"
-    ServerName tf.vm
-    ServerAlias www.tf.vm
-    ErrorLog "/app/logs/nginx/tf.vm_error.log"
-    CustomLog "/app/logs/nginx/tf.vm_access.log" common
-</VirtualHost>
