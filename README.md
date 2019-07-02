@@ -3,7 +3,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/goldeagle/think-builder/v/unstable)](//packagist.org/packages/goldeagle/think-builder)
 [![License](https://poser.pugx.org/goldeagle/think-builder/license)](https://packagist.org/packages/goldeagle/think-builder)
 
-a cli tool to build applications for thinkphp v5，
+a cli tool to build applications for thinkphp v6，
 通过定义数据对象的结构，自动生成相关的CRUD代码。
 
 ## 1. 功能
@@ -28,11 +28,11 @@ a cli tool to build applications for thinkphp v5，
 
 >命令样例（linux）：
 
-`{$think-builder}#./build -d sample/forge -a ./assets -t ./tmp`
+`{$think-builder}#./build -d sample/forge -t ./tmp`
 
 >命令样例（windows）：
 
-`PS %think-builder%\>build -d sample/forge -a ./assets -t ./tmp`
+`PS %think-builder%\>build -d sample/forge -t ./tmp`
 
 ## 3. 文档
 * [生成代码后的目录结构](./doc/deploy_dirs.md)
