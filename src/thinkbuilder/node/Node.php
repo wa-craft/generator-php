@@ -133,7 +133,12 @@ abstract class Node
      */
     final public function setPathByNamespace()
     {
-        $this->path = Cache::getInstance()->get('paths')['application'] . '/' . str_replace('\\', '/', $this->namespace);
+        if($this->type === 'view') {
+            $this->path = Cache::getInstance()->get('paths')['view'] . '/' . str_replace('\\', '/', $this->namespace);
+        } else {
+            $this->path = Cache::getInstance()->get('paths')['application'] . '/' . str_replace('\\', '/', $this->namespace);
+        }
+
     }
 
     /**

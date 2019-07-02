@@ -32,7 +32,7 @@ class Module extends Node
     //视图列表
     public $views = [];
     //模块使用的主题
-    public $theme = '';
+    public $theme = 'metronic_1';
     //默认模块下所有控制器的父控制器名称，会根据此名称自动生成默认控制器，并且模块下所有控制器继承自此控制器
     public $default_controller = '';
 
@@ -57,9 +57,6 @@ class Module extends Node
         //助手列表
         $this->processChildren('helper');
 
-        //行为
-        $this->processChildren('behavior');
-
 
         //如果存在 DefaultController 则复制到对应的目录
         if ($this->name === 'common') {
@@ -73,21 +70,23 @@ class Module extends Node
         $this->getAllValidates();
         $this->processChildren('validate');
 
+        //视图
         $this->getAllViews();
         if ($this->theme !== '') {
             $this->processChildren('view');
-            FileHelper::copyFiles(ASSETS_PATH . '/themes/' . (Cache::getInstance()->get('theme') ?? Cache::getInstance()->get('config')['defaults']['theme']) . '/layout', $this->path . '/view/layout');
+            FileHelper::copyFiles(ASSETS_PATH . '/themes/' . (Cache::getInstance()->get('theme') ?? Cache::getInstance()->get('config')['defaults']['theme']) . '/layout',
+                Cache::getInstance()->get('paths')['view'].'/layout');
             //处理模板 layout 文件
             //生成视图 footer
             Generator::create('html\\LayoutFooter', [
-                'path' => $this->path . '/view/layout',
+                'path' => Cache::getInstance()->get('paths')['view'].'/layout',
                 'file_name' => 'footer.html',
                 'template' => TemplateHelper::fetchTemplate('view_layout_footer')
             ])->generate()->writeToFile();
 
             //生成视图 header
             Generator::create('html\\LayoutHeader', [
-                'path' => $this->path . '/view/layout',
+                'path' => Cache::getInstance()->get('paths')['view'] . '/layout',
                 'file_name' => 'html_head.html',
                 'caption' => $this->caption,
                 'template' => TemplateHelper::fetchTemplate('view_layout_header')

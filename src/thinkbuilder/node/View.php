@@ -1,6 +1,7 @@
 <?php
 namespace thinkbuilder\node;
 
+use thinkbuilder\Cache;
 use thinkbuilder\generator\Generator;
 use thinkbuilder\helper\{
     ClassHelper, TemplateHelper, FileHelper
@@ -20,7 +21,7 @@ class View extends Node
     public function process()
     {
         //创建目录
-        FileHelper::mkdir($this->path);
+        FileHelper::mkdir(Cache::getInstance()->get('paths')['view']);
         foreach ($this->data['actions'] as $action) {
             $template_name = isset($this->data['parent_controller']) ?
                 ($this->data['parent_controller'] == '\\think\\Controller') ?

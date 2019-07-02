@@ -27,7 +27,7 @@ class Builder
         'profile' => __DIR__ . '/deploy/' . PROFILE_PATH,
         'public' => __DIR__ . '/deploy/' . PUB_PATH,
         'config' => __DIR__ . '/deploy/' . CONFIG_PATH,
-        'view' => __DIR__ . '/deploy/view',
+        'view' => __DIR__ . '/deploy/' . VIEW_PATH,
         'assets' => __DIR__ . '/assets'
     ];
 
