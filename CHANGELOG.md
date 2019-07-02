@@ -1,4 +1,17 @@
 # Change Log
+## v2.0.0Alpha2
+* 基础目录结构变更
+* 同步到最新 thinkphp v6 目录结构
+* 更新类文件模板
+* 更新配置文件模板
+* 更新profile需求
+* 更新composer.json
+* 去除 console 文件生成
+* 修改入口文件
+* 修改数据样板
+
+[Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.4.0...master)
+
 ## [v1.4.0](https://github.com/goldeagle/think-builder/tree/v1.4.0) (2017-09-18)
 [Full Changelog](https://github.com/goldeagle/think-builder/compare/v1.3.4...v1.4.0)
 
