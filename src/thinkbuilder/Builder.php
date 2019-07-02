@@ -15,7 +15,7 @@ use thinkbuilder\node\Node;
  * TODO 完善自定义的校验规则
  * TODO 提供 vue 脚手架
  */
-class Application
+class Builder
 {
     //配置参数
     private $config = [];
@@ -27,6 +27,7 @@ class Application
         'profile' => __DIR__ . '/deploy/' . PROFILE_PATH,
         'public' => __DIR__ . '/deploy/' . PUB_PATH,
         'config' => __DIR__ . '/deploy/' . CONFIG_PATH,
+        'view' => __DIR__ . '/deploy/view',
         'assets' => __DIR__ . '/assets'
     ];
 
@@ -87,7 +88,8 @@ class Application
             'database' => $this->paths['target'] . '/' . DBFILE_PATH,
             'profile' => $this->paths['target'] . '/' . PROFILE_PATH,
             'public' => $this->paths['target'] . '/' . PUB_PATH,
-            'config' => $this->paths['target'] . '/' . CONFIG_PATH
+            'config' => $this->paths['target'] . '/' . CONFIG_PATH,
+            'view' => $this->paths['target'] . '/' . VIEW_PATH
         ]);
 
         FileHelper::mkdirs($this->paths);

@@ -23,6 +23,7 @@ define('DBFILE_PATH', 'db');
 define('PROFILE_PATH', 'etc/nginx');
 define('PUB_PATH', 'webapp/public');
 define('CONFIG_PATH', 'webapp/config');
+define('VIEW_PATH', 'webapp/view');
 define('VERSION', '2.0.0 alpha1');
 define('ASSETS_PATH', __DIR__ . '/assets');
 define('TMPL_PATH', ASSETS_PATH . '/template');
@@ -68,9 +69,9 @@ $cmd->option('t')
     });
 
 //进行创建
-$app = new \thinkbuilder\Application([
+$builder = new \thinkbuilder\Builder([
     'config' => $cmd['config'],
     'data' => $cmd['data'],
     'target' => $cmd['target']
 ]);
-$app->run();
+$builder->run();
