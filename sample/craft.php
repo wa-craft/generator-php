@@ -2,8 +2,8 @@
 /**
  * 测试用实例
  * @author Bison 'goldeagle' Fan
- * @version 2.1
- * @update 20170210
+ * @version 2.2
+ * @update 20190702
  */
 return [
     'name' => 'craft',
@@ -61,7 +61,7 @@ return [
                                 ['name' => 'domain_test', 'caption' => '说明', 'rule' => 'domain', 'required' => true, 'default' => 'tf.vm', 'is_unique' => false, 'is_auto' => false],
                                 ['name' => 'company', 'caption' => '公司名称', 'rule' => 'chsDash', 'required' => true, 'default' => '', 'is_unique' => false, 'is_auto' => false],
                                 ['name' => 'vendor', 'caption' => '供应商', 'rule' => 'chsDash', 'required' => true, 'default' => '东莞培基', 'is_unique' => false, 'is_auto' => false],
-                                ['name' => 'copyright', 'caption' => '版权信息', 'rule' => 'chsDash', 'required' => true, 'default' => '&copy; 2017', 'is_unique' => false, 'is_auto' => false],
+                                ['name' => 'copyright', 'caption' => '版权信息', 'rule' => 'chsDash', 'required' => true, 'default' => '&copy; 2019', 'is_unique' => false, 'is_auto' => false],
                                 ['name' => 'is_external', 'caption' => '是否外部引入的与定义，不参与生成代码', 'rule' => 'boolean', 'required' => true, 'default' => false, 'is_unique' => false, 'is_auto' => false]
                             ],
                             'relations' => [
