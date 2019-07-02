@@ -6,12 +6,12 @@
  * @update 20170210
  */
 return [
-    'name' => 'forge',
-    'domain' => 'tf.vm',
-    'domain_test' => 'tf.vm',
+    'name' => 'craft',
+    'domain' => 'craft.vm',
+    'domain_test' => 'craft.vm',
     'company' => '东莞培基',
     'vendor' => '东莞培基',
-    'copyright' => '&copy;2017',
+    'copyright' => '&copy;2019',
     'commands' => [
         [
             //执行的命令
@@ -24,20 +24,20 @@ return [
     ],
     'applications' => [
         [
-            'name' => 'forge',
-            'namespace' => 'tf',
+            'name' => 'craft',
+            'namespace' => 'craft',
             'portal' => 'index',
-            'caption' => 'ThinkForge',
+            'caption' => 'Think-Craft',
             'modules' => [
                 [
                     'name' => 'index',
                     'caption' => '默认模块',
-                    'default_parent_controller' => '\\goldeagle\\thinklib\\controller\\DefaultController',
+                    'default_parent_controller' => '',
                     'controllers' => [
                         [
                             'name' => 'Index',
                             'caption' => '默认控制器',
-                            'parent_controller' => '\\goldeagle\\thinklib\\controller\\DefaultController',
+                            'parent_controller' => '',
                             'actions' => [['name' => 'index', 'caption' => '默认方法']]
                         ]
                     ],
@@ -110,7 +110,6 @@ return [
                                 ['name' => 'caption', 'caption' => '说明', 'rule' => 'chsDash', 'required' => true, 'default' => '', 'is_unique' => false, 'is_auto' => false],
                                 ['name' => 'namespace', 'caption' => '应用的命名空间，小写', 'rule' => 'alpha', 'required' => true, 'default' => 'app', 'is_unique' => false, 'is_auto' => false],
                                 ['name' => 'portal', 'caption' => '应用的入口文件，小写', 'rule' => 'alphaDash', 'required' => true, 'default' => 'index', 'is_unique' => false, 'is_auto' => false],
-                                ['name' => 'auto_menu', 'caption' => '是否自动生成 menu 配置文件，可以不进行定义，默认为 true', 'rule' => 'boolean', 'required' => false, 'default' => true, 'is_unique' => false, 'is_auto' => false]
                             ],
                             'relations' => [
                                 [

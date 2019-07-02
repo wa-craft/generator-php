@@ -17,7 +17,6 @@ class TemplateHelper
         'class_function' => '/php/class_function.tmpl',
         'class_construct_action' => '/php/class_construct_action.tmpl',
         'error' => '/php/error.tmpl',
-        'behavior' => '/php/behavior.tmpl',
         'controller' => '/php/controller.tmpl',
         'traits' => '/php/traits.tmpl',
         'traits_action' => '/php/traits_action.tmpl',
@@ -45,8 +44,7 @@ class TemplateHelper
         'apache_access' => '/misc/apache_access',
         'config' => '/php/config_app.tmpl',
         'cookie' => '/php/config_cookie.tmpl',
-        'database' => '/php/config_database.tmpl',
-        'menu' => '/php/menu.tmpl'
+        'database' => '/php/config_database.tmpl'
     ];
 
     /**

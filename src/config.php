@@ -27,7 +27,7 @@ return [
     ],
     //默认值
     'defaults' => [
-        'controller' => 'goldeagle\thinklib\controller\DefaultController',
+        'controller' => '',
         'theme' => 'metronic_1',
         //默认的控制器动作/视图模板
         'actions' => [

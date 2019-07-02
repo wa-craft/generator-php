@@ -2,21 +2,18 @@
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2006~2016 http://thinkphp.cn All rights reserved.
+// | Copyright (c) 2006~2019 http://thinkphp.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-// +----------------------------------------------------------------------
-// | 日志设置
-// +----------------------------------------------------------------------
+use app\ExceptionHandle;
+use app\Request;
+
+// 容器Provider定义文件
 return [
-    // 日志记录方式，内置 file socket 支持扩展
-    'type'  => 'File',
-    // 日志保存目录
-    'path'  => '',
-    // 日志记录级别
-    'level' => [],
+    'think\Request'          => Request::class,
+    'think\exception\Handle' => ExceptionHandle::class,
 ];

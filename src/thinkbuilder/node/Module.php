@@ -26,7 +26,9 @@ class Module extends Node
     //助手列表
     public $helpers = [];
     //行为列表
-    public $behaviors = [];
+    public $events = [];
+    //中间件列表
+    public $middlewares = [];
     //视图列表
     public $views = [];
     //模块使用的主题

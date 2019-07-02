@@ -86,17 +86,17 @@ class Project extends Node
             ])->generate()->writeToFile();
         }
 
-        //生成 5.1 的新目录结构
+        //生成 6.0 的新目录结构
         $cache = Cache::getInstance();
         if ($config['actions']['copy']) {
             //拷贝应用文件
-            FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/configuration', $cache->get('paths')['application']);
+            FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/config', $cache->get('paths')['config']);
         }
 
         //处理app与database配置文件
         //写入应用 config 配置文件
         Generator::create('php\\AppConfig', [
-            'path' => $cache->get('paths')['application'] . '/config',
+            'path' => $cache->get('paths')['config'],
             'file_name' => 'app.php',
             'template' => TemplateHelper::fetchTemplate('config'),
             'data' => $this->data
@@ -104,7 +104,7 @@ class Project extends Node
 
         //写入数据库配置文件
         Generator::create('php\\DBConfig', [
-            'path' => $cache->get('paths')['application'] . '/config',
+            'path' => $cache->get('paths')['database'],
             'file_name' => 'database.php',
             'template' => TemplateHelper::fetchTemplate('database'),
             'data' => $this->data

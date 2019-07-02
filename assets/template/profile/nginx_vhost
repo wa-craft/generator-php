@@ -24,7 +24,7 @@ server {
 	}
 
 	location ~ .+\.php($|/) {
-		fastcgi_pass	unix:/run/php/php7.0-fpm.sock;
+		fastcgi_pass	unix:/run/php/php7.3-fpm.sock;
 		fastcgi_split_path_info ^((?U).+.php)(/?.+)$;
         fastcgi_param PATH_INFO $fastcgi_path_info;
         fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;

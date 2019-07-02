@@ -1,12 +1,18 @@
 {
-  "name": "goldeagle/think-builder",
-  "description": "a cli tool to build applications for thinkphp v5.1",
-  "minimum-stability": "dev",
-  "license": "MIT",
+  "name": "goldeagle/bitcms",
+  "description": "a just another cms system build from thinkphp 6.0",
+  "keywords": [
+    "cms",
+    "framework",
+    "thinkphp",
+    "ORM"
+  ],
+  "homepage": "http://bitcms.bitseed.cn/",
+  "license": "Apache-2.0",
   "authors": [
     {
-      "name": "Bison 'goldeagle' Fan",
-      "email": "1308362@gmail.com"
+      "name": "goldeagle",
+      "email": "bison@bitseed.cn"
     }
   ],
   "repositories": {
@@ -15,13 +21,29 @@
       "url": "https://packagist.phpcomposer.com"
     }
   },
+  "minimum-stability": "dev",
   "require": {
-    "topthink/framework": "5.1.*"
-<<<<<<< .merge_file_BtmDTj
-=======
+    "php": ">=7.1.0",
+    "topthink/framework": "6.0.*-dev",
+    "topthink/think-view": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": "app"
+    },
+    "psr-0": {
+      "": "extend/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "@php think service:discover",
+      "@php think vendor:publish"
+    ]
   },
   "require-dev": {
-    "filp/whoops": "*"
->>>>>>> .merge_file_S78dSc
   }
 }

@@ -44,10 +44,6 @@ abstract class DefaultController extends \think\Controller
             $this->assign('user', $user);
             Auth::checkin($user);
         }
-
-        //设置用户菜单
-        $menu = config('menu');
-        $this->assign('menu', $menu);
     }
 
     /**

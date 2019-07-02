@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "fe5358f23b5a08af0cc58f751a3edb9f",
@@ -16,7 +16,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/kevinlebrun/colors.php/d132f36d06e48ea080855af19b4bcb1fb615224a.zip",
+                "url": "https://api.github.com/repos/kevinlebrun/colors.php/zipball/d132f36d06e48ea080855af19b4bcb1fb615224a",
                 "reference": "d132f36d06e48ea080855af19b4bcb1fb615224a",
                 "shasum": ""
             },
@@ -63,17 +63,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nategood/commando.git",
-                "reference": "ba476a3928dcecfb257f9daf7d965a3abe53b6bd"
+                "reference": "bf0f579de672503f78d997da3fe2fad0d42380e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/nategood/commando/ba476a3928dcecfb257f9daf7d965a3abe53b6bd.zip",
-                "reference": "ba476a3928dcecfb257f9daf7d965a3abe53b6bd",
+                "url": "https://api.github.com/repos/nategood/commando/zipball/bf0f579de672503f78d997da3fe2fad0d42380e7",
+                "reference": "bf0f579de672503f78d997da3fe2fad0d42380e7",
                 "shasum": ""
             },
             "require": {
                 "kevinlebrun/colors.php": "~0.2",
-                "php": ">=5.3"
+                "php": ">=5.4"
             },
             "type": "library",
             "autoload": {
@@ -101,7 +101,7 @@
                 "command line interface",
                 "scripting"
             ],
-            "time": "2016-11-09T16:22:34+00:00"
+            "time": "2018-07-15T13:44:17+00:00"
         }
     ],
     "packages-dev": [],

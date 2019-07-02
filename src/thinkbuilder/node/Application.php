@@ -19,8 +19,6 @@ class Application extends Node
     //模块列表
     protected $modules = [];
     protected $dbEngine = 'MyISAM';
-    //是否自动生成 menu
-    protected $autoMenu = false;
 
     public function process()
     {
@@ -38,28 +36,9 @@ class Application extends Node
             ])->generate()->writeToFile();
         }
 
-        //创建 console 命令行文件
-        Generator::create('php\\Console', [
-            'path' => Cache::getInstance()->get('paths')['console'],
-            'file_name' => $this->namespace . '.php',
-            'template' => TemplateHelper::fetchTemplate('console'),
-            'data' => $this->data
-        ])->generate()->writeToFile();
-
         if ($config['actions']['copy']) {
             //拷贝应用文件
-            FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/application', $this->path);
-        }
-
-        //写入 menu 配置文件
-        if ($this->autoMenu) {
-            Cache::getInstance()->set('autoMenu', true);
-            Generator::create('php\\MenuData', [
-                'path' => $this->path . '/../config',
-                'file_name' => 'menu.php',
-                'template' => TemplateHelper::fetchTemplate('menu'),
-                'data' => $this->data
-            ])->generate()->writeToFile();
+            FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/app', $this->path);
         }
 
         //设置应用根命名空间

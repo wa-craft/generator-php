@@ -41,8 +41,6 @@ return [
             'portal' => 'index',
             //数据库使用的引擎，为mysql支持的引擎，默认为 MyISAM
             'dbEngine' => 'MyISAM',
-            //是否自动生成 menu 配置文件，可以不进行定义，默认为 true
-            'autoMenu' => true,
             //模块列表
             'modules' => [
                 //引用式定义，冒号左边的是引用的预定义模块名称，冒号右边的是在此项目中的模块名称，若没有冒号则视为原名引入

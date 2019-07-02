@@ -9,7 +9,6 @@ use thinkbuilder\node\Node;
  * Class Builder 构建程序
  * TODO 生成内存中的树状数据结构，再调用每种生成器进行处理
  * TODO 在view中根据每个页面的需求，生成独立调用的js文件
- * TODO 根据 tp 5.1 进行针对性的变动
  * TODO 使用 sqlite 作为存储引擎
  * TODO 拆分纯粹的命令行与B/S架构的运行命令（提供SERVE命令）
  * TODO 提供默认的控制器/模型/校验器，用以扩展
@@ -27,7 +26,7 @@ class Application
         'database' => __DIR__ . '/deploy/' . DBFILE_PATH,
         'profile' => __DIR__ . '/deploy/' . PROFILE_PATH,
         'public' => __DIR__ . '/deploy/' . PUB_PATH,
-        'console' => __DIR__ . '/deploy/' . CONSOLE_PATH,
+        'config' => __DIR__ . '/deploy/' . CONFIG_PATH,
         'assets' => __DIR__ . '/assets'
     ];
 
@@ -39,7 +38,6 @@ class Application
         if (key_exists('config', $params)) $this->setConfigFromFile($params['config']);
         if (key_exists('data', $params)) $this->setDataFromFile($params['data']);
         if (key_exists('target', $params)) $this->paths['target'] = $params['target'];
-        if (key_exists('assets', $params)) $this->paths['assets'] = $params['assets'];
     }
 
     /**
@@ -89,7 +87,7 @@ class Application
             'database' => $this->paths['target'] . '/' . DBFILE_PATH,
             'profile' => $this->paths['target'] . '/' . PROFILE_PATH,
             'public' => $this->paths['target'] . '/' . PUB_PATH,
-            'console' => $this->paths['target'] . '/' . CONSOLE_PATH
+            'config' => $this->paths['target'] . '/' . CONFIG_PATH
         ]);
 
         FileHelper::mkdirs($this->paths);
@@ -97,7 +95,6 @@ class Application
 
     /**
      * 从主题共用目录拷贝资源文件
-     * TODO 将拷贝资源文件的工作移动到 module 中执行，并拷贝到 public/assets/themes/{{theme}}目录下
      */
     protected function copyAssets()
     {
@@ -133,7 +130,6 @@ class Application
         $cache->set('config', $this->config);
         $cache->set('paths', $this->paths);
 
-        //TODO 使用不同的方式获取数据
         $project = Node::create('Project', ['data' => $this->data]);
         $project->process();
         echo "ThinkForge Builder, Version: " . VERSION . PHP_EOL;

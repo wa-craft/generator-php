@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 /**
- * thinkphp v5 脚手架创建工具
+ * thinkphp v6 脚手架创建工具
  */
 
 /**
@@ -10,17 +10,22 @@
  * 装载程序代码
  * 处理命令行参数
  * 初始化并运行程序
+ * 增加中间件
+ * 增加事件
+ * 修改命令行方式
  */
 /* 定义全局常量 */
 define('SRC_PATH', __DIR__ . '/src');
 define('PACKAGE_PATH', __DIR__ . '/pkg');
 define('TAR_ROOT_PATH', __DIR__ . '/deploy');
-define('APP_PATH', 'applications');
-define('DBFILE_PATH', 'database');
-define('PROFILE_PATH', 'profile');
-define('PUB_PATH', 'public');
-define('CONSOLE_PATH', 'console');
-define('VERSION', '2.0.0 alpha');
+define('APP_PATH', 'webapp/app');
+define('DBFILE_PATH', 'db');
+define('PROFILE_PATH', 'etc/nginx');
+define('PUB_PATH', 'webapp/public');
+define('CONFIG_PATH', 'webapp/config');
+define('VERSION', '2.0.0 alpha1');
+define('ASSETS_PATH', __DIR__ . '/assets');
+define('TMPL_PATH', ASSETS_PATH . '/template');
 
 /* 装载程序代码 */
 
@@ -33,7 +38,7 @@ require __DIR__ . "/vendor/autoload.php";
 $cmd = new \Commando\Command();
 
 $cmd->option()
-    ->description('A command line toolkit to build MVC scaffold for thinkphp v5.*');
+    ->description('A command line toolkit to build MVC scaffold for thinkphp v6.*');
 
 //配置文件
 $cmd->option('c')
@@ -61,18 +66,6 @@ $cmd->option('t')
     ->map(function ($target) {
         return $target;
     });
-
-//资源路径
-$cmd->option('a')
-    ->aka('assets')
-    ->describedAs('define a assets directory, default is : ' . TAR_ROOT_PATH)
-    ->default(__DIR__ . '/assets')
-    ->map(function ($assets) {
-        define('ASSETS_PATH', $assets);
-        define('TMPL_PATH', $assets . '/template');
-        return $assets;
-    });
-
 
 //进行创建
 $app = new \thinkbuilder\Application([
