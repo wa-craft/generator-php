@@ -18,7 +18,7 @@ class Application extends Node
     protected $portal = 'index';
     //模块列表
     protected $modules = [];
-    protected $dbEngine = 'MyISAM';
+    protected $dbEngine = 'InnoDB';
 
     public function process()
     {

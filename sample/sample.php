@@ -4,7 +4,7 @@
  */
 return [
     //项目名称，全部小写即可
-    'name' => 'sample',
+    'name' => 'myartic',
     //项目的正式域名
     'domain' => 'sample.com',
     //项目的测试域名
