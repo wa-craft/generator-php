@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe5358f23b5a08af0cc58f751a3edb9f",
+    "content-hash": "42e11e64d1f1617a2fa4288145cd95d6",
     "packages": [
         {
             "name": "kevinlebrun/colors.php",
@@ -63,17 +63,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nategood/commando.git",
-                "reference": "bf0f579de672503f78d997da3fe2fad0d42380e7"
+                "reference": "8fedd49fcb694faf60d87d5c2c4defdffa298fa0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nategood/commando/zipball/bf0f579de672503f78d997da3fe2fad0d42380e7",
-                "reference": "bf0f579de672503f78d997da3fe2fad0d42380e7",
+                "url": "https://api.github.com/repos/nategood/commando/zipball/8fedd49fcb694faf60d87d5c2c4defdffa298fa0",
+                "reference": "8fedd49fcb694faf60d87d5c2c4defdffa298fa0",
                 "shasum": ""
             },
             "require": {
                 "kevinlebrun/colors.php": "~0.2",
-                "php": ">=5.4"
+                "php": ">=5.6"
             },
             "type": "library",
             "autoload": {
@@ -101,7 +101,7 @@
                 "command line interface",
                 "scripting"
             ],
-            "time": "2018-07-15T13:44:17+00:00"
+            "time": "2019-07-10T02:37:11+00:00"
         }
     ],
     "packages-dev": [],
@@ -111,7 +111,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">= 7.0.0"
+        "php": ">= 7.1.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }

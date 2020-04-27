@@ -1,12 +1,12 @@
 {
-  "name": "goldeagle/think-builder",
-  "description": "a cli tool to build applications for thinkphp v5",
+  "name": "think-tech/think-builder",
+  "description": "a cli tool to build applications for thinkphp v6",
   "type": "project",
   "license": "MIT",
   "authors": [
     {
       "name": "bison",
-      "email": "1308362@gmail.com"
+      "email": "bison@bitseed.cn"
     }
   ],
   "repositories": {
@@ -22,7 +22,7 @@
     }
   },
   "require": {
-    "php": ">= 7.0.0",
+    "php": ">= 7.1.0",
     "nategood/commando": "*"
   }
 }

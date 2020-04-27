@@ -24,7 +24,7 @@ foreach (scan($src_path) as $class => $file) {
 /**
  * 迭代遍历并返回指定目录下的所有文件（非目录）
  * @param string $dir 指定的目录
- * @return array Generator 生成器生成的结果
+ * @return Generator 生成器生成的结果
  */
 function scan($dir)
 {
