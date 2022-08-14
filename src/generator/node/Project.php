@@ -35,7 +35,7 @@ class Project extends Node
         //生成 nginx 虚拟主机配置文件
         if ($config['actions']['nginx']) {
             Generator::create('profile\\Nginx', [
-                    'path' => Cache::getInstance()->get('paths')['profile'],
+                    'path' => Cache::getInstance()->get('paths')['operation'],
                     'file_name' => 'nginx_vhost_orig',
                     'template' => TemplateHelper::fetchTemplate('nginx'),
                     'project' => $this->data,

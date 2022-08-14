@@ -64,7 +64,9 @@ class TemplateHelper
                 $file = str_replace('{{THEME}}', $theme, self::$templates[$template_name]);
             }
 
-            $content = file_get_contents(TMPL_PATH . $file);
+            $paths = (Cache::getInstance())->get('paths');
+            $tmpl_file = ($paths['backend']?:'').'/'.$file;
+            $content = file_get_contents($tmpl_file);
         }
 
         return $content;

@@ -153,7 +153,6 @@ class Builder
         foreach ($data_file as $f) {
             $data = FileHelper::readFromFile(__DIR__ . "/../../" . $f);
             $project = Node::create('Project', ['data' => $data]);
-            var_dump($project);
             if (!empty($project)) {
                 $project->process();
             }
