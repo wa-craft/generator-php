@@ -9,7 +9,7 @@ use generator\helper\{
 
 /**
  * Class Validate
- * @package thinkbuilder\node
+ * @package generator\node
  */
 class Validate extends Node
 {

@@ -9,7 +9,7 @@ use generator\helper\{
 
 /**
  * Class Helper 帮助程序
- * @package thinkbuilder\node
+ * @package generator\node
  */
 class Helper extends Node
 {

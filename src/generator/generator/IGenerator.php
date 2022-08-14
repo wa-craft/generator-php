@@ -4,7 +4,7 @@ namespace generator\generator;
 
 /**
  * Interface IGenerator 生成器标准接口
- * @package thinkbuilder\generator
+ * @package generator\generator
  */
 interface IGenerator
 {

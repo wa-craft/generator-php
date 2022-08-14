@@ -7,7 +7,7 @@ use generator\helper\TemplateHelper;
 
 /**
  * Class Console 命令行文件生成器
- * @package thinkbuilder\generator\php
+ * @package generator\generator\php
  */
 class Console extends Generator
 {

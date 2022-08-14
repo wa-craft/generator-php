@@ -9,7 +9,7 @@ use generator\helper\{
 
 /**
  * Class Controller
- * @package thinkbuilder\node
+ * @package generator\node
  */
 class Controller extends Node
 {

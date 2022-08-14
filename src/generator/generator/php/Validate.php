@@ -8,7 +8,7 @@ use generator\node\Field;
 
 /**
  * Class Validate 校验器代码生成器
- * @package thinkbuilder\generator\php
+ * @package generator\generator\php
  */
 class Validate extends Generator
 {

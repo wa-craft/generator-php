@@ -7,7 +7,7 @@ use generator\helper\TemplateHelper;
 
 /**
  * Class Portal 入口文件生成器
- * @package thinkbuilder\generator\php
+ * @package generator\generator\php
  */
 class Portal extends Generator
 {

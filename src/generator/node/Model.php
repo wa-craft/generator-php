@@ -10,7 +10,7 @@ use generator\helper\{
 
 /**
  * Class Model
- * @package thinkbuilder\node
+ * @package generator\node
  */
 class Model extends Node
 {

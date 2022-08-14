@@ -6,7 +6,7 @@ use generator\generator\Generator;
 
 /**
  * Class Nginx nginx 虚拟主机配置文件生成器
- * @package thinkbuilder\generator\profile
+ * @package generator\generator\profile
  */
 class Nginx extends Generator
 {

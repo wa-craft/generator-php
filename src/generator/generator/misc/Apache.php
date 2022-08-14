@@ -6,7 +6,7 @@ use generator\generator\Generator;
 
 /**
  * Class Apache $public/.htaccess apache 目录配置文件生成器
- * @package thinkbuilder\generator\misc
+ * @package generator\generator\misc
  */
 class Apache extends Generator
 {

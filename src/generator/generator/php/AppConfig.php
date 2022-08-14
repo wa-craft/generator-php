@@ -7,7 +7,7 @@ use generator\helper\TemplateHelper;
 
 /**
  * Class ConfigData $application/config.php 配置文件生成器
- * @package thinkbuilder\generator\php
+ * @package generator\generator\php
  */
 class AppConfig extends Generator
 {

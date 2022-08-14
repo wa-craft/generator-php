@@ -7,7 +7,7 @@ use generator\helper\TemplateHelper;
 
 /**
  * Class Traits 特性代码生成器
- * @package thinkbuilder\generator\php
+ * @package generator\generator\php
  */
 class Traits extends Generator
 {

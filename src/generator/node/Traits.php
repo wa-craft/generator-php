@@ -9,7 +9,7 @@ use generator\helper\{
 
 /**
  * Class Traits
- * @package thinkbuilder\node
+ * @package generator\node
  */
 class Traits extends Node
 {

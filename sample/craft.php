@@ -350,7 +350,7 @@ return [
                             'fields' => [
                                 ['name' => 'name', 'caption' => '名称', 'rule' => 'alpha', 'required' => true, 'default' => '', 'is_unique' => false, 'is_auto' => false],
                                 ['name' => 'caption', 'caption' => '说明', 'rule' => 'chsDash', 'required' => true, 'default' => '', 'is_unique' => false, 'is_auto' => false],
-                                ['name' => 'rule', 'caption' => '取值约束，即校验规则，支持的校验规则请参考 thinkbuilder\node\Field::$rules', 'rule' => 'alphaDash', 'required' => true, 'default' => 'alpha', 'is_unique' => false, 'is_auto' => false],
+                                ['name' => 'rule', 'caption' => '取值约束，即校验规则，支持的校验规则请参考 generator\node\Field::$rules', 'rule' => 'alphaDash', 'required' => true, 'default' => 'alpha', 'is_unique' => false, 'is_auto' => false],
                                 ['name' => 'is_required', 'caption' => '是否为创建数据或更新数据时必须填充的内容', 'rule' => 'boolean', 'required' => true, 'default' => true, 'is_unique' => false, 'is_auto' => false],
                                 ['name' => 'is_unique', 'caption' => '表格中是否只允许唯一值', 'rule' => 'boolean', 'required' => true, 'default' => false, 'is_unique' => false, 'is_auto' => false],
                                 ['name' => 'is_auto', 'caption' => '是否为系统自动填充的字段，可以不进行定义，默认为 false', 'rule' => 'boolean', 'required' => true, 'default' => false, 'is_unique' => false, 'is_auto' => false],

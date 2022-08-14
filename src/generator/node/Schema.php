@@ -4,7 +4,7 @@ namespace generator\node;
 
 /**
  * Class Schema 模式
- * @package thinkbuilder\node
+ * @package generator\node
  */
 class Schema extends Node
 {

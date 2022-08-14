@@ -9,7 +9,7 @@ use generator\helper\{
 
 /**
  * Class Action
- * @package thinkbuilder\node
+ * @package generator\node
  */
 class Action extends Node
 {

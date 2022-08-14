@@ -7,7 +7,7 @@ use generator\helper\TemplateHelper;
 
 /**
  * Class DBConfig 数据库配置文件生成器
- * @package thinkbuilder\generator\php
+ * @package generator\generator\php
  */
 class DBConfig extends Generator
 {

@@ -8,7 +8,7 @@ use generator\helper\TemplateHelper;
 
 /**
  * Class Model 基于模型的 sql 代码生成器
- * @package thinkbuilder\generator\sql
+ * @package generator\generator\sql
  */
 class Model extends Generator
 {

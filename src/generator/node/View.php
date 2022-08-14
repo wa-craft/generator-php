@@ -10,7 +10,7 @@ use generator\helper\{
 
 /**
  * Class View
- * @package thinkbuilder\node
+ * @package generator\node
  */
 class View extends Node
 {

@@ -4,7 +4,7 @@ namespace generator\node;
 
 /**
  * Class Relation
- * @package thinkbuilder\node
+ * @package generator\node
  */
 class Relation extends Node
 {

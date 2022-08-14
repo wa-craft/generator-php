@@ -9,7 +9,7 @@ use generator\helper\TemplateHelper;
 
 /**
  * Class Project
- * @package thinkbuilder\node
+ * @package generator\node
  */
 class Project extends Node
 {

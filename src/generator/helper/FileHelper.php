@@ -74,7 +74,9 @@ class FileHelper
                 break;
             case 'json':
                 $json_content = file_get_contents($file);
-                if(!empty($json_content)) $data = json_decode($json_content, true);
+                if (!empty($json_content)) {
+                    $data = json_decode($json_content, true);
+                }
                 break;
             case 'php':
             default:

@@ -8,7 +8,7 @@ use generator\helper\TemplateHelper;
 
 /**
  * Class Controller 控制器生成器
- * @package thinkbuilder\generator\php
+ * @package generator\generator\php
  */
 class Controller extends Generator
 {

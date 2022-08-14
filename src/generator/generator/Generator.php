@@ -6,7 +6,7 @@ use generator\helper\FileHelper;
 
 /**
  * Class AbstractGenerator 生成器类的接口适配器
- * @package thinkbuilder\generator
+ * @package generator\generator
  */
 abstract class Generator implements IGenerator
 {
@@ -32,7 +32,7 @@ abstract class Generator implements IGenerator
      */
     final public static function create($type = 'profile\\Nginx', $params = [])
     {
-        $class = 'thinkbuilder\\generator\\' . $type;
+        $class = 'generator\\generator\\' . $type;
         $obj = (class_exists($class)) ? new $class() : null;
         if ($obj instanceof Generator) {
             $obj->setParams($params);

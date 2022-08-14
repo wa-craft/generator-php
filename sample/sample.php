@@ -72,7 +72,7 @@ return [
                                     'name' => 'Title',
                                     //说明
                                     'caption' => '标题',
-                                    //取值约束，即校验规则，支持的校验规则请参考 thinkbuilder\node\Field::$rules
+                                    //取值约束，即校验规则，支持的校验规则请参考 generator\node\Field::$rules
                                     'rule' => 'alpha',
                                     //是否为创建数据或更新数据时必须填充的内容
                                     'required' => true,

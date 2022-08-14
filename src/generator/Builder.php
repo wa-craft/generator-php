@@ -134,7 +134,7 @@ class Builder
         $this->makeBaseDirectories();
 
         /* 拷贝资源文件 */
-        $this->copyResources();
+        //$this->copyResources();
 
         /* 装载默认设置并进行缓存 */
         $cache = Cache::getInstance();
@@ -144,9 +144,21 @@ class Builder
         $cache->set('data', $this->data);
 
         //获取数据文件
-        $data = 
-        $project = Node::create('Project', ['data' => $this->data]);
-        $project->process();
+        $data_file = $this->data['data'];
+        if (!is_array($data_file)) {
+            $data_file = [$data_file];
+        }
+
+        $project = null;
+        foreach ($data_file as $f) {
+            $data = FileHelper::readFromFile(__DIR__ . "/../../" . $f);
+            $project = Node::create('Project', ['data' => $data]);
+            var_dump($project);
+            if (!empty($project)) {
+                $project->process();
+            }
+        }
+
         echo "wa-craft/generator-php, Version: " . VERSION . PHP_EOL;
     }
 }

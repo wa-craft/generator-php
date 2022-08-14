@@ -4,7 +4,7 @@ namespace generator\node;
 
 /**
  * Class Field
- * @package thinkbuilder\node
+ * @package generator\node
  */
 class Field extends Node
 {

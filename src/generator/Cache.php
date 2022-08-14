@@ -4,7 +4,7 @@ namespace generator;
 
 /**
  * Class Cache 缓存类,使用单例模式
- * @package thinkbuilder
+ * @package generator
  */
 class Cache
 {

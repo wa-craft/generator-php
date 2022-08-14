@@ -8,7 +8,7 @@ use generator\helper\TemplateHelper;
 
 /**
  * Class Helper 帮助程序生成器
- * @package thinkbuilder\generator\php
+ * @package generator\generator\php
  */
 class Helper extends Generator
 {

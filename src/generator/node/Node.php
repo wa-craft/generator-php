@@ -6,7 +6,7 @@ use generator\Cache;
 
 /**
  * Class Node 节点类，所有节点对象的父类
- * @package thinkbuilder\node
+ * @package generator\node
  */
 abstract class Node
 {
@@ -52,7 +52,7 @@ abstract class Node
      */
     final public static function create($type = '', $params = [])
     {
-        $class = 'thinkbuilder\\node\\' . ucfirst($type);
+        $class = 'generator\\node\\' . ucfirst($type);
         $obj = (class_exists($class)) ? new $class() : null;
         if ($obj instanceof Node) {
             $obj->type = strtolower($type);
