@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 /**
- * thinkphp v6 脚手架创建工具
+ * wa-craft/generator-php 
  */
 
 /**
@@ -24,9 +24,17 @@ define('PROFILE_PATH', 'etc/nginx');
 define('PUB_PATH', 'webapp/public');
 define('CONFIG_PATH', 'webapp/config');
 define('VIEW_PATH', 'webapp/view');
-define('VERSION', '2.0.0 alpha1');
+define('VERSION', '3.0.0 alpha1');
 define('ASSETS_PATH', __DIR__ . '/assets');
 define('TMPL_PATH', ASSETS_PATH . '/template');
+
+/* from v3.0.0 */
+define('BACKEND_PATH','/backend');
+define('FRONTEND_PATH','/backend');
+define('COMMANDLINE_PATH','/backend');
+define('OPERATION_PATH','/backend');
+define('DOCUMENT_PATH','/backend');
+define('SCHEMA_PATH','/backend');
 
 /* 装载程序代码 */
 
@@ -69,7 +77,7 @@ $cmd->option('t')
     });
 
 //进行创建
-$builder = new \thinkbuilder\Builder([
+$builder = new \generator\Builder([
     'config' => $cmd['config'],
     'data' => $cmd['data'],
     'target' => $cmd['target']

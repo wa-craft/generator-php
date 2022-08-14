@@ -18,7 +18,7 @@
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "thinkbuilder\\": "src\\generator"
+      "generator\\": "src\\generator"
     }
   },
   "require": {
