@@ -1,5 +1,5 @@
 <?php
-namespace thinkbuilder\data\driver;
+namespace generator\data\driver;
 
 class PHPArray extends Driver
 {

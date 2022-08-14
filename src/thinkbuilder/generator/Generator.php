@@ -1,7 +1,7 @@
 <?php
-namespace thinkbuilder\generator;
+namespace generator\generator;
 
-use thinkbuilder\helper\FileHelper;
+use generator\helper\FileHelper;
 
 /**
  * Class AbstractGenerator 生成器类的接口适配器

@@ -1,5 +1,5 @@
 <?php
-namespace thinkbuilder\data\driver;
+namespace generator\data\driver;
 
 abstract class Driver
 {

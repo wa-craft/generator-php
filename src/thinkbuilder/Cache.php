@@ -1,5 +1,5 @@
 <?php
-namespace thinkbuilder;
+namespace generator;
 
 
 /**

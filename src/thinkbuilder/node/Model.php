@@ -1,9 +1,9 @@
 <?php
-namespace thinkbuilder\node;
+namespace generator\node;
 
-use thinkbuilder\Cache;
-use thinkbuilder\generator\Generator;
-use thinkbuilder\helper\{
+use generator\Cache;
+use generator\generator\Generator;
+use generator\helper\{
     ClassHelper, TemplateHelper, FileHelper
 };
 

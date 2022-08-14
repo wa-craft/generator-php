@@ -1,9 +1,9 @@
 <?php
-namespace thinkbuilder\generator\php;
+namespace generator\generator\php;
 
-use thinkbuilder\Cache;
-use thinkbuilder\generator\Generator;
-use thinkbuilder\helper\TemplateHelper;
+use generator\Cache;
+use generator\generator\Generator;
+use generator\helper\TemplateHelper;
 
 /**
  * Class Helper 帮助程序生成器

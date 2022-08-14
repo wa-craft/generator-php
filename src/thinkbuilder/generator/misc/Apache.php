@@ -1,7 +1,7 @@
 <?php
-namespace thinkbuilder\generator\misc;
+namespace generator\generator\misc;
 
-use thinkbuilder\generator\Generator;
+use generator\generator\Generator;
 
 /**
  * Class Apache $public/.htaccess apache 目录配置文件生成器

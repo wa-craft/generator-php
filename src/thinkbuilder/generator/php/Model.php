@@ -1,9 +1,9 @@
 <?php
-namespace thinkbuilder\generator\php;
+namespace generator\generator\php;
 
-use thinkbuilder\generator\Generator;
-use thinkbuilder\helper\ClassHelper;
-use thinkbuilder\helper\TemplateHelper;
+use generator\generator\Generator;
+use generator\helper\ClassHelper;
+use generator\helper\TemplateHelper;
 
 /**
  * Class Model 模型代码生成器

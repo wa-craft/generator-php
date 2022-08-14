@@ -1,9 +1,9 @@
 <?php
-namespace thinkbuilder\generator\sql;
+namespace generator\generator\sql;
 
-use thinkbuilder\Cache;
-use thinkbuilder\generator\Generator;
-use thinkbuilder\helper\TemplateHelper;
+use generator\Cache;
+use generator\generator\Generator;
+use generator\helper\TemplateHelper;
 
 /**
  * Class Model 基于模型的 sql 代码生成器

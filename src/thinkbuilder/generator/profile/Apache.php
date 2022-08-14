@@ -1,7 +1,7 @@
 <?php
-namespace thinkbuilder\generator\profile;
+namespace generator\generator\profile;
 
-use thinkbuilder\generator\Generator;
+use generator\generator\Generator;
 
 /**
  * Class Apache apache 虚拟主机配置文件生成器

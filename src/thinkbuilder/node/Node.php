@@ -1,7 +1,7 @@
 <?php
-namespace thinkbuilder\node;
+namespace generator\node;
 
-use thinkbuilder\Cache;
+use generator\Cache;
 
 /**
  * Class Node 节点类，所有节点对象的父类

@@ -1,5 +1,5 @@
 <?php
-namespace thinkbuilder\node;
+namespace generator\node;
 
 /**
  * Class Field

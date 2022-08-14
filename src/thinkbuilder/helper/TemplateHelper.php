@@ -1,7 +1,7 @@
 <?php
-namespace thinkbuilder\helper;
+namespace generator\helper;
 
-use thinkbuilder\Cache;
+use generator\Cache;
 
 /**
  * Class Template 模板管理类

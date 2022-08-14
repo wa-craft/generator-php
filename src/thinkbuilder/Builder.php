@@ -1,9 +1,9 @@
 <?php
 
-namespace thinkbuilder;
+namespace generator;
 
-use thinkbuilder\helper\FileHelper;
-use thinkbuilder\node\Node;
+use generator\helper\FileHelper;
+use generator\node\Node;
 
 /**
  * Class Builder 构建程序

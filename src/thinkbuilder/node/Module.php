@@ -1,11 +1,11 @@
 <?php
 
-namespace thinkbuilder\node;
+namespace generator\node;
 
-use thinkbuilder\Cache;
-use thinkbuilder\generator\Generator;
-use thinkbuilder\helper\FileHelper;
-use thinkbuilder\helper\TemplateHelper;
+use generator\Cache;
+use generator\generator\Generator;
+use generator\helper\FileHelper;
+use generator\helper\TemplateHelper;
 
 /**
  * Class Module

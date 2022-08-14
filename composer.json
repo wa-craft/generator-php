@@ -1,5 +1,5 @@
 {
-  "name": "think-tech/think-builder",
+  "name": "wa-craft/generator-php",
   "description": "a cli tool to build applications for thinkphp v6",
   "type": "project",
   "license": "MIT",
@@ -18,11 +18,11 @@
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "thinkbuilder\\": "src\\thinkbuilder"
+      "thinkbuilder\\": "src\\generator"
     }
   },
   "require": {
-    "php": ">= 7.4.0",
+    "php": ">= 7.4.3",
     "nategood/commando": "dev-master"
   }
 }

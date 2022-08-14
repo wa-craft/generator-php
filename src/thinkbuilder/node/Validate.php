@@ -1,8 +1,8 @@
 <?php
-namespace thinkbuilder\node;
+namespace generator\node;
 
-use thinkbuilder\generator\Generator;
-use thinkbuilder\helper\{
+use generator\generator\Generator;
+use generator\helper\{
     TemplateHelper, FileHelper
 };
 

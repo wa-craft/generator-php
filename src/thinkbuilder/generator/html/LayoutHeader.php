@@ -1,9 +1,9 @@
 <?php
-namespace thinkbuilder\generator\html;
+namespace generator\generator\html;
 
-use thinkbuilder\Cache;
-use thinkbuilder\generator\Generator;
-use thinkbuilder\helper\TemplateHelper;
+use generator\Cache;
+use generator\generator\Generator;
+use generator\helper\TemplateHelper;
 
 class LayoutHeader extends Generator
 {

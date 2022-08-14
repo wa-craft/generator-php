@@ -1,8 +1,8 @@
 <?php
-namespace thinkbuilder\generator\php;
+namespace generator\generator\php;
 
-use thinkbuilder\generator\Generator;
-use thinkbuilder\helper\TemplateHelper;
+use generator\generator\Generator;
+use generator\helper\TemplateHelper;
 
 /**
  * Class Traits 特性代码生成器

@@ -1,5 +1,5 @@
 <?php
-namespace thinkbuilder\helper;
+namespace generator\helper;
 
 /**
  * Class File 与文件相关的助手类

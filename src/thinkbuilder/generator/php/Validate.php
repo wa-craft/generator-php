@@ -1,10 +1,10 @@
 <?php
 
-namespace thinkbuilder\generator\php;
+namespace generator\generator\php;
 
-use thinkbuilder\generator\Generator;
-use thinkbuilder\helper\TemplateHelper;
-use thinkbuilder\node\Field;
+use generator\generator\Generator;
+use generator\helper\TemplateHelper;
+use generator\node\Field;
 
 /**
  * Class Validate 校验器代码生成器

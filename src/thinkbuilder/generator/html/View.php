@@ -1,12 +1,12 @@
 <?php
 
-namespace thinkbuilder\generator\html;
+namespace generator\generator\html;
 
-use thinkbuilder\generator\Generator;
-use thinkbuilder\helper\ClassHelper;
-use thinkbuilder\helper\TemplateHelper;
-use thinkbuilder\node\Field;
-use thinkbuilder\node\Node;
+use generator\generator\Generator;
+use generator\helper\ClassHelper;
+use generator\helper\TemplateHelper;
+use generator\node\Field;
+use generator\node\Node;
 
 class View extends Generator
 {

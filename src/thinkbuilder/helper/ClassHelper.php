@@ -1,5 +1,5 @@
 <?php
-namespace thinkbuilder\helper;
+namespace generator\helper;
 
 /**
  * Class ClassName 类名助手类
