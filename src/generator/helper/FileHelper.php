@@ -9,27 +9,28 @@ class FileHelper
     /**
      * 判断目录是否存在，如果不存在则创建，可递归创建所有的父目录
      * @param $path
+     * @param bool $force
      */
-    public static function mkdir($path)
+    public static function mkdir($path, $force)
     {
-        if (!is_dir($path)) {
-            mkdir($path, 0755, true);
-            echo "INFO: creating directory: {$path} ..." . PHP_EOL;
-        }
+        if($force) exec('rm -rf ' . $path);
+        mkdir($path, 0755, true);
+        echo "INFO: creating directory: {$path} ..." . PHP_EOL;
     }
 
     /**
      * 创建一组路径
      * @param array $paths
+     * @param bool $force
      */
-    public static function mkdirs($paths = [])
+    public static function mkdirs($paths = [], $force = true)
     {
         if(empty($paths)) {
             echo "EROOR: There is no target paths configured!";
         }
 
         foreach ($paths as $path) {
-            FileHelper::mkdir($path);
+            FileHelper::mkdir($path, $force);
         }
     }
 
