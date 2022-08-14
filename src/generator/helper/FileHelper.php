@@ -44,7 +44,7 @@ class FileHelper
      */
     public static function copyFiles($src_path, $tar_path)
     {
-        FileHelper::mkdir($tar_path, false);
+        FileHelper::mkdir($tar_path, true);
 
         $files = scandir($src_path);
         foreach ($files as $file) {
