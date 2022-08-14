@@ -112,7 +112,7 @@ class Builder
     /**
      * 从主题共用目录拷贝资源文件
      */
-    protected function copyAssets()
+    protected function copyResources()
     {
         $src = ASSETS_PATH . '/themes/share/assets';
         $tar = $this->paths['public'] . '/assets';
@@ -134,11 +134,12 @@ class Builder
     public function run()
     {
         /* 创建基本目录 */
-        $this->makeBaseDirectories(); exit;
+        $this->makeBaseDirectories();
+
         FileHelper::copyFiles(ASSETS_PATH . '/base', $this->paths['target']);
 
         /* 拷贝资源文件 */
-        $this->copyAssets();
+        $this->copyResources();
 
         /* 装载默认设置并进行缓存 */
         $cache = Cache::getInstance();
@@ -148,6 +149,6 @@ class Builder
 
         $project = Node::create('Project', ['data' => $this->data]);
         $project->process();
-        echo "ThinkForge Builder, Version: " . VERSION . PHP_EOL;
+        echo "wa-craft/generator-php, Version: " . VERSION . PHP_EOL;
     }
 }
