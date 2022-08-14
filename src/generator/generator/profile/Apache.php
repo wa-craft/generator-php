@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\generator\profile;
 
 use generator\generator\Generator;

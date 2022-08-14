@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\node;
 
 use generator\Cache;
@@ -90,7 +91,9 @@ abstract class Node
                     if (is_array($value) && $key != 'data') {
                         $list = [];
                         foreach ($value as $item) {
-                            if (is_array($item)) $list[] = Node::create(ucfirst(substr($key, 0, strlen($key) - 1)), ['data' => $item, 'parent_namespace' => $this->namespace]);
+                            if (is_array($item)) {
+                                $list[] = Node::create(ucfirst(substr($key, 0, strlen($key) - 1)), ['data' => $item, 'parent_namespace' => $this->namespace]);
+                            }
                         }
                         $this->$key = $list;
                     } else {
@@ -113,11 +116,13 @@ abstract class Node
             $children = $this->$property;
 
             //遍历子节点，并触发可以递归的处理方法
-            foreach ((function ($children) {
-                foreach ($children as $child) {
-                    yield $child;
-                }
-            })($children) as $child) {
+            foreach (
+                (function ($children) {
+                    foreach ($children as $child) {
+                        yield $child;
+                    }
+                })($children) as $child
+            ) {
                 if ($child instanceof Node) {
                     $child->parent_namespace = $this->namespace;
                     $child->setNameSpace();
@@ -133,12 +138,11 @@ abstract class Node
      */
     final public function setPathByNamespace()
     {
-        if($this->type === 'view') {
+        if ($this->type === 'view') {
             $this->path = Cache::getInstance()->get('paths')['view'] . '/' . str_replace('\\', '/', $this->namespace);
         } else {
             $this->path = Cache::getInstance()->get('paths')['application'] . '/' . str_replace('\\', '/', $this->namespace);
         }
-
     }
 
     /**

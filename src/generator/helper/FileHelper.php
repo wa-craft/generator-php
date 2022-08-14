@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\helper;
 
 /**
@@ -13,7 +14,9 @@ class FileHelper
      */
     public static function mkdir($path, $force)
     {
-        if($force) exec('rm -rf ' . $path);
+        if ($force) {
+            exec('rm -rf ' . $path);
+        }
         mkdir($path, 0755, true);
         echo "INFO: creating directory: {$path} ..." . PHP_EOL;
     }
@@ -25,7 +28,7 @@ class FileHelper
      */
     public static function mkdirs($paths = [], $force = true)
     {
-        if(empty($paths)) {
+        if (empty($paths)) {
             echo "EROOR: There is no target paths configured!";
         }
 

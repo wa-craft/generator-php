@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\generator\php;
 
 use generator\generator\Generator;

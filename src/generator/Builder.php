@@ -36,9 +36,15 @@ class Builder
 
     public function __construct($params = [])
     {
-        if (key_exists('config', $params)) $this->setConfigFromFile($params['config']);
-        if (key_exists('data', $params)) $this->setDataFromFile($params['data']);
-        if (key_exists('target', $params)) $this->paths['target'] = $params['target'];
+        if (key_exists('config', $params)) {
+            $this->setConfigFromFile($params['config']);
+        }
+        if (key_exists('data', $params)) {
+            $this->setDataFromFile($params['data']);
+        }
+        if (key_exists('target', $params)) {
+            $this->paths['target'] = $params['target'];
+        }
     }
 
     /**
@@ -74,17 +80,17 @@ class Builder
      */
     public function setDataFromFile($file)
     {
-        
+
         $ext = pathinfo($file, PATHINFO_EXTENSION);
         echo "file:" . $file . "," . $ext;
-        switch(strtolower($ext)) {
+        switch (strtolower($ext)) {
             case 'yml':
             case 'yaml':
                 $this->data = yaml_parse_file($file);
                 break;
-            case 'php': 
+            case 'php':
             default:
-            $this->data = require $file;
+                $this->data = require $file;
         }
     }
 
@@ -94,13 +100,13 @@ class Builder
     protected function makeBaseDirectories()
     {
         $root_path = './deploy';
-        foreach($this->data['target'] as $k => $v) {
-            if($k === 'root') {
+        foreach ($this->data['target'] as $k => $v) {
+            if ($k === 'root') {
                 //判断是否是/开始的绝对路径
                 $$root_path = (stripos($v, '/') === 0)
                     ? $root_path = $v
                     : $root_path =  __DIR__ . '/../../' . $v;
-                
+
                 $this->paths = array_merge($this->paths, [$k => $root_path]);
             } else {
                 $this->paths = array_merge($this->paths, [$k => $root_path . '/' . $v]);
@@ -110,11 +116,11 @@ class Builder
     }
 
     /**
-     * 从主题共用目录拷贝资源文件
+     * 从模板目录拷贝资源文件
      */
     protected function copyResources()
     {
-        $src = ASSETS_PATH . '/themes/share/assets';
+        $src = RESOURCE_PATH . '/themes/share/assets';
         $tar = $this->paths['public'] . '/assets';
         FileHelper::copyFiles($src, $tar);
     }
@@ -135,8 +141,6 @@ class Builder
     {
         /* 创建基本目录 */
         $this->makeBaseDirectories();
-
-        FileHelper::copyFiles(ASSETS_PATH . '/base', $this->paths['target']);
 
         /* 拷贝资源文件 */
         $this->copyResources();

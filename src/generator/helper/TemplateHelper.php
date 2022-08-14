@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\helper;
 
 use generator\Cache;

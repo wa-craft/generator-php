@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\node;
 
 use generator\Cache;
@@ -38,13 +39,13 @@ class Application extends Node
 
         if ($config['actions']['copy']) {
             //拷贝应用文件
-            FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/app', $this->path);
+            FileHelper::copyFiles(RESOURCE_PATH . '/thinkphp/app', $this->path);
         }
 
         //设置应用根命名空间
         Cache::getInstance()->set('root_name_space', $this->namespace);
         //设置数据库引擎
-        Cache::getInstance()->set($this->namespace.'_dbEngine', $this->dbEngine);
+        Cache::getInstance()->set($this->namespace . '_dbEngine', $this->dbEngine);
         $this->processChildren('module');
     }
 

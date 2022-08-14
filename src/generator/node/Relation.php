@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\node;
 
 /**
@@ -7,7 +8,7 @@ namespace generator\node;
  */
 class Relation extends Node
 {
-    static public $types = [
+    public static $types = [
         'hasOne',
         'hasMany',
         'belongsTo',
@@ -18,6 +19,10 @@ class Relation extends Node
     public $this_key = '';
     public $that_key = '';
 
-    public function process(){}
-    public function setNameSpace(){}
+    public function process()
+    {
+    }
+    public function setNameSpace()
+    {
+    }
 }

@@ -38,7 +38,9 @@ class View extends Generator
             }
         }
 
-        if (isset($data['fields'])) $fields = array_merge($data['fields'], $fields);
+        if (isset($data['fields'])) {
+            $fields = array_merge($data['fields'], $fields);
+        }
 
         //处理模型的字段
         if ($this->params['action_name'] == 'index') {
@@ -69,7 +71,9 @@ class View extends Generator
         } else {
             foreach ($fields as $field) {
                 //如果是由系统填充的字段，则不生成添加或修改方法的代码
-                if ($field->is_auto ?? false) continue;
+                if ($field->is_auto ?? false) {
+                    continue;
+                }
 
                 //判断校验规则
                 if (isset($field->rule)) {
@@ -89,8 +93,11 @@ class View extends Generator
                     $_comment = '';
                 }
 
-                if (isset($field->required)) $_is_required = ($field->required) ? '（* 必须）' : '';
-                else $_is_required = '';
+                if (isset($field->required)) {
+                    $_is_required = ($field->required) ? '（* 必须）' : '';
+                } else {
+                    $_is_required = '';
+                }
 
                 $tags_field = [
                     'FORM_FIELD' => self::getFieldHTML($field, $this->params['action_name']),
@@ -99,8 +106,11 @@ class View extends Generator
                     'FIELD_COMMENT' => $_comment,
                     'IS_REQUIRED' => $_is_required
                 ];
-                $content = str_replace('{{FIELD_LOOP}}',
-                    TemplateHelper::parseTemplateTags($tags_field, TemplateHelper::fetchTemplate('view_' . $this->params['action_name'] . '_field')) . "\n{{FIELD_LOOP}}", $content);
+                $content = str_replace(
+                    '{{FIELD_LOOP}}',
+                    TemplateHelper::parseTemplateTags($tags_field, TemplateHelper::fetchTemplate('view_' . $this->params['action_name'] . '_field')) . "\n{{FIELD_LOOP}}",
+                    $content
+                );
             }
             $this->content = str_replace("\n{{FIELD_LOOP}}", '', $content);
         }
@@ -116,8 +126,7 @@ class View extends Generator
      * @param string $action
      * @return string
      */
-    public
-    static function getFieldHTML($field, $action = 'add')
+    public static function getFieldHTML($field, $action = 'add')
     {
         if ($field->rule == 'boolean' || $field->rule == 'accepted') {
             switch ($action) {

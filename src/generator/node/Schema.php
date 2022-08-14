@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\node;
 
 /**
@@ -14,7 +15,11 @@ class Schema extends Node
     //模型与其他模型的关系
     public $relations = [];
 
-    public function process(){}
+    public function process()
+    {
+    }
 
-    public function setNameSpace(){}
+    public function setNameSpace()
+    {
+    }
 }

@@ -1,6 +1,6 @@
 <?php
-namespace generator\generator;
 
+namespace generator\generator;
 
 /**
  * Interface IGenerator 生成器标准接口

@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\generator\php;
 
 use generator\Cache;
@@ -37,7 +38,7 @@ class Controller extends Generator
                 if ($data['parent_controller'] != '') {
                     $controller = $data['parent_controller'];
                 }
-            } else if (isset($data['default_controller'])) {
+            } elseif (isset($data['default_controller'])) {
                 if ($data['default_controller'] != '') {
                     $controller = $data['default_controller'];
                 }
@@ -47,7 +48,9 @@ class Controller extends Generator
 
         //设置父控制器
         $extend_controller = ($extend_controller !== '') ? ' extends ' . $extend_controller : (($data['name'] != 'Error') ? ' extends ' . $data['parent_controller'] : '');
-        if ($extend_controller == ' extends ') $extend_controller = '';
+        if ($extend_controller == ' extends ') {
+            $extend_controller = '';
+        }
         $tags['EXTEND_CLASS'] = $extend_controller;
         $content = $this->params['template'];
 
@@ -65,10 +68,13 @@ class Controller extends Generator
                     'ACTION_NAME' => $action['name'],
                     'ACTION_COMMENT' => $action['caption']
                 ];
-                if (array_key_exists('params', $action)) $action_tags['ACTION_PARAMS'] = $action['params'];
-                else  $action_tags['ACTION_PARAMS'] = '';
+                if (array_key_exists('params', $action)) {
+                    $action_tags['ACTION_PARAMS'] = $action['params'];
+                } else {
+                    $action_tags['ACTION_PARAMS'] = '';
+                }
                 //如果父控制器为 \think\Controller 或者 DefaultController 则选择不单独生成 view 的 action
-                if($extend_controller === 'extends \\think\\Controller' || $extend_controller === 'extends DefaultController') {
+                if ($extend_controller === 'extends \\think\\Controller' || $extend_controller === 'extends DefaultController') {
                     $content_action = TemplateHelper::parseTemplateTags($action_tags, TemplateHelper::fetchTemplate('class_tp_action'));
                 } else {
                     $content_action = TemplateHelper::parseTemplateTags($action_tags, TemplateHelper::fetchTemplate('class_action'));
@@ -96,7 +102,9 @@ class Controller extends Generator
             }
         }
 
-        if (isset($data['fields'])) $fields = array_merge($data['fields'], $fields);
+        if (isset($data['fields'])) {
+            $fields = array_merge($data['fields'], $fields);
+        }
         $field_names = [];
         foreach ($fields as $field) {
             $field_names[] = "'" . $field['name'] . "'";

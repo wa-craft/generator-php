@@ -18,23 +18,9 @@
 define('SRC_PATH', __DIR__ . '/src');
 define('PACKAGE_PATH', __DIR__ . '/pkg');
 define('TAR_ROOT_PATH', __DIR__ . '/deploy');
-define('APP_PATH', 'webapp/app');
-define('DBFILE_PATH', 'db');
-define('PROFILE_PATH', 'etc/nginx');
-define('PUB_PATH', 'webapp/public');
-define('CONFIG_PATH', 'webapp/config');
 define('VIEW_PATH', 'webapp/view');
 define('VERSION', '3.0.0 alpha1');
-define('ASSETS_PATH', __DIR__ . '/assets');
-define('TMPL_PATH', ASSETS_PATH . '/template');
-
-/* from v3.0.0 */
-define('BACKEND_PATH','/backend');
-define('FRONTEND_PATH','/backend');
-define('COMMANDLINE_PATH','/backend');
-define('OPERATION_PATH','/backend');
-define('DOCUMENT_PATH','/backend');
-define('SCHEMA_PATH','/backend');
+define('RESOURCE_PATH', __DIR__ . '/resources');
 
 /* 装载程序代码 */
 

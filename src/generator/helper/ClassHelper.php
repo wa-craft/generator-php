@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\helper;
 
 /**
@@ -79,7 +80,9 @@ class ClassHelper
      */
     public static function convertNamespaceToTablePrefix($namespace)
     {
-        if (!preg_match('/^\S/', $namespace)) $namespace = substr($namespace, 1);
+        if (!preg_match('/^\S/', $namespace)) {
+            $namespace = substr($namespace, 1);
+        }
         $list = explode('\\', $namespace);
 
         return $list[0];

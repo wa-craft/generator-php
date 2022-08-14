@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 自动装载程序
  */
@@ -31,7 +32,9 @@ function scan($dir)
     $files = scandir($dir);
     foreach ($files as $file) {
         if (is_dir("$dir/$file")) {
-            if (preg_match('/^\./', $file) === 0) yield from scan("$dir/$file");
+            if (preg_match('/^\./', $file) === 0) {
+                yield from scan("$dir/$file");
+            }
         } else {
             yield pathToClassName("$dir/$file") => "$dir/$file";
         }

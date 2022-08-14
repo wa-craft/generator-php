@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\generator\php;
 
 use generator\generator\Generator;
@@ -21,12 +22,16 @@ class Model extends Generator
             'AUTO_TIMESTAMP' => $data['autoWriteTimeStamp'] ? '"datetime"' : 'false'
         ];
 
-        if (isset($module['caption'])) $tags['MODULE_COMMENT'] = $module['caption'];
+        if (isset($module['caption'])) {
+            $tags['MODULE_COMMENT'] = $module['caption'];
+        }
         if (isset($module['caption'])) {
             $tags['APP_NAME'] = $data['name'];
             $tags['MODEL_NAME'] = $data['name'];
         }
-        if (isset($data['caption'])) $tags['MODEL_COMMENT'] = $data['caption'];
+        if (isset($data['caption'])) {
+            $tags['MODEL_COMMENT'] = $data['caption'];
+        }
 
         $content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
 
@@ -34,7 +39,7 @@ class Model extends Generator
         if (isset($data['relations'])) {
             $relations = $data['relations'];
             foreach ($relations as $relation) {
-                if($relation['type']=='belongsTo') {
+                if ($relation['type'] == 'belongsTo') {
                     $tmp_relation = $relation['this_key'];
                     $relation['this_key'] = $relation['that_key'];
                     $relation['that_key'] = $tmp_relation;

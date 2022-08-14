@@ -42,7 +42,9 @@ class Module extends Node
         FileHelper::mkdir($this->path);
 
         //设置主题
-        if ($this->theme !== '') Cache::getInstance()->set('theme', $this->theme);
+        if ($this->theme !== '') {
+            Cache::getInstance()->set('theme', $this->theme);
+        }
 
         //调用的顺序必须 getAllModels在前
         $this->getAllModels();
@@ -62,7 +64,7 @@ class Module extends Node
         if ($this->name === 'common') {
             foreach (['controller', 'helper', 'traits', 'model', 'validate'] as $d) {
                 FileHelper::mkdir($this->path . '/' . $d);
-                FileHelper::copyFiles(ASSETS_PATH . '/lib/' . $d, $this->path . '/' . $d);
+                FileHelper::copyFiles(RESOURCE_PATH . '/lib/' . $d, $this->path . '/' . $d);
             }
         }
 
@@ -74,12 +76,14 @@ class Module extends Node
         $this->getAllViews();
         if ($this->theme !== '') {
             $this->processChildren('view');
-            FileHelper::copyFiles(ASSETS_PATH . '/themes/' . (Cache::getInstance()->get('theme') ?? Cache::getInstance()->get('config')['defaults']['theme']) . '/layout',
-                Cache::getInstance()->get('paths')['view'].'/layout');
+            FileHelper::copyFiles(
+                RESOURCE_PATH . '/themes/' . (Cache::getInstance()->get('theme') ?? Cache::getInstance()->get('config')['defaults']['theme']) . '/layout',
+                Cache::getInstance()->get('paths')['view'] . '/layout'
+            );
             //处理模板 layout 文件
             //生成视图 footer
             Generator::create('html\\LayoutFooter', [
-                'path' => Cache::getInstance()->get('paths')['view'].'/layout',
+                'path' => Cache::getInstance()->get('paths')['view'] . '/layout',
                 'file_name' => 'footer.html',
                 'template' => TemplateHelper::fetchTemplate('view_layout_footer')
             ])->generate()->writeToFile();
@@ -110,7 +114,8 @@ class Module extends Node
             $schemas = $this->data['schemas'];
             foreach ($schemas as $schema) {
                 if ($this->default_controller == 'DefaultController') {
-                    $controllers[] = Node::create('controller',
+                    $controllers[] = Node::create(
+                        'controller',
                         [
                             'data' => [
                                 'name' => $schema['name'],
@@ -121,9 +126,11 @@ class Module extends Node
                                 'relations' => $schema['relations'] ?? []
                             ],
                             'parent_namespace' => $this->parent_namespace
-                        ]);
+                        ]
+                    );
                 } else {
-                    $controllers[] = Node::create('controller',
+                    $controllers[] = Node::create(
+                        'controller',
                         [
                             'data' => [
                                 'name' => $schema['name'],
@@ -139,12 +146,14 @@ class Module extends Node
                                 'relations' => $schema['relations'] ?? []
                             ],
                             'parent_namespace' => $this->parent_namespace
-                        ]);
+                        ]
+                    );
                 }
             }
 
             //增加默认的空控制器
-            $controllers[] = Node::create('controller',
+            $controllers[] = Node::create(
+                'controller',
                 [
                     'data' => [
                         'name' => 'Error',
@@ -156,7 +165,8 @@ class Module extends Node
                         'relations' => []
                     ],
                     'parent_namespace' => $this->parent_namespace
-                ]);
+                ]
+            );
         }
 
         $this->controllers = array_merge($this->controllers, $controllers);
@@ -171,17 +181,19 @@ class Module extends Node
         if (key_exists('schemas', $this->data)) {
             $schemas = $this->data['schemas'];
             foreach ($schemas as $schema) {
-                $models[] = Node::create('Model',
+                $models[] = Node::create(
+                    'Model',
                     [
                         'data' => [
                             'name' => $schema['name'],
                             'caption' => $schema['caption'],
                             'fields' => $schema['fields'],
-                            'relations' => $schema['relations']?? [],
+                            'relations' => $schema['relations'] ?? [],
                             'autoWriteTimeStamp' => $schema['autoWriteTimeStamp'] ?? false
                         ],
                         'parent_namespace' => $this->parent_namespace
-                    ]);
+                    ]
+                );
             }
         }
         $this->models = array_merge($this->models, $models);
@@ -194,7 +206,8 @@ class Module extends Node
     {
         $views = [];
         foreach ($this->controllers as $controller) {
-            $views[] = Node::create('view',
+            $views[] = Node::create(
+                'view',
                 [
                     'data' => [
                         'name' => $controller->name,
@@ -207,7 +220,8 @@ class Module extends Node
                         'module_caption' => $this->caption
                     ],
                     'parent_namespace' => $this->parent_namespace
-                ]);
+                ]
+            );
         }
 
         $this->views = array_merge($this->views, $views);
@@ -221,7 +235,8 @@ class Module extends Node
         $validates = [];
         $models = $this->models;
         foreach ($models as $model) {
-            $validates[] = Node::create('validate',
+            $validates[] = Node::create(
+                'validate',
                 [
                     'data' => [
                         'name' => $model->name,
@@ -229,7 +244,8 @@ class Module extends Node
                         'fields' => $model->fields
                     ],
                     'parent_namespace' => $this->parent_namespace
-                ]);
+                ]
+            );
         }
         $this->validates = array_merge($this->validates, $validates);
     }

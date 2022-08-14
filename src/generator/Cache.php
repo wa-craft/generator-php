@@ -1,6 +1,6 @@
 <?php
-namespace generator;
 
+namespace generator;
 
 /**
  * Class Cache 缓存类,使用单例模式
@@ -16,7 +16,6 @@ class Cache
      */
     private function __construct()
     {
-
     }
 
     /**
@@ -24,7 +23,7 @@ class Cache
      */
     public function __clone()
     {
-        trigger_error('Cache must NOT be cloned!',E_USER_ERROR);
+        trigger_error('Cache must NOT be cloned!', E_USER_ERROR);
     }
 
     /**

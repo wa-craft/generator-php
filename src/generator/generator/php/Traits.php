@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\generator\php;
 
 use generator\generator\Generator;
@@ -25,8 +26,11 @@ class Traits extends Generator
                 $content_action = TemplateHelper::fetchTemplate('traits_action');
                 $content_action = str_replace('{{ACTION_NAME}}', $action['name'], $content_action);
                 $content_action = str_replace('{{ACTION_CAPTION}}', $action['caption'], $content_action);
-                if (array_key_exists('params', $action)) $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
-                else  $content_action = str_replace('{{ACTION_PARAMS}}', '', $content_action);
+                if (array_key_exists('params', $action)) {
+                    $content_action = str_replace('{{ACTION_PARAMS}}', $action['params'], $content_action);
+                } else {
+                    $content_action = str_replace('{{ACTION_PARAMS}}', '', $content_action);
+                }
 
                 $content = str_replace('{{TRAITS_ACTIONS}}', $content_action . "\n{{TRAITS_ACTIONS}}", $content);
             }

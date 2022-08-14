@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\node;
 
 /**
@@ -47,12 +48,10 @@ class Field extends Node
 
     public function process()
     {
-
     }
 
     public function setNameSpace()
     {
-        
     }
 
     /**

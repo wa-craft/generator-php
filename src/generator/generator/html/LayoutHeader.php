@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\generator\html;
 
 use generator\Cache;
@@ -10,7 +11,7 @@ class LayoutHeader extends Generator
     public function generate(): Generator
     {
         $tags = [
-            'TITLE' => Cache::getInstance()->get('company').':'. $this->params['caption']
+            'TITLE' => Cache::getInstance()->get('company') . ':' . $this->params['caption']
         ];
         $this->content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
 

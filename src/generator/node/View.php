@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\node;
 
 use generator\Cache;

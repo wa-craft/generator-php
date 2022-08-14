@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\generator\php;
 
 use generator\Cache;
@@ -36,7 +37,7 @@ class Helper extends Generator
                 if ($data['parent_controller'] != '') {
                     $controller = $data['parent_controller'];
                 }
-            } else if (isset($data['default_controller'])) {
+            } elseif (isset($data['default_controller'])) {
                 if ($data['default_controller'] != '') {
                     $controller = $data['default_controller'];
                 }
@@ -57,10 +58,13 @@ class Helper extends Generator
                     'ACTION_COMMENT' => $action['caption']
                 ];
                 //如果 static 属性设置且为真，返回 static 字符串，否则返回空值
-                $action_tags['IS_STATIC'] = ($action['static']??false) ? 'static ' : '';
+                $action_tags['IS_STATIC'] = ($action['static'] ?? false) ? 'static ' : '';
 
-                if (array_key_exists('params', $action)) $action_tags['ACTION_PARAMS'] = $action['params'];
-                else  $action_tags['ACTION_PARAMS'] = '';
+                if (array_key_exists('params', $action)) {
+                    $action_tags['ACTION_PARAMS'] = $action['params'];
+                } else {
+                    $action_tags['ACTION_PARAMS'] = '';
+                }
                 $content_action = TemplateHelper::parseTemplateTags($action_tags, TemplateHelper::fetchTemplate('class_function'));
 
                 $content = str_replace('{{CLASS_ACTIONS}}', $content_action . "\n{{CLASS_ACTIONS}}", $content);

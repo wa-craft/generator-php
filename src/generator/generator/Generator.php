@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\generator;
 
 use generator\helper\FileHelper;
@@ -33,7 +34,9 @@ abstract class Generator implements IGenerator
     {
         $class = 'thinkbuilder\\generator\\' . $type;
         $obj = (class_exists($class)) ? new $class() : null;
-        if ($obj instanceof Generator) $obj->setParams($params);
+        if ($obj instanceof Generator) {
+            $obj->setParams($params);
+        }
         return $obj;
     }
 

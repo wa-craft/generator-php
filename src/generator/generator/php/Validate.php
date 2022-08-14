@@ -20,7 +20,9 @@ class Validate extends Generator
             'APP_PATH' => APP_PATH
         ];
         $tags['MODEL_NAME'] = $data['name'];
-        if (isset($data['caption'])) $tags['MODEL_COMMENT'] = $data['caption'];
+        if (isset($data['caption'])) {
+            $tags['MODEL_COMMENT'] = $data['caption'];
+        }
         $content = TemplateHelper::parseTemplateTags($tags, $this->params['template']);
 
         //处理校验器相关的模板
@@ -64,7 +66,8 @@ class Validate extends Generator
                         $rule = $field->rule;
                 }
                 $content_rules .= $rule . '\'],';
-                $content_fields .= $field->caption . '\',';;
+                $content_fields .= $field->caption . '\',';
+                ;
                 $content_messages .= $field->required ? '必须输入|' : '';
                 $content_messages .= Field::$rules[$field->rule];
                 $content_messages .= '\',';

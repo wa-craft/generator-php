@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\node;
 
 use generator\Cache;
@@ -39,18 +40,16 @@ class Project extends Node
                     'template' => TemplateHelper::fetchTemplate('nginx'),
                     'project' => $this->data,
                     'domain' => $this->data['domain']
-                ]
-            )->generate()->writeToFile();
+                ])->generate()->writeToFile();
 
-            if(isset($this->data['domain_test'])) {
+            if (isset($this->data['domain_test'])) {
                 Generator::create('profile\\Nginx', [
                         'path' => Cache::getInstance()->get('paths')['profile'],
                         'file_name' => 'nginx_vhost_test',
                         'template' => TemplateHelper::fetchTemplate('nginx'),
                         'project' => $this->data,
                         'domain' => $this->data['domain_test']
-                    ]
-                )->generate()->writeToFile();
+                    ])->generate()->writeToFile();
             }
         }
 
@@ -62,17 +61,15 @@ class Project extends Node
                     'template' => TemplateHelper::fetchTemplate('apache'),
                     'project' => $this->data,
                     'domain' => $this->data['domain']
-                ]
-            )->generate()->writeToFile();
-            if(isset($this->data['domain_test'])) {
+                ])->generate()->writeToFile();
+            if (isset($this->data['domain_test'])) {
                 Generator::create('profile\\Apache', [
                         'path' => Cache::getInstance()->get('paths')['profile'],
                         'file_name' => 'apache_vhost_test',
                         'template' => TemplateHelper::fetchTemplate('apache'),
                         'project' => $this->data,
                         'domain' => $this->data['domain_test']
-                    ]
-                )->generate()->writeToFile();
+                    ])->generate()->writeToFile();
             }
         }
 
@@ -90,7 +87,7 @@ class Project extends Node
         $cache = Cache::getInstance();
         if ($config['actions']['copy']) {
             //拷贝应用文件
-            FileHelper::copyFiles(ASSETS_PATH . '/thinkphp/config', $cache->get('paths')['config']);
+            FileHelper::copyFiles(RESOURCE_PATH . '/thinkphp/config', $cache->get('paths')['config']);
         }
 
         //处理app与database配置文件

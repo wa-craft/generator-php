@@ -1,4 +1,5 @@
 <?php
+
 namespace generator\generator\sql;
 
 use generator\Cache;
@@ -34,7 +35,9 @@ class Model extends Generator
                 }
             }
         }
-        if (isset($data['fields'])) $fields = array_merge($data['fields'], $fields);
+        if (isset($data['fields'])) {
+            $fields = array_merge($data['fields'], $fields);
+        }
 
         //根据autoTimeStamp创建对应的数据字段
         $autoWriteTimeStamp = $data['autoWriteTimeStamp'] ?? false;
@@ -60,7 +63,7 @@ class Model extends Generator
             'APP_PATH' => APP_PATH,
             'MODULE_NAME' => str_replace('|model', '', str_replace('\\', '|', $data['namespace'])),
             'FIELD_LOOP' => '',
-            'DB_ENGINE' => Cache::getInstance()->get(Cache::getInstance()->get('root_name_space').'_dbEngine')
+            'DB_ENGINE' => Cache::getInstance()->get(Cache::getInstance()->get('root_name_space') . '_dbEngine')
         ];
         $this->content = TemplateHelper::parseTemplateTags($tags, $content);
 
