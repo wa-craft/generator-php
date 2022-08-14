@@ -106,7 +106,6 @@ class Builder
                 $this->paths = array_merge($this->paths, [$k => $root_path . '/' . $v]);
             }
         }
-        var_dump(__DIR__);
         FileHelper::mkdirs($this->paths);
     }
 

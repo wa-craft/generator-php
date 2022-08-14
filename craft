@@ -76,6 +76,15 @@ $cmd->option('t')
         return $target;
     });
 
+//目标路径
+$cmd->option('e')
+    ->aka('debug')
+    ->describedAs('enable or disable debug information: ')
+    ->default(TRUE)
+    ->map(function ($debug) {
+        return $debug;
+    });
+
 //进行创建
 $builder = new \generator\Builder([
     'config' => $cmd['config'],
