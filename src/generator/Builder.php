@@ -86,7 +86,6 @@ class Builder
             default:
             $this->data = require $file;
         }
-        var_dump($this->data); exit;
     }
 
     /**
@@ -94,15 +93,20 @@ class Builder
      */
     protected function makeBaseDirectories()
     {
-        $this->paths = array_merge($this->paths, [
-            'application' => $this->paths['target'] . '/' . APP_PATH,
-            'database' => $this->paths['target'] . '/' . DBFILE_PATH,
-            'profile' => $this->paths['target'] . '/' . PROFILE_PATH,
-            'public' => $this->paths['target'] . '/' . PUB_PATH,
-            'config' => $this->paths['target'] . '/' . CONFIG_PATH,
-            'view' => $this->paths['target'] . '/' . VIEW_PATH
-        ]);
-
+        $root_path = './deploy';
+        foreach($this->data['target'] as $k => $v) {
+            if($k === 'root') {
+                //判断是否是/开始的绝对路径
+                $$root_path = (stripos($v, '/') === 0)
+                    ? $root_path = $v
+                    : $root_path =  __DIR__ . '/../../' . $v;
+                
+                $this->paths = array_merge($this->paths, [$k => $root_path]);
+            } else {
+                $this->paths = array_merge($this->paths, [$k => $root_path . '/' . $v]);
+            }
+        }
+        var_dump(__DIR__);
         FileHelper::mkdirs($this->paths);
     }
 
@@ -131,7 +135,7 @@ class Builder
     public function run()
     {
         /* 创建基本目录 */
-        $this->makeBaseDirectories();
+        $this->makeBaseDirectories(); exit;
         FileHelper::copyFiles(ASSETS_PATH . '/base', $this->paths['target']);
 
         /* 拷贝资源文件 */

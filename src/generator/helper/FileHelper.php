@@ -24,6 +24,10 @@ class FileHelper
      */
     public static function mkdirs($paths = [])
     {
+        if(empty($paths)) {
+            echo "EROOR: There is no target paths configured!";
+        }
+
         foreach ($paths as $path) {
             FileHelper::mkdir($path);
         }

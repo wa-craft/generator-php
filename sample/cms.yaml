@@ -21,7 +21,7 @@ namespace: "app"
 target: 
   root: "./deploy"
   # 生成的后端路径，默认为 backend
-  backend: "webapp"
+  backend: "app"
   # 生成的前端路径，默认为 frontend
   frontend: "web"
   # 生成的命令行路径，默认为 commandline

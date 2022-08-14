@@ -23,6 +23,7 @@
   },
   "require": {
     "php": ">= 7.4.3",
-    "nategood/commando": "dev-master"
+    "nategood/commando": "dev-master",
+    "mustache/mustache": "dev-main"
   }
 }
