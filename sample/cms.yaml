@@ -34,7 +34,7 @@ target:
 #前端使用框架的路径，相对于 ./resource 目录
 frontend: "react-antd-umi"
 #后端使用框架的路径，相对于 ./resource 目录
-backend: "thinkphp"
+backend: "webman"
 #命令行使用框架的路径，相对于 ./resource 目录
 commandline: ""
 #运维环境软件配置插件的目录，相对于 ./resource 目录

@@ -20,16 +20,7 @@ class Builder
     //配置参数
     private $config = [];
     //系统基本路径
-    private $paths = [
-        'target' => __DIR__ . './deploy',
-        'application' => __DIR__ . '/deploy' . '/' . APP_PATH,
-        'database' => __DIR__ . '/deploy/' . DBFILE_PATH,
-        'profile' => __DIR__ . '/deploy/' . PROFILE_PATH,
-        'public' => __DIR__ . '/deploy/' . PUB_PATH,
-        'config' => __DIR__ . '/deploy/' . CONFIG_PATH,
-        'view' => __DIR__ . '/deploy/' . VIEW_PATH,
-        'resource' => __DIR__ . '/resource'
-    ];
+    private $paths = [];
 
     //数据
     private $data = [];
@@ -120,9 +111,20 @@ class Builder
      */
     protected function copyResources()
     {
-        $src = RESOURCE_PATH . '/themes/share/assets';
-        $tar = $this->paths['public'] . '/assets';
-        FileHelper::copyFiles($src, $tar);
+        $src = '';
+        $tar = '';
+
+        $iters = ['backend', 'frontend', 'commandline'];
+
+        foreach ($iters as $v) {
+            if (!empty($this->data[$v])) {
+                $src = RESOURCE_PATH . "/" . $v . "/" . $this->data[$v] . '/src';
+                $tar = $this->paths[$v] ?: '';
+                if ($tar !== '') {
+                    FileHelper::copyFiles($src, $tar);
+                }
+            }
+        }
     }
 
     /**

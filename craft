@@ -20,7 +20,7 @@ define('PACKAGE_PATH', __DIR__ . '/pkg');
 define('TAR_ROOT_PATH', __DIR__ . '/deploy');
 define('VIEW_PATH', 'webapp/view');
 define('VERSION', '3.0.0 alpha1');
-define('RESOURCE_PATH', __DIR__ . '/resources');
+define('RESOURCE_PATH', __DIR__ . '/resource');
 
 /* 装载程序代码 */
 
