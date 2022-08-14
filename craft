@@ -62,7 +62,7 @@ $cmd->option('c')
 $cmd->option('d')
     ->aka('data')
     ->describedAs('define a project data file')
-    ->default(__DIR__ . '/sample/sample.php')
+    ->default(__DIR__ . '/sample/cms.yaml')
     ->map(function ($data) {
         return $data;
     });

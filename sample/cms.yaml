@@ -1,0 +1,63 @@
+#项目名称，全部小写即可
+name: "bitcms"
+#公司名称
+company: "东莞培基"
+#供应商信息
+vendor: "东莞培基"
+#版权信息
+copyright: "&copy;2022"
+#数据定义版本
+revision: "1"
+#生成的模式
+type: "all"
+#数据模板的模式，包括:
+#  openapi - 基于 OpenAPI Specification 的 API 驱动方式
+#  model - 参照 OpenAPI 的 Schema 部分的模型驱动方式
+#  database - 利用数据库驱动，从表结构逆向生成的方式
+mode: "model"
+#项目的命名空间，小写
+namespace: "app"
+#生成文件的输出目录
+target: 
+  root: "./deploy"
+  # 生成的后端路径，默认为 backend
+  backend: "webapp"
+  # 生成的前端路径，默认为 frontend
+  frontend: "web"
+  # 生成的命令行路径，默认为 commandline
+  commandline: "cli"
+  # 生成的运维相关目录，默认为 opration
+  operation: "ops"
+  # 生成的数据相关目录，默认为 migration
+  migration: "db"
+
+#前端使用框架的路径，相对于 ./resource 目录
+frontend: "react17-antd-umi"
+#后端使用框架的路径，相对于 ./resource 目录
+backend: "thinkphp6"
+#命令行使用框架的路径，相对于 ./resource 目录
+commandline: ""
+#运维环境软件配置插件的目录，相对于 ./resource 目录
+operations: 
+  - database/mariadb
+  - http/nginx
+#数据文件的路径
+data: 
+  - "./example/cms-model.yaml"
+
+#数据库存储软件配置插件的目录，相对于 .plugin 目录
+schema:
+  - name: 'cms-mariadb'
+    type: 'rdb/mariadb'
+    username: 'cms'
+    password: 'cms'
+    charset: 'utf8mb4'
+    host: 'localhost'
+    port: '3306'
+  - name: "cms-redis"
+    type: 'kv/redis'
+    username: 'cms'
+    password: 'cms'
+    charset: ''
+    host: 'localhost'
+    port: '6379'

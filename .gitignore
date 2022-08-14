@@ -4,3 +4,4 @@
 /composer.lock
 /test.php
 /usr/
+.config.yaml

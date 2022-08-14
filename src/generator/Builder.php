@@ -74,8 +74,19 @@ class Builder
      */
     public function setDataFromFile($file)
     {
-        if (!preg_match('/\.php$/', $file)) $file .= '.php';
-        $this->data = require $file;
+        
+        $ext = pathinfo($file, PATHINFO_EXTENSION);
+        echo "file:" . $file . "," . $ext;
+        switch(strtolower($ext)) {
+            case 'yml':
+            case 'yaml':
+                $this->data = yaml_parse_file($file);
+                break;
+            case 'php': 
+            default:
+            $this->data = require $file;
+        }
+        var_dump($this->data); exit;
     }
 
     /**

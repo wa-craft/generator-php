@@ -1,20 +1,20 @@
 <?php
 /**
- * 样例 v2.2
+ * 样例 v2.3
  */
 return [
     //项目名称，全部小写即可
-    'name' => 'myartic',
+    'name' => 'fmcs',
     //项目的正式域名
-    'domain' => 'sample.com',
+    'domain' => 'fmcs.enet51.com',
     //项目的测试域名
-    'domain_test' => 'sample.com',
+    'domain_test' => 'fmcs.vm',
     //公司名称
     'company' => '东莞培基',
     //供应商信息
     'vendor' => '东莞培基',
     //版权信息
-    'copyright' => '&copy;2016-2019',
+    'copyright' => '&copy;2009-2022',
     //数据定义版本
     'revision' => '1',
     //生成代码时执行的命令
@@ -32,15 +32,15 @@ return [
     'applications' => [
         [
             //应用名称，全部小写即可
-            'name' => 'sample',
+            'name' => 'fmcs',
             //应用的说明
-            'caption' => '测试应用',
+            'caption' => '厂务系统',
             //应用的命名空间，小写
             'namespace' => 'app',
             //应用的入口文件，小写
             'portal' => 'index',
             //数据库使用的引擎，为mysql支持的引擎，默认为 MyISAM
-            'dbEngine' => 'MyISAM',
+            'dbEngine' => 'InnoDB',
             //模块列表
             'modules' => [
                 //引用式定义，冒号左边的是引用的预定义模块名称，冒号右边的是在此项目中的模块名称，若没有冒号则视为原名引入
