@@ -11,7 +11,7 @@ spl_autoload_register(function ($class) {
 });
 
 //自动装载文件中的类
-$src_path = SRC_PATH . '/thinkbuilder';
+$src_path = SRC_PATH . '/generator';
 
 foreach (scan($src_path) as $class => $file) {
     if (is_file($file)) {
