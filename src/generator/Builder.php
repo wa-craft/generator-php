@@ -28,7 +28,7 @@ class Builder
         'public' => __DIR__ . '/deploy/' . PUB_PATH,
         'config' => __DIR__ . '/deploy/' . CONFIG_PATH,
         'view' => __DIR__ . '/deploy/' . VIEW_PATH,
-        'assets' => __DIR__ . '/assets'
+        'resource' => __DIR__ . '/resource'
     ];
 
     //数据
