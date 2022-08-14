@@ -71,18 +71,7 @@ class Builder
      */
     public function setDataFromFile($file)
     {
-
-        $ext = pathinfo($file, PATHINFO_EXTENSION);
-        echo "file:" . $file . "," . $ext;
-        switch (strtolower($ext)) {
-            case 'yml':
-            case 'yaml':
-                $this->data = yaml_parse_file($file);
-                break;
-            case 'php':
-            default:
-                $this->data = require $file;
-        }
+        $this->data = FileHelper::readFromFile($file) ?: [];
     }
 
     /**
@@ -152,7 +141,10 @@ class Builder
         $cache->set('defaults', $this->config['defaults']);
         $cache->set('config', $this->config);
         $cache->set('paths', $this->paths);
+        $cache->set('data', $this->data);
 
+        //获取数据文件
+        $data = 
         $project = Node::create('Project', ['data' => $this->data]);
         $project->process();
         echo "wa-craft/generator-php, Version: " . VERSION . PHP_EOL;

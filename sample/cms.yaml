@@ -43,7 +43,7 @@ operations:
   - http/nginx
 #数据文件的路径
 data: 
-  - "./example/cms-model.yaml"
+  - "./example/sample.php"
 
 #数据库存储软件配置插件的目录，相对于 .plugin 目录
 schema:

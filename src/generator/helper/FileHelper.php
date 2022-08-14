@@ -18,7 +18,7 @@ class FileHelper
             exec('rm -rf ' . $path);
         }
         mkdir($path, 0755, true);
-        echo "INFO: creating directory: {$path} ..." . PHP_EOL;
+        echo "INFO: creating {$path} ..." . PHP_EOL;
     }
 
     /**
@@ -58,5 +58,29 @@ class FileHelper
                 FileHelper::copyFiles($src_file_name, $tar_file_name);
             }
         }
+    }
+
+    /**
+     * 从不同格式的文件中读取内容，并转换为PHP数组
+     */
+    public static function readFromFile($file): mixed
+    {
+        $data = [];
+        $ext = pathinfo($file, PATHINFO_EXTENSION);
+        switch (strtolower($ext)) {
+            case 'yml':
+            case 'yaml':
+                $data = yaml_parse_file($file);
+                break;
+            case 'json':
+                $json_content = file_get_contents($file);
+                if(!empty($json_content)) $data = json_decode($json_content, true);
+                break;
+            case 'php':
+            default:
+                $tata = require $file;
+        }
+
+        return $data;
     }
 }

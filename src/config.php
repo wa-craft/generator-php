@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'debug' => true,
+    'console_log' => false,
     //创建的动作
     'actions' => [
         //是否生成入口文件
