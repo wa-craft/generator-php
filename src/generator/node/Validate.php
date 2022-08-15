@@ -20,7 +20,7 @@ class Validate extends Node
     {
         //创建目录
         FileHelper::mkdir($this->path);
-        Generator::create('php\\Validate', [
+        Driver::load('php\\Validate', [
             'path' => $this->path,
             'file_name' => $this->name . '.php',
             'template' => TemplateHelper::fetchTemplate('validate'),

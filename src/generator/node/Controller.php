@@ -29,7 +29,7 @@ class Controller extends Node
         if ($this->name == 'Error') {
             $template = TemplateHelper::fetchTemplate('error');
         }
-        Generator::create('php\\Controller', [
+        Driver::load('php\\Controller', [
             'path' => $this->path,
             'file_name' => $this->name . '.php',
             'template' => $template,

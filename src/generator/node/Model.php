@@ -29,7 +29,7 @@ class Model extends Node
         FileHelper::mkdir($db_path);
 
         //生成模型程序
-        Generator::create('php\\Model', [
+        Driver::load('php\\Model', [
             'path' => $this->path,
             'file_name' => $this->name . '.php',
             'template' => TemplateHelper::fetchTemplate('model'),
@@ -38,7 +38,7 @@ class Model extends Node
 
         //生成数据表
         $model_name = ClassHelper::convertToTableName($this->name, ClassHelper::convertNamespaceToTablePrefix($this->parent_namespace));
-        Generator::create('sql\\Model', [
+        Driver::load('sql\\Model', [
             'path' => $db_path,
             'file_name' => $model_name . '.sql',
             'model_name' => $model_name,

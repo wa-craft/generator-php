@@ -36,7 +36,7 @@ class View extends Node
                     'view_' . $action->name :
                     'view_default');
 
-            Generator::create('html\\View', [
+            Driver::load('html\\View', [
                 'path' => $this->path . '/' . ClassHelper::convertToTableName($this->name),
                 'file_name' => $action->name . '.html',
                 'action_name' => $action->name,

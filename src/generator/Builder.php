@@ -146,7 +146,7 @@ class Builder
         $cache->set('project', $this->project);
 
         //获取数据文件
-        $data_file = $this->project['project'];
+        $data_file = $this->project['data'];
         if (!is_array($data_file)) {
             $data_file = [$data_file];
         }

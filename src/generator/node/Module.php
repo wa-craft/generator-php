@@ -82,14 +82,14 @@ class Module extends Node
             );
             //处理模板 layout 文件
             //生成视图 footer
-            Generator::create('html\\LayoutFooter', [
+            Driver::load('html\\LayoutFooter', [
                 'path' => Cache::getInstance()->get('paths')['view'] . '/layout',
                 'file_name' => 'footer.html',
                 'template' => TemplateHelper::fetchTemplate('view_layout_footer')
             ])->generate()->writeToFile();
 
             //生成视图 header
-            Generator::create('html\\LayoutHeader', [
+            Driver::load('html\\LayoutHeader', [
                 'path' => Cache::getInstance()->get('paths')['view'] . '/layout',
                 'file_name' => 'html_head.html',
                 'caption' => $this->caption,

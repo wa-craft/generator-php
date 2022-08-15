@@ -29,7 +29,7 @@ class Application extends Node
         //创建入口文件
         $config = Cache::getInstance()->get('config');
         if ($config['actions']['portal']) {
-            Generator::create('php\\Portal', [
+            Driver::load('php\\Portal', [
                 'path' => Cache::getInstance()->get('paths')['public'],
                 'file_name' => $this->portal . '.php',
                 'template' => TemplateHelper::fetchTemplate('portal'),

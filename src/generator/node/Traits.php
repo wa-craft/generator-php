@@ -20,7 +20,7 @@ class Traits extends Node
     {
         //创建路径
         FileHelper::mkdir($this->path);
-        Generator::create('php\\Traits', [
+        Driver::load('php\\Traits', [
             'path' => $this->path,
             'file_name' => $this->name . '.php',
             'template' => TemplateHelper::fetchTemplate('traits'),
