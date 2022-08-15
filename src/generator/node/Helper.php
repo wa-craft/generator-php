@@ -28,7 +28,7 @@ class Helper extends Node
             'file_name' => $this->name . '.php',
             'template' => TemplateHelper::fetchTemplate('class'),
             'data' => $this->data
-        ])->generate()->writeToFile();
+        ])->execute()->writeToFile();
     }
 
     public function setNameSpace()

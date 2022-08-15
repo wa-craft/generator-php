@@ -25,7 +25,7 @@ class Validate extends Node
             'file_name' => $this->name . '.php',
             'template' => TemplateHelper::fetchTemplate('validate'),
             'data' => $this->data
-        ])->generate()->writeToFile();
+        ])->execute()->writeToFile();
     }
 
     public function setNameSpace()

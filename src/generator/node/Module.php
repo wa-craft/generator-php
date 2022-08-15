@@ -86,7 +86,7 @@ class Module extends Node
                 'path' => Cache::getInstance()->get('paths')['view'] . '/layout',
                 'file_name' => 'footer.html',
                 'template' => TemplateHelper::fetchTemplate('view_layout_footer')
-            ])->generate()->writeToFile();
+            ])->execute()->writeToFile();
 
             //生成视图 header
             Driver::load('html\\LayoutHeader', [
@@ -94,7 +94,7 @@ class Module extends Node
                 'file_name' => 'html_head.html',
                 'caption' => $this->caption,
                 'template' => TemplateHelper::fetchTemplate('view_layout_header')
-            ])->generate()->writeToFile();
+            ])->execute()->writeToFile();
         }
     }
 

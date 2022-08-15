@@ -34,7 +34,7 @@ class Model extends Node
             'file_name' => $this->name . '.php',
             'template' => TemplateHelper::fetchTemplate('model'),
             'data' => $this->data
-        ])->generate()->writeToFile();
+        ])->execute()->writeToFile();
 
         //生成数据表
         $model_name = ClassHelper::convertToTableName($this->name, ClassHelper::convertNamespaceToTablePrefix($this->parent_namespace));
@@ -44,7 +44,7 @@ class Model extends Node
             'model_name' => $model_name,
             'template' => TemplateHelper::fetchTemplate('sql_table'),
             'data' => $this->data
-        ])->generate()->writeToFile();
+        ])->execute()->writeToFile();
     }
 
     public function setNameSpace()

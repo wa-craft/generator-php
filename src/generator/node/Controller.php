@@ -34,7 +34,7 @@ class Controller extends Node
             'file_name' => $this->name . '.php',
             'template' => $template,
             'data' => $this->data
-        ])->generate()->writeToFile();
+        ])->execute()->writeToFile();
     }
 
     public function setNameSpace()

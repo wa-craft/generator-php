@@ -34,7 +34,7 @@ class Application extends Node
                 'file_name' => $this->portal . '.php',
                 'template' => TemplateHelper::fetchTemplate('portal'),
                 'data' => $this->data
-            ])->generate()->writeToFile();
+            ])->execute()->writeToFile();
         }
 
         if ($config['actions']['copy']) {

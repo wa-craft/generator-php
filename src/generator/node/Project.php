@@ -40,7 +40,7 @@ class Project extends Node
                     'template' => TemplateHelper::fetchTemplate('nginx'),
                     'project' => $this->data,
                     'domain' => $this->data['domain']
-                ])->generate()->writeToFile();
+                ])->execute()->writeToFile();
 
             if (isset($this->data['domain_test'])) {
                 Driver::load('profile\\Nginx', [
@@ -49,7 +49,7 @@ class Project extends Node
                         'template' => TemplateHelper::fetchTemplate('nginx'),
                         'project' => $this->data,
                         'domain' => $this->data['domain_test']
-                    ])->generate()->writeToFile();
+                    ])->execute()->writeToFile();
             }
         }
 
@@ -61,7 +61,7 @@ class Project extends Node
                     'template' => TemplateHelper::fetchTemplate('apache'),
                     'project' => $this->data,
                     'domain' => $this->data['domain']
-                ])->generate()->writeToFile();
+                ])->execute()->writeToFile();
             if (isset($this->data['domain_test'])) {
                 Driver::load('profile\\Apache', [
                         'path' => Cache::getInstance()->get('paths')['profile'],
@@ -69,7 +69,7 @@ class Project extends Node
                         'template' => TemplateHelper::fetchTemplate('apache'),
                         'project' => $this->data,
                         'domain' => $this->data['domain_test']
-                    ])->generate()->writeToFile();
+                    ])->execute()->writeToFile();
             }
         }
 
@@ -80,7 +80,7 @@ class Project extends Node
                 'file_name' => '.htaccess',
                 'template' => TemplateHelper::fetchTemplate('apache_access'),
                 'project' => $this->data
-            ])->generate()->writeToFile();
+            ])->execute()->writeToFile();
         }
 
         //生成 6.0 的新目录结构
@@ -97,7 +97,7 @@ class Project extends Node
             'file_name' => 'app.php',
             'template' => TemplateHelper::fetchTemplate('config'),
             'data' => $this->data
-        ])->generate()->writeToFile();
+        ])->execute()->writeToFile();
 
         //写入数据库配置文件
         Driver::load('php\\DBConfig', [
@@ -105,7 +105,7 @@ class Project extends Node
             'file_name' => 'database.php',
             'template' => TemplateHelper::fetchTemplate('database'),
             'data' => $this->data
-        ])->generate()->writeToFile();
+        ])->execute()->writeToFile();
 
 
         //写入cookie配置文件
@@ -114,7 +114,7 @@ class Project extends Node
             'file_name' => 'cookie.php',
             'template' => TemplateHelper::fetchTemplate('cookie'),
             'data' => $this->data
-        ])->generate()->writeToFile();*/
+        ])->execute()->writeToFile();*/
 
         $this->processChildren('application');
     }

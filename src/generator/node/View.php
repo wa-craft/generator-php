@@ -44,7 +44,7 @@ class View extends Node
                 'module_caption' => $this->data['module_caption'],
                 'template' => TemplateHelper::fetchTemplate($template_name),
                 'data' => $this->data
-            ])->generate()->writeToFile();
+            ])->execute()->writeToFile();
         }
     }
 
