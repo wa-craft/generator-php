@@ -2,16 +2,16 @@
 
 namespace generator\driver\php;
 
-use generator\driver\Generator;
+use generator\driver\Driver;
 use generator\helper\TemplateHelper;
 
 /**
  * Class Portal 入口文件生成器
  * @package generator\driver\php
  */
-class Portal extends Generator
+class Portal extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $content = $this->params['template'];
         $content = TemplateHelper::parseTemplateTags(['APP_PATH' => $this->params['data']['name'], 'APP_NAMESPACE' => $this->params['data']['namespace']], $content);

@@ -2,7 +2,7 @@
 
 namespace generator\driver\php;
 
-use generator\driver\Generator;
+use generator\driver\Driver;
 use generator\helper\ClassHelper;
 use generator\helper\TemplateHelper;
 
@@ -10,9 +10,9 @@ use generator\helper\TemplateHelper;
  * Class Model 模型代码生成器
  * @package generator\driver\php
  */
-class Model extends Generator
+class Model extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $data = $this->params['data'];
         $tags = [

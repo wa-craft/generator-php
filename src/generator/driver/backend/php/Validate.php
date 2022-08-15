@@ -2,7 +2,7 @@
 
 namespace generator\driver\php;
 
-use generator\driver\Generator;
+use generator\driver\Driver;
 use generator\helper\TemplateHelper;
 use generator\node\Field;
 
@@ -10,9 +10,9 @@ use generator\node\Field;
  * Class Validate 校验器代码生成器
  * @package generator\driver\php
  */
-class Validate extends Generator
+class Validate extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $data = $this->params['data'];
         $tags = [

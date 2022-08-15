@@ -2,15 +2,15 @@
 
 namespace generator\driver\profile;
 
-use generator\driver\Generator;
+use generator\driver\Driver;
 
 /**
  * Class Nginx nginx 虚拟主机配置文件生成器
  * @package generator\driver\profile
  */
-class Nginx extends Generator
+class Nginx extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $domain = $this->params['domain'] ?? $this->params['project']['domain'];
         $content = str_replace('{{DOMAIN}}', $domain, $this->params['template']);

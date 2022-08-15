@@ -45,7 +45,7 @@ abstract class Driver implements IDriver
      * 返回对象实例，便于进行链式操作
      * @return Generator
      */
-    abstract public function generate(): Generator;
+    abstract public function execute(): Driver;
 
     /**
      * 将内容写入到文件的方法

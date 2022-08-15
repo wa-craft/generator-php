@@ -2,15 +2,15 @@
 
 namespace generator\driver\misc;
 
-use generator\driver\Generator;
+use generator\driver\Driver;
 
 /**
  * Class Apache $public/.htaccess apache 目录配置文件生成器
  * @package generator\driver\misc
  */
-class Apache extends Generator
+class Apache extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $content = str_replace('{{DOMAIN}}', $this->params['project']['domain'], $this->params['template']);
 

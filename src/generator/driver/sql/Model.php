@@ -3,16 +3,16 @@
 namespace generator\driver\sql;
 
 use generator\Cache;
-use generator\driver\Generator;
+use generator\driver\Driver;
 use generator\helper\TemplateHelper;
 
 /**
  * Class Model 基于模型的 sql 代码生成器
  * @package generator\driver\sql
  */
-class Model extends Generator
+class Model extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $data = $this->params['data'];
 

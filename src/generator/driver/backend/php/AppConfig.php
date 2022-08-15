@@ -2,16 +2,16 @@
 
 namespace generator\driver\php;
 
-use generator\driver\Generator;
+use generator\driver\Driver;
 use generator\helper\TemplateHelper;
 
 /**
  * Class ConfigData $application/config.php 配置文件生成器
  * @package generator\driver\php
  */
-class AppConfig extends Generator
+class AppConfig extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $data = $this->params['data'];
         $content = $this->params['template'];

@@ -12,6 +12,6 @@ interface IDriver
      * 生成的方法
      * @return mixed
      */
-    public function generate();
+    public function execute();
     public function writeToFile();
 }

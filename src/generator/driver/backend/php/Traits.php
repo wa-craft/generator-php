@@ -2,16 +2,16 @@
 
 namespace generator\driver\php;
 
-use generator\driver\Generator;
+use generator\driver\Driver;
 use generator\helper\TemplateHelper;
 
 /**
  * Class Traits 特性代码生成器
  * @package generator\driver\php
  */
-class Traits extends Generator
+class Traits extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $_class_name = $this->params['data']['name'];
 

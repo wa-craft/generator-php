@@ -2,15 +2,15 @@
 
 namespace generator\driver\html;
 
-use generator\driver\Generator;
+use generator\driver\Driver;
 use generator\helper\ClassHelper;
 use generator\helper\TemplateHelper;
 use generator\node\Field;
 use generator\node\Node;
 
-class View extends Generator
+class View extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $data = $this->params['data'];
 

@@ -3,12 +3,12 @@
 namespace generator\driver\html;
 
 use generator\Cache;
-use generator\driver\Generator;
+use generator\driver\Driver;
 use generator\helper\TemplateHelper;
 
-class LayoutFooter extends Generator
+class LayoutFooter extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $tags = [
             'COMPANY_NAME' => Cache::getInstance()->get('company'),

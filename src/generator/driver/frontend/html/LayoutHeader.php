@@ -3,12 +3,12 @@
 namespace generator\driver\html;
 
 use generator\Cache;
-use generator\driver\Generator;
+use generator\driver\Driver;
 use generator\helper\TemplateHelper;
 
-class LayoutHeader extends Generator
+class LayoutHeader extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $tags = [
             'TITLE' => Cache::getInstance()->get('company') . ':' . $this->params['caption']

@@ -3,16 +3,16 @@
 namespace generator\driver\php;
 
 use generator\Cache;
-use generator\driver\Generator;
+use generator\driver\Driver;
 use generator\helper\TemplateHelper;
 
 /**
  * Class Helper 帮助程序生成器
  * @package generator\driver\php
  */
-class Helper extends Generator
+class Helper extends Driver
 {
-    public function generate(): Generator
+    public function execute(): Driver
     {
         $data = $this->params['data'];
         $tags = [
