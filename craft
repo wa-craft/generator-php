@@ -45,12 +45,12 @@ $cmd->option('c')
     });
 
 //项目
-$cmd->option('d')
-    ->aka('data')
-    ->describedAs('define a project data file')
+$cmd->option('p')
+    ->aka('project')
+    ->describedAs('define a project project file')
     ->default(__DIR__ . '/sample/cms.yaml')
-    ->map(function ($data) {
-        return $data;
+    ->map(function ($project) {
+        return $project;
     });
 
 //目标路径
@@ -74,7 +74,7 @@ $cmd->option('e')
 //进行创建
 $builder = new \generator\Builder([
     'config' => $cmd['config'],
-    'data' => $cmd['data'],
+    'project' => $cmd['project'],
     'target' => $cmd['target']
 ]);
 $builder->run();

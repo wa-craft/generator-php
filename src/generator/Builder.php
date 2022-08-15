@@ -21,7 +21,8 @@ class Builder
     private $config = [];
     //系统基本路径
     private $paths = [];
-
+    //项目配置
+    private $project = [];
     //数据
     private $data = [];
 
@@ -30,8 +31,8 @@ class Builder
         if (key_exists('config', $params)) {
             $this->setConfigFromFile($params['config']);
         }
-        if (key_exists('data', $params)) {
-            $this->setDataFromFile($params['data']);
+        if (key_exists('project', $params)) {
+            $this->setProjectFromFile($params['project']);
         }
         if (key_exists('target', $params)) {
             $this->paths['target'] = $params['target'];
@@ -60,18 +61,18 @@ class Builder
      * 设置数据
      * @param array $data
      */
-    public function setData($data = [])
+    public function setProject($data = [])
     {
-        $this->data = $data;
+        $this->project = $data;
     }
 
     /**
      * 通过文件读取并设置数据，如果给出的数据文件名称，并未以 .php 结尾，则自动添加文件后缀名 .php
      * @param $file
      */
-    public function setDataFromFile($file)
+    public function setProjectFromFile($file)
     {
-        $this->data = FileHelper::readFromFile($file) ?: [];
+        $this->project = FileHelper::readFromFile($file) ?: [];
     }
 
     /**
@@ -80,7 +81,8 @@ class Builder
     protected function makeBaseDirectories()
     {
         $root_path = './deploy';
-        foreach ($this->data['target'] as $k => $v) {
+        var_dump($this->project);
+        foreach ($this->project['target'] as $k => $v) {
             if ($k === 'root') {
                 //判断是否是/开始的绝对路径
                 $$root_path = (stripos($v, '/') === 0)
@@ -106,8 +108,8 @@ class Builder
         $iters = ['backend', 'frontend', 'commandline'];
 
         foreach ($iters as $v) {
-            if (!empty($this->data[$v])) {
-                $src = RESOURCE_PATH . "/" . $v . "/" . $this->data[$v] . '/src';
+            if (!empty($this->project[$v])) {
+                $src = RESOURCE_PATH . "/" . $v . "/" . $this->project[$v] . '/src';
                 $tar = $this->paths[$v] ?: '';
                 if ($tar !== '') {
                     FileHelper::copyFiles($src, $tar);
@@ -141,10 +143,10 @@ class Builder
         $cache->set('defaults', $this->config['defaults']);
         $cache->set('config', $this->config);
         $cache->set('paths', $this->paths);
-        $cache->set('data', $this->data);
+        $cache->set('project', $this->project);
 
         //获取数据文件
-        $data_file = $this->data['data'];
+        $data_file = $this->project['project'];
         if (!is_array($data_file)) {
             $data_file = [$data_file];
         }
