@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace generator\processor;
 
-class Schema extends Processor
+class Migration extends Processor
 {
     public function process(): void
     {

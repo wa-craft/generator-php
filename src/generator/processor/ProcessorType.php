@@ -11,5 +11,5 @@ enum ProcessorType
     case Commandline;
     case Document;
     case Operation;
-    case Schema;
+    case Migration;
 }
