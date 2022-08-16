@@ -20,8 +20,8 @@ final class ParserFactory
     public static function createByName(string $parser_name): Parser | null
     {
         $pt = null;
-        foreach(ParserType::cases() as $case) {
-            if(strtolower($case->name) == strtolower($parser_name)) {
+        foreach (ParserType::cases() as $case) {
+            if (strtolower($case->name) == strtolower($parser_name)) {
                 $pt = $case;
                 break;
             }
