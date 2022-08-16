@@ -19,7 +19,7 @@ abstract class AbstractParser
         $cache = Cache::getInstance();
 
         //获取数据文件
-        $project_data_files = ($cache->get('project'))['data']?:[];
+        $project_data_files = ($cache->get('project'))['data'] ?: [];
         if (!is_array($project_data_files)) {
             $project_data_files = [$project_data_files];
         }

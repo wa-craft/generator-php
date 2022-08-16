@@ -18,7 +18,7 @@ class Openapi extends AbstractParser
             $project = Node::create('Project', ['data' => $data]);
             if (!empty($project)) {
                 //遍历并处理数据
-                foreach(ProcessorType::cases() as $pt) {
+                foreach (ProcessorType::cases() as $pt) {
                     $processor = ProcessorFactory::create($pt);
                     $processor->process();
                 }
