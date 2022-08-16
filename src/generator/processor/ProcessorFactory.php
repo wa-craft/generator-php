@@ -37,7 +37,7 @@ final class ProcessorFactory
                     echo "WARNING: CANNOT find the source path or the target path of resouce \"{$_name}\"!" . PHP_EOL;
                 } else {
                     $src = ROOT_PATH . '/resource/' . $_name . '/' . $_prj_src_path . '/src';
-                    $tar = $_prj_tar_path ? ROOT_PATH . '/' . $cache->get('target_paths')[$_name] : ROOT_PATH . '/deploy/' . $_name;
+                    $tar = ROOT_PATH . '/' . $cache->get('target_paths')[$_name];
 
                     //拷贝基本文件
                     FileHelper::copyFiles($src, $tar);
