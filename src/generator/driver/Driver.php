@@ -2,7 +2,7 @@
 
 namespace generator\driver;
 
-use generator\helper\FileHelper;
+use generator\helper\{FileHelper, ClassHelper};
 
 /**
  * Class AbstractGenerator 生成器类的接口适配器
@@ -28,13 +28,12 @@ abstract class Driver
      * 根据给出的类型，创建生成器的工厂方法
      * @param string $type
      * @param array $params
-     * @return null|Generator
+     * @return null|Driver
      */
     final public static function load($type = 'profile\\Nginx', $params = [])
     {
-        $class = 'generator\\driver\\' . $type;
-        $obj = (class_exists($class)) ? new $class() : null;
-        if ($obj instanceof Generator) {
+        $obj = ClassHelper::loadClass('generator\\driver\\' . $type);
+        if ($obj instanceof Driver) {
             $obj->setParams($params);
         }
         return $obj;
@@ -43,7 +42,7 @@ abstract class Driver
     /**
      * 生成的方法，需要在子类中实现
      * 返回对象实例，便于进行链式操作
-     * @return Generator
+     * @return Driver
      */
     abstract public function execute(): Driver;
 
