@@ -17,7 +17,7 @@ class Openapi extends Parser
             $data = FileHelper::readDataFromFile(ROOT_PATH . '/' . $f) ?: [];
             $project = Node::create('Project', ['data' => $data]);
             if (!empty($project)) {
-                //遍历并处理数据
+                //遍历处理器并处理数据
                 foreach (ProcessorType::cases() as $pt) {
                     $processor = ProcessorFactory::create($pt);
                     $processor->process();
