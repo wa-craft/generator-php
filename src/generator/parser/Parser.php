@@ -10,7 +10,7 @@ use generator\Cache;
  * Class AbstractParser 抽象处理程序
  * @package generator\parser
  */
-abstract class AbstractParser
+abstract class Parser
 {
     protected array $data_files = [];
 

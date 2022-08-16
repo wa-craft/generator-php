@@ -8,7 +8,7 @@ use generator\helper\FileHelper;
 use generator\node\Node;
 use generator\processor\{ProcessorType, ProcessorFactory};
 
-class Openapi extends AbstractParser
+class Openapi extends Parser
 {
     public function parse(): void
     {

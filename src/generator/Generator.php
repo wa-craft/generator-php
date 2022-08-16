@@ -4,6 +4,7 @@ namespace generator;
 
 use generator\helper\{FileHelper,ClassHelper};
 use generator\node\Node;
+use generator\parser\ParserFactory;
 
 /**
  * Class Builder 构建程序
@@ -142,7 +143,7 @@ class Generator
 
         //实例化 parser
         $parser_name = $this->project['parser'] ?: 'legacy';
-        $parser = ClassHelper::create("generator\\parser\\" . ucfirst($parser_name));
+        $parser = ParserFactory::createByName($parser_name);
         $parser->parse();
 
         echo "wa-craft/generator-php, Version: " . VERSION . PHP_EOL;

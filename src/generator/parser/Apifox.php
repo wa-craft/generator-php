@@ -7,7 +7,7 @@ namespace generator\parser;
 use generator\helper\FileHelper;
 use generator\node\Node;
 
-class Apifox extends AbstractParser
+class Apifox extends Parser
 {
     public function parse(): void
     {
