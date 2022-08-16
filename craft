@@ -72,9 +72,9 @@ $cmd->option('e')
     });
 
 //进行创建
-$builder = new \generator\Builder([
+$generator = new \generator\Generator([
     'config' => $cmd['config'],
     'project' => $cmd['project'],
     'target' => $cmd['target']
 ]);
-$builder->run();
+$generator->run();

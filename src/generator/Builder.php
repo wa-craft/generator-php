@@ -15,7 +15,7 @@ use generator\node\Node;
  * TODO 完善自定义的校验规则
  * TODO 提供 vue 脚手架
  */
-class Builder
+class Generator
 {
     //配置参数
     private $config = [];
@@ -31,7 +31,6 @@ class Builder
         if (key_exists('config', $params)) {
             $this->setConfigFromFile($params['config']);
         }
-        var_dump($this->config);exit;
         if (key_exists('project', $params)) {
             $this->setProjectFromFile($params['project']);
         }
@@ -82,7 +81,6 @@ class Builder
     protected function makeBaseDirectories()
     {
         $root_path = './deploy';
-        var_dump($this->project);
         foreach ($this->project['target'] as $k => $v) {
             if ($k === 'root') {
                 //判断是否是/开始的绝对路径
@@ -134,10 +132,7 @@ class Builder
     public function run()
     {
         /* 创建基本目录 */
-        $this->makeBaseDirectories();
-
-        /* 拷贝资源文件 */
-        //$this->copyResources();
+        FileHelper::mkdir(($this->config['target_path'] ?: './deploy'), true);
 
         /* 装载默认设置并进行缓存 */
         $cache = Cache::getInstance();
@@ -147,14 +142,14 @@ class Builder
         $cache->set('project', $this->project);
 
         //获取数据文件
-        $data_file = $this->project['data'];
-        if (!is_array($data_file)) {
-            $data_file = [$data_file];
+        $project_data_files = $this->project['data'];
+        if (!is_array($project_data_files)) {
+            $project_data_files = [$project_data_files];
         }
 
         $project = null;
-        foreach ($data_file as $f) {
-            $data = FileHelper::readDataFromFile(__DIR__ . "/../../" . $f);
+        foreach ($project_data_files as $f) {
+            $data = FileHelper::readDataFromFile(__DIR__ . "/../../" . $f) ?: [];
             $project = Node::create('Project', ['data' => $data]);
             if (!empty($project)) {
                 $project->process();

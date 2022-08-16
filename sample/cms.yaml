@@ -19,7 +19,6 @@ mode: "model"
 namespace: "app"
 #生成文件的输出目录
 target: 
-  root: "./deploy"
   # 生成的后端路径，默认为 backend
   backend: "app"
   # 生成的前端路径，默认为 frontend

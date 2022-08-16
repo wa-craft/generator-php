@@ -65,7 +65,7 @@ class TemplateHelper
             }
 
             $paths = (Cache::getInstance())->get('paths');
-            $tmpl_file = ($paths['backend']?:'').'/'.$file;
+            $tmpl_file = ($paths['backend'] ?: '') . '/' . $file;
             $content = file_get_contents($tmpl_file);
         }
 
