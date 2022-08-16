@@ -8,7 +8,7 @@ use generator\helper\FileHelper;
  * Class AbstractGenerator 生成器类的接口适配器
  * @package generator\generator
  */
-abstract class Driver implements IDriver
+abstract class Driver
 {
     //生成的文本内容
     protected $content = '';
