@@ -87,7 +87,7 @@ class Generator
                 //判断是否是/开始的绝对路径
                 $$root_path = (stripos($v, '/') === 0)
                     ? $root_path = $v
-                    : $root_path =  __DIR__ . '/../../' . $v;
+                    : $root_path =  ROOT_PATH . '/' . $v;
 
                 $this->paths = array_merge($this->paths, [$k => $root_path]);
             } else {

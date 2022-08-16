@@ -8,6 +8,5 @@ class Frontend extends Processor
 {
     public function process(): void
     {
-        echo "processing frontend" . PHP_EOL;
     }
 }

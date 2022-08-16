@@ -14,6 +14,8 @@ final class ParserFactory
             $obj = ClassHelper::create("generator\\parser\\" . $parser_type->name);
 
             return ($obj instanceof Parser) ? $obj : null;
+        } else {
+            return null;
         }
     }
 
