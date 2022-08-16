@@ -80,7 +80,7 @@ class FileHelper
                 break;
             case 'php':
             default:
-                $tata = require $file;
+                $data = require $file;
         }
 
         return $data;
