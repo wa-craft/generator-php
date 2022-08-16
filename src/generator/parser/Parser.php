@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace generator\parser;
 
 use generator\Cache;
+use generator\helper\FileHelper;
 
 /**
  * Class AbstractParser 抽象处理程序
@@ -17,6 +18,14 @@ abstract class Parser
     public function __construct()
     {
         $cache = Cache::getInstance();
+
+        //创建基本目录
+        $root_path = $cache->get('config')["target_path"] ?: ROOT_PATH . '/deploy';
+        $target_paths = $cache->get('project')["target"] ?: [];
+        foreach ($target_paths as $k => $v) {
+            $target_paths = array_merge($target_paths, [$k => $root_path . '/' . $v]);
+        }
+        FileHelper::mkdirs($target_paths);
 
         //获取数据文件
         $project_data_files = ($cache->get('project'))['data'] ?: [];
