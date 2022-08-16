@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace generator\processor;
 
-enum ProcessorTypes
+enum ProcessorType
 {
     case Backend;
     case Frontend;

@@ -141,10 +141,9 @@ class Generator
         $cache->set('project', $this->project);
 
         //实例化 parser
-        $parser = $this->project['parser'] ?: 'legacy';
-        $parser = ClassHelper::create("generator\\parser\\".ucfirst($parser));
+        $parser_name = $this->project['parser'] ?: 'legacy';
+        $parser = ClassHelper::create("generator\\parser\\".ucfirst($parser_name));
         $parser->parse();
-        exit;
 
         echo "wa-craft/generator-php, Version: " . VERSION . PHP_EOL;
     }

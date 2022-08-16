@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace generator\processor;
 
 /**
- * Class AbstractProcessor 抽象处理程序
+ * Class Processor 抽象处理程序
  * @package generator\processor
  */
-abstract class AbstractProcessor
+abstract class Processor
 {
     abstract public function process();
 }

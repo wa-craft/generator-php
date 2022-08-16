@@ -28,7 +28,7 @@ processors:
 #  database - 利用数据库驱动，从表结构逆向生成的方式
 #  legacy - 旧版 think-builder 数组定义的方式
 #  apifox - apifox 导出的方式
-parser: "apifox"
+parser: "openapi"
 
 #项目的命名空间，小写
 namespace: "app"
@@ -58,7 +58,7 @@ operations:
   - http/nginx
 #数据文件的路径
 data: 
-  - "./sample/sample.php"
+  - "./sample/fmcs-phase2.openapi.json"
 
 #数据库存储软件配置插件的目录，相对于 ./resource 目录
 schema:

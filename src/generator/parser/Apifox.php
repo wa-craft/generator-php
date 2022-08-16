@@ -16,7 +16,8 @@ class Apifox extends AbstractParser
             $data = FileHelper::readDataFromFile(ROOT_PATH . '/' . $f) ?: [];
             $project = Node::create('Project', ['data' => $data]);
             if (!empty($project)) {
-                $project->process();
+                var_dump($data);
+                //$project->process();
             }
         }
     }
