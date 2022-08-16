@@ -8,15 +8,31 @@ vendor: "东莞培基"
 copyright: "&copy;2022"
 #数据定义版本
 revision: "1"
-#生成的模式
-type: "all"
-#数据模板的模式，包括:
+
+#生成代码使用的处理器，包括：
+#  backend 后端
+#  frontend 前端
+#  commandline  命令和
+#  operation 运维
+#  shcema 数据库
+#  document 文档
+processors:
+  - backend
+  - frontend
+  - operation
+  - schema
+
+#处理数据文件的分析器，包括:
 #  openapi - 基于 OpenAPI Specification 的 API 驱动方式
 #  model - 参照 OpenAPI 的 Schema 部分的模型驱动方式
 #  database - 利用数据库驱动，从表结构逆向生成的方式
-mode: "model"
+#  legacy - 旧版 think-builder 数组定义的方式
+#  apifox - apifox 导出的方式
+parser: "apifox"
+
 #项目的命名空间，小写
 namespace: "app"
+
 #生成文件的输出目录
 target: 
   # 生成的后端路径，默认为 backend
@@ -44,7 +60,7 @@ operations:
 data: 
   - "./sample/sample.php"
 
-#数据库存储软件配置插件的目录，相对于 .plugin 目录
+#数据库存储软件配置插件的目录，相对于 ./resource 目录
 schema:
   - name: 'cms-mariadb'
     type: 'rdb/mariadb'

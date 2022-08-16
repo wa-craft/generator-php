@@ -5,8 +5,8 @@ namespace generator\driver;
 use generator\helper\{FileHelper, ClassHelper};
 
 /**
- * Class AbstractGenerator 生成器类的接口适配器
- * @package generator\generator
+ * Class Driver 生成器类的接口驱动
+ * @package generator\driver
  */
 abstract class Driver
 {
@@ -32,7 +32,7 @@ abstract class Driver
      */
     final public static function load($type = 'profile\\Nginx', $params = [])
     {
-        $obj = ClassHelper::loadClass('generator\\driver\\' . $type);
+        $obj = ClassHelper::create('generator\\driver\\' . $type);
         if ($obj instanceof Driver) {
             $obj->setParams($params);
         }

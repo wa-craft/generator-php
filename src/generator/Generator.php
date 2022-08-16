@@ -2,7 +2,7 @@
 
 namespace generator;
 
-use generator\helper\FileHelper;
+use generator\helper\{FileHelper,ClassHelper};
 use generator\node\Node;
 
 /**
@@ -136,25 +136,15 @@ class Generator
 
         /* 装载默认设置并进行缓存 */
         $cache = Cache::getInstance();
-        $cache->set('defaults', $this->config['defaults']);
         $cache->set('config', $this->config);
         $cache->set('paths', $this->paths);
         $cache->set('project', $this->project);
 
-        //获取数据文件
-        $project_data_files = $this->project['data'];
-        if (!is_array($project_data_files)) {
-            $project_data_files = [$project_data_files];
-        }
-
-        $project = null;
-        foreach ($project_data_files as $f) {
-            $data = FileHelper::readDataFromFile(__DIR__ . "/../../" . $f) ?: [];
-            $project = Node::create('Project', ['data' => $data]);
-            if (!empty($project)) {
-                $project->process();
-            }
-        }
+        //实例化 parser
+        $parser = $this->project['parser'] ?: 'legacy';
+        $parser = ClassHelper::create("generator\\parser\\".ucfirst($parser));
+        $parser->parse();
+        exit;
 
         echo "wa-craft/generator-php, Version: " . VERSION . PHP_EOL;
     }

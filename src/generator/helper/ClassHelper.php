@@ -91,10 +91,10 @@ class ClassHelper
     /**
      * 从给定的路径获取类对象
      */
-    public static function loadClass($class_full_name): mixed
+    public static function create($class_full_name): mixed
     {
         $obj = (class_exists($class_full_name)) ? new $class_full_name() : null;
-        if(empty($obj)) {
+        if (empty($obj)) {
             echo "WARNING: class " . $class_full_name . ' is NOT FOUND!';
         }
         return $obj;
