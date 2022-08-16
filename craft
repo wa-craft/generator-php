@@ -38,8 +38,8 @@ $cmd->option()
 //配置文件
 $cmd->option('c')
     ->aka('config')
-    ->describedAs('define a configuration file, default is : ./src/config.php')
-    ->default(__DIR__ . '/src/config.php')
+    ->describedAs('define a configuration file, default is : ./config.yaml')
+    ->default(__DIR__ . '/config.yaml')
     ->map(function ($config) {
         return $config;
     });

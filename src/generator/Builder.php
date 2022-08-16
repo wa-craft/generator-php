@@ -31,6 +31,7 @@ class Builder
         if (key_exists('config', $params)) {
             $this->setConfigFromFile($params['config']);
         }
+        var_dump($this->config);exit;
         if (key_exists('project', $params)) {
             $this->setProjectFromFile($params['project']);
         }
@@ -54,16 +55,16 @@ class Builder
      */
     public function setConfigFromFile($file)
     {
-        $this->config = require $file;
+        $this->config = FileHelper::readDataFromFile($file) ?: [];
     }
 
     /**
      * 设置数据
      * @param array $data
      */
-    public function setProject($data = [])
+    public function setProject($project_config = [])
     {
-        $this->project = $data;
+        $this->project = $project_config;
     }
 
     /**
@@ -72,7 +73,7 @@ class Builder
      */
     public function setProjectFromFile($file)
     {
-        $this->project = FileHelper::readFromFile($file) ?: [];
+        $this->project = FileHelper::readDataFromFile($file) ?: [];
     }
 
     /**
@@ -153,7 +154,7 @@ class Builder
 
         $project = null;
         foreach ($data_file as $f) {
-            $data = FileHelper::readFromFile(__DIR__ . "/../../" . $f);
+            $data = FileHelper::readDataFromFile(__DIR__ . "/../../" . $f);
             $project = Node::create('Project', ['data' => $data]);
             if (!empty($project)) {
                 $project->process();

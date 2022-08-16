@@ -63,7 +63,7 @@ class FileHelper
     /**
      * 从不同格式的文件中读取内容，并转换为PHP数组
      */
-    public static function readFromFile($file): mixed
+    public static function readDataFromFile($file): mixed
     {
         $data = [];
         $ext = pathinfo($file, PATHINFO_EXTENSION);

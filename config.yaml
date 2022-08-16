@@ -1,0 +1,2 @@
+#生成代码的目标路径
+target_path: "./deploy"
