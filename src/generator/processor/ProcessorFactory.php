@@ -40,7 +40,9 @@ final class ProcessorFactory
                     $tar = ROOT_PATH . '/' . $cache->get('target_paths')[$_name];
 
                     //拷贝基本文件
-                    FileHelper::copyFiles($src, $tar);
+                    //配置处理器的资源管理器
+                    $res = new Resource(["source" => $src, "target" => $tar]);
+                    $obj->res = $res;
                 }
 
                 return $obj;
