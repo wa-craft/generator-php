@@ -1,0 +1,11 @@
+---
+rules:
+  - node_type: controller
+    path: "app/{{application}}/{{module}}/controller"
+    template: "php/class"
+  - node_type: model
+    path: "app/{{application}}/{{module}}/model"
+    template: "php/class"
+  - node_type: config
+    path: "app/{{application}}/{{module}}/model"
+    template: "php/config"
