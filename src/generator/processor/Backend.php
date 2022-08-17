@@ -15,11 +15,6 @@ class Backend extends Processor
             $this->res->clone();
         }
 
-        //获取规则
-        $rule_file_content = $this->res->getRuleFileContent();
-        $this->rules = $rule_file_content['rules'] ?: [];
-        ;
-
         $data = [
             "functions" => [
                 [
@@ -35,10 +30,12 @@ class Backend extends Processor
                 ]
             ]
         ];
-        $me = new \Mustache_Engine();
 
+        /*
+        $me = new \Mustache_Engine();
         $template = file_get_contents(ROOT_PATH . '/template/php/function.tmpl');
         $s = $me->render($template, $data);
         var_dump($s);
+        */
     }
 }

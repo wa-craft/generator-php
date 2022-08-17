@@ -15,11 +15,16 @@ class Resource
     private string $src_path = '';
     //资源文件目的地址
     private string $tar_path = '';
+    //规则配置
+    private array $rules = [];
 
     public function __construct($params)
     {
         $this->src_path = $params['source'] ?: '';
         $this->tar_path = $params['target'] ?: '';
+
+        //配置rule
+        $this->rules = $this->getRulesFromeFile();
     }
 
     public function getSourcePath(): string
@@ -32,17 +37,27 @@ class Resource
         return $this->tar_path;
     }
 
-    public function getRuleFileContent(): mixed
+    public function getRules(): array
     {
-        $content = '';
+        if(empty($this->rules)) {
+            $this->rules = $this->getRulesFromeFile();
+        }
+
+        return $this->rules;
+    }
+
+    public function getRulesFromeFile(): array
+    {
+        $rules = [];
         if (!empty($this->src_path)) {
             $file = $this->src_path . '/rule.yaml';
             $content = FileHelper::readDataFromFile($file);
+            $rules = $content['rules'] ?: [];
         } else {
             echo "WARNING: CANNOT find the rule file!";
         }
 
-        return $content;
+        return $rules;
     }
 
     /**

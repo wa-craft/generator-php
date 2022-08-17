@@ -2,7 +2,7 @@
 
 namespace generator\node;
 
-use generator\generator\Generator;
+use generator\driver\Driver;
 use generator\helper\{
     TemplateHelper, FileHelper
 };

@@ -3,7 +3,7 @@
 namespace generator\node;
 
 use generator\Cache;
-use generator\generator\Generator;
+use generator\driver\Driver;
 use generator\helper\FileHelper;
 use generator\helper\TemplateHelper;
 
