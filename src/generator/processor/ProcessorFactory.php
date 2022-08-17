@@ -36,7 +36,7 @@ final class ProcessorFactory
                 if (empty($_prj_src_path) || empty($_prj_tar_path) || empty($cache->get('project')[$type_name])) {
                     echo "WARNING: CANNOT find the source path or the target path of resouce \"{$_name}\"!" . PHP_EOL;
                 } else {
-                    $src = ROOT_PATH . '/resource/' . $_name . '/' . $_prj_src_path . '/src';
+                    $src = ROOT_PATH . '/resource/' . $_name . '/' . $_prj_src_path;
                     $tar = ROOT_PATH . '/' . $cache->get('target_paths')[$_name];
 
                     //拷贝基本文件

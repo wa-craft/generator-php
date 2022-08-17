@@ -13,6 +13,7 @@ use generator\Cache;
 abstract class Processor
 {
     public ?Resource $res = null;
+    protected array $rules = [];
 
     //子类需要实现的处理方法
     abstract public function process();
