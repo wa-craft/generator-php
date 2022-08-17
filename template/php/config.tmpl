@@ -1,0 +1,15 @@
+<?php
+
+namespace {{namespace}};
+{{#uses}}
+
+use {{use_class_fullname}};
+
+{{/uses}}
+{{comment}}
+return [
+    {{#configs}}
+    {{comment}}
+    '{{key}}' => {{value}},
+    {{/configs}}
+];
