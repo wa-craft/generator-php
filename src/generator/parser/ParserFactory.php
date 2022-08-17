@@ -8,18 +8,13 @@ use generator\helper\ClassHelper;
 
 final class ParserFactory
 {
-    public static function create(ParserType $parser_type): Parser | null
+    public static function create(ParserType $parser_type): Parser|null
     {
-        if ($parser_type instanceof ParserType) {
-            $obj = ClassHelper::create("generator\\parser\\" . $parser_type->name);
-
-            return ($obj instanceof Parser) ? $obj : null;
-        } else {
-            return null;
-        }
+        $obj = ClassHelper::create("generator\\parser\\" . $parser_type->name);
+        return ($obj instanceof Parser) ? $obj : null;
     }
 
-    public static function createByName(string $parser_name): Parser | null
+    public static function createByName(string $parser_name): Parser|null
     {
         $pt = null;
         foreach (ParserType::cases() as $case) {

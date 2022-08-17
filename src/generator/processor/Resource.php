@@ -39,7 +39,7 @@ class Resource
 
     public function getRules(): array
     {
-        if(empty($this->rules)) {
+        if (empty($this->rules)) {
             $this->rules = $this->getRulesFromeFile();
         }
 
