@@ -9,15 +9,17 @@ class FileHelper
 {
     /**
      * 判断目录是否存在，如果不存在则创建，可递归创建所有的父目录
-     * @param $path
+     * @param string $path
      * @param bool $force
      */
-    public static function mkdir($path, $force)
+    public static function mkdir(string $path, bool $force): void
     {
         if ($force) {
             exec('rm -rf ' . $path);
         }
-        mkdir($path, 0755, true);
+        if (!is_dir($path)) {
+            mkdir($path, 0755, true);
+        }
         echo "INFO: creating {$path} ..." . PHP_EOL;
     }
 
@@ -26,10 +28,10 @@ class FileHelper
      * @param array $paths
      * @param bool $force
      */
-    public static function mkdirs($paths = [], $force = true)
+    public static function mkdirs(array $paths = [], bool $force = true): void
     {
         if (empty($paths)) {
-            echo "EROOR: There is no target paths configured!";
+            echo "ERROR: There is no target paths configured!";
         }
 
         foreach ($paths as $path) {
@@ -42,7 +44,7 @@ class FileHelper
      * @param $src_path
      * @param $tar_path
      */
-    public static function copyFiles($src_path, $tar_path)
+    public static function copyFiles($src_path, $tar_path): void
     {
         FileHelper::mkdir($tar_path, true);
 

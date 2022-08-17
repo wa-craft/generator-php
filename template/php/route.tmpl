@@ -1,0 +1,16 @@
+<?php
+{{#strict_types}}
+
+declare(strict_types=1);
+
+{{/strict_types}}
+{{namespace}}
+{{#uses}}
+use {{use_class_fullname}};
+
+{{/uses}}
+{{#routes}}
+{{comment}}
+Route::{{method}}('{{path}}', {{controller}});
+
+{{/routes}}

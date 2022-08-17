@@ -24,6 +24,7 @@
   "require": {
     "php": ">= 8.1.0",
     "nategood/commando": "dev-master",
-    "mustache/mustache": "dev-main"
+    "mustache/mustache": "dev-main",
+    "ext-yaml": "*"
   }
 }

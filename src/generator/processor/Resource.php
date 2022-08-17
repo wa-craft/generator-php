@@ -18,13 +18,21 @@ class Resource
     //规则配置
     private array $rules = [];
 
+    private array $templates = [];
+
     public function __construct($params)
     {
         $this->src_path = $params['source'] ?: '';
         $this->tar_path = $params['target'] ?: '';
 
+        $templates = $params['templates'] ?: [];
+        foreach ($templates as &$template) {
+            $template->setFilePath($this->tar_path . '/route/app.php');
+        }
+        $this->templates = $templates;
+
         //配置rule
-        $this->rules = $this->getRulesFromeFile();
+        $this->rules = $this->getRulesFromFile();
     }
 
     public function getSourcePath(): string
@@ -40,13 +48,29 @@ class Resource
     public function getRules(): array
     {
         if (empty($this->rules)) {
-            $this->rules = $this->getRulesFromeFile();
+            $this->rules = $this->getRulesFromFile();
         }
 
         return $this->rules;
     }
 
-    public function getRulesFromeFile(): array
+    public function getTemplates(): array
+    {
+        return $this->templates;
+    }
+
+    /**
+     * 处理传递过来的 templates 数组，并设置真实的写入路径
+     * @param $templates
+     * @return void
+     */
+    public function setTemplates($templates): void
+    {
+        if (is_array($templates)) {
+        }
+    }
+
+    public function getRulesFromFile(): array
     {
         $rules = [];
         if (!empty($this->src_path)) {
