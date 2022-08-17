@@ -1,6 +1,6 @@
 <?php
 
-namespace generator\node;
+namespace generator\parser\legacy;
 
 use generator\Cache;
 use generator\driver\Driver;
@@ -10,7 +10,7 @@ use generator\helper\{
 
 /**
  * Class View
- * @package generator\node
+ * @package generator\parser\legacy
  */
 class View extends Node
 {

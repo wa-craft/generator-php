@@ -1,6 +1,6 @@
 <?php
 
-namespace generator\node;
+namespace generator\parser\legacy;
 
 use generator\driver\Driver;
 use generator\helper\{
@@ -8,10 +8,10 @@ use generator\helper\{
 };
 
 /**
- * Class Controller
- * @package generator\node
+ * Class Helper 帮助程序
+ * @package generator\parser\legacy
  */
-class Controller extends Node
+class Helper extends Node
 {
     //控制器下的方法
     public $actions = [];
@@ -23,23 +23,17 @@ class Controller extends Node
     {
         //创建目录
         FileHelper::mkdir($this->path);
-
-        //如果父控制器为空或者是默认的 \think\Controller，则使用没有 CRUD 方法的 class 模板生成代码
-        $template = $this->parent_controller == '' || $this->parent_controller == '\\think\\Controller' ? TemplateHelper::fetchTemplate('class') : TemplateHelper::fetchTemplate('controller');
-        if ($this->name == 'Error') {
-            $template = TemplateHelper::fetchTemplate('error');
-        }
-        Driver::load('php\\Controller', [
+        Driver::load('php\\Helper', [
             'path' => $this->path,
             'file_name' => $this->name . '.php',
-            'template' => $template,
+            'template' => TemplateHelper::fetchTemplate('class'),
             'data' => $this->data
         ])->execute()->writeToFile();
     }
 
     public function setNameSpace()
     {
-        $this->namespace = $this->parent_namespace . '\controller';
+        $this->namespace = $this->parent_namespace . '\helper';
         $this->data['namespace'] = $this->namespace;
     }
 }

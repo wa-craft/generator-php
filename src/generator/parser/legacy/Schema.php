@@ -1,10 +1,10 @@
 <?php
 
-namespace generator\node;
+namespace generator\parser\legacy;
 
 /**
  * Class Schema 模式
- * @package generator\node
+ * @package generator\parser\legacy
  */
 class Schema extends Node
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace generator\node;
+namespace generator\parser\legacy;
 
 use generator\driver\Driver;
 use generator\helper\{
@@ -8,29 +8,29 @@ use generator\helper\{
 };
 
 /**
- * Class Traits
- * @package generator\node
+ * Class Validate
+ * @package generator\parser\legacy
  */
-class Traits extends Node
+class Validate extends Node
 {
-    //特征下的方法
-    protected $actions = [];
+    //校验器下的规则
+    public $fields = [];
 
     public function process()
     {
-        //创建路径
+        //创建目录
         FileHelper::mkdir($this->path);
-        Driver::load('php\\Traits', [
+        Driver::load('php\\Validate', [
             'path' => $this->path,
             'file_name' => $this->name . '.php',
-            'template' => TemplateHelper::fetchTemplate('traits'),
+            'template' => TemplateHelper::fetchTemplate('validate'),
             'data' => $this->data
         ])->execute()->writeToFile();
     }
 
     public function setNameSpace()
     {
-        $this->namespace = $this->parent_namespace . '\\traits';
+        $this->namespace = $this->parent_namespace . '\validate';
         $this->data['namespace'] = $this->namespace;
     }
 }

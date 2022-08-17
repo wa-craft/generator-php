@@ -1,12 +1,12 @@
 <?php
 
-namespace generator\node;
+namespace generator\parser\legacy;
 
 use generator\Cache;
 
 /**
  * Class Node 节点类，所有节点对象的父类
- * @package generator\node
+ * @package generator\parser\legacy
  */
 abstract class Node
 {

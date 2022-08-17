@@ -1,6 +1,6 @@
 <?php
 
-namespace generator\node;
+namespace generator\parser\legacy;
 
 use generator\Cache;
 use generator\driver\Driver;
@@ -9,7 +9,7 @@ use generator\helper\TemplateHelper;
 
 /**
  * Class Module
- * @package generator\node
+ * @package generator\parser\legacy
  */
 class Module extends Node
 {

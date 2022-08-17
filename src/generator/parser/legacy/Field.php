@@ -1,10 +1,10 @@
 <?php
 
-namespace generator\node;
+namespace generator\parser\legacy;
 
 /**
  * Class Field
- * @package generator\node
+ * @package generator\parser\legacy
  */
 class Field extends Node
 {
