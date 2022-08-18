@@ -19,13 +19,13 @@ use generator\parser\ParserFactory;
 class Generator
 {
     //配置参数
-    private $config = [];
+    private array $config = [];
     //系统基本路径
-    private $paths = [];
+    private array $paths = [];
     //项目配置
-    private $project = [];
+    private array $project = [];
     //数据
-    private $data = [];
+    private array $data = [];
 
     public function __construct($params = [])
     {
@@ -44,7 +44,7 @@ class Generator
      * 通过数组设置项目配置信息
      * @param array $config
      */
-    public function setConfig($config = [])
+    public function setConfig(array $config = []): void
     {
         $this->config = $config;
     }
@@ -53,16 +53,16 @@ class Generator
      * 通过指定的文件名获取并设置项目配置信息
      * @param $file
      */
-    public function setConfigFromFile($file)
+    public function setConfigFromFile($file): void
     {
         $this->config = FileHelper::readDataFromFile($file) ?: [];
     }
 
     /**
      * 设置数据
-     * @param array $data
+     * @param array $project_config
      */
-    public function setProject($project_config = [])
+    public function setProject(array $project_config = []): void
     {
         $this->project = $project_config;
     }
@@ -71,7 +71,7 @@ class Generator
      * 通过文件读取并设置数据，如果给出的数据文件名称，并未以 .php 结尾，则自动添加文件后缀名 .php
      * @param $file
      */
-    public function setProjectFromFile($file)
+    public function setProjectFromFile($file): void
     {
         $this->project = FileHelper::readDataFromFile($file) ?: [];
     }
@@ -79,7 +79,7 @@ class Generator
     /**
      * 创建基本目录结构
      */
-    protected function makeBaseDirectories()
+    protected function makeBaseDirectories(): void
     {
         $root_path = './deploy';
         foreach ($this->project['target'] as $k => $v) {
@@ -100,7 +100,7 @@ class Generator
     /**
      * 从模板目录拷贝资源文件
      */
-    protected function copyResources()
+    protected function copyResources(): void
     {
         $src = '';
         $tar = '';
@@ -130,7 +130,7 @@ class Generator
      *  执行预处理，并生成任务
      *  执行任务
      */
-    public function run()
+    public function run(): void
     {
         /* 创建基本目录 */
         FileHelper::mkdir(($this->config['target_path'] ?: './deploy'), true);
