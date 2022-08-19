@@ -5,16 +5,12 @@ namespace generator;
 use generator\helper\{FileHelper,ClassHelper};
 use generator\node\Node;
 use generator\parser\ParserFactory;
+use generator\resource\ResourceFactory;
+use generator\resource\ResourceType;
+use JetBrains\PhpStorm\NoReturn;
 
 /**
  * Class Builder 构建程序
- * TODO 生成内存中的树状数据结构，再调用每种生成器进行处理
- * TODO 在view中根据每个页面的需求，生成独立调用的js文件
- * TODO 使用 sqlite 作为存储引擎
- * TODO 拆分纯粹的命令行与B/S架构的运行命令（提供SERVE命令）
- * TODO 提供默认的控制器/模型/校验器，用以扩展
- * TODO 完善自定义的校验规则
- * TODO 提供 vue 脚手架
  */
 class Generator
 {
@@ -24,8 +20,8 @@ class Generator
     private array $paths = [];
     //项目配置
     private array $project = [];
-    //数据
-    private array $data = [];
+    //数据缓存
+    private ?Cache $cache = null;
 
     public function __construct($params = [])
     {
@@ -38,6 +34,8 @@ class Generator
         if (key_exists('target', $params)) {
             $this->paths['target'] = $params['target'];
         }
+
+        $this->cache = Cache::getInstance();
     }
 
     /**
@@ -98,27 +96,6 @@ class Generator
     }
 
     /**
-     * 从模板目录拷贝资源文件
-     */
-    protected function copyResources(): void
-    {
-        $src = '';
-        $tar = '';
-
-        $iters = ['backend', 'frontend', 'commandline'];
-
-        foreach ($iters as $v) {
-            if (!empty($this->project[$v])) {
-                $src = RESOURCE_PATH . "/" . $v . "/" . $this->project[$v] . '/src';
-                $tar = $this->paths[$v] ?: '';
-                if ($tar !== '') {
-                    FileHelper::copyFiles($src, $tar);
-                }
-            }
-        }
-    }
-
-    /**
      * 创建项目文件的主方法
      *
      * 执行流程：
@@ -137,15 +114,39 @@ class Generator
         FileHelper::mkdir(($this->config['target_path'] ?: './deploy'), true);
 
         /* 装载默认设置并进行缓存 */
-        $cache = Cache::getInstance();
-        $cache->set('config', $this->config);
-        $cache->set('paths', $this->paths);
-        $cache->set('project', $this->project);
+        $this->cache->set('config', $this->config);
+        $this->cache->set('paths', $this->paths);
+        $this->cache->set('project', $this->project);
 
-        //实例化 parser
-        $parser_name = $this->project['parser'] ?: 'legacy';
+        //设置基本目录
+        $root_path = $this->cache->get('config')["target_path"] ?: ROOT_PATH . '/deploy';
+        $target_paths = $this->cache->get('project')["target"] ?: [];
+        foreach ($target_paths as $k => $v) {
+            $target_paths = array_merge($target_paths, [$k => $root_path . '/' . $v]);
+        }
+        $this->cache->set('target_paths', $target_paths);
+
+        //通过项目配置文件中已经配置的项目内容实例化资源管理器
+        $resources = [];
+        foreach (ResourceType::cases() as $case) {
+            $resName = '';
+            if (array_key_exists(strtolower($case->name), $this->project)) {
+                $resName = $this->project[strtolower($case->name)] ?: '';
+            }
+
+            if (!empty($resName)) {
+                $obj = ResourceFactory::create($case);
+                if (!empty($obj)) {
+                    $resources[] = $obj;
+                }
+            }
+        }
+        $this->cache->set('resources', $resources);
+
+        //实例化 parser，通过 parser 获取经过分析的数据
+        $parser_name = $this->project['parser'] ?: 'openapi';
         $parser = ParserFactory::createByName($parser_name);
-        $parser->parse();
+        $data = $parser->getParsedData();
 
         echo "wa-craft/generator-php, Version: " . VERSION . PHP_EOL;
     }

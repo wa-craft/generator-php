@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace generator\processor;
+namespace generator\resource;
 
-class Commandline extends Processor
+class Commandline extends Resource
 {
     public function process(): void
     {

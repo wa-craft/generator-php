@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace generator\processor;
+namespace generator\resource;
 
-class Migration extends Processor
+class Migration extends Resource
 {
     public function process(): void
     {

@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-namespace generator\processor;
+namespace generator\resource;
 
-use generator\helper\FileHelper;
-
-class Backend extends Processor
+class Backend extends Resource
 {
     public function process(): void
     {

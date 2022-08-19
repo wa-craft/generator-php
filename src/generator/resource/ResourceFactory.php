@@ -1,25 +1,23 @@
 <?php
 
-declare(strict_types=1);
+namespace generator\resource;
 
-namespace generator\processor;
-
-use generator\helper\{ClassHelper, FileHelper};
 use generator\Cache;
+use generator\helper\ClassHelper;
 
-final class ProcessorFactory
+class ResourceFactory
 {
-    public static function create(ProcessorType $processor_type, array $params = []): Processor|null
+    public static function create(ResourceType $resource_type, array $params = []): Resource|null
     {
         $cache = Cache::getInstance();
-        $type_name = strtolower($processor_type->name);
-        $obj = ClassHelper::create("generator\\processor\\" . ucfirst($type_name));
+        $type_name = strtolower($resource_type->name);
+        $obj = ClassHelper::create("generator\\resource\\" . ucfirst($type_name));
 
         //创建路径
         $_prj_src_path = '';
         $_prj_tar_path = '';
-        if ($obj instanceof Processor) {
-            $_name = strtolower($processor_type->name);
+        if ($obj instanceof Resource) {
+            $_name = strtolower($resource_type->name);
 
             //判断并设置原始路径
             $project = $cache->get('project') ?: [];
@@ -32,16 +30,14 @@ final class ProcessorFactory
                 $_prj_tar_path = (array_key_exists($_name, $target_paths)) ? $target_paths[$_name] : '';
             }
 
-            if (empty($_prj_src_path) || empty($_prj_tar_path) || empty($cache->get('project')[$type_name])) {
+            if (empty($_prj_src_path) || empty($_prj_tar_path) || empty($cache->get('project')[$_name])) {
                 echo "WARNING: CANNOT find the source path or the target path of resource \"{$_name}\"!" . PHP_EOL;
             } else {
                 $src = ROOT_PATH . '/resource/' . $_name . '/' . $_prj_src_path;
                 $tar = ROOT_PATH . '/' . $cache->get('target_paths')[$_name];
-
-                $templates = $params['templates'] ?: [];
                 //配置处理器的资源管理器
-                $res = new Resource(["source" => $src, "target" => $tar, "templates" => $templates]);
-                $obj->res = $res;
+                $obj->setSourcePath($src);
+                $obj->setTargetPath($tar);
             }
 
             return $obj;

@@ -6,7 +6,8 @@ namespace generator\parser;
 
 use generator\helper\FileHelper;
 use generator\parser\legacy\Node;
-use generator\processor\{ProcessorFactory, ProcessorType};
+use generator\processor\{ProcessorFactory};
+use generator\resource\ResourceType;
 use generator\template\TemplateFactory;
 use generator\template\TemplateType;
 
@@ -15,7 +16,6 @@ class Openapi extends Parser
     public function parse(): void
     {
         $project = null;
-        $templates = [];
         foreach ($this->data_files as $f) {
             $data = FileHelper::readDataFromFile(ROOT_PATH . '/' . $f) ?: [];
 
@@ -27,9 +27,6 @@ class Openapi extends Parser
                     $params['action'] = array_pop($path_array);
                     $params['controller'] = array_pop($path_array);
                     $params['path'] = implode('/', $path_array);
-
-                    $template = TemplateFactory::create(TemplateType::Route, $params);
-                    $templates[] = $template;
                 }
             }
 
@@ -44,28 +41,15 @@ class Openapi extends Parser
                 $this->prepareData();
             }
         }
-
-        $this->runProcessors(['templates' => $templates]);
     }
 
-    /**
-     * 准备数据
-     * @return void
-     */
-    protected function prepareData(): void
+    public function getParsedData(): array
     {
+        // TODO: Implement getParsedData() method.
+        return [];
     }
 
-    protected function runProcessors($params)
+    protected function prepareData()
     {
-        //遍历处理器并处理数据
-        foreach (ProcessorType::cases() as $pt) {
-            foreach ($this->processor_keys as $key) {
-                if (strtolower($pt->name) === strtolower($key)) {
-                    $processor = ProcessorFactory::create($pt, $params);
-                    $processor->process();
-                }
-            }
-        }
     }
 }

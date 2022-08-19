@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace generator\processor;
+namespace generator\resource;
 
-enum ProcessorType
+enum ResourceType
 {
     case Backend;
     case Frontend;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace generator\processor;
+namespace generator\resource;
 
-class Frontend extends Processor
+class Frontend extends Resource
 {
     public function process(): void
     {

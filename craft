@@ -4,7 +4,7 @@
  * wa-craft/generator-php 
  */
 
-$start_time = microtime();
+$start_time = microtime(true );
 /**
  * TODO v3.0.0 处理流程
  * 定义全局常量
@@ -16,13 +16,13 @@ $start_time = microtime();
  * 修改命令行方式
  */
 /* 定义全局常量 */
+const ROOT_PATH = __DIR__;
 const SRC_PATH = __DIR__ . '/src';
 const PACKAGE_PATH = __DIR__ . '/pkg';
 const TAR_ROOT_PATH = __DIR__ . '/deploy';
-const VIEW_PATH = 'webapp/view';
 const VERSION = '3.0.0 alpha1';
 const RESOURCE_PATH = __DIR__ . '/resource';
-const ROOT_PATH = __DIR__;
+const TEMPLATE_PATH = ROOT_PATH . '/template';
 
 /* 装载程序代码 */
 
@@ -81,7 +81,7 @@ $generator = new \generator\Generator([
 ]);
 $generator->run();
 
-$end_time = microtime();
+$end_time = microtime(true );
 $period = $end_time - $start_time;
 echo "--------------------------------------------------------------------------------".PHP_EOL;
 echo "executed in {$period} seconds";
