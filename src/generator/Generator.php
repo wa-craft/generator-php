@@ -2,12 +2,10 @@
 
 namespace generator;
 
-use generator\helper\{FileHelper,ClassHelper};
-use generator\node\Node;
+use generator\helper\FileHelper;
 use generator\parser\ParserFactory;
 use generator\resource\ResourceFactory;
 use generator\resource\ResourceType;
-use JetBrains\PhpStorm\NoReturn;
 
 /**
  * Class Builder 构建程序
@@ -96,6 +94,75 @@ class Generator
     }
 
     /**
+     * 装载默认设置并进行缓存
+     * @return void
+     */
+    private function setDefaultCache(): void
+    {
+        $this->cache->set('config', $this->config);
+        $this->cache->set('paths', $this->paths);
+        $this->cache->set('project', $this->project);
+    }
+
+    /**
+     * 设置基本目录
+     * @return void
+     */
+    private function setTargetPaths(): void
+    {
+        $root_path = $this->cache->get('config')["target_path"] ?: ROOT_PATH . '/deploy';
+        $target_paths = $this->cache->get('project')["target"] ?: [];
+        foreach ($target_paths as $k => $v) {
+            $target_paths = array_merge($target_paths, [$k => $root_path . '/' . $v]);
+        }
+        $this->cache->set('target_paths', $target_paths);
+    }
+
+    /**
+     * 通过项目配置文件中已经配置的项目内容实例化资源管理器
+     * @return void
+     */
+    private function setResources(): void
+    {
+        $resources = [];
+        foreach (ResourceType::cases() as $case) {
+            $resName = '';
+            if (array_key_exists(strtolower($case->name), $this->project)) {
+                $resName = $this->project[strtolower($case->name)] ?: '';
+            }
+
+            if (!empty($resName)) {
+                $obj = ResourceFactory::create($case);
+                if (!empty($obj)) {
+                    $resources[] = $obj;
+                }
+            }
+        }
+        $this->cache->set('resources', $resources);
+    }
+
+    /**
+     * 实例化 parser，通过 parser 获取经过分析的数据
+     * @return void
+     */
+    private function setParser(): void
+    {
+        $parser_name = $this->project['parser'] ?: 'openapi';
+        $parser = ParserFactory::createByName($parser_name);
+        $data = $parser->getParsedData();
+        $this->cache->set('parser', $parser);
+        $this->cache->set('data', $data);
+    }
+
+    /**
+     * 执行核心处理程序
+     * @return void
+     */
+    private function process(): void
+    {
+    }
+
+    /**
      * 创建项目文件的主方法
      *
      * 执行流程：
@@ -113,40 +180,20 @@ class Generator
         /* 创建基本目录 */
         FileHelper::mkdir(($this->config['target_path'] ?: './deploy'), true);
 
-        /* 装载默认设置并进行缓存 */
-        $this->cache->set('config', $this->config);
-        $this->cache->set('paths', $this->paths);
-        $this->cache->set('project', $this->project);
+        //装载默认设置并进行缓存
+        $this->setDefaultCache();
 
         //设置基本目录
-        $root_path = $this->cache->get('config')["target_path"] ?: ROOT_PATH . '/deploy';
-        $target_paths = $this->cache->get('project')["target"] ?: [];
-        foreach ($target_paths as $k => $v) {
-            $target_paths = array_merge($target_paths, [$k => $root_path . '/' . $v]);
-        }
-        $this->cache->set('target_paths', $target_paths);
+        $this->setTargetPaths();
 
         //通过项目配置文件中已经配置的项目内容实例化资源管理器
-        $resources = [];
-        foreach (ResourceType::cases() as $case) {
-            $resName = '';
-            if (array_key_exists(strtolower($case->name), $this->project)) {
-                $resName = $this->project[strtolower($case->name)] ?: '';
-            }
-
-            if (!empty($resName)) {
-                $obj = ResourceFactory::create($case);
-                if (!empty($obj)) {
-                    $resources[] = $obj;
-                }
-            }
-        }
-        $this->cache->set('resources', $resources);
+        $this->setResources();
 
         //实例化 parser，通过 parser 获取经过分析的数据
-        $parser_name = $this->project['parser'] ?: 'openapi';
-        $parser = ParserFactory::createByName($parser_name);
-        $data = $parser->getParsedData();
+        $this->setParser();
+
+        //处理数据
+        $this->process();
 
         echo "wa-craft/generator-php, Version: " . VERSION . PHP_EOL;
     }
