@@ -156,6 +156,9 @@ class Generator
 
     /**
      * 执行核心处理程序
+     * 处理步骤：
+     *  循环所有处理对象
+     *  通过模板帮助程序处理生成模板
      * @return void
      */
     private function process(): void
