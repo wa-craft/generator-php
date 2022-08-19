@@ -5,11 +5,6 @@ declare(strict_types=1);
 namespace generator\parser;
 
 use generator\helper\FileHelper;
-use generator\parser\legacy\Node;
-use generator\processor\{ProcessorFactory};
-use generator\resource\ResourceType;
-use generator\template\TemplateFactory;
-use generator\template\TemplateType;
 
 class Openapi extends Parser
 {
@@ -19,7 +14,7 @@ class Openapi extends Parser
         foreach ($this->data_files as $f) {
             $data = FileHelper::readDataFromFile(ROOT_PATH . '/' . $f) ?: [];
 
-            //处理数据
+            //处理 paths 数据
             $paths = $data['paths'] ?: [];
             foreach ($paths as $path_key => $path) {
                 $path_array = explode('/', $path_key);
@@ -30,26 +25,13 @@ class Openapi extends Parser
                 }
             }
 
-            $components = $data['components']['schemas'] ?: [];
-            foreach ($components as $component_key => $component) {
-                //var_dump($component);
+            //处理 components 数据
+            $schemas = $data['components']['schemas'] ?: [];
+            foreach ($schemas as $key => $schema) {
+                var_dump($schema);
             }
 
             //根据获取的数据文件创建对象树
-            $project = Node::create('Project', ['data' => $data]);
-            if (!empty($project)) {
-                $this->prepareData();
-            }
         }
-    }
-
-    public function getParsedData(): array
-    {
-        // TODO: Implement getParsedData() method.
-        return [];
-    }
-
-    protected function prepareData()
-    {
     }
 }

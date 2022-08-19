@@ -149,7 +149,7 @@ class Generator
     {
         $parser_name = $this->project['parser'] ?: 'openapi';
         $parser = ParserFactory::createByName($parser_name);
-        $data = $parser->getParsedData();
+        $data = $parser->parse();
         $this->cache->set('parser', $parser);
         $this->cache->set('data', $data);
     }
