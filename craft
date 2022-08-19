@@ -4,6 +4,7 @@
  * wa-craft/generator-php 
  */
 
+$start_time = microtime();
 /**
  * TODO v3.0.0 处理流程
  * 定义全局常量
@@ -15,13 +16,13 @@
  * 修改命令行方式
  */
 /* 定义全局常量 */
-define('SRC_PATH', __DIR__ . '/src');
-define('PACKAGE_PATH', __DIR__ . '/pkg');
-define('TAR_ROOT_PATH', __DIR__ . '/deploy');
-define('VIEW_PATH', 'webapp/view');
-define('VERSION', '3.0.0 alpha1');
-define('RESOURCE_PATH', __DIR__ . '/resource');
-define('ROOT_PATH', __DIR__);
+const SRC_PATH = __DIR__ . '/src';
+const PACKAGE_PATH = __DIR__ . '/pkg';
+const TAR_ROOT_PATH = __DIR__ . '/deploy';
+const VIEW_PATH = 'webapp/view';
+const VERSION = '3.0.0 alpha1';
+const RESOURCE_PATH = __DIR__ . '/resource';
+const ROOT_PATH = __DIR__;
 
 /* 装载程序代码 */
 
@@ -79,3 +80,9 @@ $generator = new \generator\Generator([
     'target' => $cmd['target']
 ]);
 $generator->run();
+
+$end_time = microtime();
+$period = $end_time - $start_time;
+echo "--------------------------------------------------------------------------------".PHP_EOL;
+echo "executed in {$period} seconds";
+echo " and used ". round(memory_get_usage()/1024) . " KB memory";
