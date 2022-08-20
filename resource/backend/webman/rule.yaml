@@ -1,11 +1,79 @@
 ---
+#基本的模板匹配规则
 rules:
-  - node_type: controller
+  - name: config
+    path: "app/config/"
+    stereotype: "php/config"
+  - name: controller
     path: "app/{{application}}/{{module}}/controller"
-    template: "php/class"
-  - node_type: model
+    stereotype: "php/class"
+  - name: model
     path: "app/{{application}}/{{module}}/model"
-    template: "php/class"
-  - node_type: config
-    path: "app/{{application}}/{{module}}/model"
-    template: "php/config"
+    stereotype: "php/class"
+  - name: validator
+    path: "app/{{application}}/{{module}}/validator"
+    stereotype: "php/config"
+    properties:
+      - name: defaultName
+        description: 默认命令名字
+        visibility: protected
+        is_static: true
+        value: 'config:mysql'
+      - name: defaultDescription
+        description: 默认属性描述
+        visibility: protected
+        is_static: true
+        value: '显示当前MySQL服务器配置'
+  - name: command
+    description: 扩展命令
+    stereotype: "php/class"
+    extends: Symfony\Component\Console\Command\Command
+    properties:
+      - name: defaultName
+        description: 默认命令名字
+        visibility: protected
+        is_static: true
+        value: 'config:mysql'
+      - name: defaultDescription
+        description: 默认属性描述
+        visibility: protected
+        is_static: true
+        value: '显示当前MySQL服务器配置'
+    methods:
+      - name: execute
+        visibility: protected
+        params:
+          - name: input
+            type: Symfony\Component\Console\Input\InputInterface
+          - name: output
+            type: Symfony\Component\Console\Output\OutputInterface
+        return: mixed
+        mock: |
+          return self::SUCCESS;
+  - name: middleware
+    stereotype: "php/class"
+    methods:
+      - name: process
+        return: response
+        params:
+          - name: request
+            type: Request
+          - name: handler
+            type: callable
+        mock: |
+          $response = $handler($request);
+          $exception = $response->exception();
+          if ($exception) {
+            echo $exception->getMessage();
+          }
+          return $response;
+  - name: event
+    stereotype: "php/class"
+    methods:
+      - name: register
+        return: void
+        params:
+          - name: request
+            type: Request
+        mock: |
+          Event::emit('{{class_name}}.{{action_name}}', ${{class_name}});

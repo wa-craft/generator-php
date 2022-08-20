@@ -4,18 +4,18 @@
 declare(strict_types=1);
 
 {{/strict_types}}
-{{namespace}}
+namespace {{namespace}};
 {{#uses}}
 
 use {{use_class_fullname}};
 
 {{/uses}}
-{{#classes}}
+{{#enums}}
     {{comment}}
-    {{#is_final}}final {{/is_final}}{{#is_abstract}}abstract {{/is_abstract}}class {{class_name}}{{#extends}} extends {{extend_name}}{{/extends}} {
-{{#traits}}
+    {{#is_final}}final {{/is_final}}{{#is_abstract}}abstract {{/is_abstract}}trait {{class_name}}{{#extends}} extends {{extend_name}}{{/extends}} {
+{{#enums}}
     use {{name}};
-{{/traits}}
+{{/enums}}
     {{#properties}}
         {{comment}}
         {{scope}} {{#is_static}}static {{/is_static}}{{type}} {{name}}{{#has_value}} = {{value}}{{/has_value}};
@@ -30,4 +30,4 @@ use {{use_class_fullname}};
 {{/functions}}
 }
 
-{{/classes}}
+{{/enums}}

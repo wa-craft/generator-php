@@ -1,6 +1,6 @@
 <?php
-
 {{#strict_types}}
+
 declare(strict_types=1);
 
 {{/strict_types}}
@@ -10,9 +10,9 @@ namespace {{namespace}};
 use {{use_class_fullname}};
 
 {{/uses}}
-{{#classes}}
+{{#traits}}
 {{comment}}
-{{#is_final}}final {{/is_final}}{{#is_abstract}}abstract {{/is_abstract}}trait {{class_name}}{{#extends}} extends {{extend_name}}{{/extends}} {
+{{#is_final}}final {{/is_final}}trait {{class_name}}{{#extends}} extends {{extend_name}}{{/extends}} {
 {{#traits}}
     use {{name}};
 {{/traits}}
@@ -30,4 +30,4 @@ use {{use_class_fullname}};
 {{/functions}}
 }
 
-{{/classes}}
+{{/traits}}
