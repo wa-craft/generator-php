@@ -28,14 +28,12 @@ final class TaskManager
 
     /**
      * 添加一个任务
-     * @param $task
+     * @param Task $task
      * @return void
      */
-    public function addTask($task): void
+    public function addTask(Task $task): void
     {
-        if ($task instanceof Task) {
             $this->tasks[] = $task;
-        }
     }
 
     public function getTasks(): array

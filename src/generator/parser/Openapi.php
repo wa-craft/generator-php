@@ -6,8 +6,10 @@ namespace generator\parser;
 
 use generator\Cache;
 use generator\helper\FileHelper;
+use generator\parser\openapi\Schema;
 use generator\task\GenerateCode;
 use generator\task\TaskManager;
+use generator\template\TemplateFactory;
 
 class Openapi extends Parser
 {
@@ -43,11 +45,18 @@ class Openapi extends Parser
         }
     }
 
-    private function processComponents($components, $taskManager, $rules, $templates)
+    /**
+     * @param $components
+     * @param $taskManager
+     * @param $rules
+     * @param $templates
+     * @return void
+     */
+    private function processComponents($components, $taskManager, $rules, $templates): void
     {
         if (!empty($components)) {
                     $schemas = $components['schemas'] ?: [];
-            foreach ($schemas as $key => $schema) {
+            foreach ($schemas as $schema_name => $schema) {
                 //创建 schema 对象
                 //读取rule/rules数据，遍历schema对象需要生成的模板名称
                 $schema_targets = array_key_exists('schema', $rules) ? $rules['schema'] : [];
@@ -57,7 +66,16 @@ class Openapi extends Parser
                             array_key_exists('name', $template) &&
                             $template['name'] === $target
                         ) {
-                            $taskManager->addTask(new GenerateCode(['stereoType' => $target]));
+                            //处理schema核心代码
+                            //使用schema数据生成openapi/Schema对象
+                            $schema['name'] = $schema_name;
+                            $oSchema = new Schema($schema);
+                            //创建模板对象，并把openapi/Schema对象绑定到模板对象
+                            $stereoType = TemplateFactory::create($template['stereotype'], ['schema' => $oSchema]);
+                            //根据资源规则中对模板的定义，进行stereoType对象二次绑定
+
+                            //使用模板对象创建GenerateCode任务对象，并将对象加入到对象管理器
+                            $taskManager->addTask(new GenerateCode(['stereoType' => $stereoType, 'schema' => $schema]));
                         }
                     }
                 }
