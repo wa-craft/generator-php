@@ -16,10 +16,8 @@ class Openapi extends Parser
         $resources = $cache->get('resources') ?: [];
         $tasks = [];
         foreach ($resources as $resource) {
-            $content = $resource->getRules();
-
-            $rules = array_key_exists('rules', $content) ? $content['rules'] : [];
-            $templates = array_key_exists('templates', $content) ? $content['templates'] : [];
+            $rules = $resource->getRules();
+            $templates = $resource->getTemplates();
 
             foreach ($this->data_files as $f) {
                 $data = FileHelper::readDataFromFile(ROOT_PATH . '/' . $f) ?: [];
@@ -51,6 +49,6 @@ class Openapi extends Parser
             }
         }
 
-        var_dump($tasks);
+        $cache->set('tasks', $tasks);
     }
 }

@@ -102,6 +102,7 @@ class Generator
         $this->cache->set('config', $this->config);
         $this->cache->set('paths', $this->paths);
         $this->cache->set('project', $this->project);
+        $this->cache->set('tasks', []);
     }
 
     /**
@@ -163,6 +164,10 @@ class Generator
      */
     private function process(): void
     {
+        $tasks = $this->cache->get('tasks');
+        foreach ($tasks as $key => $task) {
+            echo $task[0] . PHP_EOL;
+        }
     }
 
     /**

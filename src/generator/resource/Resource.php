@@ -32,6 +32,11 @@ abstract class Resource
         return $this->rules;
     }
 
+    public function getTemplates(): array
+    {
+        return $this->templates;
+    }
+
     /**
      * @return void
      */
