@@ -38,6 +38,7 @@ class ResourceFactory
                 //配置处理器的资源管理器
                 $obj->setSourcePath($src);
                 $obj->setTargetPath($tar);
+                $obj->fetchRules();
             }
 
             return $obj;

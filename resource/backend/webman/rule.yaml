@@ -1,18 +1,83 @@
 ---
-#基本的模板匹配规则
+#对象分解规则
 rules:
+  # 全局设置对象
+  global:
+    - config
+    - env
+  #API路径设置对象
+  path:
+    - router
+    - controller
+  #根据数据模型设置的模板对象
+  schema:
+    - model
+    - crudController
+    - validator
+
+#基本的模板匹配规则
+templates:
   - name: config
     path: "app/config/"
     stereotype: "php/config"
   - name: controller
     path: "app/{{application}}/{{module}}/controller"
     stereotype: "php/class"
+  - name: crudController
+    path: "app/{{application}}/{{module}}/controller"
+    stereotype: "php/class"
+    methods:
+      #列表
+      - name: index
+        visibility: public
+        params:
+          - name: request
+            type: think\Request
+        return: mixed
+        content: |
+          return self::SUCCESS;
+      #增加
+      - name: create
+        visibility: public
+        params:
+          - name: request
+            type: think\Request
+        return: mixed
+        content: |
+          return self::SUCCESS;
+      #查看
+      - name: read
+        visibility: public
+        params:
+          - name: request
+            type: think\Request
+        return: mixed
+        content: |
+          return self::SUCCESS;
+      #修改
+      - name: update
+        visibility: public
+        params:
+          - name: request
+            type: think\Request
+        return: mixed
+        content: |
+          return self::SUCCESS;
+      #删除
+      - name: delete
+        visibility: public
+        params:
+          - name: request
+            type: think\Request
+        return: mixed
+        content: |
+          return self::SUCCESS;
   - name: model
     path: "app/{{application}}/{{module}}/model"
     stereotype: "php/class"
   - name: validator
     path: "app/{{application}}/{{module}}/validator"
-    stereotype: "php/config"
+    stereotype: "php/class"
     properties:
       - name: defaultName
         description: 默认命令名字
@@ -48,7 +113,7 @@ rules:
           - name: output
             type: Symfony\Component\Console\Output\OutputInterface
         return: mixed
-        mock: |
+        content: |
           return self::SUCCESS;
   - name: middleware
     stereotype: "php/class"
@@ -60,7 +125,7 @@ rules:
             type: Request
           - name: handler
             type: callable
-        mock: |
+        content: |
           $response = $handler($request);
           $exception = $response->exception();
           if ($exception) {
@@ -75,5 +140,5 @@ rules:
         params:
           - name: request
             type: Request
-        mock: |
+        content: |
           Event::emit('{{class_name}}.{{action_name}}', ${{class_name}});

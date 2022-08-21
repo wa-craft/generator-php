@@ -41,7 +41,7 @@ target:
   frontend: "web"
   # 生成的命令行路径，默认为 commandline
   commandline: "cli"
-  # 生成的运维相关目录，默认为 opration
+  # 生成的运维相关目录，默认为 operation
   operation: "ops"
   # 生成的数据相关目录，默认为 migration
   migration: "db"

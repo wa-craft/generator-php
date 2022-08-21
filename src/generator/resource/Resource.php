@@ -2,6 +2,8 @@
 
 namespace generator\resource;
 
+use generator\helper\FileHelper;
+
 /**
  * 抽象资源管理器
  */
@@ -13,6 +15,7 @@ abstract class Resource
     protected string $targetPath = '';
     //规则配置
     protected array $rules = [];
+    protected array $templates = [];
 
     public function setSourcePath(string $path): void
     {
@@ -22,5 +25,23 @@ abstract class Resource
     public function setTargetPath(string $path): void
     {
         $this->targetPath = $path;
+    }
+
+    public function getRules(): array
+    {
+        return $this->rules;
+    }
+
+    /**
+     * @return void
+     */
+    public function fetchRules(): void
+    {
+        $file = $this->sourcePath . '/rule.yaml';
+        $content = FileHelper::readDataFromFile($file) ?: [];
+        if (!empty($content)) {
+            $this->rules = array_key_exists('rules', $content) ? $content['rules'] : [];
+            $this->templates = array_key_exists('template', $content) ? $content['templates'] : [];
+        }
     }
 }

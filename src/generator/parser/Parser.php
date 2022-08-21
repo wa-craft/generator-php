@@ -14,7 +14,6 @@ use generator\Cache;
 abstract class Parser
 {
     protected array $data_files = [];
-    protected array $processor_keys = [];
 
     public function __construct()
     {
