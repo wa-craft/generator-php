@@ -13,7 +13,8 @@ class Openapi extends Parser
     {
         //获取规则
         $cache = Cache::getInstance();
-        $resources = $cache->get('resources');
+        $resources = $cache->get('resources') ?: [];
+        $tasks = [];
         foreach ($resources as $resource) {
             $content = $resource->getRules();
 
@@ -39,12 +40,17 @@ class Openapi extends Parser
                 if (!empty($components)) {
                     $schemas = $components['schemas'] ?: [];
                     foreach ($schemas as $key => $schema) {
-                        var_dump($schema);
+                        //创建 schema 对象
+                        //读取rule/rules数据，遍历schema对象需要生成的模板名称
+                        $schema_targets = array_key_exists('schema', $rules) ? $rules['schema'] : [];
+                        foreach ($schema_targets as $target) {
+                            $tasks[] = [$target, $schema];
+                        }
                     }
                 }
-
-                //根据获取的数据文件创建对象树
             }
         }
+
+        var_dump($tasks);
     }
 }
