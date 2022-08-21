@@ -4,12 +4,27 @@ declare(strict_types=1);
 
 namespace generator\task;
 
+use generator\Cache;
+
 /**
  * 任务管理器
  */
 final class TaskManager
 {
     private array $tasks = [];
+    private static ?TaskManager $instance = null;
+    /**
+     * 创建并返回实例
+     * @return null|TaskManager
+     */
+    public static function getInstance(): TaskManager|null
+    {
+        if (self::$instance === null || !(self::$instance instanceof self)) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
 
     /**
      * 添加一个任务
@@ -21,6 +36,11 @@ final class TaskManager
         if ($task instanceof Task) {
             $this->tasks[] = $task;
         }
+    }
+
+    public function getTasks(): array
+    {
+        return $this->tasks;
     }
 
     /**

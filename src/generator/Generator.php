@@ -6,6 +6,7 @@ use generator\helper\FileHelper;
 use generator\parser\ParserFactory;
 use generator\resource\ResourceFactory;
 use generator\resource\ResourceType;
+use generator\task\TaskManager;
 
 /**
  * Class Builder 构建程序
@@ -20,6 +21,8 @@ class Generator
     private array $project = [];
     //数据缓存
     private ?Cache $cache = null;
+    //任务管理
+    private ?TaskManager $taskManager = null;
 
     public function __construct($params = [])
     {
@@ -34,6 +37,7 @@ class Generator
         }
 
         $this->cache = Cache::getInstance();
+        $this->taskManager = TaskManager::getInstance();
     }
 
     /**
@@ -102,7 +106,6 @@ class Generator
         $this->cache->set('config', $this->config);
         $this->cache->set('paths', $this->paths);
         $this->cache->set('project', $this->project);
-        $this->cache->set('tasks', []);
     }
 
     /**
@@ -164,9 +167,9 @@ class Generator
      */
     private function process(): void
     {
-        $tasks = $this->cache->get('tasks');
+        $tasks = $this->taskManager->getTasks();
         foreach ($tasks as $key => $task) {
-            echo $task[0] . PHP_EOL;
+            $task->execute();
         }
     }
 

@@ -6,8 +6,13 @@ namespace generator\task;
 
 class GenerateCode extends Task
 {
+    private string $stereoType = '';
+    public function __construct(array $params)
+    {
+        $this->stereoType = $params['stereoType'] ?: '';
+    }
     public function execute()
     {
-     // TODO: Implement execute() method.
+        echo $this->stereoType . PHP_EOL;
     }
 }

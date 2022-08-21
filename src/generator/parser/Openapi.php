@@ -6,6 +6,8 @@ namespace generator\parser;
 
 use generator\Cache;
 use generator\helper\FileHelper;
+use generator\task\GenerateCode;
+use generator\task\TaskManager;
 
 class Openapi extends Parser
 {
@@ -13,8 +15,9 @@ class Openapi extends Parser
     {
         //获取规则
         $cache = Cache::getInstance();
+        $taskManager = TaskManager::getInstance();
         $resources = $cache->get('resources') ?: [];
-        $tasks = [];
+
         foreach ($resources as $resource) {
             $rules = $resource->getRules();
             $templates = $resource->getTemplates();
@@ -35,20 +38,30 @@ class Openapi extends Parser
 
                 //处理 components 数据
                 $components = $data['components'] ?: [];
-                if (!empty($components)) {
+                $this->processComponents($components, $taskManager, $rules, $templates);
+            }
+        }
+    }
+
+    private function processComponents($components, $taskManager, $rules, $templates)
+    {
+        if (!empty($components)) {
                     $schemas = $components['schemas'] ?: [];
-                    foreach ($schemas as $key => $schema) {
-                        //创建 schema 对象
-                        //读取rule/rules数据，遍历schema对象需要生成的模板名称
-                        $schema_targets = array_key_exists('schema', $rules) ? $rules['schema'] : [];
-                        foreach ($schema_targets as $target) {
-                            $tasks[] = [$target, $schema];
+            foreach ($schemas as $key => $schema) {
+                //创建 schema 对象
+                //读取rule/rules数据，遍历schema对象需要生成的模板名称
+                $schema_targets = array_key_exists('schema', $rules) ? $rules['schema'] : [];
+                foreach ($schema_targets as $target) {
+                    foreach ($templates as $template) {
+                        if (
+                            array_key_exists('name', $template) &&
+                            $template['name'] === $target
+                        ) {
+                            $taskManager->addTask(new GenerateCode(['stereoType' => $target]));
                         }
                     }
                 }
             }
         }
-
-        $cache->set('tasks', $tasks);
     }
 }

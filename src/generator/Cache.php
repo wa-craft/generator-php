@@ -8,7 +8,7 @@ namespace generator;
  */
 class Cache
 {
-    private static $instance = null;
+    private static ?Cache $instance = null;
     private $cache = [];
 
     /**

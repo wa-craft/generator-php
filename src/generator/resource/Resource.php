@@ -46,7 +46,7 @@ abstract class Resource
         $content = FileHelper::readDataFromFile($file) ?: [];
         if (!empty($content)) {
             $this->rules = array_key_exists('rules', $content) ? $content['rules'] : [];
-            $this->templates = array_key_exists('template', $content) ? $content['templates'] : [];
+            $this->templates = array_key_exists('templates', $content) ? $content['templates'] : [];
         }
     }
 }
