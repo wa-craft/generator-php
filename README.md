@@ -3,7 +3,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/goldeagle/think-builder/v/unstable)](//packagist.org/packages/goldeagle/think-builder)
 [![License](https://poser.pugx.org/goldeagle/think-builder/license)](https://packagist.org/packages/goldeagle/think-builder)
 
-A cli tool to build applications for php webapps.
+A scaffold tool and library to build web applications.
 
 ## 1. 功能
 * 自动创建默认的目录结构
