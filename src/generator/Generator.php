@@ -170,7 +170,7 @@ class Generator
     private function process(): void
     {
         $tasks = $this->taskManager->getTasks();
-        foreach ($tasks as $key => $task) {
+        foreach ($tasks as $task) {
             $task->execute();
         }
     }
