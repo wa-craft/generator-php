@@ -6,6 +6,7 @@ namespace generator\parser;
 
 use generator\Cache;
 use generator\helper\FileHelper;
+use generator\parser\openapi\Path;
 use generator\parser\openapi\Schema;
 use generator\task\GenerateCode;
 use generator\task\TaskManager;
@@ -19,6 +20,7 @@ class Openapi extends Parser
         $cache = Cache::getInstance();
         $taskManager = TaskManager::getInstance();
         $resources = $cache->get('resources') ?: [];
+        $paths = $cache->get('paths') ?: [];
 
         foreach ($resources as $resource) {
             $rules = $resource->getRules();
@@ -26,7 +28,6 @@ class Openapi extends Parser
 
             foreach ($this->data_files as $f) {
                 $data = FileHelper::readDataFromFile(ROOT_PATH . '/' . $f) ?: [];
-
                 //处理 paths 数据
                 $paths = $data['paths'] ?: [];
                 foreach ($paths as $path_key => $path) {
@@ -36,6 +37,8 @@ class Openapi extends Parser
                         $params['controller'] = array_pop($path_array);
                         $params['path'] = implode('/', $path_array);
                     }
+
+                    $paths[] = new Path();
                 }
 
                 //处理 components 数据
@@ -43,6 +46,8 @@ class Openapi extends Parser
                 $this->processComponents($components, $taskManager, $rules, $templates);
             }
         }
+
+        $cache->set('paths', $paths);
     }
 
     /**
@@ -54,6 +59,8 @@ class Openapi extends Parser
      */
     private function processComponents($components, $taskManager, $rules, $templates): void
     {
+        $cache = Cache::getInstance();
+        $cSchemas = $cache->get('schemas') ?: [];
         if (!empty($components)) {
                     $schemas = $components['schemas'] ?: [];
             foreach ($schemas as $schema_name => $schema) {
@@ -70,6 +77,7 @@ class Openapi extends Parser
                             //使用schema数据生成openapi/Schema对象
                             $schema['name'] = $schema_name;
                             $oSchema = new Schema($schema);
+                            $cSchemas[] = $oSchema;
                             //创建模板对象，并把openapi/Schema对象绑定到模板对象
                             $stereoType = TemplateFactory::create($template['stereotype'], ['schema' => $oSchema]);
                             //根据资源规则中对模板的定义，进行stereoType对象二次绑定
@@ -81,5 +89,7 @@ class Openapi extends Parser
                 }
             }
         }
+
+        $cache->set('schemas', $cSchemas);
     }
 }
