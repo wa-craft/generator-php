@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f9cd0e075ecc5fbb8d5dcdc79196923",
+    "content-hash": "cf8f96202a06cb2d327b160137bd2f44",
     "packages": [
         {
             "name": "kevinlebrun/colors.php",
@@ -73,12 +73,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/mustache.php.git",
-                "reference": "e6256ea0d7f1e947ed24b22965df8c0452792c90"
+                "reference": "b03b8894906346e7f88a5b7567822937ea91ce00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/e6256ea0d7f1e947ed24b22965df8c0452792c90",
-                "reference": "e6256ea0d7f1e947ed24b22965df8c0452792c90",
+                "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/b03b8894906346e7f88a5b7567822937ea91ce00",
+                "reference": "b03b8894906346e7f88a5b7567822937ea91ce00",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -122,7 +122,7 @@
                 "issues": "https://github.com/bobthecow/mustache.php/issues",
                 "source": "https://github.com/bobthecow/mustache.php/tree/main"
             },
-            "time": "2022-08-09T18:19:28+00:00"
+            "time": "2022-08-23T13:12:39+00:00"
         },
         {
             "name": "nategood/commando",
@@ -192,7 +192,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">= 8.1.0"
+        "php": ">= 8.1.0",
+        "ext-yaml": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
