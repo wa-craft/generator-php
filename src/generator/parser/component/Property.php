@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace generator\parser\openapi;
+namespace generator\parser\component;
 
 class Property
 {

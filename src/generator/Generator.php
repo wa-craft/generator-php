@@ -153,7 +153,7 @@ class Generator
      */
     private function setParser(): void
     {
-        $parser_name = $this->project['parser'] ?: 'openapi';
+        $parser_name = $this->project['parser'] ?: 'component';
         $parser = ParserFactory::createByName($parser_name);
         $data = $parser->parse();
         $this->cache->set('parser', $parser);

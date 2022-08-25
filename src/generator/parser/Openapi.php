@@ -6,12 +6,15 @@ namespace generator\parser;
 
 use generator\Cache;
 use generator\helper\FileHelper;
-use generator\parser\openapi\Path;
-use generator\parser\openapi\Schema;
+use generator\parser\component\Path;
+use generator\parser\component\Schema;
 use generator\task\GenerateCode;
 use generator\task\TaskManager;
 use generator\template\TemplateFactory;
 
+/**
+ * 从 component 定义文件生成 paths & schemas 数据的 parser
+ */
 class Openapi extends Parser
 {
     public function parse(): void
