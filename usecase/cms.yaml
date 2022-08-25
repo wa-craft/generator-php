@@ -58,7 +58,7 @@ operations:
   - http/nginx
 #数据文件的路径
 data: 
-  - "./sample/fmcs-phase2.openapi.json"
+  - "./usecase/fmcs-phase2.openapi.json"
 
 #数据库存储软件配置插件的目录，相对于 ./resource 目录
 schema:

@@ -50,7 +50,7 @@ $cmd->option('c')
 $cmd->option('p')
     ->aka('project')
     ->describedAs('define a project project file')
-    ->default(__DIR__ . '/sample/cms.yaml')
+    ->default(__DIR__ . '/usecase/cms.yaml')
     ->map(function ($project) {
         return $project;
     });
