@@ -2,7 +2,7 @@
 
 namespace generator\helper;
 
-use generator\Cache;
+use generator\Context;
 
 /**
  * Class Template 模板管理类
@@ -60,11 +60,11 @@ class TemplateHelper
         if (key_exists($template_name, self::$templates)) {
             $file = self::$templates[$template_name];
             if (preg_match('/^view/', $template_name)) {
-                $theme = Cache::getInstance()->get('theme') ?? Cache::getInstance()->get('config')['defaults']['theme'];
+                $theme = Context::getInstance()->get('theme') ?? Context::getInstance()->get('config')['defaults']['theme'];
                 $file = str_replace('{{THEME}}', $theme, self::$templates[$template_name]);
             }
 
-            $paths = (Cache::getInstance())->get('paths');
+            $paths = (Context::getInstance())->get('paths');
             $tmpl_file = ($paths['backend'] ?: '') . '/' . $file;
             $content = file_get_contents($tmpl_file);
         }

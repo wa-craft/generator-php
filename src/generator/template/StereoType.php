@@ -12,7 +12,5 @@ use generator\parser\openapi\Schema;
 abstract class StereoType
 {
     public string $name = '';
-
-    protected ?StereoType $stereoType = null;
-    protected ?Schema $schema = null;
+    public string $lang = '';
 }

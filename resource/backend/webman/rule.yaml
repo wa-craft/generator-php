@@ -18,13 +18,13 @@ rules:
 #基本的模板匹配规则
 templates:
   - name: config
-    path: "app/config/"
+    path: "application/config/"
     stereotype: "php/config"
   - name: controller
-    path: "app/{{application}}/{{module}}/controller"
+    path: "application/{{application}}/{{module}}/controller"
     stereotype: "php/class"
   - name: crudController
-    path: "app/{{application}}/{{module}}/controller"
+    path: "application/{{application}}/{{module}}/controller"
     stereotype: "php/class"
     methods:
       #列表
@@ -73,10 +73,10 @@ templates:
         content: |
           return self::SUCCESS;
   - name: model
-    path: "app/{{application}}/{{module}}/model"
+    path: "application/{{application}}/{{module}}/model"
     stereotype: "php/class"
   - name: validator
-    path: "app/{{application}}/{{module}}/validator"
+    path: "application/{{application}}/{{module}}/validator"
     stereotype: "php/class"
     properties:
       - name: defaultName

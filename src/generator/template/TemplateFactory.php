@@ -14,6 +14,8 @@ class TemplateFactory
             . "\\Stereotype"
             . ucfirst($type), $params);
         //处理 schema 对象
+        $obj->name = $type;
+        $obj->lang = $lang;
         if (!empty($params)) {
         }
         return ($obj instanceof StereoType) ? $obj : null;

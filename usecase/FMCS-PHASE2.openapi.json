@@ -1,0 +1,6327 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FMCS-PHASE2",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "auth"
+    },
+    {
+      "name": "craft"
+    },
+    {
+      "name": "craft/project"
+    },
+    {
+      "name": "craft/application"
+    },
+    {
+      "name": "craft/entity"
+    },
+    {
+      "name": "designer"
+    },
+    {
+      "name": "designer/mrd"
+    },
+    {
+      "name": "designer/data"
+    },
+    {
+      "name": "thing"
+    }
+  ],
+  "paths": {
+    "/craft/project/create": {
+      "post": {
+        "summary": "项目：新增",
+        "x-apifox-folder": "craft/project",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/project"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275812-run"
+      }
+    },
+    "/craft/project/update": {
+      "patch": {
+        "summary": "项目：修改",
+        "x-apifox-folder": "craft/project",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/project"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275876-run"
+      }
+    },
+    "/craft/project/index": {
+      "get": {
+        "summary": "项目：列表",
+        "x-apifox-folder": "craft/project",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/project"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275887-run"
+      }
+    },
+    "/craft/project/read": {
+      "get": {
+        "summary": "项目：查看",
+        "x-apifox-folder": "craft/project",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/project"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275914-run"
+      }
+    },
+    "/craft/domain/create": {
+      "post": {
+        "summary": "域名：新增",
+        "x-apifox-folder": "craft/project",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/project"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275918-run"
+      }
+    },
+    "/craft/domain/index": {
+      "get": {
+        "summary": "域名：列表",
+        "x-apifox-folder": "craft/project",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/project"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275922-run"
+      }
+    },
+    "/craft/domain/read": {
+      "get": {
+        "summary": "域名：查看",
+        "x-apifox-folder": "craft/project",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/project"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275924-run"
+      }
+    },
+    "/craft/domain/update": {
+      "patch": {
+        "summary": "域名：修改",
+        "x-apifox-folder": "craft/project",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/project"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275927-run"
+      }
+    },
+    "/craft/domain/delete": {
+      "delete": {
+        "summary": "域名：删除",
+        "x-apifox-folder": "craft/project",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/project"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275928-run"
+      }
+    },
+    "/craft/project/delete": {
+      "delete": {
+        "summary": "项目：删除",
+        "x-apifox-folder": "craft/project",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/project"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275932-run"
+      }
+    },
+    "/craft/application/create": {
+      "post": {
+        "summary": "应用：新增",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275952-run"
+      }
+    },
+    "/craft/application/index": {
+      "get": {
+        "summary": "应用：列表",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275955-run"
+      }
+    },
+    "/craft/application/read": {
+      "get": {
+        "summary": "应用：查看",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275956-run"
+      }
+    },
+    "/craft/application/update": {
+      "patch": {
+        "summary": "应用：修改",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275965-run"
+      }
+    },
+    "/craft/application/delete": {
+      "delete": {
+        "summary": "应用：删除",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275966-run"
+      }
+    },
+    "/craft/framework/create": {
+      "post": {
+        "summary": "框架：新增",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275982-run"
+      }
+    },
+    "/craft/framework/index": {
+      "get": {
+        "summary": "框架：列表",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275988-run"
+      }
+    },
+    "/craft/framework/read": {
+      "get": {
+        "summary": "框架：查看",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34275999-run"
+      }
+    },
+    "/craft/framework/update": {
+      "patch": {
+        "summary": "框架：修改",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276007-run"
+      }
+    },
+    "/craft/framework/delete": {
+      "delete": {
+        "summary": "框架：删除",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276014-run"
+      }
+    },
+    "/craft/language/create": {
+      "post": {
+        "summary": "语言：新增",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276017-run"
+      }
+    },
+    "/craft/language/index": {
+      "get": {
+        "summary": "语言：列表",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276019-run"
+      }
+    },
+    "/craft/language/read": {
+      "get": {
+        "summary": "语言：查看",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276020-run"
+      }
+    },
+    "/craft/language/delete": {
+      "delete": {
+        "summary": "语言：删除",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276026-run"
+      }
+    },
+    "/craft/datasource/create": {
+      "post": {
+        "summary": "数据源：新增",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276028-run"
+      }
+    },
+    "/craft/datasource/index": {
+      "get": {
+        "summary": "数据源：列表",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276030-run"
+      }
+    },
+    "/craft/datasource/read": {
+      "get": {
+        "summary": "数据源：查看",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276036-run"
+      }
+    },
+    "/craft/datasource/delete": {
+      "delete": {
+        "summary": "数据源：删除",
+        "x-apifox-folder": "craft/application",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/application"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276037-run"
+      }
+    },
+    "/craft/entity/create": {
+      "post": {
+        "summary": "实体：新增",
+        "x-apifox-folder": "craft/entity",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/entity"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276056-run"
+      }
+    },
+    "/craft/entity/index": {
+      "get": {
+        "summary": "实体：列表",
+        "x-apifox-folder": "craft/entity",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/entity"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276079-run"
+      }
+    },
+    "/craft/entity/read": {
+      "get": {
+        "summary": "实体：查看",
+        "x-apifox-folder": "craft/entity",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/entity"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276080-run"
+      }
+    },
+    "/craft/entity/update": {
+      "patch": {
+        "summary": "实体：更新",
+        "x-apifox-folder": "craft/entity",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/entity"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276082-run"
+      }
+    },
+    "/craft/entity/delete": {
+      "delete": {
+        "summary": "实体：删除",
+        "x-apifox-folder": "craft/entity",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/entity"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276083-run"
+      }
+    },
+    "/craft/entity_relation/create": {
+      "post": {
+        "summary": "实体关系：新增",
+        "x-apifox-folder": "craft/entity",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/entity"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276087-run"
+      }
+    },
+    "/craft/entity_relation/read": {
+      "get": {
+        "summary": "实体关系：查看",
+        "x-apifox-folder": "craft/entity",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/entity"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276096-run"
+      }
+    },
+    "/craft/entity_relation/update": {
+      "patch": {
+        "summary": "实体关系：更新",
+        "x-apifox-folder": "craft/entity",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/entity"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276102-run"
+      }
+    },
+    "/craft/entity_relation/delete": {
+      "delete": {
+        "summary": "实体关系：删除",
+        "x-apifox-folder": "craft/entity",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "craft/entity"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276110-run"
+      }
+    },
+    "/thing/thing/create": {
+      "post": {
+        "summary": "物：新增",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276586-run"
+      }
+    },
+    "/thing/thing/index": {
+      "get": {
+        "summary": "物：列表",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276588-run"
+      }
+    },
+    "/thing/thing/read": {
+      "get": {
+        "summary": "物：查看",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276590-run"
+      }
+    },
+    "/thing/thing/update": {
+      "patch": {
+        "summary": "物：修改",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276592-run"
+      }
+    },
+    "/thing/thing/delete": {
+      "delete": {
+        "summary": "物：删除",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276594-run"
+      }
+    },
+    "/thing/model/create": {
+      "post": {
+        "summary": "物模型：新增",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276614-run"
+      }
+    },
+    "/thing/model/index": {
+      "get": {
+        "summary": "物模型：列表",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276616-run"
+      }
+    },
+    "/thing/model/read": {
+      "get": {
+        "summary": "物模型：查看",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276619-run"
+      }
+    },
+    "/thing/model/update": {
+      "patch": {
+        "summary": "物模型：修改",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276621-run"
+      }
+    },
+    "/thing/model/delete": {
+      "delete": {
+        "summary": "物模型：删除",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276642-run"
+      }
+    },
+    "/thing/model/clear": {
+      "post": {
+        "summary": "物模型：清空",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276648-run"
+      }
+    },
+    "/thing/property/create": {
+      "post": {
+        "summary": "物属性：新增",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276649-run"
+      }
+    },
+    "/thing/property/index": {
+      "get": {
+        "summary": "物属性：列表",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276770-run"
+      }
+    },
+    "/thing/property/read": {
+      "get": {
+        "summary": "物属性：查看",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276778-run"
+      }
+    },
+    "/thing/model/clone": {
+      "post": {
+        "summary": "物模型：克隆",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276783-run"
+      }
+    },
+    "/thing/thing/clone": {
+      "post": {
+        "summary": "物：克隆",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276784-run"
+      }
+    },
+    "/thing/property/update": {
+      "patch": {
+        "summary": "物属性：修改",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276790-run"
+      }
+    },
+    "/thing/property/delete": {
+      "delete": {
+        "summary": "物属性：删除",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276798-run"
+      }
+    },
+    "/thing/property/import": {
+      "post": {
+        "summary": "物属性：导入",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276801-run"
+      }
+    },
+    "/thing/model/import": {
+      "post": {
+        "summary": "物模型：导入",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276803-run"
+      }
+    },
+    "/thing/thing/import": {
+      "post": {
+        "summary": "物：导入",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276813-run"
+      }
+    },
+    "/thing/event/create": {
+      "post": {
+        "summary": "物事件：新增",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276848-run"
+      }
+    },
+    "/thing/event/index": {
+      "get": {
+        "summary": "物事件：列表",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276855-run"
+      }
+    },
+    "/thing/event/read": {
+      "get": {
+        "summary": "物事件：查看",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276857-run"
+      }
+    },
+    "/thing/event/update": {
+      "patch": {
+        "summary": "物事件：修改",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276864-run"
+      }
+    },
+    "/thing/event/delete": {
+      "delete": {
+        "summary": "物事件：删除",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276885-run"
+      }
+    },
+    "/thing/service/create": {
+      "post": {
+        "summary": "物服务：新增",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276887-run"
+      }
+    },
+    "/thing/service/index": {
+      "get": {
+        "summary": "物服务：列表",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276890-run"
+      }
+    },
+    "/thing/service/read": {
+      "get": {
+        "summary": "物服务：查看",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276891-run"
+      }
+    },
+    "/thing/service/delete": {
+      "delete": {
+        "summary": "物服务：删除",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276904-run"
+      }
+    },
+    "/thing/service/update": {
+      "patch": {
+        "summary": "物服务：修改",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276913-run"
+      }
+    },
+    "/thing/service/start": {
+      "post": {
+        "summary": "物服务：启动",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276915-run"
+      }
+    },
+    "/thing/service/stop": {
+      "post": {
+        "summary": "物服务：停止",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276919-run"
+      }
+    },
+    "/thing/service/restart": {
+      "post": {
+        "summary": "物服务：重启",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276927-run"
+      }
+    },
+    "/thing/event/execute": {
+      "post": {
+        "summary": "物事件：触发",
+        "x-apifox-folder": "thing",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "thing"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34276935-run"
+      }
+    },
+    "/designer/data/metadata/fetch": {
+      "get": {
+        "summary": "元数据：获取",
+        "x-apifox-folder": "designer/data",
+        "x-apifox-status": "testing",
+        "deprecated": false,
+        "description": "获取 分组->采集器->点信息 的树状结构，默认情况下获取所有的信息",
+        "tags": [
+          "designer/data"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "请求应用配置的token，在测试阶段可以为空",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reqid",
+            "in": "header",
+            "description": "请求时生成的uuid，用于跟踪日志和调试",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "title": "请求模型"
+                  },
+                  "clause": {
+                    "type": "string",
+                    "title": "请求条件"
+                  },
+                  "pagination": {
+                    "type": "object",
+                    "properties": {
+                      "index": {
+                        "type": "integer",
+                        "title": "当前页码"
+                      },
+                      "capacity": {
+                        "type": "integer",
+                        "title": "单页显示数量",
+                        "default": 10,
+                        "minimum": 10,
+                        "maximum": 100
+                      },
+                      "sort": {
+                        "type": "string",
+                        "title": "排序属性"
+                      },
+                      "order": {
+                        "type": "string",
+                        "title": "排序方式",
+                        "enum": [
+                          "1",
+                          "2"
+                        ],
+                        "x-apifox": {
+                          "enumDescriptions": {
+                            "1": "ASC 正序",
+                            "2": "DESC 逆序"
+                          }
+                        }
+                      }
+                    },
+                    "title": "请求分页条件",
+                    "x-apifox-orders": [
+                      "index",
+                      "capacity",
+                      "sort",
+                      "order"
+                    ],
+                    "required": [
+                      "index"
+                    ],
+                    "x-apifox-ignore-properties": []
+                  },
+                  "ql": {
+                    "type": "string",
+                    "title": "查询",
+                    "description": "sql或者graphql，直接提交接口进行查询"
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GB9XFG17Z67E9CY5C1AJYPFS"
+                ],
+                "required": [
+                  "model",
+                  "clause"
+                ],
+                "x-apifox-refs": {
+                  "01GB9XFG17Z67E9CY5C1AJYPFS": {
+                    "$ref": "#/components/schemas/Request",
+                    "x-apifox-overrides": {}
+                  }
+                },
+                "description": "默认情况下可以为空",
+                "x-apifox-ignore-properties": [
+                  "model",
+                  "clause",
+                  "pagination",
+                  "ql"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "metaData": {
+                          "$ref": "#/components/schemas/MetaData",
+                          "x-apifox-overrides": {}
+                        }
+                      },
+                      "title": "返回值",
+                      "x-apifox-orders": [
+                        "metaData"
+                      ],
+                      "required": [
+                        "metaData"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {},
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-34278121-run"
+      }
+    },
+    "/designer/mrd/rule/index": {
+      "get": {
+        "summary": "数学规则：列表",
+        "x-apifox-folder": "designer/mrd",
+        "x-apifox-status": "testing",
+        "deprecated": false,
+        "description": "获取 分组->变量 信息，变量信息为通过规则设计引擎生成的公式名称",
+        "tags": [
+          "designer/mrd"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "请求应用配置的token，在测试阶段可以为空",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reqid",
+            "in": "header",
+            "description": "请求时生成的uuid，用于跟踪日志和调试",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "title": "请求模型"
+                  },
+                  "clause": {
+                    "type": "string",
+                    "title": "请求条件"
+                  },
+                  "pagination": {
+                    "type": "object",
+                    "properties": {
+                      "index": {
+                        "type": "integer",
+                        "title": "当前页码"
+                      },
+                      "capacity": {
+                        "type": "integer",
+                        "title": "单页显示数量",
+                        "default": 10,
+                        "minimum": 10,
+                        "maximum": 100
+                      },
+                      "sort": {
+                        "type": "string",
+                        "title": "排序属性"
+                      },
+                      "order": {
+                        "type": "string",
+                        "title": "排序方式",
+                        "enum": [
+                          "1",
+                          "2"
+                        ],
+                        "x-apifox": {
+                          "enumDescriptions": {
+                            "1": "ASC 正序",
+                            "2": "DESC 逆序"
+                          }
+                        }
+                      }
+                    },
+                    "title": "请求分页条件",
+                    "x-apifox-orders": [
+                      "index",
+                      "capacity",
+                      "sort",
+                      "order"
+                    ],
+                    "required": [
+                      "index"
+                    ],
+                    "x-apifox-ignore-properties": []
+                  },
+                  "ql": {
+                    "type": "string",
+                    "title": "查询",
+                    "description": "sql或者graphql，直接提交接口进行查询"
+                  }
+                },
+                "x-apifox-orders": [
+                  "01GB9XGMK5RP1YF434MJ7JEXS3"
+                ],
+                "required": [
+                  "model",
+                  "clause"
+                ],
+                "x-apifox-refs": {
+                  "01GB9XGMK5RP1YF434MJ7JEXS3": {
+                    "$ref": "#/components/schemas/Request",
+                    "x-apifox-overrides": {}
+                  }
+                },
+                "x-apifox-ignore-properties": [
+                  "model",
+                  "clause",
+                  "pagination",
+                  "ql"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "title": "规则id"
+                        },
+                        "uuid": {
+                          "type": "string",
+                          "title": "规则uuid",
+                          "description": "每次创建时后端生成"
+                        },
+                        "infixExpr": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {},
+                            "x-apifox-orders": [],
+                            "x-apifox-ignore-properties": []
+                          },
+                          "title": "中缀数据"
+                        },
+                        "postfixExpr": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {},
+                            "x-apifox-orders": [],
+                            "x-apifox-ignore-properties": []
+                          },
+                          "title": "后缀数据"
+                        },
+                        "graph": {
+                          "type": "object",
+                          "properties": {},
+                          "title": "图数据",
+                          "x-apifox-ignore-properties": [],
+                          "x-apifox-orders": []
+                        }
+                      },
+                      "title": "返回值",
+                      "x-apifox-orders": [
+                        "01GBRZAB5BKB0TRCV5WEKESZP9"
+                      ],
+                      "required": [
+                        "uuid",
+                        "infixExpr",
+                        "postfixExpr",
+                        "graph"
+                      ],
+                      "x-apifox-refs": {
+                        "01GBRZAB5BKB0TRCV5WEKESZP9": {
+                          "$ref": "#/components/schemas/Rule",
+                          "x-apifox-overrides": {}
+                        }
+                      },
+                      "x-apifox-ignore-properties": [
+                        "id",
+                        "uuid",
+                        "infixExpr",
+                        "postfixExpr",
+                        "graph"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {},
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36308818-run"
+      }
+    },
+    "/designer/mrd/rule/create": {
+      "post": {
+        "summary": "数学规则：新增",
+        "x-apifox-folder": "designer/mrd",
+        "x-apifox-status": "testing",
+        "deprecated": false,
+        "description": "创建一条新的规则",
+        "tags": [
+          "designer/mrd"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "请求应用配置的token，在测试阶段可以为空",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reqid",
+            "in": "header",
+            "description": "请求时生成的uuid，用于跟踪日志和调试",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "title": "元数据名称"
+                  },
+                  "infixExpr": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": []
+                    },
+                    "title": "中缀数据"
+                  },
+                  "postfixExpr": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": []
+                    },
+                    "title": "后缀数据"
+                  },
+                  "graph": {
+                    "type": "object",
+                    "properties": {},
+                    "title": "图数据",
+                    "x-apifox-ignore-properties": [],
+                    "x-apifox-orders": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "name",
+                  "infixExpr",
+                  "postfixExpr",
+                  "graph"
+                ],
+                "required": [
+                  "infixExpr",
+                  "postfixExpr",
+                  "name",
+                  "graph"
+                ],
+                "x-apifox-refs": {},
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GB9Y0ZGS4FEK7XCYBK30Q2BW"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GB9Y0ZGS4FEK7XCYBK30Q2BW": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36315576-run"
+      }
+    },
+    "/designer/rule/rule/update": {
+      "patch": {
+        "summary": "数学规则：修改",
+        "x-apifox-folder": "designer/mrd",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "获取所有",
+        "tags": [
+          "designer/mrd"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "请求应用配置的token，在测试阶段可以为空",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reqid",
+            "in": "header",
+            "description": "请求时生成的uuid，用于跟踪日志和调试",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GB9Y5VB5STHYKQEG93GXKDQG"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GB9Y5VB5STHYKQEG93GXKDQG": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36316178-run"
+      }
+    },
+    "/designer/mrd/rule/delete": {
+      "delete": {
+        "summary": "数学规则：删除",
+        "x-apifox-folder": "designer/mrd",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "删除一条数学规则",
+        "tags": [
+          "designer/mrd"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "请求应用配置的token，在测试阶段可以为空",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reqid",
+            "in": "header",
+            "description": "请求时生成的uuid，用于跟踪日志和调试",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GB9YBGM13X816CAM10PP4T6W"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GB9YBGM13X816CAM10PP4T6W": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36317246-run"
+      }
+    },
+    "/designer/mrd/group/index": {
+      "get": {
+        "summary": "规则分组：列表",
+        "x-apifox-folder": "designer/mrd",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "数学规则分组树状列表",
+        "tags": [
+          "designer/mrd"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "请求应用配置的token，在测试阶段可以为空",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reqid",
+            "in": "query",
+            "description": "请求时生成的uuid，用于跟踪日志和调试",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GB9YDGNY42RN01XMXA7MGRRG"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GB9YDGNY42RN01XMXA7MGRRG": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36317970-run"
+      }
+    },
+    "/designer/mrd/group/create": {
+      "post": {
+        "summary": "规则分组：新增",
+        "x-apifox-folder": "designer/mrd",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "designer/mrd"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "请求应用配置的token，在测试阶段可以为空",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reqid",
+            "in": "header",
+            "description": "请求时生成的uuid，用于跟踪日志和调试",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GB9YHH7T5FPMA33ZX0798748"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GB9YHH7T5FPMA33ZX0798748": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36318529-run"
+      }
+    },
+    "/designer/mrd/group/update": {
+      "patch": {
+        "summary": "规则分组：修改",
+        "x-apifox-folder": "designer/mrd",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "designer/mrd"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "请求应用配置的token，在测试阶段可以为空",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reqid",
+            "in": "header",
+            "description": "请求时生成的uuid，用于跟踪日志和调试",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GB9YN8W3Q9D4F0BDVF582387"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GB9YN8W3Q9D4F0BDVF582387": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36319126-run"
+      }
+    },
+    "/designer/mrd/delete": {
+      "delete": {
+        "summary": "规则分组：删除",
+        "x-apifox-folder": "designer/mrd",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "designer/mrd"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "请求应用配置的token，在测试阶段可以为空",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reqid",
+            "in": "header",
+            "description": "请求时生成的uuid，用于跟踪日志和调试",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GB9YPR3GGD8P8VYE095M2E75"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GB9YPR3GGD8P8VYE095M2E75": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36319267-run"
+      }
+    },
+    "/designer/mrd/group/purge": {
+      "post": {
+        "summary": "规则分组：清空",
+        "x-apifox-folder": "designer/mrd",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "清除所有规则分组下的子分组和数学规则（慎用）",
+        "tags": [
+          "designer/mrd"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "请求应用配置的token，在测试阶段可以为空",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reqid",
+            "in": "header",
+            "description": "请求时生成的uuid，用于跟踪日志和调试",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GB9YSN1WN8YWV41X7FNR5ERC"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GB9YSN1WN8YWV41X7FNR5ERC": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36320105-run"
+      }
+    },
+    "/designer/mrd/group/move": {
+      "post": {
+        "summary": "规则分组：移动",
+        "x-apifox-folder": "designer/mrd",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "将规则分组下的所有子分组和规则信息移动到另外一个分组下",
+        "tags": [
+          "designer/mrd"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "请求应用配置的token，在测试阶段可以为空",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reqid",
+            "in": "header",
+            "description": "请求时生成的uuid，用于跟踪日志和调试",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GB9YVQPB5X0H7GNCDQWZPPVE"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GB9YVQPB5X0H7GNCDQWZPPVE": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36320684-run"
+      }
+    },
+    "/auth/user/create": {
+      "post": {
+        "summary": "用户：新增",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHEXV8AFNFYGQEPAP3S6XF"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHEXV8AFNFYGQEPAP3S6XF": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403659-run"
+      }
+    },
+    "/auth/user/index": {
+      "get": {
+        "summary": "用户：列表",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHFRM790KFP2M0M4JJDYN6"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHFRM790KFP2M0M4JJDYN6": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403685-run"
+      }
+    },
+    "/auth/user/read": {
+      "get": {
+        "summary": "用户：查看",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHH1XSFMAQ4KJXV4QHKYC2"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHH1XSFMAQ4KJXV4QHKYC2": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403691-run"
+      }
+    },
+    "/auth/user/update": {
+      "patch": {
+        "summary": "用户：修改",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHHVJY7N6E5AMZ7XKBSV7Q"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHHVJY7N6E5AMZ7XKBSV7Q": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403705-run"
+      }
+    },
+    "/auth/user/delete": {
+      "delete": {
+        "summary": "用户：删除",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHJG7834SHFMA0JK6AJ6NX"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHJG7834SHFMA0JK6AJ6NX": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403711-run"
+      }
+    },
+    "/auth/user/disable": {
+      "patch": {
+        "summary": "用户：禁用",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHKHCDK05ZSJY5PMR9MHNX"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHKHCDK05ZSJY5PMR9MHNX": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403722-run"
+      }
+    },
+    "/auth/user/enable": {
+      "patch": {
+        "summary": "用户：启用",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHM9E58WWZAKT3R54M7500"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHM9E58WWZAKT3R54M7500": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403725-run"
+      }
+    },
+    "/auth/usergroup/create": {
+      "post": {
+        "summary": "用户分组：新增",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHNDKR5NVXGP5N1VATWGF5"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHNDKR5NVXGP5N1VATWGF5": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403733-run"
+      }
+    },
+    "/auth/usergroup/index": {
+      "get": {
+        "summary": "用户分组：列表",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "树状列表",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHPEJ31Z5MQSRG86SF6H6M"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHPEJ31Z5MQSRG86SF6H6M": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403748-run"
+      }
+    },
+    "/auth/usergroup/update": {
+      "patch": {
+        "summary": "用户分组：修改",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHQA6DEX7W0BGEB3DYF983"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHQA6DEX7W0BGEB3DYF983": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403752-run"
+      }
+    },
+    "/auth/usergroup/delete": {
+      "delete": {
+        "summary": "用户分组：删除",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHQZZ37246HRD4S1438DMT"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHQZZ37246HRD4S1438DMT": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403763-run"
+      }
+    },
+    "/auth/usergroup/clear": {
+      "post": {
+        "summary": "用户分组：清除",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "清除分组下所有的子分组和用户信息，慎用",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHV0141R14K77MK3VSPDB5"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHV0141R14K77MK3VSPDB5": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403805-run"
+      }
+    },
+    "/auth/usergroup/move": {
+      "post": {
+        "summary": "用户分组：移动",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "移动分组下的子分组和用户信息到另外分组",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHW8QEVNCQ2VECG0YBGMQQ"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHW8QEVNCQ2VECG0YBGMQQ": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403826-run"
+      }
+    },
+    "/auth/role/create": {
+      "post": {
+        "summary": "角色：新增",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAHNDKR5NVXGP5N1VATWGF5"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAHNDKR5NVXGP5N1VATWGF5": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403877-run"
+      }
+    },
+    "/auth/role/index": {
+      "get": {
+        "summary": "角色：列表",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "树状结构",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAJ0NZB2NN9YPA438S3D623"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAJ0NZB2NN9YPA438S3D623": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36403997-run"
+      }
+    },
+    "/auth/role/update": {
+      "patch": {
+        "summary": "角色：修改",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAJ26J0BTTKPJX252C7PZ47"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAJ26J0BTTKPJX252C7PZ47": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36404015-run"
+      }
+    },
+    "/auth/role/delete": {
+      "delete": {
+        "summary": "角色：删除",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAJ346H75ZFBZWHGM2DS8CJ"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAJ346H75ZFBZWHGM2DS8CJ": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36404024-run"
+      }
+    },
+    "/auth/role/clear": {
+      "post": {
+        "summary": "角色：清除",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "清除所有子角色和角色绑定的用户关系",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAJ4E63ET299MHV8RJDTRFH"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAJ4E63ET299MHV8RJDTRFH": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36404036-run"
+      }
+    },
+    "/auth/role/move": {
+      "post": {
+        "summary": "角色：移动",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "将角色下的子角色和用户的绑定关系移动到别的角色下",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAJ5KG1KJTVK1X5X0136K0Z"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAJ5KG1KJTVK1X5X0136K0Z": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36404045-run"
+      }
+    },
+    "/auth/access/create": {
+      "post": {
+        "summary": "权限：新增",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAJ8C0YVAGRKMNPTXJWDDEY"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAJ8C0YVAGRKMNPTXJWDDEY": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36404127-run"
+      }
+    },
+    "/auth/access/delete": {
+      "get": {
+        "summary": "权限：删除",
+        "x-apifox-folder": "auth",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "auth"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "返回值",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBAJ80DT66D6YQG0GW31Y355"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBAJ80DT66D6YQG0GW31Y355": {
+                      "$ref": "#/components/schemas/Response",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36404133-run"
+      }
+    },
+    "/designer/data/project/fetch": {
+      "get": {
+        "summary": "项目分组信息：获取",
+        "x-apifox-folder": "designer/data",
+        "x-apifox-status": "testing",
+        "deprecated": false,
+        "description": "获取当前所有的项目，暂时不与分组进行关联",
+        "tags": [
+          "designer/data"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "返回码",
+                      "default": 200,
+                      "minimum": 1,
+                      "maximum": 999999
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "返回信息",
+                      "default": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "projects": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Project",
+                            "x-apifox-overrides": {}
+                          },
+                          "title": "项目列表"
+                        }
+                      },
+                      "title": "返回值",
+                      "x-apifox-orders": [
+                        "projects"
+                      ],
+                      "required": [
+                        "projects"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {},
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36726001-run"
+      }
+    },
+    "/designer/mrd/rule/read": {
+      "get": {
+        "summary": "数学规则：查看",
+        "x-apifox-folder": "designer/mrd",
+        "x-apifox-status": "testing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "designer/mrd"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "规则id",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "uuid",
+            "in": "query",
+            "description": "规则uuid",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "title": "规则id"
+                    },
+                    "uuid": {
+                      "type": "string",
+                      "title": "规则uuid",
+                      "description": "每次创建时后端生成"
+                    },
+                    "infixExpr": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {},
+                        "x-apifox-orders": [],
+                        "x-apifox-ignore-properties": []
+                      },
+                      "title": "中缀数据"
+                    },
+                    "postfixExpr": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {},
+                        "x-apifox-orders": [],
+                        "x-apifox-ignore-properties": []
+                      },
+                      "title": "后缀数据"
+                    },
+                    "graph": {
+                      "type": "object",
+                      "properties": {},
+                      "title": "图数据",
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01GBHWVYPZRX7XBZA2XNVS6J4B"
+                  ],
+                  "required": [
+                    "uuid",
+                    "infixExpr",
+                    "postfixExpr",
+                    "graph"
+                  ],
+                  "x-apifox-refs": {
+                    "01GBHWVYPZRX7XBZA2XNVS6J4B": {
+                      "$ref": "#/components/schemas/Rule",
+                      "x-apifox-overrides": {}
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "id",
+                    "uuid",
+                    "infixExpr",
+                    "postfixExpr",
+                    "graph"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/1435537/apis/api-36729137-run"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Project": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "项目id"
+          },
+          "uuid": {
+            "type": "string",
+            "title": "项目uuid"
+          },
+          "name": {
+            "type": "string",
+            "title": "项目名称"
+          },
+          "group": {
+            "$ref": "#/components/schemas/Group",
+            "title": "项目下属分组",
+            "x-apifox-overrides": {}
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "uuid",
+          "name",
+          "group"
+        ],
+        "required": [
+          "uuid",
+          "name",
+          "group"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "designer/mrd"
+      },
+      "CollectedPoint": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "点信息名称"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ],
+            "x-apifox": {
+              "enumDescriptions": {
+                "1": "string:字符串",
+                "2": "int:整型",
+                "3": "float:浮点数",
+                "4": "bool:布尔值",
+                "5": "json:json对象",
+                "6": "misc:其他类型"
+              }
+            },
+            "title": "类型",
+            "description": "数据采集的类型"
+          },
+          "value": {
+            "type": "string",
+            "title": "当前值",
+            "description": "备用的实时数据"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "type",
+          "value"
+        ],
+        "required": [
+          "type",
+          "value",
+          "name"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "designer/mrd"
+      },
+      "MetaData": {
+        "type": "object",
+        "properties": {
+          "collected": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CollectedMetaData"
+            }
+          },
+          "calculated": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CalculatedData"
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "collected",
+          "calculated"
+        ],
+        "required": [
+          "collected",
+          "calculated"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "designer/mrd"
+      },
+      "CalculatedData": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "integer",
+            "title": "所属项目"
+          },
+          "group_id": {
+            "type": "integer",
+            "title": "所属分类"
+          },
+          "type": {
+            "type": "integer",
+            "title": "数据类型",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "x-apifox": {
+              "enumDescriptions": {
+                "1": "string:字符串",
+                "2": "int:整型",
+                "3": "float:浮点数",
+                "4": "bool:布尔值",
+                "5": "json:json对象",
+                "6": "misc:其他类型"
+              }
+            },
+            "default": 1
+          },
+          "formula": {
+            "title": "计算公式（图数据）",
+            "type": "object",
+            "properties": {},
+            "x-apifox-ignore-properties": [],
+            "x-apifox-orders": []
+          }
+        },
+        "x-apifox-orders": [
+          "project_id",
+          "group_id",
+          "type",
+          "formula"
+        ],
+        "required": [
+          "project_id",
+          "group_id",
+          "type",
+          "formula"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "designer/mrd"
+      },
+      "CollectedMetaData": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "integer",
+            "title": "所属项目"
+          },
+          "group_id": {
+            "type": "integer",
+            "title": "所属分类"
+          },
+          "type": {
+            "type": "integer",
+            "title": "数据类型",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "x-apifox": {
+              "enumDescriptions": {
+                "1": "string:字符串",
+                "2": "int:整型",
+                "3": "float:浮点数",
+                "4": "bool:布尔值",
+                "5": "json:json对象",
+                "6": "misc:其他类型"
+              }
+            },
+            "default": 1
+          },
+          "collector": {
+            "type": "string",
+            "title": "采集器id",
+            "description": "uuid或是sn"
+          },
+          "points": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CollectedPoint"
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "project_id",
+          "group_id",
+          "type",
+          "collector",
+          "points"
+        ],
+        "required": [
+          "project_id",
+          "group_id",
+          "type",
+          "points"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "designer/mrd"
+      },
+      "Access": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-ignore-properties": [],
+        "x-apifox-orders": [],
+        "x-apifox-folder": "auth"
+      },
+      "UserGroup": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-ignore-properties": [],
+        "x-apifox-orders": [],
+        "x-apifox-folder": "auth"
+      },
+      "Role": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-ignore-properties": [],
+        "x-apifox-orders": [],
+        "x-apifox-folder": "auth"
+      },
+      "User": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-ignore-properties": [],
+        "x-apifox-orders": [],
+        "x-apifox-folder": "auth"
+      },
+      "Group": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "分组id"
+          },
+          "uuid": {
+            "type": "string",
+            "title": "分组uuid"
+          },
+          "name": {
+            "type": "string",
+            "title": "分组名称"
+          },
+          "parent_id": {
+            "type": "integer",
+            "title": "分组父id"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Group",
+              "title": "项目下属分组",
+              "x-apifox-overrides": {}
+            },
+            "title": "子分组数组"
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "uuid",
+          "name",
+          "parent_id",
+          "children"
+        ],
+        "required": [
+          "uuid",
+          "name",
+          "children"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "designer/mrd"
+      },
+      "Rule": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "规则id"
+          },
+          "uuid": {
+            "type": "string",
+            "title": "规则uuid",
+            "description": "每次创建时后端生成"
+          },
+          "infixExpr": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "x-apifox-orders": [],
+              "x-apifox-ignore-properties": []
+            },
+            "title": "中缀数据"
+          },
+          "postfixExpr": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "x-apifox-orders": [],
+              "x-apifox-ignore-properties": []
+            },
+            "title": "后缀数据"
+          },
+          "graph": {
+            "type": "object",
+            "properties": {},
+            "title": "图数据",
+            "x-apifox-ignore-properties": [],
+            "x-apifox-orders": []
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "uuid",
+          "infixExpr",
+          "postfixExpr",
+          "graph"
+        ],
+        "required": [
+          "uuid",
+          "infixExpr",
+          "postfixExpr",
+          "graph"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "designer/mrd"
+      },
+      "Protocol": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "名称"
+          },
+          "is_wired": {
+            "type": "boolean",
+            "title": "是否有线连接"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "is_wired"
+        ],
+        "required": [
+          "name",
+          "is_wired"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "thing"
+      },
+      "Connection": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "title": "描述"
+          },
+          "source": {
+            "$ref": "#/components/schemas/Thing",
+            "title": "源头物"
+          },
+          "target": {
+            "$ref": "#/components/schemas/Thing",
+            "title": "源头物"
+          },
+          "type": {
+            "title": "连接方式",
+            "type": "integer",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 999,
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              6,
+              7,
+              8,
+              9,
+              null
+            ],
+            "x-apifox": {
+              "enumDescriptions": {
+                "1": "ETHERNET 有线以太网",
+                "2": "WIFI 无线网络",
+                "3": "4G 4G网络",
+                "4": "5G 5G网络",
+                "6": "RS485 RS485",
+                "7": "RS422 RS422",
+                "8": "RS232 RS232",
+                "9": "UART 串口",
+                "NaN": ""
+              }
+            }
+          },
+          "protocol": {
+            "title": "协议类型",
+            "$ref": "#/components/schemas/Protocol"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "description",
+          "source",
+          "target",
+          "type",
+          "protocol"
+        ],
+        "required": [
+          "name",
+          "protocol",
+          "type",
+          "source",
+          "target"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "thing"
+      },
+      "Event": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "名称"
+          },
+          "description": {
+            "type": "string",
+            "title": "事件描述"
+          },
+          "model": {
+            "title": "所属物模型id",
+            "$ref": "#/components/schemas/Model"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "description",
+          "model"
+        ],
+        "required": [
+          "name",
+          "description",
+          "model"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "thing"
+      },
+      "Property": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "名称"
+          },
+          "description": {
+            "type": "string",
+            "title": "属性描述"
+          },
+          "model": {
+            "title": "所属物模型id",
+            "$ref": "#/components/schemas/Model"
+          },
+          "is_readonly": {
+            "type": "boolean",
+            "default": true,
+            "title": "是否只读"
+          },
+          "type": {
+            "title": "属性类型",
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "x-apifox": {
+              "enumDescriptions": {
+                "1": "整数",
+                "2": "浮点数",
+                "3": "字符串",
+                "4": "布尔值"
+              }
+            },
+            "default": 1
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "description",
+          "model",
+          "is_readonly",
+          "type"
+        ],
+        "required": [
+          "name",
+          "description",
+          "model",
+          "is_readonly",
+          "type"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "thing"
+      },
+      "Service": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "名称"
+          },
+          "description": {
+            "type": "string",
+            "title": "服务描述"
+          },
+          "model": {
+            "title": "所属物模型id",
+            "$ref": "#/components/schemas/Model"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "description",
+          "model"
+        ],
+        "required": [
+          "name",
+          "description",
+          "model"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "thing"
+      },
+      "Thing": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "名称"
+          },
+          "description": {
+            "type": "string",
+            "title": "描述"
+          },
+          "model": {
+            "title": "所属物模型id",
+            "$ref": "#/components/schemas/Model"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "description",
+          "model"
+        ],
+        "required": [
+          "name",
+          "description",
+          "model"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "thing"
+      },
+      "Model": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "名称"
+          },
+          "description": {
+            "type": "string",
+            "title": "描述"
+          },
+          "parent_id": {
+            "title": "所属物模型id",
+            "$ref": "#/components/schemas/Model"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "description",
+          "parent_id"
+        ],
+        "required": [
+          "name",
+          "description",
+          "parent_id"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "thing"
+      },
+      "Component": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "组件名称"
+          },
+          "category_id": {
+            "$ref": "#/components/schemas/ComponentCategory",
+            "title": "所属分组"
+          },
+          "shortcut": {
+            "type": "string",
+            "title": "缩略图地址",
+            "format": "uri"
+          },
+          "path": {
+            "type": "string",
+            "format": "uri",
+            "title": "组件路径"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "category_id",
+          "shortcut",
+          "path"
+        ],
+        "required": [
+          "name",
+          "category_id",
+          "shortcut",
+          "path"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "designer/page"
+      },
+      "ComponentCategory": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "组件名称"
+          },
+          "name_cn": {
+            "type": "string",
+            "title": "中文名称"
+          },
+          "parent_id": {
+            "$ref": "#/components/schemas/ComponentCategory",
+            "title": "所属分组"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "name_cn",
+          "parent_id"
+        ],
+        "required": [
+          "name",
+          "name_cn",
+          "parent_id"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "designer/page"
+      },
+      "Editor": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-ignore-properties": [],
+        "x-apifox-orders": [],
+        "x-apifox-folder": "designer/page"
+      },
+      "Designer": {
+        "type": "object",
+        "properties": {},
+        "x-apifox-ignore-properties": [],
+        "x-apifox-orders": [],
+        "x-apifox-folder": "designer/page"
+      },
+      "Page": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "页面名称"
+          },
+          "layout": {
+            "type": "integer",
+            "default": 1,
+            "enum": [
+              1,
+              2
+            ],
+            "x-apifox": {
+              "enumDescriptions": {
+                "1": "FLIUD 流式布局",
+                "2": "FIXED 绝对定位布局"
+              }
+            }
+          },
+          "type": {
+            "type": "integer",
+            "default": 1,
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "x-apifox": {
+              "enumDescriptions": {
+                "1": "CRUD 增查改删表格页面",
+                "2": "CHARTS 图表页面",
+                "3": "DASHBOARD 大屏页面",
+                "4": "CONFIGURATION 组态页面",
+                "5": "TEXT 文本页面"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "title",
+          "layout",
+          "type"
+        ],
+        "required": [
+          "title",
+          "layout",
+          "type"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "designer/page"
+      },
+      "PageBlock": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "名称"
+          },
+          "description": {
+            "type": "string",
+            "title": "区块说明"
+          },
+          "page_id": {
+            "$ref": "#/components/schemas/Page"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "description",
+          "page_id"
+        ],
+        "required": [
+          "name",
+          "description",
+          "page_id"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "designer/page"
+      },
+      "Request": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "title": "请求模型"
+          },
+          "clause": {
+            "type": "string",
+            "title": "请求条件"
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "integer",
+                "title": "当前页码"
+              },
+              "capacity": {
+                "type": "integer",
+                "title": "单页显示数量",
+                "default": 10,
+                "minimum": 10,
+                "maximum": 100
+              },
+              "sort": {
+                "type": "string",
+                "title": "排序属性"
+              },
+              "order": {
+                "type": "string",
+                "title": "排序方式",
+                "enum": [
+                  "1",
+                  "2"
+                ],
+                "x-apifox": {
+                  "enumDescriptions": {
+                    "1": "ASC 正序",
+                    "2": "DESC 逆序"
+                  }
+                }
+              }
+            },
+            "title": "请求分页条件",
+            "x-apifox-orders": [
+              "index",
+              "capacity",
+              "sort",
+              "order"
+            ],
+            "required": [
+              "index"
+            ],
+            "x-apifox-ignore-properties": []
+          },
+          "ql": {
+            "type": "string",
+            "title": "查询",
+            "description": "sql或者graphql，直接提交接口进行查询"
+          }
+        },
+        "x-apifox-orders": [
+          "model",
+          "clause",
+          "pagination",
+          "ql"
+        ],
+        "required": [
+          "model",
+          "clause"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "http"
+      },
+      "EntitRelation": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "$ref": "#/components/schemas/Entity",
+            "title": "源实体"
+          },
+          "source_property": {
+            "type": "string",
+            "title": "源实体属性"
+          },
+          "target": {
+            "$ref": "#/components/schemas/Entity",
+            "title": "源实体"
+          },
+          "target_property": {
+            "type": "string",
+            "title": "目的实体属性"
+          },
+          "type": {
+            "type": "integer",
+            "title": "关系类型",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "x-apifox": {
+              "enumDescriptions": {
+                "1": "ONE_TO_ONE 一对一",
+                "2": "ONE_TO_MANY 一对多",
+                "3": "MANY_TO_MANY 多对多"
+              }
+            }
+          }
+        },
+        "x-apifox-orders": [
+          "source",
+          "source_property",
+          "target",
+          "target_property",
+          "type"
+        ],
+        "required": [
+          "source",
+          "target",
+          "target_property",
+          "source_property",
+          "type"
+        ],
+        "x-apifox-refs": {},
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "craft"
+      },
+      "Entity": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "名称"
+          },
+          "name_cn": {
+            "type": "string",
+            "title": "中文名"
+          },
+          "path": {
+            "type": "string",
+            "title": "路径"
+          },
+          "application": {
+            "$ref": "#/components/schemas/Application",
+            "title": "所属应用"
+          },
+          "type": {
+            "type": "integer",
+            "title": "类型",
+            "enum": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            "x-apifox": {
+              "enumDescriptions": {
+                "1": "CONTROLLER 控制器",
+                "2": "MODEL 模型",
+                "3": "DOMAIN_MODEL 域模型",
+                "4": "EVENT 事件",
+                "5": "HANDLER 操作者",
+                "6": "ROUTER 路由",
+                "7": "MIDDLEWARE 中间件",
+                "8": "TRAITS 特征",
+                "9": "VALIDATOR 校验器",
+                "10": "VIEW 视图",
+                "11": "CONFIGURATION 配置",
+                "12": "LANGUAGE 语言资源文件",
+                "13": "ENTITY 原始实体"
+              }
+            },
+            "default": 1
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "name_cn",
+          "path",
+          "application",
+          "type"
+        ],
+        "required": [
+          "name",
+          "name_cn",
+          "path",
+          "application",
+          "type"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "craft"
+      },
+      "Framework": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "名称"
+          },
+          "description": {
+            "type": "string",
+            "title": "描述"
+          },
+          "language": {
+            "$ref": "#/components/schemas/Language",
+            "title": "语言"
+          },
+          "stable": {
+            "type": "string",
+            "title": "稳定版"
+          },
+          "latest": {
+            "type": "string",
+            "title": "最新版"
+          },
+          "type": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "x-apifox": {
+              "enumDescriptions": {
+                "1": "BACKEND 后端",
+                "2": "FRONTEND 前端",
+                "3": "FULLSTACK 全栈",
+                "4": "COMMANDLINE 命令行"
+              }
+            },
+            "default": 1,
+            "title": "类型"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "description",
+          "language",
+          "stable",
+          "latest",
+          "type"
+        ],
+        "required": [
+          "name",
+          "description",
+          "language",
+          "stable",
+          "latest",
+          "type"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "craft"
+      },
+      "Language": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "名称"
+          },
+          "stable": {
+            "type": "string",
+            "title": "稳定版本"
+          },
+          "latest": {
+            "type": "string",
+            "title": "最新版本"
+          },
+          "is_script": {
+            "title": "是否脚本语言",
+            "type": "boolean"
+          },
+          "has_gc": {
+            "title": "是否有垃圾回收机制",
+            "type": "boolean"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "stable",
+          "latest",
+          "is_script",
+          "has_gc"
+        ],
+        "required": [
+          "name",
+          "stable",
+          "latest",
+          "is_script",
+          "has_gc"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "craft"
+      },
+      "Domain": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "域名"
+          },
+          "project": {
+            "title": "所属项目id",
+            "$ref": "#/components/schemas/Project1"
+          },
+          "type": {
+            "title": "域名类型",
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "x-apifox": {
+              "enumDescriptions": {
+                "1": "DEVELOPMENT 本地开发",
+                "2": "TESTING 线上测试环境",
+                "3": "PRODUCTION 正式环境"
+              }
+            },
+            "oneOf": [
+              {
+                "type": "integer",
+                "title": "本地开发"
+              },
+              {
+                "type": "string",
+                "title": "测试用"
+              },
+              {
+                "type": "string",
+                "title": "正式用"
+              }
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "project",
+          "type"
+        ],
+        "required": [
+          "name",
+          "project",
+          "type"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "craft"
+      },
+      "DataSource": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "英文名称"
+          },
+          "name_cn": {
+            "type": "string",
+            "title": "中文名称"
+          },
+          "protocol": {
+            "title": "协议类型",
+            "oneOf": [
+              {
+                "type": "string",
+                "title": "default"
+              },
+              {
+                "type": "string",
+                "title": "mysql"
+              },
+              {
+                "type": "string",
+                "title": "mariadb"
+              },
+              {
+                "type": "string",
+                "title": "tidb"
+              },
+              {
+                "type": "string",
+                "title": "postgresql"
+              },
+              {
+                "type": "string",
+                "title": "sqlite"
+              },
+              {
+                "type": "string",
+                "title": "tdengine"
+              },
+              {
+                "type": "string",
+                "title": "redis"
+              },
+              {
+                "type": "string",
+                "title": "etcd"
+              }
+            ]
+          },
+          "application": {
+            "$ref": "#/components/schemas/Application",
+            "title": "所属应用"
+          },
+          "host": {
+            "type": "string",
+            "title": "主机名"
+          },
+          "port": {
+            "type": "string",
+            "title": "端口号"
+          },
+          "username": {
+            "type": "string",
+            "title": "用户名"
+          },
+          "password": {
+            "type": "string",
+            "title": "密码"
+          },
+          "database": {
+            "type": "string",
+            "title": "数据库名称"
+          },
+          "charset": {
+            "type": "string",
+            "title": "数据库字符集",
+            "default": "utf8"
+          },
+          "socket": {
+            "type": "string"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "name_cn",
+          "protocol",
+          "application",
+          "host",
+          "port",
+          "username",
+          "password",
+          "database",
+          "charset",
+          "socket"
+        ],
+        "required": [
+          "name",
+          "name_cn",
+          "protocol",
+          "application",
+          "host",
+          "port",
+          "charset"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "craft"
+      },
+      "Application": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "英文名"
+          },
+          "name_cn": {
+            "type": "string",
+            "title": "中文名称"
+          },
+          "project": {
+            "title": "所属项目id",
+            "$ref": "#/components/schemas/Project1"
+          },
+          "is_active": {
+            "type": "boolean",
+            "default": true,
+            "title": "是否启用"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "name_cn",
+          "project",
+          "is_active"
+        ],
+        "required": [
+          "name",
+          "name_cn",
+          "project",
+          "is_active"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "craft"
+      },
+      "Project1": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "项目名称"
+          },
+          "name_cn": {
+            "type": "string",
+            "title": "项目中文名称"
+          },
+          "is_active": {
+            "type": "boolean",
+            "title": "是否启用",
+            "default": true
+          },
+          "company": {
+            "type": "string",
+            "title": "公司名称"
+          },
+          "copyright": {
+            "type": "string",
+            "title": "版权信息"
+          },
+          "revision": {
+            "type": "integer",
+            "default": 1,
+            "title": "版本号"
+          },
+          "create_at": {
+            "type": "integer",
+            "title": "创建时间"
+          },
+          "update_at": {
+            "type": "integer",
+            "title": "更新时间"
+          }
+        },
+        "x-apifox-orders": [
+          "name",
+          "name_cn",
+          "is_active",
+          "company",
+          "copyright",
+          "revision",
+          "create_at",
+          "update_at"
+        ],
+        "required": [
+          "name",
+          "copyright",
+          "revision",
+          "create_at",
+          "update_at",
+          "is_active"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "craft"
+      },
+      "Response": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "title": "返回码",
+            "default": 200,
+            "minimum": 1,
+            "maximum": 999999
+          },
+          "msg": {
+            "type": "string",
+            "title": "返回信息",
+            "default": "success"
+          },
+          "data": {
+            "type": "object",
+            "properties": {},
+            "title": "返回值",
+            "x-apifox-ignore-properties": [],
+            "x-apifox-orders": []
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "msg",
+          "data"
+        ],
+        "required": [
+          "code",
+          "msg",
+          "data"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "http"
+      }
+    }
+  }
+}

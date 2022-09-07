@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace generator\task;
 
-use generator\Cache;
+use generator\Context;
 
 /**
  * 任务管理器

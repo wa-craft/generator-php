@@ -18,7 +18,6 @@ $start_time = microtime(true );
 /* 定义全局常量 */
 const ROOT_PATH = __DIR__;
 const SRC_PATH = __DIR__ . '/src';
-const PACKAGE_PATH = __DIR__ . '/pkg';
 const TAR_ROOT_PATH = __DIR__ . '/deploy';
 const VERSION = '3.0.0 alpha1';
 const RESOURCE_PATH = __DIR__ . '/resource';
@@ -50,7 +49,7 @@ $cmd->option('c')
 $cmd->option('p')
     ->aka('project')
     ->describedAs('define a project project file')
-    ->default(__DIR__ . '/usecase/cms.yaml')
+    ->default(__DIR__ . '/usecase/fmcs.yaml')
     ->map(function ($project) {
         return $project;
     });

@@ -22,7 +22,7 @@ class Generator
     //项目配置
     private array $project = [];
     //数据缓存
-    private ?Cache $cache = null;
+    private ?Context $context = null;
     //任务管理
     private ?TaskManager $taskManager = null;
 
@@ -38,7 +38,7 @@ class Generator
             $this->paths['target'] = $params['target'];
         }
 
-        $this->cache = Cache::getInstance();
+        $this->cache = Context::getInstance();
         $this->taskManager = TaskManager::getInstance();
     }
 
@@ -153,11 +153,10 @@ class Generator
      */
     private function setParser(): void
     {
-        $parser_name = $this->project['parser'] ?: 'component';
+        $parser_name = $this->project['parser'] ?: 'openapi';
         $parser = ParserFactory::createByName($parser_name);
-        $data = $parser->parse();
+        $parser->parse();
         $this->cache->set('parser', $parser);
-        $this->cache->set('data', $data);
     }
 
     /**
@@ -169,10 +168,7 @@ class Generator
      */
     private function process(): void
     {
-        $tasks = $this->taskManager->getTasks();
-        foreach ($tasks as $task) {
-            $task->execute();
-        }
+        $this->taskManager->runTasks();
     }
 
     /**

@@ -7,7 +7,6 @@ namespace generator\parser;
  */
 class Sql extends Parser
 {
-
     public function parse()
     {
         // TODO: Implement parse() method.
